@@ -22,11 +22,11 @@ jobs:
           java-version: 18
           
       - name: Step 3 - Have GitHub Actions Build Maven Project
-        run: mvn -B package --file pom.xml -DoutputDirectory=out
+        run: mvn -B package --file pom.xml
         
       - name: Step 4 - List output directory
         run: |
-          cd out
+          cd target
           ls
 
   release-project:
@@ -50,7 +50,7 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         upload_url: ${{steps.create-new-release.outputs.upload_url}}
-        asset_path: ./out/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
+        asset_path: ./target/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
         asset_name: ProjektRelease-v${{github.run_number}}.jar
         asset_content_type: application/jar
       

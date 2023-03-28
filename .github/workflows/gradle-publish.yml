@@ -1,14 +1,14 @@
 # This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
 
-name: Build Jar
+name: Build Jar and Release
 
 on:
   push:
     branches: [ production ]
 
 jobs:
-  build:
+  build-jar:
 
     runs-on: windows-latest
     
@@ -32,7 +32,9 @@ jobs:
   release-project:
     name: Release Project
     runs-on: windows-latest
-    needs: build
+    needs: build-jar
+    permissions:
+      contents: write
     
     steps:
     
@@ -62,4 +64,3 @@ jobs:
         asset_name: ProjektRelease-v${{github.run_number}}.jar
         asset_content_type: application/jar
       
-  

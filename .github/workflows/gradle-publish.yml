@@ -10,24 +10,20 @@ on:
 jobs:
   build-jar:
 
+    name: Build Jar
     runs-on: windows-latest
     
     steps:
       - name: Step 1 - Checkout production branch from GitHub
         uses: actions/checkout@v2
-        
+
       - name: Step 2 - Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 18
-          
+
       - name: Step 3 - Have GitHub Actions Build Maven Project
         run: mvn -B package --file pom.xml
-        
-      - name: Step 4 - List output directory
-        run: |
-          cd target
-          ls
 
   release-project:
     name: Release Project
@@ -53,6 +49,12 @@ jobs:
             This is an auto generated release
         draft: false
         prerelease: false
+        
+    - name: Change and list directories
+      run: |
+        ls
+        cd target
+        ls
     
     - name: Upload release assets
       uses: actions/upload-release-asset@v1
@@ -60,7 +62,7 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         upload_url: ${{steps.create-new-release.outputs.upload_url}}
-        asset_path: ./target/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
+        asset_path: InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
         asset_name: ProjektRelease-v${{github.run_number}}.jar
         asset_content_type: application/jar
       

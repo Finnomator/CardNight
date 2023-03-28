@@ -10,7 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows
+    runs-on: windows-latest
     
     steps:
       - name: Step 1 - Checkout production branch from GitHub

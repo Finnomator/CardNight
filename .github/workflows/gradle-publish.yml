@@ -1,0 +1,33 @@
+# This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
+
+name: Build Jar
+
+on:
+  push:
+    branches: [ production ]
+
+jobs:
+  build:
+
+    runs-on: windows
+    
+    steps:
+      - name: Step 1 - Checkout production branch from GitHub
+        uses: actions/checkout@v2
+        
+      - name: Step 2 - Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 18
+          
+      - name: Step 3 - Have GitHub Actions BUild Maven Project
+        run: mvn -B package --file pom.xml
+        
+      - name: Step 4 - List current directory
+        run: ls -a
+        
+      - name: Step 5 - What is the target folder?
+        run: |
+          cd target
+          ls -a

@@ -21,8 +21,8 @@ jobs:
         with:
           java-version: 18
           
-      - name: Step 3 - Have GitHub Actions BUild Maven Project
-        run: mvn -B package --file pom.xml -DoutputDirectory=out -Djar.finalName=InformatikProjekt
+      - name: Step 3 - Have GitHub Actions Build Maven Project
+        run: mvn -B package --file pom.xml -DoutputDirectory=out
         
       - name: Step 4 - List output directory
         run: |
@@ -50,7 +50,7 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         upload_url: ${{steps.create-new-release.outputs.upload_url}}
-        asset_path: ./out/InformatikProjekt.jar
+        asset_path: ./out/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
         asset_name: ProjektRelease-v${{github.run_number}}.jar
         asset_content_type: application/jar
       

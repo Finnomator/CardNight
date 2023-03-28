@@ -22,14 +22,11 @@ jobs:
           java-version: 18
           
       - name: Step 3 - Have GitHub Actions BUild Maven Project
-        run: mvn -B package --file pom.xml
+        run: mvn -B package --file pom.xml -DoutputDirectory=out -Djar.finalName=InformatikProjekt
         
-      - name: Step 4 - List current directory
-        run: ls
-        
-      - name: Step 5 - What is the target folder?
+      - name: Step 4 - List output directory
         run: |
-          cd target
+          cd out
           ls
 
   release-project:
@@ -39,10 +36,22 @@ jobs:
     
     steps:
     - name: Create GitHub release
+      id: create-new-release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         tag_name: ${{github.run_number}}
         release_name: Release ${{github.run_number}}
+    
+    - name: Upload release assets
+      uses: actions/upload-release-assets@v1
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+        upload_url: ${{steps.create-new-release.outputs.upload_url}}
+        asset_path: ./out/InformatikProjekt.jar
+        asset_name: ProjektRelease-v${{github.run_number}}.jar
+        asset_content_type: application/jar
+      
   

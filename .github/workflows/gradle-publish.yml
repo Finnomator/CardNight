@@ -35,6 +35,10 @@ jobs:
     needs: build
     
     steps:
+    
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
     - name: Create GitHub release
       id: create-new-release
       uses: actions/create-release@v1
@@ -43,6 +47,10 @@ jobs:
       with:
         tag_name: ${{github.run_number}}
         release_name: Release ${{github.run_number}}
+        body: |
+            This is an auto generated release
+        draft: false
+        prerelease: false
     
     - name: Upload release assets
       uses: actions/upload-release-assets@v1

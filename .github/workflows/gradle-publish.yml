@@ -31,3 +31,18 @@ jobs:
         run: |
           cd target
           ls
+
+  release-project:
+    name: Release Project
+    runs-on: windows-latest
+    needs: build
+    
+    steps:
+    - name: Create GitHub release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+        tag_name: ${{github.run_number}}
+        release_name: Release ${{github.run_number}}
+  

@@ -12,6 +12,8 @@ jobs:
 
     name: Build Jar
     runs-on: windows-latest
+    permissions:
+      contents: write
     
     steps:
       - name: Step 1 - Checkout production branch from GitHub
@@ -34,40 +36,28 @@ jobs:
           cd github_action
           ls
 
-  release-project:
-    name: Release Project
-    runs-on: windows-latest
-    needs: build-jar
-    permissions:
-      contents: write
-    
-    steps:
-    
-    - name: Checkout code
-      uses: actions/checkout@v2
-    
-    - name: Create GitHub release
-      id: create-new-release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      with:
-        tag_name: ${{github.run_number}}
-        release_name: Release ${{github.run_number}}
-        body: |
-            This is an auto generated release
-        draft: false
-        prerelease: false
-        
-    - name: List dir content
-      run: ls
-    
-    - name: Upload release assets
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      with:
-        upload_url: ${{steps.create-new-release.outputs.upload_url}}
-        asset_path: ./out/github_action/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
-        asset_name: ProjektRelease-v${{github.run_number}}.jar
-        asset_content_type: application/jar
+      - name: Create GitHub release
+        id: create-new-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          tag_name: ${{github.run_number}}
+          release_name: Release ${{github.run_number}}
+          body: |
+              This is an auto generated release
+          draft: false
+          prerelease: false
+
+      - name: List dir content
+        run: ls
+
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          upload_url: ${{steps.create-new-release.outputs.upload_url}}
+          asset_path: ./out/github_action/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
+          asset_name: ProjektRelease-v${{github.run_number}}.jar
+          asset_content_type: application/jar

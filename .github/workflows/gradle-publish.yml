@@ -26,17 +26,12 @@ jobs:
 
       - name: Step 3 - Have GitHub Actions Build Maven Project
         run: mvn -B package --file pom.xml
-        
+      
       - name: Step 4 - Copy Maven output to specified folder
         run: |
           cp target/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar out/github_action/
-          ls
-          cd out
-          ls
-          cd github_action
-          ls
 
-      - name: Create GitHub release
+      - name: Step 5 - Create GitHub release
         id: create-new-release
         uses: actions/create-release@v1
         env:
@@ -49,10 +44,7 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: List dir content
-        run: ls
-
-      - name: Upload release assets
+      - name: Step 6 - Upload release assets
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

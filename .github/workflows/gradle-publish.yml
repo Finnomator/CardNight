@@ -1,48 +1,68 @@
 # This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
 
-name: Build Jar
+name: Build Jar and Release
 
 on:
   push:
     branches: [ production ]
 
 jobs:
-  build:
+  build-jar:
 
+    name: Build Jar
     runs-on: windows-latest
     
     steps:
       - name: Step 1 - Checkout production branch from GitHub
         uses: actions/checkout@v2
-        
+
       - name: Step 2 - Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 18
-          
-      - name: Step 3 - Have GitHub Actions BUild Maven Project
+
+      - name: Step 3 - Have GitHub Actions Build Maven Project
         run: mvn -B package --file pom.xml
-        
-      - name: Step 4 - List current directory
-        run: ls
-        
-      - name: Step 5 - What is the target folder?
-        run: |
-          cd target
-          ls
 
   release-project:
     name: Release Project
     runs-on: windows-latest
-    needs: build
+    needs: build-jar
+    permissions:
+      contents: write
     
     steps:
+    
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
     - name: Create GitHub release
+      id: create-new-release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         tag_name: ${{github.run_number}}
         release_name: Release ${{github.run_number}}
-  
+        body: |
+            This is an auto generated release
+        draft: false
+        prerelease: false
+        
+    - name: Change and list directories
+      run: |
+        ls
+        cd target
+        ls
+    
+    - name: Upload release assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+        upload_url: ${{steps.create-new-release.outputs.upload_url}}
+        asset_path: InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
+        asset_name: ProjektRelease-v${{github.run_number}}.jar
+        asset_content_type: application/jar
+      

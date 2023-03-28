@@ -26,7 +26,13 @@ jobs:
         run: mvn -B package --file pom.xml
         
       - name: Step 4 - Copy Maven output to specified folder
-        run: cp target/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar out/
+        run: |
+          cp target/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar out/github_action/
+          ls
+          cd out
+          ls
+          cd github_action
+          ls
 
   release-project:
     name: Release Project
@@ -52,6 +58,9 @@ jobs:
             This is an auto generated release
         draft: false
         prerelease: false
+        
+    - name: List dir content
+      run: ls
     
     - name: Upload release assets
       uses: actions/upload-release-asset@v1
@@ -59,6 +68,6 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         upload_url: ${{steps.create-new-release.outputs.upload_url}}
-        asset_path: out/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
+        asset_path: ./out/github_action/InformatikSoftwareProjekt-1.0-SNAPSHOT.jar
         asset_name: ProjektRelease-v${{github.run_number}}.jar
         asset_content_type: application/jar

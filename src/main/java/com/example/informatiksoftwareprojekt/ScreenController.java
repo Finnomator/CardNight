@@ -6,22 +6,20 @@ import javafx.scene.layout.Pane;
 import java.util.HashMap;
 
 public class ScreenController {
-    private HashMap<String, Pane> screenMap = new HashMap<>();
-    private Scene main;
+    private static final HashMap<String, Pane> screenMap = new HashMap<>();
+    private static Scene main;
 
-    public ScreenController(Scene main) {
-        this.main = main;
+    public static void setScene(Scene scene) {
+        main = scene;
     }
 
-    public void addScreen(String name, Pane pane) {
+    public static void addScreen(String name, Pane pane) {
         screenMap.put(name, pane);
     }
 
-    public void removeScreen(String name) {
-        screenMap.remove(name);
-    }
-
-    public void activate(String name) {
+    public static void activate(String name) {
+        if (!screenMap.containsKey(name))
+            throw new RuntimeException(name + " was not added to screenMap");
         main.setRoot(screenMap.get(name));
     }
 }

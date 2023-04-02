@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.layout.*?>
-
-<Scene fx:id="mainScene" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.informatiksoftwareprojekt.MainController">
-<AnchorPane />
+<?import javafx.scene.Scene?>
+<Scene xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.informatiksoftwareprojekt.MainController">
+   <fx:include source="welcome-view.fxml" prefHeight="720" prefWidth="1280"/>
 </Scene>

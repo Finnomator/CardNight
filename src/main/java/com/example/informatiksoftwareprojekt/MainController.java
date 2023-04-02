@@ -1,37 +1,33 @@
 package com.example.informatiksoftwareprojekt;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MainController extends Application {
 
-    @FXML
-    private Scene mainScene;
-    ScreenController screenController;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-view.fxml"));
-        Scene scene = fxmlLoader.load();
-
-        mainScene = scene;
-        screenController = new ScreenController(mainScene);
+        Scene mainScene = new FXMLLoader(getClass().getResource("main-view.fxml")).load();
+        ScreenController.setScene(mainScene);
 
         stage.setScene(mainScene);
         stage.setTitle("Epic game");
         stage.show();
 
-        screenController.addScreen("welcome-view", new FXMLLoader(WelcomeView.class.getResource("welcome-view.fxml")).load());
-        screenController.addScreen("credits-view", new FXMLLoader(WelcomeView.class.getResource("credits-view.fxml")).load());
-        screenController.activate("welcome-view");
+        loadViews();
+        ScreenController.activate("welcome-view");
     }
 
-    @FXML
-    void initialize() {
-        // System.out.println("Got initialized");
+    private void loadViews() throws IOException {
+        ScreenController.addScreen("welcome-view", new FXMLLoader(getClass().getResource("welcome-view.fxml")).load());
+        ScreenController.addScreen("credits-view", new FXMLLoader(getClass().getResource("credits-view.fxml")).load());
+        ScreenController.addScreen("game-select-view", new FXMLLoader(getClass().getResource("game-select-view.fxml")).load());
+        ScreenController.addScreen("game-views.tictactoe-view", new FXMLLoader(getClass().getResource("/com/example/informatiksoftwareprojekt/game-views/tictactoe-view.fxml")).load());
     }
 }

@@ -2,24 +2,30 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1">
-    <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
-    </columnConstraints>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.informatiksoftwareprojekt.CreditsView">
     <rowConstraints>
-        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints vgrow="NEVER" />
     </rowConstraints>
-    <children>
-        <VBox alignment="CENTER">
-            <children>
-                <Label text="Developed by:" textAlignment="CENTER"/>
-                <Label text="Finn" textAlignment="CENTER"/>
-                <Label text="Chris" textAlignment="CENTER"/>
-                <Label text="Marc" textAlignment="CENTER"/>
-                <Label text="David" textAlignment="CENTER"/>
-            </children>
-        </VBox>
-        <Button mnemonicParsing="false" text="Back" GridPane.rowIndex="1"/>
-    </children>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+
+    <VBox alignment="TOP_CENTER">
+        <Label text="Developed by:" textAlignment="CENTER">
+        <font>
+            <Font size="25.0" />
+        </font>
+        </Label>
+        <Label text="Finn" textAlignment="CENTER" />
+        <Label text="Chris" textAlignment="CENTER" />
+        <Label text="Marc" textAlignment="CENTER" />
+        <Label text="David" textAlignment="CENTER" />
+    </VBox>
+
+    <GridPane GridPane.rowIndex="1" alignment="CENTER">
+        <Button onAction="#onBackButtonClick" prefHeight="70" prefWidth="112" text="Back"/>
+    </GridPane>
 </GridPane>

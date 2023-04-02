@@ -1,5 +1,6 @@
 # Informatik Software Projekt
 [Discord Server](https://discord.gg/HA2R93vq7c)
+[Klassendiagramm](https://online.visual-paradigm.com/share.jsp?id=323439353531372d31)
 
 ## Tools
 Die folgenden Programme werden wir für die Entwicklung benutzen:

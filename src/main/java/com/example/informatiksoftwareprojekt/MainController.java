@@ -17,17 +17,15 @@ public class MainController extends Application {
         ScreenController.setScene(mainScene);
 
         stage.setScene(mainScene);
-        stage.setTitle("Epic game");
+        stage.setTitle("Card Night");
         stage.show();
 
         loadViews();
-        ScreenController.activate("welcome-view");
+        ScreenController.activate("main-menu-view");
     }
 
     private void loadViews() throws IOException {
-        ScreenController.addScreen("welcome-view", new FXMLLoader(getClass().getResource("welcome-view.fxml")).load());
-        ScreenController.addScreen("credits-view", new FXMLLoader(getClass().getResource("credits-view.fxml")).load());
-        ScreenController.addScreen("game-select-view", new FXMLLoader(getClass().getResource("game-select-view.fxml")).load());
+        ScreenController.addScreen("main-menu-view", new FXMLLoader(getClass().getResource("main-menu-view.fxml")).load());
         ScreenController.addScreen("game-views.tictactoe-view", new FXMLLoader(getClass().getResource("/com/example/informatiksoftwareprojekt/game-views/tictactoe-view.fxml")).load());
     }
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea"
-          fx:controller="com.example.informatiksoftwareprojekt.GameSelectView">
+          fx:controller="com.example.informatiksoftwareprojekt.MainMenuView">
 
     <rowConstraints>
         <RowConstraints vgrow="NEVER"/>
@@ -17,7 +17,7 @@
         <ColumnConstraints/>
     </columnConstraints>
 
-    <Label text="Select Game" textAlignment="CENTER">
+    <Label text="Game Night" textAlignment="CENTER">
         <font>
             <Font size="25.0"/>
         </font>
@@ -30,6 +30,6 @@
     </ScrollPane>
 
     <GridPane GridPane.rowIndex="2" alignment="CENTER">
-        <Button text="Back" prefWidth="112" prefHeight="70" onAction="#onBackClick"/>
+        <Button text="Exit" prefWidth="112" prefHeight="70" onAction="#onExitClick"/>
     </GridPane>
 </GridPane>

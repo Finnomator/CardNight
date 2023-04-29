@@ -4,6 +4,6 @@ import com.example.informatiksoftwareprojekt.ScreenController;
 
 public class TicTacToeView {
     public void onBackClick() {
-        ScreenController.activate("game-select-view");
+        ScreenController.activate("main-menu-view");
     }
 }

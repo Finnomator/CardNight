@@ -17,7 +17,7 @@
         <ColumnConstraints/>
     </columnConstraints>
 
-    <Label text="Game Night" textAlignment="CENTER">
+    <Label text="Card Night" textAlignment="CENTER">
         <font>
             <Font size="25.0"/>
         </font>

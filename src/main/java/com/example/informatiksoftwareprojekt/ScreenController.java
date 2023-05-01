@@ -22,5 +22,9 @@ public class ScreenController {
             throw new RuntimeException(name + " was not added to screenMap");
         main.setRoot(screenMap.get(name));
     }
+
+    public static void activateNewPane(Pane pane) {
+        main.setRoot(pane);
+    }
 }
 

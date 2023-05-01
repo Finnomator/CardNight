@@ -25,7 +25,8 @@
 
     <ScrollPane GridPane.rowIndex="1">
         <VBox alignment="CENTER">
-            <Button prefHeight="70" prefWidth="112" text="TicTacToe" onAction="#onTicTacToeClick"/>
+            <Button prefHeight="70" prefWidth="112" text="Tic Tac Toe" onAction="#onTicTacToeClick"/>
+            <Button prefHeight="70" prefWidth="112" text="ÜNO" onAction="#onUenoClick"/>
         </VBox>
     </ScrollPane>
 

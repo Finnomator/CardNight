@@ -1,7 +1,7 @@
-package com.example.informatiksoftwareprojekt;
+package cardnight;
 
-import com.example.informatiksoftwareprojekt.games.tictactoe.TicTacToeView;
-import com.example.informatiksoftwareprojekt.games.ueno.UenoView;
+import cardnight.games.tictactoe.TicTacToeView;
+import cardnight.games.ueno.UenoView;
 
 import java.io.IOException;
 

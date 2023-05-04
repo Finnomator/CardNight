@@ -1,4 +1,4 @@
-package com.example.informatiksoftwareprojekt;
+package cardnight;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

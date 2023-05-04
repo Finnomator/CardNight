@@ -1,6 +1,6 @@
-package com.example.informatiksoftwareprojekt.games.ueno;
+package cardnight.games.ueno;
 
-import com.example.informatiksoftwareprojekt.ScreenController;
+import cardnight.ScreenController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -277,6 +277,6 @@ public class UenoView {
     }
 
     public static Pane loadScene() throws IOException {
-        return new FXMLLoader(UenoView.class.getResource("/com/example/informatiksoftwareprojekt/game-views/ueno-view.fxml")).load();
+        return new FXMLLoader(UenoView.class.getResource("/cardnight/game-views/ueno-view.fxml")).load();
     }
 }

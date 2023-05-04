@@ -1,4 +1,4 @@
-package com.example.informatiksoftwareprojekt.games.ueno;
+package cardnight.games.ueno;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,6 +1,6 @@
-package com.example.informatiksoftwareprojekt.games.ueno;
+package cardnight.games.ueno;
 
-import com.example.informatiksoftwareprojekt.games.Spieler;
+import cardnight.games.Spieler;
 
 import java.util.ArrayList;
 

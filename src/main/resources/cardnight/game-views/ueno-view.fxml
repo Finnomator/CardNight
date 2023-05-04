@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.informatiksoftwareprojekt.games.ueno.UenoView">
+            fx:controller="cardnight.games.ueno.UenoView">
 
     <HBox layoutY="60.0" prefHeight="66.0" fx:id="gegner1kartenBox" prefWidth="174.0"
           style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;"/>

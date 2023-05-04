@@ -1,6 +1,6 @@
-package com.example.informatiksoftwareprojekt.games.tictactoe;
+package cardnight.games.tictactoe;
 
-import com.example.informatiksoftwareprojekt.ScreenController;
+import cardnight.ScreenController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
@@ -12,6 +12,6 @@ public class TicTacToeView {
     }
 
     public static Pane loadScene() throws IOException {
-        return new FXMLLoader(TicTacToeView.class.getResource("/com/example/informatiksoftwareprojekt/game-views/tictactoe-view.fxml")).load();
+        return new FXMLLoader(TicTacToeView.class.getResource("/cardnight/game-views/tictactoe-view.fxml")).load();
     }
 }

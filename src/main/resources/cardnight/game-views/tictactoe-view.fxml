@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
           xmlns="http://javafx.com/javafx"
-          fx:controller="com.example.informatiksoftwareprojekt.games.tictactoe.TicTacToeView">
+          fx:controller="cardnight.games.tictactoe.TicTacToeView">
 
     <rowConstraints>
         <RowConstraints vgrow="NEVER"/>

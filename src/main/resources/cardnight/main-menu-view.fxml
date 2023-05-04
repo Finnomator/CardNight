@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea"
-          fx:controller="com.example.informatiksoftwareprojekt.MainMenuView">
+          fx:controller="cardnight.MainMenuView">
 
     <rowConstraints>
         <RowConstraints vgrow="NEVER"/>

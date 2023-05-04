@@ -1,4 +1,4 @@
-package com.example.informatiksoftwareprojekt.games;
+package cardnight.games;
 
 public abstract class Spieler {
     public final String name;

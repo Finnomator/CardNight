@@ -1,6 +1,6 @@
-package com.example.informatiksoftwareprojekt.games.ueno;
+package cardnight.games.ueno;
 
-import com.example.informatiksoftwareprojekt.games.Karte;
+import cardnight.games.Karte;
 
 public class UenoKarte extends Karte {
 

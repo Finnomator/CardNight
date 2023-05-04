@@ -1,4 +1,4 @@
-package com.example.informatiksoftwareprojekt.games.ueno;
+package cardnight.games.ueno;
 
 public class UenoZug {
     public final UenoSpieler spieler;

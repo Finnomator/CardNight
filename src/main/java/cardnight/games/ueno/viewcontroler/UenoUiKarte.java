@@ -1,17 +1,7 @@
 package cardnight.games.ueno.viewcontroler;
 
-import cardnight.games.ueno.Ueno;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.UenoKarte;
-import cardnight.games.ueno.UenoKartenArt;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.text.Text;
 
 public abstract class UenoUiKarte {
 

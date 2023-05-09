@@ -1,7 +1,5 @@
 package cardnight.games.ueno;
 
-import cardnight.games.Spieler;
-
 public class UenoGegner extends UenoSpieler {
 
     public UenoGegner(String name, Ueno spiel) {

@@ -1,11 +1,9 @@
 package cardnight.games;
 
-import java.util.ArrayList;
-
 public abstract class Spieler {
     public final String name;
     protected int punkte;
-    protected Spiel spiel;
+    protected final Spiel spiel;
 
     public Spieler(String name, Spiel spiel) {
         this.name = name;

@@ -1,17 +1,8 @@
 package cardnight.games.ueno.viewcontroler;
 
-import cardnight.games.ueno.Ueno;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.UenoKarte;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.scene.control.*;
 import javafx.scene.text.Text;
-
-import java.io.IOException;
 
 public class UenoFarbwahlUiKarte extends UenoUiKarte {
 
@@ -24,22 +15,22 @@ public class UenoFarbwahlUiKarte extends UenoUiKarte {
         artText.setText(uenoKartenArtZuString(karte));
     }
 
-    public void redAction(ActionEvent actionEvent) {
+    public void redAction() {
         karte.farbe = UenoFarbe.ROT;
         hauptspielerUiHand.updateUi();
     }
 
-    public void blueAction(ActionEvent actionEvent) {
+    public void blueAction() {
         karte.farbe = UenoFarbe.BLAU;
         hauptspielerUiHand.updateUi();
     }
 
-    public void yellowAction(ActionEvent actionEvent) {
+    public void yellowAction() {
         karte.farbe = UenoFarbe.GELB;
         hauptspielerUiHand.updateUi();
     }
 
-    public void greenAction(ActionEvent actionEvent) {
+    public void greenAction() {
         karte.farbe = UenoFarbe.GRUEN;
         hauptspielerUiHand.updateUi();
     }

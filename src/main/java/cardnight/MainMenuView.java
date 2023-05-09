@@ -1,7 +1,7 @@
 package cardnight;
 
 import cardnight.games.tictactoe.TicTacToeView;
-import cardnight.games.ueno.UenoView;
+import cardnight.games.ueno.viewcontroler.UenoView;
 
 import java.io.IOException;
 

@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="cardnight.games.ueno.UenoView">
+<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
 
-    <HBox layoutY="60.0" prefHeight="66.0" fx:id="gegner1kartenBox" prefWidth="174.0"
-          style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;"/>
-    <HBox layoutX="204.0" layoutY="60.0" fx:id="gegner2kartenBox" prefHeight="66.0" prefWidth="174.0"
-          style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;"/>
-    <HBox layoutX="412.0" layoutY="60.0" fx:id="gegner3kartenBox" prefHeight="66.0" prefWidth="174.0"
-          style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;"/>
+    <Button fx:id="nachziehstapelButton" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#nachziehstapelClick" prefHeight="66.0" prefWidth="112.0" text="ÜNO">
+      <StackPane.margin>
+         <Insets right="200.0" />
+      </StackPane.margin></Button>
 
-    <Button fx:id="nachziehstapelButton" layoutX="148.0" layoutY="136.0" mnemonicParsing="false"
-            onAction="#nachziehstapelClick" prefHeight="66.0" prefWidth="112.0" text="ÜNO" AnchorPane.leftAnchor="148.0"
-            AnchorPane.topAnchor="136.0"/>
-    <Button fx:id="ablageStapelButton" layoutX="300.0" layoutY="136.0" mnemonicParsing="false" prefHeight="66.0"
-            prefWidth="104.0" text="0"/>
+    <Button onAction="#zurueckClick" text="Zurück" StackPane.alignment="TOP_LEFT" />
 
-    <HBox fx:id="handkartenBox" alignment="BOTTOM_CENTER" spacing="5"
-          style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+    <Button fx:id="ablageStapelButton" layoutX="372.0" layoutY="169.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" text="0" StackPane.alignment="CENTER">
+      <StackPane.margin>
+         <Insets right="-200.0" />
+      </StackPane.margin></Button>
+    <Text fx:id="gewinnerText" layoutX="176.0" layoutY="213.0" mouseTransparent="true" textAlignment="CENTER" AnchorPane.bottomAnchor="180.2236328125" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="175.884765625" AnchorPane.topAnchor="183.8642578125">
+        <font>
+            <Font size="27.0" />
+        </font>
+    </Text>
 
-    <Button onAction="#zurueckClick" text="Zurück"/>
-
-</AnchorPane>
+</StackPane>

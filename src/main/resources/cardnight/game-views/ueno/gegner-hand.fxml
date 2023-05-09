@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cardnight.games.ueno.viewcontroler.UenoGegnerUiHand"
+            fx:id="kartenBox" prefHeight="66.0" prefWidth="174.0"
+            maxHeight="-Infinity" maxWidth="-Infinity"
+            style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" StackPane.Alignment="TOP_LEFT">
+</HBox>

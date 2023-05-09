@@ -1,7 +1,9 @@
 package cardnight.games.ueno;
 
 import cardnight.games.Spiel;
+import cardnight.games.Spieler;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
@@ -21,69 +23,170 @@ public class Ueno extends Spiel {
     */
 
     private final Stack<UenoKarte> ablagestapel;
-    private final Stack<UenoKarte> nachziehstapel;
-    public final UenoSpieler[] spieler;
+    private Stack<UenoKarte> nachziehstapel;
+    private final UenoSpieler[] spieler;
+    private final ArrayList<UenoSpieler> fertigeSpieler;
+    private int aktiverSpieler;
+    private boolean invertierteRichtung;
 
     public Ueno(int spielerAnzahl, int kartenProSpieler) {
 
         UenoKartenset.kartenErstellen();
 
         ablagestapel = new Stack<>();
-        nachziehstapel = new Stack<>();
-        nachziehstapel.addAll(Arrays.asList(UenoKartenset.erstelleGemischtesSet()));
+        erstelleNeuenNachziehstapel();
         spieler = new UenoSpieler[spielerAnzahl];
+        fertigeSpieler = new ArrayList<>();
 
         for (int i = 0; i < spielerAnzahl; ++i) {
-            spieler[i] = new UenoSpieler("Spieler " + i);
+            if (i == 0)
+                spieler[i] = new UenoSpieler("Hauptspieler", this);
+            else
+                spieler[i] = new UenoGegner("Gegner " + i, this);
             for (int j = 0; j < kartenProSpieler; ++j) {
-                spieler[i].handkarten.add(karteNachziehen());
+                spieler[i].fuegeKarteHinzu(karteNachziehen());
             }
         }
 
         karteAblegen(karteNachziehen());
-        while (zuletztAbgelegteKarte().art != UenoKartenArt.ZAHL)
+        while (gibZuletztAbgelegteKarte().art != UenoKartenArt.ZAHL)
             karteAblegen(karteNachziehen());
     }
 
-    public UenoKarte zuletztAbgelegteKarte() {
+    public UenoSpieler gibHauptSpieler() {return spieler[0];}
+    public UenoSpieler[] gibSpieler() {
+        return spieler;
+    }
+    public UenoSpieler gibSpieler(int idx) {return spieler[idx];}
+
+    public UenoKarte gibZuletztAbgelegteKarte() {
         return ablagestapel.peek();
     }
 
-    public UenoKarte obersteNachziehkarte() {
+    public UenoKarte gibObersteNachziehkarte() {
         return nachziehstapel.peek();
     }
 
+    public boolean mussZweiZiehen() {
+        UenoKarte obersteKarte = gibZuletztAbgelegteKarte();
+        boolean zweiZiehen = obersteKarte.art == UenoKartenArt.PLUS_ZWEI && !obersteKarte.wurdeEffektAktiviert();
+        if (zweiZiehen)
+            obersteKarte.aktiviereEffekt();
+        return zweiZiehen;
+    }
+
+    public boolean mussVierZiehen() {
+        UenoKarte obersteKarte = gibZuletztAbgelegteKarte();
+        boolean vierZiehen = obersteKarte.art == UenoKartenArt.PLUS_VIER && !obersteKarte.wurdeEffektAktiviert();
+        if (vierZiehen)
+            obersteKarte.aktiviereEffekt();
+        return vierZiehen;
+    }
+
+    public boolean mussAussetzen() {
+        UenoKarte obersteKarte = gibZuletztAbgelegteKarte();
+        boolean aussetzen = obersteKarte.art == UenoKartenArt.AUSSETZEN && !obersteKarte.wurdeEffektAktiviert();
+        if (aussetzen)
+            obersteKarte.aktiviereEffekt();
+        return aussetzen;
+    }
+
+    public boolean richtungswechsel() {
+        UenoKarte obersteKarte = gibZuletztAbgelegteKarte();
+        boolean wechsel = obersteKarte.art == UenoKartenArt.RICHTUNGSWECHSEL && !obersteKarte.wurdeEffektAktiviert();
+        if (wechsel)
+            obersteKarte.aktiviereEffekt();
+        return wechsel;
+    }
+
+    public UenoSpieler nachsterSpieler(Spieler momentanAktiverSpieler) {
+
+        if (hatSpielerGewonnen(gibHauptSpieler()))
+            if (!fertigeSpieler.contains(gibHauptSpieler()))
+                fertigeSpieler.add(gibHauptSpieler());
+        if (richtungswechsel())
+            invertierteRichtung = !invertierteRichtung;
+
+        for (int i = 0; i < spieler.length; ++i)
+            if (spieler[i] == momentanAktiverSpieler)
+                aktiverSpieler = i;
+
+        if (aktiverSpieler == 0){
+            if (invertierteRichtung)
+                aktiverSpieler = spieler.length - 1;
+            else
+                aktiverSpieler++;
+        } else if (aktiverSpieler == spieler.length - 1) {
+            if (invertierteRichtung)
+                aktiverSpieler--;
+            else
+                aktiverSpieler = 0;
+        } else {
+            if (invertierteRichtung)
+                aktiverSpieler--;
+            else
+                aktiverSpieler++;
+        }
+
+        UenoSpieler naechster = spieler[aktiverSpieler];
+
+        if (hatSpielerGewonnen(naechster)) {
+            System.out.println(naechster.name + " wurde aus gelassen, da er fertig ist");
+            if (!fertigeSpieler.contains(naechster))
+                fertigeSpieler.add(naechster);
+            return nachsterSpieler(naechster);
+        }
+        return naechster;
+    }
+
     private UenoKarte karteNachziehen() {
+        if (nachziehstapel.size() == 0)
+            erstelleNeuenNachziehstapel();
         return nachziehstapel.pop();
+    }
+
+    private void erstelleNeuenNachziehstapel() {
+        System.out.println("Ein neuer Nachziehstapel wurde erstellt");
+        nachziehstapel = new Stack<>();
+        nachziehstapel.addAll(Arrays.asList(UenoKartenset.erstelleGemischtesSet()));
+    }
+
+    public void nKartenNachziehen(UenoSpieler spieler, int n) {
+        System.out.println(spieler.name + " muss " + n + " Karten ziehen:");
+        for (int i = 0; i < n; ++i) {
+            UenoKarte karte = karteNachziehen();
+            spieler.fuegeKarteHinzu(karte);
+            System.out.println("\t" + karte.datenAlsString());
+        }
+    }
+
+    public ArrayList<UenoSpieler> gibGewinner() {
+        return fertigeSpieler;
+    }
+
+    public boolean istSpielBeendet() {
+        if (hatSpielerGewonnen(gibHauptSpieler()))
+            return true;
+
+        return fertigeSpieler.size() >= spieler.length - 1;
+    }
+
+    public boolean hatSpielerGewonnen(UenoSpieler spieler) {
+        return spieler.gibHandkarten().size() == 0;
     }
 
     private void karteAblegen(UenoKarte karte) {
         ablagestapel.add(karte);
     }
 
-    public void spielerZug(UenoZug zug) {
-
-        if (zug.start == ZugStart.NACHZIEHSTAPEL) {
-            if (zug.ziel != ZugZiel.HAND)
-                return;
-            zug.spieler.handkarten.add(karteNachziehen());
-        } else if (zug.start == ZugStart.HAND) {
-            if(zug.ziel != ZugZiel.ABLAGESTAPEL || !istKarteAblegbar(zug.karte))
-                return;
-            karteAblegen(zug.karte);
-            zug.spieler.handkarten.remove(zug.karte);
-        }
-    }
-
-    public boolean mussKarteZiehen(UenoSpieler spieler) {
-        for(UenoKarte handkarte : spieler.handkarten)
-            if (istKarteAblegbar(handkarte))
-                return false;
-        return true;
+    public void karteAblegen(UenoSpieler spieler, UenoKarte karte) {
+        karteAblegen(karte);
+        spieler.entferneKarte(karte);
+        System.out.println(spieler.name + " legte " + karte.datenAlsString());
     }
 
     public boolean istKarteAblegbar(UenoKarte karte) {
-        UenoKarte obersteKarte = zuletztAbgelegteKarte();
+        UenoKarte obersteKarte = gibZuletztAbgelegteKarte();
         if (karte.art == UenoKartenArt.ZAHL) {
             return karte.wert == obersteKarte.wert || karte.farbe == obersteKarte.farbe;
         } else if (karte.art == UenoKartenArt.FARBWAHL || karte.art == UenoKartenArt.PLUS_VIER) {

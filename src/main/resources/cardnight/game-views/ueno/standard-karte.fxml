@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<Button fx:id="mainButton" onAction="#mainButtonAction" text="-1" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoStandartUiKarte">
+   <font>
+      <Font size="27.0" />
+   </font>
+</Button>

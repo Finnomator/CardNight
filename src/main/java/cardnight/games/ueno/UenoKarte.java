@@ -7,6 +7,7 @@ public class UenoKarte extends Karte {
     public UenoFarbe farbe;
     public final UenoKartenArt art;
     public final int wert;
+    private boolean effektWurdeAktiviert = false;
 
     public UenoKarte(UenoFarbe farbe, UenoKartenArt art) {
         assert art != UenoKartenArt.ZAHL;
@@ -25,5 +26,18 @@ public class UenoKarte extends Karte {
     public void setzeFarbe(UenoFarbe farbe) {
         assert this.farbe == null;
         this.farbe = farbe;
+    }
+
+    public void aktiviereEffekt() {
+        effektWurdeAktiviert = true;
+    }
+
+    public boolean wurdeEffektAktiviert() {
+        return effektWurdeAktiviert;
+    }
+
+    @Override
+    public String datenAlsString() {
+        return art + " " + farbe + " " + wert;
     }
 }

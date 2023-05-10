@@ -11,7 +11,7 @@ public class UenoGegner extends UenoSpieler {
             if (spiel.istKarteAblegbar(karte)) {
 
                 if (karte.art == UenoKartenArt.FARBWAHL || karte.art == UenoKartenArt.PLUS_VIER)
-                    karte.setzeFarbe(spiel.gibObersteNachziehkarte().farbe);
+                    karte.setzeFarbe(spiel.gibZuletztAbgelegteKarte().farbe);
 
                 return karte;
             }

@@ -63,10 +63,6 @@ public class Ueno extends Spiel {
         return ablagestapel.peek();
     }
 
-    public UenoKarte gibObersteNachziehkarte() {
-        return nachziehstapel.peek();
-    }
-
     public boolean mussZweiZiehen() {
         UenoKarte obersteKarte = gibZuletztAbgelegteKarte();
         boolean zweiZiehen = obersteKarte.art == UenoKartenArt.PLUS_ZWEI && !obersteKarte.wurdeEffektAktiviert();

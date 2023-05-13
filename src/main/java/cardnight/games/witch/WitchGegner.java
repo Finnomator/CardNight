@@ -15,13 +15,4 @@ public class WitchGegner extends WitchSpieler {
         return null;
     }
 
-    @Override
-    public void stichBekommen() {
-
-    }
-
-    @Override
-    public void kartenBekommen(WitchKarte[] neu) {
-
-    }
 }

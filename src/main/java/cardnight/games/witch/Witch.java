@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class Witch extends Spiel {
     private WitchSpieler [] spieler;
-    private int anz;
-    private int start;
-    private WitchKarte[] stich;
-    private ArrayList<WitchKarte> benutzt;
-    private int amZug;
-    private WitchKarte trumpf;
+    protected int anz;
+    protected int start;
+    protected WitchKarte[] stich;
+    protected ArrayList<WitchKarte> benutzt;
+    protected int amZug;
+    protected WitchKarte trumpf;
 
     private ArrayList<WitchKarte> komplett;
 
@@ -54,7 +54,6 @@ public class Witch extends Spiel {
                 // Der Stich wird dem Gewinner gegeben
                 // Der Gewinner ist als Nächstes dran
                 dran = stichGeben(dran);
-                spieler[dran].stichBekommen();
                 // Ablage wird geleert
                 stich = new WitchKarte[anz];
                 amZug = dran;
@@ -72,7 +71,7 @@ public class Witch extends Spiel {
     }
 
     public void kartenAusteilen(int anzKarten) {
-        // Trumpf festlesen
+        // Trumpf festlegen
         int t = (int) (Math.random() * komplett.size());
         trumpf = komplett.get(t);
 
@@ -143,7 +142,17 @@ public class Witch extends Spiel {
     }
 
     public void punkteVerteilen() {
-        //TODO: hier
+        //Punkte werden verteilt
+        for (WitchSpieler s : spieler) {
+            if (s.stiche != s.schaetzung) {
+                //Wenn Falsch geschätzt wurde: -10 pro Stich daneben
+                s.punkte -= 10 * (Math.abs(s.stiche - s.schaetzung));
+            }
+            else {
+                //Wenn richtig geschätzt: +20 und +10 pro Stich
+                s.punkte += 20 + 10 * s.stiche;
+            }
+        }
     }
 
     public void endeAnzeigen() {
@@ -165,5 +174,72 @@ public class Witch extends Spiel {
                 komplett.add(new WitchKarte(f, i));
             }
         }
+    }
+
+    public int anzKartenBesser(WitchKarte k, ArrayList<WitchKarte> hand) {
+        //Gibt zurück, wie viele bessere Karten noch im Spiel sind.
+        //k muss in hand sein
+        ArrayList<WitchKarte> neu_benutzt = new ArrayList<>(benutzt);
+        neu_benutzt.addAll(hand);
+        neu_benutzt.remove(k);
+        int besser = 0;
+
+        if (k.wert == 14) {
+            return 0;
+        }
+        if (k.wert == 0) {
+            besser = 56 - neu_benutzt.size(); //Alle Karten außer Narren sind besser
+            for (WitchKarte i: neu_benutzt) { //Alle schon benutzten Narren werden dazuaddiert
+                if (i.wert == 0) {
+                    besser++;
+                }
+            }
+            return besser;
+        }
+
+        //Die Karte ist nicht weiß:
+        besser = 4; //Die 4 Zauberer
+        for (WitchKarte i: neu_benutzt) { //Alle schon benutzten Zauberer werden abgezogen
+            if (i.wert == 14) {
+                besser--;
+            }
+        }
+        if (trumpf.wert != 0 && trumpf.wert != 14) { //Falls der Trumpf nicht weiß ist
+            if (k.farbe != trumpf.farbe) { //Falls die Karte nicht Trumpf ist
+                besser += 13; //Die Trumpfkarten sind besser
+                for (WitchKarte i : neu_benutzt) { //Alle schon benutzten Trümpfe werden abgezogen
+                    if (i.farbe == trumpf.farbe && i.wert != 0 && i.wert != 14) {
+                        besser--;
+                    }
+                }
+            }
+        }
+
+        besser += 13 - k.wert; //Alle höheren Karten der gleichen Farbe sind besser
+        for (WitchKarte i: neu_benutzt) { //Alle schon benutzten besseren gleichfarbigen Karten werden abgezogen
+            if (i.farbe == k.farbe && i.wert > k.wert && i.wert != 14) {
+                besser--;
+            }
+        }
+
+        return besser;
+    }
+
+    public int anzKartenSchlechter(WitchKarte k, ArrayList<WitchKarte> hand) {
+        //Gibt zurück, wie viele schlechtere Karten noch im Spiel sind.
+        //k muss in hand sein
+
+        //ALle übrigen Karten minus die besseren Karten davon
+        return 60 - benutzt.size() - hand.size() - anzKartenBesser(k, hand);
+    }
+
+    public double wahrscheinlichkeit(WitchKarte k, ArrayList<WitchKarte> hand) {
+        //Gibt zurück, wie wahrscheinlich es ist, dass eine Karte bei einem Gegner durchläuft
+        int anzKarten = hand.size();
+        int uebrig = 60 - benutzt.size() - hand.size();
+
+        //Wahrscheinlichkeit eine bessere Karte legen zu müssen
+        //TODO: here
+        return 0;
     }
 }

@@ -9,6 +9,7 @@ public abstract class WitchSpieler extends Spieler {
     protected Witch spiel;
     protected int punkte;
     protected int stiche;
+    protected int schaetzung;
     protected ArrayList<WitchKarte> hand;
 
     public WitchSpieler(String name, Witch spiel) {
@@ -18,7 +19,4 @@ public abstract class WitchSpieler extends Spieler {
 
     public abstract void schaetzen();
     public abstract WitchKarte spielen();
-
-    public abstract void stichBekommen();
-    public abstract void kartenBekommen(WitchKarte[] neu);
 }

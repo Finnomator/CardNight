@@ -1,7 +1,9 @@
 package cardnight.games.ueno.viewcontroler;
 
+import cardnight.PauseMenu;
 import cardnight.ScreenController;
 import cardnight.games.ueno.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -179,11 +181,11 @@ public class UenoView {
         updateSpielerKarten(ueno.gibHauptSpieler());
     }
 
-    public void zurueckClick() {
-        ScreenController.activate("main-menu-view");
-    }
-
     public static Pane loadScene() throws IOException {
         return new FXMLLoader(UenoView.class.getResource("/cardnight/game-views/ueno-view.fxml")).load();
+    }
+
+    public void pauseClick() throws IOException {
+        root.getChildren().add(PauseMenu.loadScene());
     }
 }

@@ -18,4 +18,9 @@
     </VBox>
 
     <Button onAction="#onBeendenClick" prefHeight="70" prefWidth="112" text="Beenden" StackPane.alignment="BOTTOM_CENTER" />
+
+    <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
+        <Text text="🔊" />
+        <Slider fx:id="soundVolumeSlider" onMouseClicked="#onSoundSliderMouseClick" />
+    </HBox>
 </StackPane>

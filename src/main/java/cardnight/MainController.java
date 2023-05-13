@@ -26,5 +26,6 @@ public class MainController extends Application {
 
     private void loadViews() throws IOException {
         ScreenController.addScreen("main-menu-view", new FXMLLoader(getClass().getResource("main-menu-view.fxml")).load());
+        ScreenController.addScreen("pause-menu", new FXMLLoader(getClass().getResource("pause-menu.fxml")).load());
     }
 }

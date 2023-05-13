@@ -1,8 +1,6 @@
 package cardnight.games.tictactoe;
 
 import cardnight.PauseMenu;
-import cardnight.ScreenController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;

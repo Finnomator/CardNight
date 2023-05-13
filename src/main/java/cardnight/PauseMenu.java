@@ -3,7 +3,6 @@ package cardnight;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Slider;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 

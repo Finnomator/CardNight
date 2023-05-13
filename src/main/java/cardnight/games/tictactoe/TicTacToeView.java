@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 
 public class TicTacToeView {
-    public void onBackClick() {
+    public void onZurueckClick() {
         ScreenController.activate("main-menu-view");
     }
 

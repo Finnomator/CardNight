@@ -2,67 +2,76 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
-          xmlns="http://javafx.com/javafx"
-          fx:controller="cardnight.games.tictactoe.TicTacToeView">
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.TicTacToeView">
+
+<GridPane alignment="CENTER">
 
     <rowConstraints>
-        <RowConstraints vgrow="NEVER"/>
-        <RowConstraints vgrow="ALWAYS"/>
-        <RowConstraints vgrow="NEVER"/>
+        <RowConstraints vgrow="NEVER" />
+        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints vgrow="NEVER" />
     </rowConstraints>
 
     <GridPane alignment="CENTER">
         <Label alignment="CENTER" text="Tic Tac Toe">
             <font>
-                <Font size="25"/>
+                <Font size="25" />
             </font>
         </Label>
+      <columnConstraints>
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
 
 
     <GridPane GridPane.rowIndex="1">
         <rowConstraints>
-            <RowConstraints vgrow="NEVER"/>
-            <RowConstraints vgrow="NEVER" prefHeight="5"/>
-            <RowConstraints vgrow="NEVER"/>
-            <RowConstraints vgrow="NEVER" prefHeight="5"/>
-            <RowConstraints vgrow="NEVER"/>
+            <RowConstraints vgrow="NEVER" />
+            <RowConstraints prefHeight="5" vgrow="NEVER" />
+            <RowConstraints vgrow="NEVER" />
+            <RowConstraints prefHeight="5" vgrow="NEVER" />
+            <RowConstraints vgrow="NEVER" />
         </rowConstraints>
         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER"/>
-            <ColumnConstraints hgrow="NEVER" prefWidth="5"/>
-            <ColumnConstraints hgrow="NEVER"/>
-            <ColumnConstraints hgrow="NEVER" prefWidth="5"/>
-            <ColumnConstraints hgrow="NEVER"/>
+            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="NEVER" prefWidth="5" />
+            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="NEVER" prefWidth="5" />
+            <ColumnConstraints hgrow="NEVER" />
         </columnConstraints>
 
-        <Button prefWidth="100" prefHeight="100"/>
-        <Button prefWidth="100" prefHeight="100" GridPane.columnIndex="2"/>
-        <Button prefWidth="100" prefHeight="100" GridPane.columnIndex="4"/>
+        <Button prefHeight="100" prefWidth="100" />
+        <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="2" />
+        <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="4" />
 
-        <Rectangle GridPane.rowIndex="1" GridPane.columnSpan="5" width="310" height="5"/>
+        <Rectangle height="5" width="310" GridPane.columnSpan="5" GridPane.rowIndex="1" />
 
-        <Button prefWidth="100" prefHeight="100" GridPane.rowIndex="2"/>
-        <Button prefWidth="100" prefHeight="100" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-        <Button prefWidth="100" prefHeight="100" GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+        <Button prefHeight="100" prefWidth="100" GridPane.rowIndex="2" />
+        <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="4" GridPane.rowIndex="2" />
 
-        <Rectangle GridPane.columnIndex="1" GridPane.rowSpan="5" width="5" height="310"/>
+        <Rectangle height="310" width="5" GridPane.columnIndex="1" GridPane.rowSpan="5" />
 
-        <Button prefWidth="100" prefHeight="100" GridPane.rowIndex="4"/>
-        <Button prefWidth="100" prefHeight="100" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-        <Button prefWidth="100" prefHeight="100" GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+        <Button prefHeight="100" prefWidth="100" GridPane.rowIndex="4" />
+        <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="4" GridPane.rowIndex="4" />
 
-        <Rectangle GridPane.rowIndex="3" GridPane.columnSpan="5" width="310" height="5"/>
+        <Rectangle height="5" width="310" GridPane.columnSpan="5" GridPane.rowIndex="3" />
 
-        <Rectangle GridPane.columnIndex="3" GridPane.rowSpan="5" width="5" height="310"/>
+        <Rectangle height="310" width="5" GridPane.columnIndex="3" GridPane.rowSpan="5" />
 
     </GridPane>
 
-    <GridPane GridPane.rowIndex="2" alignment="CENTER">
-        <Button text="Back" onAction="#onBackClick"/>
-    </GridPane>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
 
 </GridPane>
+    <Button onAction="#onZurueckClick" text="Zurück" StackPane.alignment="TOP_LEFT" />
+</StackPane>

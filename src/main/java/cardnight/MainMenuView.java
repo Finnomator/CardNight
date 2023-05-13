@@ -16,7 +16,7 @@ public class MainMenuView {
         ScreenController.activateNewPane(WitchView.loadScene());
     }
 
-    public void onExitClick() {
+    public void onBeendenClick() {
         System.exit(0);
     }
 

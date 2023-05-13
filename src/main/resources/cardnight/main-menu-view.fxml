@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea"
-          fx:controller="cardnight.MainMenuView">
+<?import javafx.scene.text.*?>
 
-    <rowConstraints>
-        <RowConstraints vgrow="NEVER"/>
-        <RowConstraints vgrow="ALWAYS"/>
-        <RowConstraints vgrow="NEVER"/>
-    </rowConstraints>
-    <columnConstraints>
-        <ColumnConstraints/>
-    </columnConstraints>
+<StackPane prefHeight="480" prefWidth="720" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
 
-    <Label text="Card Night" textAlignment="CENTER">
+    <Label text="Card Night" textAlignment="CENTER" StackPane.alignment="TOP_CENTER">
         <font>
-            <Font size="25.0"/>
+            <Font size="25.0" />
         </font>
     </Label>
 
-    <ScrollPane GridPane.rowIndex="1">
-        <VBox alignment="CENTER">
-            <Button prefHeight="70" prefWidth="112" text="Tic Tac Toe" onAction="#onTicTacToeClick"/>
-            <Button prefHeight="70" prefWidth="112" text="ÜNO" onAction="#onUenoClick"/>
-            <Button prefHeight="70" prefWidth="112" text="Witch" onAction="#onWitchClick"/>
-        </VBox>
-    </ScrollPane>
+    <VBox alignment="CENTER">
+        <Button onAction="#onTicTacToeClick" prefHeight="70" prefWidth="112" text="Tic Tac Toe" />
+        <Button onAction="#onUenoClick" prefHeight="70" prefWidth="112" text="ÜNO" />
+        <Button prefHeight="70" prefWidth="112" text="Witch" onAction="#onWitchClick"/>
+    </VBox>
 
-    <GridPane GridPane.rowIndex="2" alignment="CENTER">
-        <Button text="Exit" prefWidth="112" prefHeight="70" onAction="#onExitClick"/>
-    </GridPane>
-</GridPane>
+    <Button onAction="#onBeendenClick" prefHeight="70" prefWidth="112" text="Beenden" StackPane.alignment="BOTTOM_CENTER" />
+</StackPane>

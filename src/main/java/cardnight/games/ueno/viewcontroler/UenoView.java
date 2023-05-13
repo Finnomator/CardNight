@@ -1,5 +1,6 @@
 package cardnight.games.ueno.viewcontroler;
 
+import cardnight.GameOver;
 import cardnight.PauseMenu;
 import cardnight.games.ueno.*;
 import javafx.fxml.FXMLLoader;
@@ -133,12 +134,8 @@ public class UenoView {
         // Gegner machen ihre Züge
         gegnerZuege();
 
-        if (ueno.istSpielBeendet()) {
-            System.out.println("Das Spiel ist vorbei, die Gewinner:");
-            ArrayList<UenoSpieler> gewinner = ueno.gibGewinner();
-            for (int i = 0; i < gewinner.size(); ++i)
-                System.out.println((i+1) + ".\t" + gewinner.get(i).name);
-        }
+        if (ueno.istSpielBeendet())
+            beendeSpiel();
     }
 
     private void gegnerZuege() {
@@ -185,5 +182,19 @@ public class UenoView {
 
     public void pauseClick() throws IOException {
         root.getChildren().add(PauseMenu.loadScene());
+    }
+
+    public void beendeSpiel() {
+
+        System.out.println("Das Spiel ist vorbei, die Gewinner:");
+        ArrayList<UenoSpieler> gewinner = ueno.gibGewinner();
+        for (int i = 0; i < gewinner.size(); ++i)
+            System.out.println((i+1) + ".\t" + gewinner.get(i).name);
+
+        try {
+            root.getChildren().add(GameOver.loadScene());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

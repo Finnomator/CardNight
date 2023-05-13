@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+           xmlns="http://javafx.com/javafx/11.0.14-internal" fx:controller="cardnight.GameOver"
+           style="-fx-background-color: rgba(100, 100, 100, 0.5);">
+
+
+    <Text fx:id="nachrichtText" text="GAME OVER">
+      <font>
+         <Font size="33.0" />
+      </font></Text>
+
+    <Button onAction="#onZumHauptmenueClick" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
+
+</StackPane>

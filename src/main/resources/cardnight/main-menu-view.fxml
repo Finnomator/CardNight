@@ -27,6 +27,7 @@
         <VBox alignment="CENTER">
             <Button prefHeight="70" prefWidth="112" text="Tic Tac Toe" onAction="#onTicTacToeClick"/>
             <Button prefHeight="70" prefWidth="112" text="ÜNO" onAction="#onUenoClick"/>
+            <Button prefHeight="70" prefWidth="112" text="Witch" onAction="#onWitchClick"/>
         </VBox>
     </ScrollPane>
 

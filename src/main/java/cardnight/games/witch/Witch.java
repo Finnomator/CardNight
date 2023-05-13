@@ -5,7 +5,7 @@ import cardnight.games.Spiel;
 import java.util.ArrayList;
 
 public class Witch extends Spiel {
-    private WitchSpieler [] spieler;
+    private final WitchSpieler[] spieler;
     protected int anz;
     protected int start;
     protected WitchKarte[] stich;
@@ -22,7 +22,7 @@ public class Witch extends Spiel {
             spieler[i] = new WitchGegner("Chris" + i, this);
         }
         spieler[0] = new WitchMensch("DU", this);
-        start = (int)(Math.random() * anzahl);
+        start = (int) (Math.random() * anzahl);
         stich = new WitchKarte[anzahl];
         kartenSammeln();
     }
@@ -30,7 +30,7 @@ public class Witch extends Spiel {
     public void game() {
         // Runden
         // i = Anzahl der Karten
-        for (int i = 1; i <= 60/anz; i++) {
+        for (int i = 1; i <= 60 / anz; i++) {
             // Karten austeilen
             kartenAusteilen(i);
             update();
@@ -51,7 +51,7 @@ public class Witch extends Spiel {
                     stich[k] = spieler[(i + k) % 4].spielen();
                 }
                 update();
-                // Der Stich wird dem Gewinner gegeben
+                // Der Stich wird dem Gewinner gegeben.
                 // Der Gewinner ist als Nächstes dran
                 dran = stichGeben(dran);
                 // Ablage wird geleert
@@ -93,8 +93,8 @@ public class Witch extends Spiel {
         // Falls es einen Zauberer gab
         for (int i = 0; i < 4; i++) {
             if (stich[i].wert == 14) {
-                spieler[(start + i)%4].stiche++;
-                return (start + i)%4;
+                spieler[(start + i) % 4].stiche++;
+                return (start + i) % 4;
             }
         }
 
@@ -111,8 +111,8 @@ public class Witch extends Spiel {
                 }
             }
             if (hoechste > 0) { //Falls es eine Trumpfkarte (keinen Narren) gegeben hat
-                spieler[(start + s)%4].stiche++;
-                return (start + s)%4;
+                spieler[(start + s) % 4].stiche++;
+                return (start + s) % 4;
             }
         }
 
@@ -132,8 +132,8 @@ public class Witch extends Spiel {
             }
         }
         if (hoechste > 0) { //Falls es eine Farbige Karte gegeben hat (also nicht nur Narren)
-            spieler[(start + s)%4].stiche++;
-            return (start + s)%4;
+            spieler[(start + s) % 4].stiche++;
+            return (start + s) % 4;
         }
 
         //Es gab also nur Narren
@@ -147,8 +147,7 @@ public class Witch extends Spiel {
             if (s.stiche != s.schaetzung) {
                 //Wenn Falsch geschätzt wurde: -10 pro Stich daneben
                 s.punkte -= 10 * (Math.abs(s.stiche - s.schaetzung));
-            }
-            else {
+            } else {
                 //Wenn richtig geschätzt: +20 und +10 pro Stich
                 s.punkte += 20 + 10 * s.stiche;
             }
@@ -168,8 +167,7 @@ public class Witch extends Spiel {
         benutzt.clear();
         komplett.clear();
 
-        WitchFarbe[] farben = {WitchFarbe.ROT, WitchFarbe.BLAU, WitchFarbe.GELB, WitchFarbe.GRUEN};
-        for (WitchFarbe f: farben) {
+        for (WitchFarbe f : WitchFarbe.values()) {
             for (int i = 0; i <= 14; i++) {
                 komplett.add(new WitchKarte(f, i));
             }
@@ -182,14 +180,14 @@ public class Witch extends Spiel {
         ArrayList<WitchKarte> neu_benutzt = new ArrayList<>(benutzt);
         neu_benutzt.addAll(hand);
         neu_benutzt.remove(k);
-        int besser = 0;
+        int besser;
 
         if (k.wert == 14) {
             return 0;
         }
         if (k.wert == 0) {
             besser = 56 - neu_benutzt.size(); //Alle Karten außer Narren sind besser
-            for (WitchKarte i: neu_benutzt) { //Alle schon benutzten Narren werden dazuaddiert
+            for (WitchKarte i : neu_benutzt) { //Alle schon benutzten Narren werden dazuaddiert
                 if (i.wert == 0) {
                     besser++;
                 }
@@ -199,7 +197,7 @@ public class Witch extends Spiel {
 
         //Die Karte ist nicht weiß:
         besser = 4; //Die 4 Zauberer
-        for (WitchKarte i: neu_benutzt) { //Alle schon benutzten Zauberer werden abgezogen
+        for (WitchKarte i : neu_benutzt) { //Alle schon benutzten Zauberer werden abgezogen
             if (i.wert == 14) {
                 besser--;
             }
@@ -216,7 +214,7 @@ public class Witch extends Spiel {
         }
 
         besser += 13 - k.wert; //Alle höheren Karten der gleichen Farbe sind besser
-        for (WitchKarte i: neu_benutzt) { //Alle schon benutzten besseren gleichfarbigen Karten werden abgezogen
+        for (WitchKarte i : neu_benutzt) { //Alle schon benutzten besseren gleichfarbigen Karten werden abgezogen
             if (i.farbe == k.farbe && i.wert > k.wert && i.wert != 14) {
                 besser--;
             }

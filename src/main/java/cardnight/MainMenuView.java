@@ -11,7 +11,7 @@ public class MainMenuView {
         ScreenController.activateNewPane(TicTacToeView.loadScene());
     }
 
-    public void onExitClick() {
+    public void onBeendenClick() {
         System.exit(0);
     }
 

@@ -1,12 +1,15 @@
 package cardnight.games.witch;
 
-import cardnight.ScreenController;
+import cardnight.PauseMenu;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
 public class WitchView {
+
+    public StackPane root;
 
     public void initialize() {
         System.out.println("Witch initiiert");
@@ -17,8 +20,8 @@ public class WitchView {
         return new FXMLLoader(cardnight.games.witch.WitchView.class.getResource("/cardnight/game-views/witch-view.fxml")).load();
     }
 
-    public void onZurueckClick() {
-        ScreenController.activate("main-menu-view");
+    public void onPauseClick() throws IOException {
+        root.getChildren().add(PauseMenu.loadScene());
     }
 }
 

@@ -3,9 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.WitchView">
-    <Label layoutX="285.0" layoutY="33.0" text="Witch"/>
-    <Button layoutY="2.0" mnemonicParsing="false" text="Zurück" onAction="#onZurueckClick"/>
-</AnchorPane>
+<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.WitchView">
+    <Label layoutX="285.0" layoutY="33.0" text="Witch" />
+    <Button mnemonicParsing="false" onAction="#onPauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+</StackPane>

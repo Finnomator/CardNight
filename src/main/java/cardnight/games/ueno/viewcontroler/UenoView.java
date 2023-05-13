@@ -1,9 +1,7 @@
 package cardnight.games.ueno.viewcontroler;
 
 import cardnight.PauseMenu;
-import cardnight.ScreenController;
 import cardnight.games.ueno.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

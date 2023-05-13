@@ -4,7 +4,6 @@ import cardnight.games.tictactoe.TicTacToeView;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.WitchView;
 import javafx.scene.control.Slider;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 

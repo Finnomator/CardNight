@@ -7,21 +7,13 @@ public class WitchMensch extends WitchSpieler{
 
     @Override
     public void schaetzen() {
-
+        //TODO: UI abfrage
     }
 
     @Override
     public WitchKarte spielen() {
+        //TODO: UI abfrage
         return null;
     }
 
-    @Override
-    public void stichBekommen() {
-
-    }
-
-    @Override
-    public void kartenBekommen(WitchKarte[] neu) {
-
-    }
 }

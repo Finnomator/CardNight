@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<HBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="cardnight.games.ueno.viewcontroler.UenoGegnerUiHand"
-      fx:id="kartenBox" prefHeight="66.0" prefWidth="174.0"
-      maxHeight="-Infinity" maxWidth="-Infinity"
-      style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" StackPane.Alignment="TOP_LEFT">
-</HBox>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoGegnerUiHand">
+    <Text fx:id="nameText"/>
+    <HBox fx:id="kartenBox" spacing="2.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" />
+</VBox>

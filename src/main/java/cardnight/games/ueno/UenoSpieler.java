@@ -14,14 +14,6 @@ public class UenoSpieler extends Spieler {
         handkarten = new ArrayList<>();
     }
 
-    public void ersetzeKarte(UenoKarte alteKarte, UenoKarte neueKarte) {
-        handkarten.set(handkarten.indexOf(alteKarte), neueKarte);
-    }
-
-    public UenoKarte gibHandkarte(int idx) {
-        return handkarten.get(idx);
-    }
-
     public void entferneKarte(UenoKarte karte) {
         handkarten.remove(karte);
     }

@@ -2,26 +2,33 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" prefHeight="400.0" prefWidth="600.0"
+           xmlns="http://javafx.com/javafx/11.0.14-internal" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
 
     <Button fx:id="nachziehstapelButton" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#nachziehstapelClick" prefHeight="66.0" prefWidth="112.0" text="ÜNO">
-      <StackPane.margin>
-         <Insets right="200.0" />
-      </StackPane.margin></Button>
+        <StackPane.margin>
+            <Insets right="200.0" />
+        </StackPane.margin></Button>
 
-    <Button onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <HBox fx:id="gegnerHaendeContainer" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" StackPane.alignment="TOP_CENTER">
+        <StackPane.margin>
+            <Insets top="50.0" />
+        </StackPane.margin></HBox>
 
     <Button fx:id="ablageStapelButton" layoutX="372.0" layoutY="169.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" text="0" StackPane.alignment="CENTER">
-      <StackPane.margin>
-         <Insets right="-200.0" />
-      </StackPane.margin></Button>
-    <Text fx:id="gewinnerText" layoutX="176.0" layoutY="213.0" mouseTransparent="true" textAlignment="CENTER" AnchorPane.bottomAnchor="180.2236328125" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="175.884765625" AnchorPane.topAnchor="183.8642578125">
+        <StackPane.margin>
+            <Insets right="-200.0" />
+        </StackPane.margin></Button>
+    <Text fx:id="gewinnerText" mouseTransparent="true" textAlignment="CENTER">
         <font>
             <Font size="27.0" />
         </font>
     </Text>
+
+    <Button onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
 </StackPane>

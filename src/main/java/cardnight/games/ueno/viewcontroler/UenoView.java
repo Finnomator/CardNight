@@ -4,7 +4,7 @@ import cardnight.GameOver;
 import cardnight.PauseMenu;
 import cardnight.games.ueno.*;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -21,43 +21,34 @@ public class UenoView {
     public Button ablageStapelButton;
     public StackPane root;
     public Text gewinnerText;
+    public HBox gegnerHaendeContainer;
     private Ueno ueno;
     private HashMap<UenoSpieler, UenoUiHand> spielerHaende;
+    private UenoSpieler hauptSpieler;
 
-    public void initialize() {
+    public void initialize() throws IOException {
 
-        int gegner = 3;
+        int gegnerAnzahl = 3;
 
-        spielerHaende = new HashMap<>(gegner + 1);
+        ueno = new Ueno(gegnerAnzahl + 1, 7);
+        hauptSpieler = ueno.gibHauptSpieler();
 
-        ueno = new Ueno(gegner + 1, 7);
+        spielerHaende = new HashMap<>(gegnerAnzahl + 1);
 
-        for (int i = 0; i < gegner; ++i) {
+        for (int i = 0; i < gegnerAnzahl; ++i) {
             FXMLLoader handLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/gegner-hand.fxml"));
-            UenoGegnerUiHand hand;
-            try {
-                HBox uiHand = handLoader.load();
-                StackPane.setMargin(uiHand, new Insets(50, 0, 0, i * 200.0));
-                root.getChildren().add(uiHand);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            hand = handLoader.getController();
+            Node uiHand = handLoader.load();
+            gegnerHaendeContainer.getChildren().add(uiHand);
+            UenoGegnerUiHand hand = handLoader.getController();
             hand.uiErstellen(ueno.gibSpieler(i+1));
             spielerHaende.put(ueno.gibSpieler(i+1), hand);
         }
 
         FXMLLoader handLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/hauptspieler-hand.fxml"));
-        UenoHauptspielerUiHand hauptHand;
-        try {
-            root.getChildren().add(handLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        hauptHand = handLoader.getController();
-        hauptHand.uiErstellen(ueno.gibHauptSpieler());
-        spielerHaende.put(ueno.gibHauptSpieler(), hauptHand);
+        root.getChildren().add(handLoader.load());
+        UenoHauptspielerUiHand hauptHand = handLoader.getController();
+        hauptHand.uiErstellen(hauptSpieler);
+        spielerHaende.put(hauptSpieler, hauptHand);
 
         root.addEventFilter(UenoKarteKlickEvent.ANY, this::handleUenoKartenKlick);
 
@@ -67,18 +58,20 @@ public class UenoView {
     }
 
     public void nachziehstapelClick() {
-        zieheKarten(ueno.gibHauptSpieler(), 1);
+
+        zieheKarten(hauptSpieler, 1);
         nachziehstapelButton.setDisable(true);
 
-        if (!ueno.gibHauptSpieler().kannKarteAblegen()) {
-            System.out.println(ueno.gibHauptSpieler().name + " konnte wieder nicht legen");
+        if (!hauptSpieler.kannKarteAblegen()) {
+            System.out.println(hauptSpieler.name + " konnte wieder nicht legen");
             gegnerZuege();
         } else {
-            System.out.println("Spieler zog nach und sollte folgende Karte legen können:");
-            UenoKarte ablegbareKarte = ueno.gibHauptSpieler().ablegbareKarten().get(0);
+            UenoKarte ablegbareKarte = hauptSpieler.ablegbareKarten().get(0);
             if (ablegbareKarte.art == UenoKartenArt.FARBWAHL || ablegbareKarte.art == UenoKartenArt.PLUS_VIER)
                 ablegbareKarte.setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
             updateHandkarten();
+
+            System.out.println("Spieler zog nach und sollte folgende Karte legen können:");
             System.out.println("\t" + ablegbareKarte.datenAlsString());
         }
     }
@@ -129,7 +122,7 @@ public class UenoView {
     public void handleUenoKartenKlick(UenoKarteKlickEvent event) {
 
         // Spieler legt eine Karte
-        legeKarte(ueno.gibHauptSpieler(), event.geklickteKarte);
+        legeKarte(hauptSpieler, event.geklickteKarte);
 
         // Gegner machen ihre Züge
         gegnerZuege();
@@ -140,18 +133,20 @@ public class UenoView {
 
     private void gegnerZuege() {
 
-        UenoSpieler naechster = ueno.nachsterSpieler(ueno.gibHauptSpieler());
-        while (naechster != ueno.gibHauptSpieler()) {
+        UenoSpieler naechster = ueno.nachsterSpieler(hauptSpieler);
+        while (naechster != hauptSpieler) {
             gegnerZug((UenoGegner) naechster);
 
-            if (ueno.istSpielBeendet())
+            if (ueno.istSpielBeendet()) {
+                beendeSpiel();
                 return;
+            }
 
             naechster = ueno.nachsterSpieler(naechster);
         }
 
         // Dinge tun, bevor der Spieler wieder Karten legen kann
-        UenoSpieler spieler = ueno.gibHauptSpieler();
+        UenoSpieler spieler = hauptSpieler;
         if (ueno.mussAussetzen()) {
             System.out.println(spieler.name + " musste aussetzen");
             gegnerZuege();
@@ -173,7 +168,7 @@ public class UenoView {
     }
 
     private void updateHandkarten() {
-        updateSpielerKarten(ueno.gibHauptSpieler());
+        updateSpielerKarten(hauptSpieler);
     }
 
     public static Pane loadScene() throws IOException {
@@ -188,8 +183,11 @@ public class UenoView {
 
         System.out.println("Das Spiel ist vorbei, die Gewinner:");
         ArrayList<UenoSpieler> gewinner = ueno.gibGewinner();
+
         for (int i = 0; i < gewinner.size(); ++i)
             System.out.println((i+1) + ".\t" + gewinner.get(i).name);
+
+        gewinnerText.setText(gewinner.get(0).name + " hat gewonnen");
 
         try {
             root.getChildren().add(GameOver.loadScene());

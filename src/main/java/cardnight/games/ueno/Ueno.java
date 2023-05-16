@@ -87,7 +87,7 @@ public class Ueno extends Spiel {
         return aussetzen;
     }
 
-    public boolean richtungswechsel() {
+    private boolean richtungswechsel() {
         UenoKarte obersteKarte = gibZuletztAbgelegteKarte();
         boolean wechsel = obersteKarte.art == UenoKartenArt.RICHTUNGSWECHSEL && !obersteKarte.wurdeEffektAktiviert();
         if (wechsel)

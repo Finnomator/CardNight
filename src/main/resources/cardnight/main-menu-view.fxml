@@ -15,6 +15,7 @@
     <VBox alignment="CENTER">
         <Button onAction="#onTicTacToeClick" prefHeight="70" prefWidth="112" text="Tic Tac Toe" />
         <Button onAction="#onUenoClick" prefHeight="70" prefWidth="112" text="ÜNO" />
+        <Button onAction="#onWitchClick" prefHeight="70" prefWidth="112" text="Witch" />
     </VBox>
 
     <Button onAction="#onBeendenClick" prefHeight="70" prefWidth="112" text="Beenden" StackPane.alignment="BOTTOM_CENTER" />

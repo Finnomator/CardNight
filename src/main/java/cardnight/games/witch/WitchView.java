@@ -14,8 +14,6 @@ public class WitchView {
     public void initialize() {
         System.out.println("Witch initiiert");
         // Von hier aus wird die ganze Logik gestartet
-        Witch game = new Witch(4);
-        game.game();
     }
 
     public static Pane loadScene() throws IOException {

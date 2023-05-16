@@ -163,7 +163,7 @@ public class Witch extends Spiel {
 
     public void kartenSammeln() {
         for (WitchSpieler s : spieler) {
-            s.hand = null;
+            s.hand.clear();
             s.stiche = 0;
         }
         stich = new WitchKarte[anz];

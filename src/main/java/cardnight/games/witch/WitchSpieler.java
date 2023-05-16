@@ -15,6 +15,7 @@ public abstract class WitchSpieler extends Spieler {
     public WitchSpieler(String name, Witch spiel) {
         super(name, spiel);
         this.spiel = spiel;
+        hand = new ArrayList<>();
     }
 
     public abstract void schaetzen();

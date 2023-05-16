@@ -13,7 +13,7 @@ public class Witch extends Spiel {
     protected int amZug;
     protected WitchKarte trumpf;
 
-    private ArrayList<WitchKarte> komplett;
+    private ArrayList<WitchKarte> komplett;  //alle Karten im Spiel
 
     public Witch(int anzahl) {
         anz = anzahl;
@@ -24,6 +24,9 @@ public class Witch extends Spiel {
         spieler[0] = new WitchMensch("DU", this);
         start = (int) (Math.random() * anzahl);
         stich = new WitchKarte[anzahl];
+
+        benutzt = new ArrayList<>();
+        komplett = new ArrayList<>();
         kartenSammeln();
     }
 

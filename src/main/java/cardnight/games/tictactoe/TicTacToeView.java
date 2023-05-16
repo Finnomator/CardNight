@@ -2,6 +2,7 @@ package cardnight.games.tictactoe;
 
 import cardnight.GameOver;
 import cardnight.PauseMenu;
+import cardnight.games.SpielView;
 import cardnight.games.Spieler;
 
 import javafx.fxml.FXMLLoader;
@@ -15,8 +16,7 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
-
-public class TicTacToeView {
+public class TicTacToeView extends SpielView {
     public StackPane root;
 
     public Text gewinnerText;

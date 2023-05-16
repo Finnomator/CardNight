@@ -2,6 +2,7 @@ package cardnight.games.ueno.viewcontroler;
 
 import cardnight.GameOver;
 import cardnight.PauseMenu;
+import cardnight.games.SpielView;
 import cardnight.games.ueno.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UenoView {
+public class UenoView extends SpielView {
 
     public Button nachziehstapelButton;
     public Button ablageStapelButton;

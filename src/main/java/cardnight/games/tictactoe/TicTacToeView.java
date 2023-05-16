@@ -1,16 +1,27 @@
 package cardnight.games.tictactoe;
 
 import cardnight.PauseMenu;
+import cardnight.games.SpielView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-public class TicTacToeView {
+public class TicTacToeView extends SpielView {
     public StackPane root;
 
     public void initialize() {
+
+    }
+
+    @Override
+    protected void beendeSpiel() {
+
+    }
+
+    @Override
+    public void pauseClick() throws IOException {
 
     }
 

@@ -55,7 +55,8 @@ public class TicTacToeView extends SpielView {
         actionEvent.consume();
     }
 
-    private void beendeSpiel() {
+    @Override
+    protected void beendeSpiel() {
 
         Spieler gewinner = ttt.gibGewinner();
 
@@ -70,11 +71,12 @@ public class TicTacToeView extends SpielView {
         }
     }
 
-    public static Pane loadScene() throws IOException {
-        return new FXMLLoader(TicTacToeView.class.getResource("/cardnight/game-views/tictactoe-view.fxml")).load();
+    @Override
+    public void pauseClick() throws IOException {
+        root.getChildren().add(PauseMenu.loadScene());
     }
 
-    public void onPauseClick() throws IOException {
-        root.getChildren().add(PauseMenu.loadScene());
+    public static Pane loadScene() throws IOException {
+        return new FXMLLoader(TicTacToeView.class.getResource("/cardnight/game-views/tictactoe-view.fxml")).load();
     }
 }

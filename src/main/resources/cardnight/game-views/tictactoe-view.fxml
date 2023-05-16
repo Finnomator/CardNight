@@ -80,5 +80,5 @@
         </font>
     </Text>
 
-    <Button onAction="#onPauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <Button onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
 </StackPane>

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class UenoSpieler extends Spieler {
 
     protected final ArrayList<UenoKarte> handkarten;
-    protected Ueno spiel;
+    protected final Ueno spiel;
     public UenoSpieler(String name, Ueno spiel) {
         super(name, spiel);
         this.spiel = spiel;

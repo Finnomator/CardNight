@@ -24,4 +24,10 @@
         <Text text="🔊" />
         <Slider fx:id="soundVolumeSlider" onMouseClicked="#onSoundSliderMouseClick" />
     </HBox>
+
+    <Text text="Developed by: Finn, Christian, Marc, David" StackPane.alignment="BOTTOM_RIGHT" />
+    <VBox alignment="BOTTOM_LEFT">
+        <Hyperlink onAction="#githubRepoLinkClick" text="GitHub Repo" />
+        <Hyperlink onAction="#reportBugLinkClick" text="Report Bug" />
+    </VBox>
 </StackPane>

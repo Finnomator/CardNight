@@ -43,9 +43,9 @@ public class Ueno extends Spiel {
                 spieler[i] = new UenoSpieler("Hauptspieler", this);
             else
                 spieler[i] = new UenoGegner("Gegner " + i, this);
-            for (int j = 0; j < kartenProSpieler; ++j) {
+
+            for (int j = 0; j < kartenProSpieler; ++j)
                 spieler[i].fuegeKarteHinzu(karteNachziehen());
-            }
         }
 
         karteAblegen(karteNachziehen());
@@ -61,6 +61,10 @@ public class Ueno extends Spiel {
 
     public UenoKarte gibZuletztAbgelegteKarte() {
         return ablagestapel.peek();
+    }
+
+    public UenoSpielrichtung gibSpielrichtung() {
+        return invertierteRichtung ? UenoSpielrichtung.GEGEN_UHRZEIGERSINN : UenoSpielrichtung.IM_UHRZEIGERSINN;
     }
 
     public boolean mussZweiZiehen() {
@@ -127,7 +131,7 @@ public class Ueno extends Spiel {
         UenoSpieler naechster = spieler[aktiverSpieler];
 
         if (hatSpielerGewonnen(naechster)) {
-            System.out.println(naechster.name + " wurde aus gelassen, da er fertig ist");
+            System.out.println(naechster.name + " wurde ausgelassen, da er fertig ist");
             if (!fertigeSpieler.contains(naechster))
                 fertigeSpieler.add(naechster);
             return nachsterSpieler(naechster);
@@ -148,7 +152,7 @@ public class Ueno extends Spiel {
     }
 
     public void nKartenNachziehen(UenoSpieler spieler, int n) {
-        System.out.println(spieler.name + " muss " + n + " Karten ziehen:");
+        System.out.println(spieler.name + " zieht " + n + " Karte(n) nach:");
         for (int i = 0; i < n; ++i) {
             UenoKarte karte = karteNachziehen();
             spieler.fuegeKarteHinzu(karte);

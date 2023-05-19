@@ -53,48 +53,23 @@ public class UenoView extends SpielView {
 
         root.addEventFilter(UenoKarteKlickEvent.ANY, this::handleUenoKartenKlick);
 
-        zeigeObersteAbgelegteKarte();
-        updateHandkarten();
-        updateGegnerKarten();
+        updateUi();
     }
 
-    public void nachziehstapelClick() {
-
-        zieheKarten(hauptSpieler, 1);
-        nachziehstapelButton.setDisable(true);
-
-        if (!hauptSpieler.kannKarteAblegen()) {
-            System.out.println(hauptSpieler.name + " konnte wieder nicht legen");
-            gegnerZuege();
-        } else {
-            UenoKarte ablegbareKarte = hauptSpieler.ablegbareKarten().get(0);
-            if (ablegbareKarte.art == UenoKartenArt.FARBWAHL || ablegbareKarte.art == UenoKartenArt.PLUS_VIER)
-                ablegbareKarte.setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
-            updateHandkarten();
-
-            System.out.println("Spieler zog nach und sollte folgende Karte legen können:");
-            System.out.println("\t" + ablegbareKarte.datenAlsString());
-        }
-    }
+    // Basic Methoden für alle Spieler
 
     private void zieheKarten(UenoSpieler spieler, int nKarten) {
         ueno.nKartenNachziehen(spieler, nKarten);
-        updateGegnerKarten();
-        updateHandkarten();
+        updateSpielerKarten();
     }
 
     private void legeKarte(UenoSpieler spieler, UenoKarte karte) {
         ueno.karteAblegen(spieler, karte);
         zeigeObersteAbgelegteKarte();
-        updateHandkarten();
-        updateGegnerKarten();
+        updateSpielerKarten();
     }
 
-    private void zeigeObersteAbgelegteKarte() {
-        UenoKarte oberste = ueno.gibZuletztAbgelegteKarte();
-        ablageStapelButton.setStyle("-fx-background-color: " + UenoUiKarte.farbeZuString(oberste.farbe) + ";");
-        ablageStapelButton.setText(UenoUiKarte.uenoKartenArtZuString(oberste));
-    }
+    // Gegner Logik
 
     private void gegnerZug(UenoGegner gegner) {
 
@@ -118,18 +93,6 @@ public class UenoView extends SpielView {
             else
                 System.out.println(gegner.name + " konnte wieder nicht ablegen");
         }
-    }
-
-    public void handleUenoKartenKlick(UenoKarteKlickEvent event) {
-
-        // Spieler legt eine Karte
-        legeKarte(hauptSpieler, event.geklickteKarte);
-
-        // Gegner machen ihre Züge
-        gegnerZuege();
-
-        if (ueno.istSpielBeendet())
-            beendeSpiel();
     }
 
     private void gegnerZuege() {
@@ -159,6 +122,41 @@ public class UenoView extends SpielView {
         nachziehstapelButton.setDisable(false);
     }
 
+    // ÜNO Ui Interaktion
+
+    public void handleUenoKartenKlick(UenoKarteKlickEvent event) {
+
+        // Spieler legt eine Karte
+        legeKarte(hauptSpieler, event.geklickteKarte);
+
+        // Gegner machen ihre Züge
+        gegnerZuege();
+
+        if (ueno.istSpielBeendet())
+            beendeSpiel();
+    }
+
+    public void nachziehstapelClick() {
+
+        zieheKarten(hauptSpieler, 1);
+        nachziehstapelButton.setDisable(true);
+
+        if (!hauptSpieler.kannKarteAblegen()) {
+            System.out.println(hauptSpieler.name + " konnte wieder nicht legen");
+            gegnerZuege();
+        } else {
+            UenoKarte ablegbareKarte = hauptSpieler.ablegbareKarten().get(0);
+            if (ablegbareKarte.art == UenoKartenArt.FARBWAHL || ablegbareKarte.art == UenoKartenArt.PLUS_VIER)
+                ablegbareKarte.setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
+            updateHandkarten();
+
+            System.out.println("Spieler zog nach und sollte folgende Karte legen können:");
+            System.out.println("\t" + ablegbareKarte.datenAlsString());
+        }
+    }
+
+    // ÜNO Ui Update Methoden
+
     private void updateGegnerKarten() {
         for (int i = 1; i < ueno.gibSpieler().length; ++i)
             updateSpielerKarten(ueno.gibSpieler(i));
@@ -168,18 +166,34 @@ public class UenoView extends SpielView {
         spielerHaende.get(spieler).updateUi();
     }
 
+    private void updateSpielerKarten() {
+        for (UenoSpieler spieler : ueno.gibSpieler())
+            updateSpielerKarten(spieler);
+    }
+
     private void updateHandkarten() {
         updateSpielerKarten(hauptSpieler);
     }
 
-    public static Pane loadScene() throws IOException {
-        return new FXMLLoader(UenoView.class.getResource("/cardnight/game-views/ueno-view.fxml")).load();
+    private void zeigeObersteAbgelegteKarte() {
+        UenoKarte oberste = ueno.gibZuletztAbgelegteKarte();
+        ablageStapelButton.setStyle("-fx-background-color: " + UenoUiKarte.farbeZuString(oberste.farbe) + ";");
+        ablageStapelButton.setText(UenoUiKarte.uenoKartenArtZuString(oberste));
     }
 
+    private void updateUi() {
+        updateSpielerKarten();
+        zeigeObersteAbgelegteKarte();
+    }
+
+    // Generelle Ui Interaktion
+
+    @Override
     public void pauseClick() throws IOException {
         root.getChildren().add(PauseMenu.loadScene());
     }
 
+    @Override
     public void beendeSpiel() {
 
         System.out.println("Das Spiel ist vorbei, die Gewinner:");
@@ -195,5 +209,9 @@ public class UenoView extends SpielView {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static Pane loadScene() throws IOException {
+        return new FXMLLoader(UenoView.class.getResource("/cardnight/game-views/ueno-view.fxml")).load();
     }
 }

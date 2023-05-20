@@ -16,6 +16,8 @@ public class WitchView extends SpielView {
     public void initialize() {
         System.out.println("Witch initiiert");
         // Von hier aus wird die ganze Logik gestartet
+        Witch spiel = new Witch(4);
+        spiel.game();
     }
 
     @Override

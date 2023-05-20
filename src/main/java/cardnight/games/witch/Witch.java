@@ -71,6 +71,11 @@ public class Witch extends Spiel {
     public void update() {
         //TODO: hier
         //TODO: Wenn alle Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
+        //temporär:
+        System.out.println("Trumpf:" + trumpf.farbe);
+        System.out.println("Am Zug:" + amZug);
+        System.out.println("Stich:" + stich.toString());
+        System.out.println("Handkarten:" + spieler[0].hand.toString());
     }
 
     public void kartenAusteilen(int anzKarten) {

@@ -1,7 +1,5 @@
 package cardnight.games.witch;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 
 public class WitchGegner extends WitchSpieler {
@@ -22,6 +20,6 @@ public class WitchGegner extends WitchSpieler {
 
     @Override
     public boolean istAmZug() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 }

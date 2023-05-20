@@ -12,7 +12,7 @@
         </font>
     </Label>
 
-    <VBox alignment="CENTER">
+    <VBox StackPane.alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
         <Button onAction="#onTicTacToeClick" prefHeight="70" prefWidth="112" text="Tic Tac Toe" />
         <Button onAction="#onUenoClick" prefHeight="70" prefWidth="112" text="ÜNO" />
         <Button onAction="#onWitchClick" prefHeight="70" prefWidth="112" text="Witch" />
@@ -20,13 +20,13 @@
 
     <Button onAction="#onBeendenClick" prefHeight="70" prefWidth="112" text="Beenden" StackPane.alignment="BOTTOM_CENTER" />
 
-    <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
+    <HBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
         <Text text="🔊" />
         <Slider fx:id="soundVolumeSlider" onMouseClicked="#onSoundSliderMouseClick" />
     </HBox>
 
     <Text text="Developed by: Finn, Christian, Marc, David" StackPane.alignment="BOTTOM_RIGHT" />
-    <VBox alignment="BOTTOM_LEFT">
+    <VBox StackPane.alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity">
         <Hyperlink onAction="#githubRepoLinkClick" text="GitHub Repo" />
         <Hyperlink onAction="#reportBugLinkClick" text="Report Bug" />
     </VBox>

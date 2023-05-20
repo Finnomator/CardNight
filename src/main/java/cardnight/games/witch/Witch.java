@@ -1,7 +1,6 @@
 package cardnight.games.witch;
 
 import cardnight.games.Spiel;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -247,6 +246,6 @@ public class Witch extends Spiel {
 
     @Override
     public boolean istSpielBeendet() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 }

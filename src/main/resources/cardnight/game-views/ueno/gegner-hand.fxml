@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoGegnerUiHand">
-    <Text fx:id="nameText"/>
+    <Circle fx:id="turnIndicator" fill="RED" stroke="RED" strokeWidth="100.0" />
+    <Text fx:id="nameText" />
     <HBox fx:id="kartenBox" spacing="2.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" />
 </VBox>

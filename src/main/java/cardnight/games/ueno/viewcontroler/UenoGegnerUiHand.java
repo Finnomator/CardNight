@@ -4,6 +4,7 @@ import cardnight.games.ueno.UenoKarte;
 import cardnight.games.ueno.UenoSpieler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.io.IOException;
 public class UenoGegnerUiHand extends UenoUiHand {
     public HBox kartenBox;
     public Text nameText;
+    public Circle turnIndicator;
 
     @Override
     public void uiErstellen(UenoSpieler spieler) {
@@ -21,6 +23,9 @@ public class UenoGegnerUiHand extends UenoUiHand {
 
     @Override
     public void updateUi() {
+
+        turnIndicator.setVisible(spieler.istAmZug());
+
         kartenBox.getChildren().clear();
         for (UenoKarte ignored : spieler.gibHandkarten()) {
             FXMLLoader loader;

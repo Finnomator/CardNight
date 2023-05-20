@@ -1,11 +1,11 @@
 package cardnight.games.witch;
 
+import cardnight.GameOver;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
 
@@ -20,7 +20,11 @@ public class WitchView extends SpielView {
 
     @Override
     protected void beendeSpiel() {
-        throw new NotImplementedException();
+        try {
+            root.getChildren().add(GameOver.loadScene());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

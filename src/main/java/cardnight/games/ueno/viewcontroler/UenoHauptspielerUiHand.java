@@ -43,7 +43,7 @@ public class UenoHauptspielerUiHand extends UenoUiHand {
                 standardKarte.uiErstellen(karte);
             }
 
-            uiKarte.setDisable(!ablegbareKarten.contains(karte));
+            uiKarte.setDisable(!ablegbareKarten.contains(karte) || !spieler.istAmZug());
 
             handkartenBox.getChildren().add(uiKarte);
         }

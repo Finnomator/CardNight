@@ -1,6 +1,7 @@
 package cardnight.games.tictactoe;
 
 import cardnight.games.Spieler;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class TicTacToeSpieler extends Spieler {
 
@@ -10,5 +11,10 @@ public class TicTacToeSpieler extends Spieler {
         super(name, spiel);
         this.spiel = spiel;
         this.istX = istX;
+    }
+
+    @Override
+    public boolean istAmZug() {
+        throw new NotImplementedException();
     }
 }

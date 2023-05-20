@@ -38,4 +38,9 @@ public class UenoSpieler extends Spieler {
     public ArrayList<UenoKarte> gibHandkarten() {
         return handkarten;
     }
+
+    @Override
+    public boolean istAmZug() {
+        return false;
+    }
 }

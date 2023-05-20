@@ -41,6 +41,6 @@ public class UenoSpieler extends Spieler {
 
     @Override
     public boolean istAmZug() {
-        return false;
+        return spiel.gibAktivenSpieler() == this;
     }
 }

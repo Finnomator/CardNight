@@ -63,6 +63,10 @@ public class Ueno extends Spiel {
         return ablagestapel.peek();
     }
 
+    public UenoSpieler gibAktivenSpieler() {
+        return spieler[aktiverSpieler];
+    }
+
     public UenoSpielrichtung gibSpielrichtung() {
         return invertierteRichtung ? UenoSpielrichtung.GEGEN_UHRZEIGERSINN : UenoSpielrichtung.IM_UHRZEIGERSINN;
     }

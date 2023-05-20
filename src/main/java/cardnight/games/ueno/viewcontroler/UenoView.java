@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -24,6 +26,7 @@ public class UenoView extends SpielView {
     public StackPane root;
     public Text gewinnerText;
     public HBox gegnerHaendeContainer;
+    public Circle hauptSpielerTurnIndicator;
     private Ueno ueno;
     private HashMap<UenoSpieler, UenoUiHand> spielerHaende;
     private UenoSpieler hauptSpieler;
@@ -78,6 +81,12 @@ public class UenoView extends SpielView {
             return;
         }
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         if (ueno.mussVierZiehen())
             zieheKarten(gegner, 4);
         else if (ueno.mussZweiZiehen())
@@ -102,12 +111,6 @@ public class UenoView extends SpielView {
             while (naechster != hauptSpieler) {
                 gegnerZug((UenoGegner) naechster);
 
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-
                 if (ueno.istSpielBeendet()) {
                     beendeSpiel();
                     return;
@@ -115,6 +118,8 @@ public class UenoView extends SpielView {
 
                 naechster = ueno.nachsterSpieler(naechster);
             }
+
+            updateUi();
 
             // Dinge tun, bevor der Spieler wieder Karten legen kann
             UenoSpieler spieler = hauptSpieler;
@@ -127,6 +132,7 @@ public class UenoView extends SpielView {
                 zieheKarten(spieler, 2);
 
             nachziehstapelButton.setDisable(false);
+            hauptSpielerTurnIndicator.setFill(Color.GREEN);
 
         }).start();
     }
@@ -137,6 +143,8 @@ public class UenoView extends SpielView {
 
         // Spieler legt eine Karte
         legeKarte(hauptSpieler, event.geklickteKarte);
+
+        hauptSpielerTurnIndicator.setFill(Color.RED);
 
         // Gegner machen ihre Züge
         gegnerZuege();

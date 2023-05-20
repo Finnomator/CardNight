@@ -1,6 +1,8 @@
 package cardnight.games.witch;
 
 import cardnight.games.Spiel;
+import cardnight.games.witch.viewcontroller.WitchView;
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 
@@ -13,62 +15,77 @@ public class Witch extends Spiel {
     protected int spielerAmZug;
     protected WitchKarte trumpfKarte;
     private final int kartenAnzahlInEinemSpiel = 60;
+    private final WitchView observerView;
 
-
-    public Witch(int anzahl) {
+    public Witch(int anzahl, WitchView observerView) {
+        this.observerView = observerView;
         anzahlSpieler = anzahl;
+
         spieler = new WitchSpieler[anzahl];
-        for (int i = 1; i < anzahlSpieler; i++) {
-            spieler[i] = new WitchGegner("Chris" + i, this);
-        }
-        spieler[0] = new WitchMensch("DU", this);
+        spieler[0] = new WitchMensch("Hauptspieler", this);
+        for (int i = 1; i < anzahlSpieler; i++)
+            spieler[i] = new WitchGegner("Gegner " + i, this);
+
         start = (int) (Math.random() * anzahl);
         stich = new WitchKarte[anzahl];
-
         benutzt = new ArrayList<>();
 
         kartenSammeln();
     }
 
+    public WitchKarte gibTrumpfKarte() {
+        return trumpfKarte;
+    }
+
+    public WitchSpieler[] gibSpieler() {
+        return spieler;
+    }
+
+    public WitchView gibObserverView() {
+        return observerView;
+    }
+
     public void game() {
         // Große Runde = alle Leute legen Karten ab, bis sie keine mehr haben.
         // Kleine Runde = alle Leute legen 1 Karte ab.
-        for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++) {
-            // Karten austeilen
-            kartenAusteilen(anzahlKartenProSpieler);
-            update();
-            // Schätzen
-            spielerSchaetzen();
-            update();
 
-            // Spielen
-            int startSpielerDerKleinenRunde = start;
-            spielerAmZug = startSpielerDerKleinenRunde;
-            for (int anzahlUebrigerKarten = anzahlKartenProSpieler; anzahlUebrigerKarten > 0; anzahlUebrigerKarten--) {
-                // Jeder Stich
-                for (int i = 0; i < anzahlSpieler; i++) {
-                    spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
-                    update();
-                    stich[i] = spieler[spielerAmZug].spielen();
-                }
-                update();
-                // Der Stich wird dem Gewinner gegeben.
-                // Der Gewinner ist als Nächstes dran
-                startSpielerDerKleinenRunde = stichGeben(startSpielerDerKleinenRunde);
-                // Ablage wird geleert
-                stich = new WitchKarte[anzahlSpieler];
+        new Thread(() -> {
+            for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++) {
+                kartenAusteilen(anzahlKartenProSpieler);
+                spielerSchaetzen();
+
+                // Spielen
+                int startSpielerDerKleinenRunde = start;
                 spielerAmZug = startSpielerDerKleinenRunde;
+                for (int anzahlUebrigerKarten = anzahlKartenProSpieler; anzahlUebrigerKarten > 0; anzahlUebrigerKarten--) {
+                    // Jeder Stich
+                    for (int i = 0; i < anzahlSpieler; i++) {
+                        spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
+                        stich[i] = spieler[spielerAmZug].spielen();
+                    }
+                    // Der Stich wird dem Gewinner gegeben.
+                    // Der Gewinner ist als Nächstes dran
+                    startSpielerDerKleinenRunde = stichGeben(startSpielerDerKleinenRunde);
+                    // Ablage wird geleert
+                    stich = new WitchKarte[anzahlSpieler];
+                    spielerAmZug = startSpielerDerKleinenRunde;
+                    update();
+                }
+                punkteVerteilen();
                 update();
             }
-            punkteVerteilen();
-            update();
-        }
-        endeAnzeigen();
+
+            Platform.runLater(observerView::beendeSpiel);
+        }).start();
     }
 
     private void spielerSchaetzen() {
+        delay(500);
+
         for (int j = 0; j < anzahlSpieler; j++)
             spieler[j].schaetzen();
+
+        update();
     }
 
     public void update() {
@@ -79,6 +96,16 @@ public class Witch extends Spiel {
         System.out.println("Am Zug: " + spielerAmZug);
         System.out.println("Stich: " + stich.toString());
         System.out.println("Handkarten: " + spieler[0].hand.toString());
+
+        Platform.runLater(observerView::updateUi);
+    }
+
+    public static void delay(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void kartenAusteilen(int anzKarten) {
@@ -89,6 +116,8 @@ public class Witch extends Spiel {
         for (WitchSpieler s : spieler)
             for (int i = 0; i < anzKarten; i++)
                 s.hand.add(WitchKartenset.gibZufaelligeKarte(true));
+
+        update();
     }
 
     public int stichGeben(int startSpieler) {
@@ -154,11 +183,6 @@ public class Witch extends Spiel {
                 s.punkte += 20 + 10 * s.stiche;
             }
         }
-    }
-
-    public void endeAnzeigen() {
-        //TODO: hier
-        throw new UnsupportedOperationException();
     }
 
     public void kartenSammeln() {

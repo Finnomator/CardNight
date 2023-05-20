@@ -9,9 +9,10 @@ import java.io.IOException;
 
 public class MainController extends Application {
 
-
     @Override
     public void start(Stage stage) throws IOException {
+
+        Main.mainStage = stage;
 
         Scene mainScene = new FXMLLoader(getClass().getResource("main-view.fxml")).load();
         ScreenController.setScene(mainScene);

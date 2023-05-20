@@ -10,12 +10,7 @@ public class WitchMensch extends WitchSpieler{
 
     @Override
     public void schaetzen() {
-        //TODO: UI abfrage
-        //nur temporär:
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter int for Schätzung: ");
-
-        schaetzung = myObj.nextInt();  // Read user input
+        schaetzung = spiel.gibObserverView().frageNachSchaetzung();
     }
 
     @Override
@@ -27,7 +22,8 @@ public class WitchMensch extends WitchSpieler{
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Enter int: " + spielbar);
 
-        int cardint = myObj.nextInt();  // Read user input
+        // int cardint = myObj.nextInt();  // Read user input
+        int cardint = 0;
 
         WitchKarte k = spielbar.get(cardint);
         hand.remove(k);

@@ -1,7 +1,5 @@
 package cardnight.games.witch;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class WitchMensch extends WitchSpieler{
     public WitchMensch(String n, Witch s) {
         super(n, s);
@@ -20,6 +18,6 @@ public class WitchMensch extends WitchSpieler{
 
     @Override
     public boolean istAmZug() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 }

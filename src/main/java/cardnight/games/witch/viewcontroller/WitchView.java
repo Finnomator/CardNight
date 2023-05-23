@@ -3,12 +3,12 @@ package cardnight.games.witch.viewcontroller;
 import cardnight.GameOver;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
-import cardnight.games.ueno.viewcontroler.UenoKarteKlickEvent;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchKarte;
-import javafx.event.Event;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -23,14 +23,24 @@ public class WitchView extends SpielView {
     public StackPane root;
     public TextField schaetzungsEingabeFeld;
     public VBox schaetzungsRoot;
+    public Button schaetzungsOkButton;
     private Witch witch;
     private WitchUiKarte trumpfUiKarte;
     private WitchHauptspielerUiHand hauptspielerUiHand;
+    private WitchPunktetafel punktetafel;
     private final AtomicBoolean hatStichSchaetzungBestaetigt = new AtomicBoolean(false);
     private final AtomicBoolean hatKarteGeklickt = new AtomicBoolean(false);
     private final AtomicReference<WitchKarte> geklickteKarte = new AtomicReference<>();
 
     public void initialize() throws IOException {
+        //TODO: Die Anzahl der Stiche anzeigen, die jeder Spieler gerade hat
+        //TODO: Die Rückseiten der Gegnerkarten anzeigen
+        //TODO: Anzeigen, wer am Zug ist
+        //TODO: Anzeigen, welche Karten auf dem Stich (Ablagestapel) liegen
+
+        //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
+        //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
+        // Hallo, Finn hier. NÖ! (-> irgendwann?)
 
         witch = new Witch(4, this);
 
@@ -42,10 +52,14 @@ public class WitchView extends SpielView {
         numericOnly(schaetzungsEingabeFeld);
 
         FXMLLoader handkartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/hauptspieler-hand.fxml"));
-        Node uiHandkarten = handkartenLoader.load();
-        root.getChildren().add(uiHandkarten);
+        root.getChildren().add(handkartenLoader.load());
         hauptspielerUiHand = handkartenLoader.getController();
         hauptspielerUiHand.uiErstellen(witch.gibHauptspieler());
+
+        FXMLLoader punktetafelLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/punktetafel.fxml"));
+        root.getChildren().add(punktetafelLoader.load());
+        punktetafel = punktetafelLoader.getController();
+        punktetafel.uiErstellen(witch);
 
         root.addEventFilter(WitchKartenKlickEvent.ANY, this::handleWitchKartenClick);
 
@@ -61,7 +75,7 @@ public class WitchView extends SpielView {
 
         System.out.println("Warte auf Schätzung...");
 
-        hauptspielerUiHand.setDisableAllCards(true);
+        hauptspielerUiHand.disableAllCards();
         schaetzungsRoot.setDisable(false);
 
         while (!hatStichSchaetzungBestaetigt.get())
@@ -77,7 +91,7 @@ public class WitchView extends SpielView {
 
         System.out.println("Warte auf Karte...");
 
-        hauptspielerUiHand.setDisableAllCards(false);
+        Platform.runLater(() -> hauptspielerUiHand.updateUi());
         schaetzungsRoot.setDisable(true);
 
         while (!hatKarteGeklickt.get())
@@ -91,6 +105,7 @@ public class WitchView extends SpielView {
     public void updateUi() {
         hauptspielerUiHand.updateUi();
         trumpfUiKarte.uiErstellen(witch.gibTrumpfKarte());
+        punktetafel.updateUi();
     }
 
     @Override
@@ -115,10 +130,11 @@ public class WitchView extends SpielView {
         hatStichSchaetzungBestaetigt.set(true);
     }
 
-    public static void numericOnly(final TextField field) {
+    private void numericOnly(final TextField field) {
         field.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*"))
                 field.setText(newValue.replaceAll("\\D", ""));
+            schaetzungsOkButton.setDisable(field.getText().equals(""));
         });
     }
 }

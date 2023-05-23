@@ -11,7 +11,10 @@ public class WitchGegner extends WitchSpieler {
     @Override
     public void schaetzen() {
         //TODO: schätzung
-        schaetzung = 0;
+        stichSchaetzung = 0;
+        stichSchaetzungenProRunde.add(stichSchaetzung);
+
+        System.out.println(name + " schätzt " + stichSchaetzung + " Stich(e)");
     }
 
     @Override
@@ -19,14 +22,12 @@ public class WitchGegner extends WitchSpieler {
         ArrayList<WitchKarte> spielbar = spielbareKarten();
 
         // Random Karte zum Testen TODO: smart AI
-        WitchKarte k = spielbar.get((int)(Math.random() * spielbar.size())); //Zufälliges Element der Liste
+        WitchKarte k = spielbar.get((int) (Math.random() * spielbar.size())); //Zufälliges Element der Liste
 
         handkarten.remove(k);
-        return k;
-    }
 
-    @Override
-    public boolean istAmZug() {
-        throw new UnsupportedOperationException();
+        System.out.println(name + " spielt Karte " + k.datenAlsString());
+
+        return k;
     }
 }

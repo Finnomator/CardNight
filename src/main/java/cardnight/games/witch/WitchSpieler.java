@@ -7,15 +7,18 @@ import java.util.ArrayList;
 public abstract class WitchSpieler extends Spieler {
 
     protected Witch spiel;
-    protected int punkte;
-    protected int stiche;
-    protected int schaetzung;
+    protected int anzahlErhaltenerStiche;
+    protected int stichSchaetzung;
     protected ArrayList<WitchKarte> handkarten;
+    protected ArrayList<Integer> punkteProRunde;
+    protected ArrayList<Integer> stichSchaetzungenProRunde;
 
     public WitchSpieler(String name, Witch spiel) {
         super(name, spiel);
         this.spiel = spiel;
         handkarten = new ArrayList<>();
+        punkteProRunde = new ArrayList<>();
+        stichSchaetzungenProRunde = new ArrayList<>();
     }
 
     public abstract void schaetzen();
@@ -26,11 +29,43 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public void handkarteHinzufuegen(WitchKarte karte) {
+        System.out.println(name + " bekommt Karte: " + karte.datenAlsString());
         handkarten.add(karte);
     }
 
     public void clearHandkarten() {
         handkarten.clear();
+    }
+
+    public void fuegeStichHinzu() {
+        System.out.println(name + " hat einen Stich erhalten");
+        anzahlErhaltenerStiche++;
+    }
+
+    public int gibAnzahlErzhaltenderStiche() {
+        return anzahlErhaltenerStiche;
+    }
+
+    public void setzeAnzahlErhalteneSticheZurueck() {
+        anzahlErhaltenerStiche = 0;
+    }
+
+    public int gibStichSchaetzung() {
+        return stichSchaetzung;
+    }
+
+    public int gibStichSchaetzung(int runde) {
+        return stichSchaetzungenProRunde.get(runde);
+    }
+
+    @Override
+    public void punkteHinzufuegen(int punkte) {
+        punkteProRunde.add(punkte);
+        super.punkteHinzufuegen(punkte);
+    }
+
+    public int gibPunkte(int runde) {
+        return punkteProRunde.get(runde);
     }
 
     public ArrayList<WitchKarte> spielbareKarten() {
@@ -68,5 +103,10 @@ public abstract class WitchSpieler extends Spieler {
         //Der Spieler hat die Farbe also nicht
         //→ Alle Handkarten sind spielbar
         return handkarten;
+    }
+
+    @Override
+    public boolean istAmZug() {
+        return spiel.gibSpielerAmZug() == this;
     }
 }

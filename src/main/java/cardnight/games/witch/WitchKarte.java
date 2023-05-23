@@ -10,6 +10,14 @@ public class WitchKarte extends Karte {
         this.wert = wert;
     }
 
+    public boolean istZauberer() {
+        return wert == 14;
+    }
+
+    public boolean istNarr() {
+        return wert == 0;
+    }
+
     @Override
     public String datenAlsString() {
         if (wert != 0 && wert != 14)

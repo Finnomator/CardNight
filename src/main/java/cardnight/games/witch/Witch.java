@@ -62,11 +62,11 @@ public class Witch extends Spiel {
         // Kleine Runde = alle Leute legen 1 Karte ab.
 
         Thread t = new Thread(() -> {
-            for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++, ++rundenNummer) {
+            for (int kartenProSpieler = 1; kartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; kartenProSpieler++, ++rundenNummer) {
 
-                System.out.println("---Große Runde " + rundenNummer + " mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler---");
+                System.out.println("---Große Runde " + rundenNummer + " mit " + kartenProSpieler + " Karte(n) pro Spieler---");
 
-                kartenAusteilen(anzahlKartenProSpieler);
+                kartenAusteilen(kartenProSpieler);
                 spielerSchaetzen();
 
                 // Spielen
@@ -75,10 +75,10 @@ public class Witch extends Spiel {
 
                 System.out.println("\tEs wird gespielt ");
 
-                for (int anzahlUebrigerKarten = anzahlKartenProSpieler; anzahlUebrigerKarten > 0; anzahlUebrigerKarten--) {
+                for (int uebrigeKarten = kartenProSpieler; uebrigeKarten > 0; uebrigeKarten--) {
                     // Jeder Stich
 
-                    int kleineRundeNummer = anzahlKartenProSpieler - anzahlUebrigerKarten;
+                    int kleineRundeNummer = kartenProSpieler - uebrigeKarten;
                     System.out.println("\t\t--Kleine Runde " + kleineRundeNummer + "--");
 
                     for (int i = 0; i < anzahlSpieler; i++) {

@@ -7,70 +7,41 @@
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.TicTacToeView">
 
-    <GridPane alignment="CENTER">
-
+    <GridPane fx:id="tttFeld" GridPane.rowIndex="1" maxHeight="-Infinity" maxWidth="-Infinity">
         <rowConstraints>
             <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="ALWAYS" />
+            <RowConstraints prefHeight="5" vgrow="NEVER" />
+            <RowConstraints vgrow="NEVER" />
+            <RowConstraints prefHeight="5" vgrow="NEVER" />
             <RowConstraints vgrow="NEVER" />
         </rowConstraints>
-
-        <GridPane alignment="CENTER">
-            <Label alignment="CENTER" text="Tic Tac Toe">
-                <font>
-                    <Font size="25" />
-                </font>
-            </Label>
-            <columnConstraints>
-                <ColumnConstraints />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints />
-            </rowConstraints>
-        </GridPane>
-
-
-        <GridPane fx:id="tttFeld" GridPane.rowIndex="1">
-            <rowConstraints>
-                <RowConstraints vgrow="NEVER" />
-                <RowConstraints prefHeight="5" vgrow="NEVER" />
-                <RowConstraints vgrow="NEVER" />
-                <RowConstraints prefHeight="5" vgrow="NEVER" />
-                <RowConstraints vgrow="NEVER" />
-            </rowConstraints>
-            <columnConstraints>
-                <ColumnConstraints hgrow="NEVER" />
-                <ColumnConstraints hgrow="NEVER" prefWidth="5" />
-                <ColumnConstraints hgrow="NEVER" />
-                <ColumnConstraints hgrow="NEVER" prefWidth="5" />
-                <ColumnConstraints hgrow="NEVER" />
-            </columnConstraints>
-
-            <Button prefHeight="100" prefWidth="100" />
-            <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="2" />
-            <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="4" />
-
-            <Rectangle height="5" width="310" GridPane.columnSpan="5" GridPane.rowIndex="1" />
-
-            <Button prefHeight="100" prefWidth="100" GridPane.rowIndex="2" />
-            <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-
-            <Rectangle height="310" width="5" GridPane.columnIndex="1" GridPane.rowSpan="5" />
-
-            <Button prefHeight="100" prefWidth="100" GridPane.rowIndex="4" />
-            <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button prefHeight="100" prefWidth="100" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-
-            <Rectangle height="5" width="310" GridPane.columnSpan="5" GridPane.rowIndex="3" />
-
-            <Rectangle height="310" width="5" GridPane.columnIndex="3" GridPane.rowSpan="5" />
-
-        </GridPane>
-
         <columnConstraints>
-            <ColumnConstraints />
+            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="NEVER" prefWidth="5" />
+            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="NEVER" prefWidth="5" />
+            <ColumnConstraints hgrow="NEVER" />
         </columnConstraints>
+
+        <Button prefHeight="88" prefWidth="88" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" />
+
+        <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="1" />
+
+        <Button prefHeight="88" prefWidth="88" GridPane.rowIndex="2" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+
+        <Rectangle height="274" width="5" GridPane.columnIndex="1" GridPane.rowSpan="5" />
+
+        <Button prefHeight="88" prefWidth="88" GridPane.rowIndex="4" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+
+        <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="3" />
+
+        <Rectangle height="274" width="5" GridPane.columnIndex="3" GridPane.rowSpan="5" />
 
     </GridPane>
 
@@ -81,4 +52,10 @@
     </Text>
 
     <Button onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+
+     <Label alignment="CENTER" text="Tic Tac Toe" StackPane.alignment="TOP_CENTER">
+         <font>
+             <Font size="25" />
+         </font>
+     </Label>
 </StackPane>

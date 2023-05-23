@@ -10,18 +10,30 @@ public abstract class WitchSpieler extends Spieler {
     protected int punkte;
     protected int stiche;
     protected int schaetzung;
-    protected ArrayList<WitchKarte> hand;
+    protected ArrayList<WitchKarte> handkarten;
 
     public WitchSpieler(String name, Witch spiel) {
         super(name, spiel);
         this.spiel = spiel;
-        hand = new ArrayList<>();
+        handkarten = new ArrayList<>();
     }
 
     public abstract void schaetzen();
     public abstract WitchKarte spielen();
 
-    public ArrayList<WitchKarte> getSpielbar() {
+    public ArrayList<WitchKarte> gibHandkarten() {
+        return handkarten;
+    }
+
+    public void handkarteHinzufuegen(WitchKarte karte) {
+        handkarten.add(karte);
+    }
+
+    public void clearHandkarten() {
+        handkarten.clear();
+    }
+
+    public ArrayList<WitchKarte> spielbareKarten() {
         ArrayList<WitchKarte> spielbar = new ArrayList<>();  //Alle Karten die spielbar sind
 
         // Farbzwang
@@ -37,14 +49,14 @@ public abstract class WitchSpieler extends Spieler {
         }
 
         if (zwang != null) {  //Falls es eine Farbe gibt
-            for (WitchKarte k : hand) {
+            for (WitchKarte k : handkarten) {
                 if (k.farbe == zwang && k.wert != 0 && k.wert != 14) {
                     spielbar.add(k);
                 }
             }
 
             if (! spielbar.isEmpty()) { //Falls es Karten dieser Farbe gibt
-                for (WitchKarte k : hand) {
+                for (WitchKarte k : handkarten) {
                     if (k.wert == 0 || k.wert == 14) {
                         spielbar.add(k);
                     }
@@ -55,6 +67,6 @@ public abstract class WitchSpieler extends Spieler {
 
         //Der Spieler hat die Farbe also nicht
         //→ Alle Handkarten sind spielbar
-        return hand;
+        return handkarten;
     }
 }

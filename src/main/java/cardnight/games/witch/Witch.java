@@ -40,6 +40,9 @@ public class Witch extends Spiel {
     public WitchSpieler[] gibSpieler() {
         return spieler;
     }
+    public WitchMensch gibHauptspieler() {
+        return (WitchMensch) spieler[0];
+    }
 
     public WitchView gibObserverView() {
         return observerView;
@@ -73,6 +76,7 @@ public class Witch extends Spiel {
                 }
                 punkteVerteilen();
                 update();
+                kartenSammeln();
             }
 
             Platform.runLater(observerView::beendeSpiel);
@@ -89,13 +93,20 @@ public class Witch extends Spiel {
     }
 
     public void update() {
-        //TODO: hier
         //TODO: Wenn alle Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
-        //temporär:
-        System.out.println("Trumpf: " + trumpfKarte.farbe);
-        System.out.println("Am Zug: " + spielerAmZug);
-        System.out.println("Stich: " + stich.toString());
-        System.out.println("Handkarten: " + spieler[0].hand.toString());
+
+        System.out.println("Trumpffarbe: " + trumpfKarte.farbe);
+        System.out.println("Am Zug: " + spieler[spielerAmZug].name);
+        System.out.println("Stich: ");
+
+        if (stich[0] != null)
+            for (WitchKarte witchKarte : stich)
+                System.out.println("\t" + witchKarte.datenAlsString());
+
+        System.out.println("Handkarten: ");
+
+        for (WitchKarte karte : spieler[0].gibHandkarten())
+            System.out.println("\t" + karte.datenAlsString());
 
         Platform.runLater(observerView::updateUi);
     }
@@ -115,7 +126,7 @@ public class Witch extends Spiel {
         // Karten austeilen
         for (WitchSpieler s : spieler)
             for (int i = 0; i < anzKarten; i++)
-                s.hand.add(WitchKartenset.gibZufaelligeKarte(true));
+                s.handkarteHinzufuegen(WitchKartenset.gibZufaelligeKarte(true));
 
         update();
     }
@@ -187,7 +198,7 @@ public class Witch extends Spiel {
 
     public void kartenSammeln() {
         for (WitchSpieler s : spieler) {
-            s.hand.clear();
+            s.clearHandkarten();
             s.stiche = 0;
         }
         stich = new WitchKarte[anzahlSpieler];

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class WitchGegner extends WitchSpieler {
     public WitchGegner(String n, Witch s) {
         super(n, s);
-        hand = new ArrayList<>();
+        handkarten = new ArrayList<>();
     }
 
     @Override
@@ -16,12 +16,12 @@ public class WitchGegner extends WitchSpieler {
 
     @Override
     public WitchKarte spielen() {
-        ArrayList<WitchKarte> spielbar = getSpielbar();
+        ArrayList<WitchKarte> spielbar = spielbareKarten();
 
         // Random Karte zum Testen TODO: smart AI
         WitchKarte k = spielbar.get((int)(Math.random() * spielbar.size())); //Zufälliges Element der Liste
 
-        hand.remove(k);
+        handkarten.remove(k);
         return k;
     }
 

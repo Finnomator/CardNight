@@ -1,112 +1,151 @@
 package cardnight.games.witch;
 
 import cardnight.games.Spiel;
+import cardnight.games.witch.viewcontroller.WitchView;
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 
 public class Witch extends Spiel {
     private final WitchSpieler[] spieler;
-    protected int anz;
+    protected int anzahlSpieler;
     protected int start;
     protected WitchKarte[] stich;
     protected ArrayList<WitchKarte> benutzt;
-    protected int amZug;
-    protected WitchKarte trumpf;
+    protected int spielerAmZug;
+    protected WitchKarte trumpfKarte;
+    private final int kartenAnzahlInEinemSpiel = 60;
+    private final WitchView observerView;
 
-    private ArrayList<WitchKarte> komplett;  //alle Karten im Spiel
+    public Witch(int anzahl, WitchView observerView) {
+        this.observerView = observerView;
+        anzahlSpieler = anzahl;
 
-    public Witch(int anzahl) {
-        anz = anzahl;
         spieler = new WitchSpieler[anzahl];
-        for (int i = 1; i < anz; i++) {
-            spieler[i] = new WitchGegner("Chris" + i, this);
-        }
-        spieler[0] = new WitchMensch("DU", this);
+        spieler[0] = new WitchMensch("Hauptspieler", this);
+        for (int i = 1; i < anzahlSpieler; i++)
+            spieler[i] = new WitchGegner("Gegner " + i, this);
+
         start = (int) (Math.random() * anzahl);
         stich = new WitchKarte[anzahl];
-
         benutzt = new ArrayList<>();
-        komplett = new ArrayList<>();
+
         kartenSammeln();
     }
 
+    public WitchKarte gibTrumpfKarte() {
+        return trumpfKarte;
+    }
+
+    public WitchSpieler[] gibSpieler() {
+        return spieler;
+    }
+    public WitchMensch gibHauptspieler() {
+        return (WitchMensch) spieler[0];
+    }
+
+    public WitchView gibObserverView() {
+        return observerView;
+    }
+
     public void game() {
-        // Runden
-        // i = Anzahl der Karten
-        for (int i = 1; i <= 60 / anz; i++) {
-            // Karten austeilen
-            kartenAusteilen(i);
-            update();
-            // Schätzen
-            for (int j = 0; j < 4; j++) {
-                spieler[(i + j) % 4].schaetzen();
-            }
-            update();
-            // Spielen
-            // j = Anzahl übrige Karten
-            int dran = start;
-            amZug = dran;
-            for (int j = i; j > 0; j--) {
-                // Jeder Stich
-                for (int k = 0; k < 4; k++) {
-                    amZug = (dran + k) % 4;
+        // Große Runde = alle Leute legen Karten ab, bis sie keine mehr haben.
+        // Kleine Runde = alle Leute legen 1 Karte ab.
+
+        new Thread(() -> {
+            for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++) {
+                kartenAusteilen(anzahlKartenProSpieler);
+                spielerSchaetzen();
+
+                // Spielen
+                int startSpielerDerKleinenRunde = start;
+                spielerAmZug = startSpielerDerKleinenRunde;
+                for (int anzahlUebrigerKarten = anzahlKartenProSpieler; anzahlUebrigerKarten > 0; anzahlUebrigerKarten--) {
+                    // Jeder Stich
+                    for (int i = 0; i < anzahlSpieler; i++) {
+                        spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
+                        stich[i] = spieler[spielerAmZug].spielen();
+                    }
+                    // Der Stich wird dem Gewinner gegeben.
+                    // Der Gewinner ist als Nächstes dran
+                    startSpielerDerKleinenRunde = stichGeben(startSpielerDerKleinenRunde);
+                    // Ablage wird geleert
+                    stich = new WitchKarte[anzahlSpieler];
+                    spielerAmZug = startSpielerDerKleinenRunde;
                     update();
-                    stich[k] = spieler[(i + k) % 4].spielen();
                 }
+                punkteVerteilen();
                 update();
-                // Der Stich wird dem Gewinner gegeben.
-                // Der Gewinner ist als Nächstes dran
-                dran = stichGeben(dran);
-                // Ablage wird geleert
-                stich = new WitchKarte[anz];
-                amZug = dran;
-                update();
+                kartenSammeln();
             }
-            punkteVerteilen();
-            update();
-        }
-        endeAnzeigen();
+
+            Platform.runLater(observerView::beendeSpiel);
+        }).start();
+    }
+
+    private void spielerSchaetzen() {
+        delay(500);
+
+        for (int j = 0; j < anzahlSpieler; j++)
+            spieler[j].schaetzen();
+
+        update();
     }
 
     public void update() {
-        //TODO: hier
         //TODO: Wenn alle Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
+
+        System.out.println("Trumpffarbe: " + trumpfKarte.farbe);
+        System.out.println("Am Zug: " + spieler[spielerAmZug].name);
+        System.out.println("Stich: ");
+
+        if (stich[0] != null)
+            for (WitchKarte witchKarte : stich)
+                System.out.println("\t" + witchKarte.datenAlsString());
+
+        System.out.println("Handkarten: ");
+
+        for (WitchKarte karte : spieler[0].gibHandkarten())
+            System.out.println("\t" + karte.datenAlsString());
+
+        Platform.runLater(observerView::updateUi);
+    }
+
+    public static void delay(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void kartenAusteilen(int anzKarten) {
-        // Trumpf festlegen
-        int t = (int) (Math.random() * komplett.size());
-        trumpf = komplett.get(t);
-
-        if (60 / anzKarten != anz) {
-            komplett.remove(t);
-        }
+        // Trumpf festlegen                              Wenn nicht alle Karten verteilt werden
+        trumpfKarte = WitchKartenset.gibZufaelligeKarte(kartenAnzahlInEinemSpiel / anzKarten != anzahlSpieler);
 
         // Karten austeilen
-        for (WitchSpieler s : spieler) {
-            for (int i = 0; i < anzKarten; i++) {
-                int k = (int) (Math.random() * komplett.size());
-                s.hand.add(komplett.get(k));
-                komplett.remove(k);
-            }
-        }
+        for (WitchSpieler s : spieler)
+            for (int i = 0; i < anzKarten; i++)
+                s.handkarteHinzufuegen(WitchKartenset.gibZufaelligeKarte(true));
+
+        update();
     }
 
-    public int stichGeben(int start) {
+    public int stichGeben(int startSpieler) {
         // Falls es einen Zauberer gab
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < anzahlSpieler; i++) {
             if (stich[i].wert == 14) {
-                spieler[(start + i) % 4].stiche++;
-                return (start + i) % 4;
+                spieler[(startSpieler + i) % anzahlSpieler].stiche++;
+                return (startSpieler + i) % anzahlSpieler;
             }
         }
 
         // Höchste Trumpffarbe
-        if (trumpf.wert != 0 && trumpf.wert != 14) { //Falls Trumpf eine weiße Karte ist
+        if (trumpfKarte.wert != 0 && trumpfKarte.wert != 14) { //Falls Trumpf eine weiße Karte ist
             int hoechste = 0;
             int s = 0;
-            for (int i = 0; i < 4; i++) {
-                if (stich[i].farbe == trumpf.farbe) {
+            for (int i = 0; i < anzahlSpieler; i++) {
+                if (stich[i].farbe == trumpfKarte.farbe) {
                     if (stich[i].wert > hoechste) {
                         hoechste = stich[i].wert;
                         s = i;
@@ -114,8 +153,8 @@ public class Witch extends Spiel {
                 }
             }
             if (hoechste > 0) { //Falls es eine Trumpfkarte (keinen Narren) gegeben hat
-                spieler[(start + s) % 4].stiche++;
-                return (start + s) % 4;
+                spieler[(startSpieler + s) % anzahlSpieler].stiche++;
+                return (startSpieler + s) % anzahlSpieler;
             }
         }
 
@@ -123,7 +162,7 @@ public class Witch extends Spiel {
         WitchFarbe f = null;
         int hoechste = 0;
         int s = 0;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < anzahlSpieler; i++) {
             if (f == null && stich[i].wert != 0) {  //Wenn
                 f = stich[i].farbe;
             }
@@ -135,13 +174,13 @@ public class Witch extends Spiel {
             }
         }
         if (hoechste > 0) { //Falls es eine Farbige Karte gegeben hat (also nicht nur Narren)
-            spieler[(start + s) % 4].stiche++;
-            return (start + s) % 4;
+            spieler[(startSpieler + s) % anzahlSpieler].stiche++;
+            return (startSpieler + s) % anzahlSpieler;
         }
 
         //Es gab also nur Narren
-        spieler[start].stiche++;
-        return start;
+        spieler[startSpieler].stiche++;
+        return startSpieler;
     }
 
     public void punkteVerteilen() {
@@ -157,24 +196,14 @@ public class Witch extends Spiel {
         }
     }
 
-    public void endeAnzeigen() {
-        //TODO: hier
-    }
-
     public void kartenSammeln() {
         for (WitchSpieler s : spieler) {
-            s.hand.clear();
+            s.clearHandkarten();
             s.stiche = 0;
         }
-        stich = new WitchKarte[anz];
+        stich = new WitchKarte[anzahlSpieler];
         benutzt.clear();
-        komplett.clear();
-
-        for (WitchFarbe f : WitchFarbe.values()) {
-            for (int i = 0; i <= 14; i++) {
-                komplett.add(new WitchKarte(f, i));
-            }
-        }
+        WitchKartenset.kartensetErstellen();
     }
 
     public int anzKartenBesser(WitchKarte k, ArrayList<WitchKarte> hand) {
@@ -205,11 +234,11 @@ public class Witch extends Spiel {
                 besser--;
             }
         }
-        if (trumpf.wert != 0 && trumpf.wert != 14) { //Falls der Trumpf nicht weiß ist
-            if (k.farbe != trumpf.farbe) { //Falls die Karte nicht Trumpf ist
+        if (trumpfKarte.wert != 0 && trumpfKarte.wert != 14) { //Falls der Trumpf nicht weiß ist
+            if (k.farbe != trumpfKarte.farbe) { //Falls die Karte nicht Trumpf ist
                 besser += 13; //Die Trumpfkarten sind besser
                 for (WitchKarte i : neu_benutzt) { //Alle schon benutzten Trümpfe werden abgezogen
-                    if (i.farbe == trumpf.farbe && i.wert != 0 && i.wert != 14) {
+                    if (i.farbe == trumpfKarte.farbe && i.wert != 0 && i.wert != 14) {
                         besser--;
                     }
                 }
@@ -231,17 +260,17 @@ public class Witch extends Spiel {
         //k muss in hand sein
 
         //ALle übrigen Karten minus die besseren Karten davon
-        return 60 - benutzt.size() - hand.size() - anzKartenBesser(k, hand);
+        return kartenAnzahlInEinemSpiel - benutzt.size() - hand.size() - anzKartenBesser(k, hand);
     }
 
     public double wahrscheinlichkeit(WitchKarte k, ArrayList<WitchKarte> hand) {
         //Gibt zurück, wie wahrscheinlich es ist, dass eine Karte bei einem Gegner durchläuft
         int anzKarten = hand.size();
-        int uebrig = 60 - benutzt.size() - hand.size();
+        int uebrig = kartenAnzahlInEinemSpiel - benutzt.size() - hand.size();
 
         //Wahrscheinlichkeit eine bessere Karte legen zu müssen
         //TODO: here
-        return 0;
+        throw new RuntimeException();
     }
 
     @Override

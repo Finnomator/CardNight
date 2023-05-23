@@ -26,6 +26,7 @@ public class WitchView extends SpielView {
     private Witch witch;
     private WitchUiKarte trumpfUiKarte;
     private WitchHauptspielerUiHand hauptspielerUiHand;
+    private WitchPunktetafel punktetafel;
     private final AtomicBoolean hatStichSchaetzungBestaetigt = new AtomicBoolean(false);
     private final AtomicBoolean hatKarteGeklickt = new AtomicBoolean(false);
     private final AtomicReference<WitchKarte> geklickteKarte = new AtomicReference<>();
@@ -42,10 +43,14 @@ public class WitchView extends SpielView {
         numericOnly(schaetzungsEingabeFeld);
 
         FXMLLoader handkartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/hauptspieler-hand.fxml"));
-        Node uiHandkarten = handkartenLoader.load();
-        root.getChildren().add(uiHandkarten);
+        root.getChildren().add(handkartenLoader.load());
         hauptspielerUiHand = handkartenLoader.getController();
         hauptspielerUiHand.uiErstellen(witch.gibHauptspieler());
+
+        FXMLLoader punktetafelLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/punktetafel.fxml"));
+        root.getChildren().add(punktetafelLoader.load());
+        punktetafel = punktetafelLoader.getController();
+        punktetafel.uiErstellen(witch);
 
         root.addEventFilter(WitchKartenKlickEvent.ANY, this::handleWitchKartenClick);
 
@@ -91,6 +96,7 @@ public class WitchView extends SpielView {
     public void updateUi() {
         hauptspielerUiHand.updateUi();
         trumpfUiKarte.uiErstellen(witch.gibTrumpfKarte());
+        punktetafel.updateUi();
     }
 
     @Override

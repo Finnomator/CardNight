@@ -16,6 +16,7 @@ public class Witch extends Spiel {
     protected WitchKarte trumpfKarte;
     private final int kartenAnzahlInEinemSpiel = 60;
     private final WitchView observerView;
+    private int rundenNummer;
 
     public Witch(int anzahl, WitchView observerView) {
         this.observerView = observerView;
@@ -44,6 +45,10 @@ public class Witch extends Spiel {
         return (WitchMensch) spieler[0];
     }
 
+    public int gibRundenNummer() {
+        return rundenNummer;
+    }
+
     public WitchView gibObserverView() {
         return observerView;
     }
@@ -53,7 +58,7 @@ public class Witch extends Spiel {
         // Kleine Runde = alle Leute legen 1 Karte ab.
 
         new Thread(() -> {
-            for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++) {
+            for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++, ++rundenNummer) {
 
                 System.out.println("\nRunde mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler");
 

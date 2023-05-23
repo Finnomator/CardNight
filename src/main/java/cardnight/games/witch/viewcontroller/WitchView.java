@@ -8,6 +8,7 @@ import cardnight.games.witch.WitchKarte;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -22,6 +23,7 @@ public class WitchView extends SpielView {
     public StackPane root;
     public TextField schaetzungsEingabeFeld;
     public VBox schaetzungsRoot;
+    public Button schaetzungsOkButton;
     private Witch witch;
     private WitchUiKarte trumpfUiKarte;
     private WitchHauptspielerUiHand hauptspielerUiHand;
@@ -38,6 +40,7 @@ public class WitchView extends SpielView {
 
         //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
         //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
+        // Hallo, Finn hier. NÖ! (-> irgendwann?)
 
         witch = new Witch(4, this);
 
@@ -127,10 +130,11 @@ public class WitchView extends SpielView {
         hatStichSchaetzungBestaetigt.set(true);
     }
 
-    public static void numericOnly(final TextField field) {
+    private void numericOnly(final TextField field) {
         field.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*"))
                 field.setText(newValue.replaceAll("\\D", ""));
+            schaetzungsOkButton.setDisable(field.getText().equals(""));
         });
     }
 }

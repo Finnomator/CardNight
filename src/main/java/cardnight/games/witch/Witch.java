@@ -53,6 +53,10 @@ public class Witch extends Spiel {
         return observerView;
     }
 
+    public WitchSpieler gibSpielerAmZug() {
+        return spieler[spielerAmZug];
+    }
+
     public void game() {
         // Große Runde = alle Leute legen Karten ab, bis sie keine mehr haben.
         // Kleine Runde = alle Leute legen 1 Karte ab.

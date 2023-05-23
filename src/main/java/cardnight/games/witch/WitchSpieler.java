@@ -38,7 +38,7 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public void fuegeStichHinzu() {
-        System.out.println("\t" + name + " hat einen Stich erhalten");
+        System.out.println("\t\t" + name + " hat den Stich erhalten");
         anzahlErhaltenerStiche++;
     }
 

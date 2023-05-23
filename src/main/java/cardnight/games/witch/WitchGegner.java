@@ -26,7 +26,7 @@ public class WitchGegner extends WitchSpieler {
 
         handkarten.remove(k);
 
-        System.out.println("\t\t" + name + " spielt Karte " + k.datenAlsString());
+        System.out.println("\t\t\t" + name + " spielt Karte " + k.datenAlsString());
 
         return k;
     }

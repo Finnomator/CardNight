@@ -15,7 +15,7 @@ public class WitchMensch extends WitchSpieler {
     @Override
     public WitchKarte spielen() {
         WitchKarte karte = spiel.gibObserverView().warteAufKartenauswahl();
-        System.out.println("\t\t" + name + " spielte Karte: " + karte.datenAlsString());
+        System.out.println("\t\t\t" + name + " spielte Karte: " + karte.datenAlsString());
         handkarten.remove(karte);
         return karte;
     }

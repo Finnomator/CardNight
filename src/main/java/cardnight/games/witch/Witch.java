@@ -61,10 +61,10 @@ public class Witch extends Spiel {
         // Große Runde = alle Leute legen Karten ab, bis sie keine mehr haben.
         // Kleine Runde = alle Leute legen 1 Karte ab.
 
-        new Thread(() -> {
+        Thread t = new Thread(() -> {
             for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++, ++rundenNummer) {
 
-                System.out.println("---Runde " + rundenNummer + " mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler---");
+                System.out.println("---Große Runde " + rundenNummer + " mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler---");
 
                 kartenAusteilen(anzahlKartenProSpieler);
                 spielerSchaetzen();
@@ -72,10 +72,14 @@ public class Witch extends Spiel {
                 // Spielen
                 int startSpielerDerKleinenRunde = start;
                 spielerAmZug = startSpielerDerKleinenRunde;
+
+                System.out.println("\tEs wird gespielt ");
+
                 for (int anzahlUebrigerKarten = anzahlKartenProSpieler; anzahlUebrigerKarten > 0; anzahlUebrigerKarten--) {
                     // Jeder Stich
 
-                    System.out.println("\tEs wird gespielt ");
+                    int kleineRundeNummer = anzahlKartenProSpieler - anzahlUebrigerKarten;
+                    System.out.println("\t\t--Kleine Runde " + kleineRundeNummer + "--");
 
                     for (int i = 0; i < anzahlSpieler; i++) {
                         update();
@@ -101,7 +105,9 @@ public class Witch extends Spiel {
 
             System.out.println("Das Spiel ist vorbei");
             Platform.runLater(observerView::beendeSpiel);
-        }).start();
+        });
+        t.setDaemon(true);
+        t.start();
     }
 
     private void spielerSchaetzen() {
@@ -154,20 +160,20 @@ public class Witch extends Spiel {
         }
 
         // Höchste Trumpffarbe
-        if (!trumpfKarte.istNarr() && !trumpfKarte.istZauberer()) { //Falls Trumpf keine weiße Karte ist
+        if (!trumpfKarte.istNarr() && !trumpfKarte.istZauberer()) { // Falls Trumpf keine weiße Karte ist
             int hoechste = 0;
             int s = 0;
+
             for (int i = 0; i < anzahlSpieler; i++) {
-                if (stich[i].farbe == trumpfKarte.farbe) {
-                    if (stich[i].wert > hoechste) {
-                        hoechste = stich[i].wert;
-                        s = i;
-                    }
+                if (stich[i].farbe == trumpfKarte.farbe && stich[i].wert > hoechste) {
+                    hoechste = stich[i].wert;
+                    s = i;
                 }
             }
 
             //Falls es eine Trumpfkarte (keinen Narren) gegeben hat
-            if (hoechste > 0) return (startSpieler + s) % anzahlSpieler;
+            if (hoechste > 0)
+                return (startSpieler + s) % anzahlSpieler;
         }
 
         // Höchste Karte (nicht Trumpf)

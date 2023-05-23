@@ -11,7 +11,9 @@ public class WitchGegner extends WitchSpieler {
     @Override
     public void schaetzen() {
         //TODO: schätzung
-        schaetzung = 0;
+        stichSchaetzung = 0;
+
+        System.out.println(name + " schätzt " + stichSchaetzung + " Stich(e)");
     }
 
     @Override
@@ -22,6 +24,9 @@ public class WitchGegner extends WitchSpieler {
         WitchKarte k = spielbar.get((int)(Math.random() * spielbar.size())); //Zufälliges Element der Liste
 
         handkarten.remove(k);
+
+        System.out.println(name + " spielt Karte " + k.datenAlsString());
+
         return k;
     }
 

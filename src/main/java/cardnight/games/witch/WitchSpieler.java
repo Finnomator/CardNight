@@ -7,9 +7,8 @@ import java.util.ArrayList;
 public abstract class WitchSpieler extends Spieler {
 
     protected Witch spiel;
-    protected int punkte;
-    protected int stiche;
-    protected int schaetzung;
+    protected int anzahlErhaltenerStiche;
+    protected int stichSchaetzung;
     protected ArrayList<WitchKarte> handkarten;
 
     public WitchSpieler(String name, Witch spiel) {
@@ -26,11 +25,28 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public void handkarteHinzufuegen(WitchKarte karte) {
+        System.out.println(name + " bekommt Karte: " + karte.datenAlsString());
         handkarten.add(karte);
     }
 
     public void clearHandkarten() {
         handkarten.clear();
+    }
+
+    public void fuegeStichHinzu() {
+        anzahlErhaltenerStiche++;
+    }
+
+    public int gibAnzahlErzhaltenderStiche() {
+        return anzahlErhaltenerStiche;
+    }
+
+    public void setzeAnzahlErhalteneSticheZurueck() {
+        anzahlErhaltenerStiche = 0;
+    }
+
+    public int gibStichSchaetzung() {
+        return stichSchaetzung;
     }
 
     public ArrayList<WitchKarte> spielbareKarten() {

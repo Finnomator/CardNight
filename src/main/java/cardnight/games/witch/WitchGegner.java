@@ -14,7 +14,7 @@ public class WitchGegner extends WitchSpieler {
         stichSchaetzung = 0;
         stichSchaetzungenProRunde.add(stichSchaetzung);
 
-        System.out.println(name + " schätzt " + stichSchaetzung + " Stich(e)");
+        System.out.println("\t\t" + name + " schätzt " + stichSchaetzung + " Stich(e)");
     }
 
     @Override
@@ -26,7 +26,7 @@ public class WitchGegner extends WitchSpieler {
 
         handkarten.remove(k);
 
-        System.out.println(name + " spielt Karte " + k.datenAlsString());
+        System.out.println("\t\t" + name + " spielt Karte " + k.datenAlsString());
 
         return k;
     }

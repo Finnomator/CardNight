@@ -15,16 +15,17 @@ public class WitchHauptspielerUiHand {
 
     public void uiErstellen(WitchMensch spieler) {
         this.spieler = spieler;
-        updateUi();
+        updateUi(true);
     }
 
-    public void updateUi() {
+    public void updateUi(boolean disableKarten) {
         ArrayList<WitchKarte> handKarten = spieler.gibHandkarten();
         ArrayList<WitchKarte> spielbareKarten = spieler.spielbareKarten();
 
         root.getChildren().clear();
 
-        for (WitchKarte karte : handKarten) {
+        for (int i = 0, handKartenSize = handKarten.size(); i < handKartenSize; i++) { // Ha, try beating this ConcurrentModificationException!
+            WitchKarte karte = handKarten.get(i);
             FXMLLoader kartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/witch-karte.fxml"));
 
             Node kartenNode;
@@ -37,7 +38,7 @@ public class WitchHauptspielerUiHand {
             WitchUiKarte uiKarte = kartenLoader.getController();
             uiKarte.uiErstellen(karte);
 
-            kartenNode.setDisable(!spielbareKarten.contains(karte));
+            kartenNode.setDisable(disableKarten || !spielbareKarten.contains(karte));
 
             root.getChildren().add(kartenNode);
         }

@@ -71,9 +71,11 @@ public class Witch extends Spiel {
                 for (int anzahlUebrigerKarten = anzahlKartenProSpieler; anzahlUebrigerKarten > 0; anzahlUebrigerKarten--) {
                     // Jeder Stich
                     for (int i = 0; i < anzahlSpieler; i++) {
+                        update();
                         spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
                         stich[i] = spieler[spielerAmZug].spielen();
                     }
+
                     // Der Stich wird dem Gewinner gegeben.
                     // Der Gewinner ist als Nächstes dran
                     startSpielerDerKleinenRunde = stichGeben(startSpielerDerKleinenRunde);
@@ -105,7 +107,7 @@ public class Witch extends Spiel {
     }
 
     public void update() {
-        //TODO: Wenn alle Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
+        // TODO: Wenn alle 60 Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
 
         System.out.println("***Ui Update***");
         System.out.println("Trumpffarbe: " + trumpfKarte.farbe);
@@ -149,10 +151,8 @@ public class Witch extends Spiel {
     public int stichGeben(int startSpieler) {
         // Falls es einen Zauberer gab
         for (int i = 0; i < anzahlSpieler; i++) {
-            if (stich[i].istZauberer()) {
-                spieler[(startSpieler + i) % anzahlSpieler].fuegeStichHinzu();
+            if (stich[i].istZauberer())
                 return (startSpieler + i) % anzahlSpieler;
-            }
         }
 
         // Höchste Trumpffarbe

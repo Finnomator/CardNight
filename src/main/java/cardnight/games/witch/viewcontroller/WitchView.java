@@ -32,6 +32,13 @@ public class WitchView extends SpielView {
     private final AtomicReference<WitchKarte> geklickteKarte = new AtomicReference<>();
 
     public void initialize() throws IOException {
+        //TODO: Die Anzahl der Stiche anzeigen, die jeder Spieler gerade hat
+        //TODO: Die Rückseiten der Gegnerkarten anzeigen
+        //TODO: Anzeigen, wer am Zug ist
+        //TODO: Anzeigen, welche Karten auf dem Stich (Ablagestapel) liegen
+
+        //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
+        //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
 
         witch = new Witch(4, this);
 

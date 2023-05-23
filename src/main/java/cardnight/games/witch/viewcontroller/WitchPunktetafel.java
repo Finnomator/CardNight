@@ -20,6 +20,7 @@ public class WitchPunktetafel {
     }
 
     public void updateUi() {
+        //TODO: die Anzahl der geschätzten Stiche neben die Punktezahl schreiben (am besten direkt nach Schätzung)
         int anzahlZeilen = berechneZeilenAnzahl(spieler);
 
         root.getChildren().clear();

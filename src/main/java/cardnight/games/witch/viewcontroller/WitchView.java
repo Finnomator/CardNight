@@ -73,15 +73,15 @@ public class WitchView extends SpielView {
 
     public int warteAufSchaetzung() {
 
-        System.out.println("Warte auf Schätzung...");
+        System.out.println("\t\tWarte auf Schätzung vom Spieler...");
 
-        hauptspielerUiHand.disableAllCards();
+        Platform.runLater(() -> hauptspielerUiHand.disableAllCards());
         schaetzungsRoot.setDisable(false);
+
+        hatStichSchaetzungBestaetigt.set(false);
 
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
-
-        hatStichSchaetzungBestaetigt.set(false);
 
         return Integer.parseInt(schaetzungsEingabeFeld.getText());
     }
@@ -89,9 +89,9 @@ public class WitchView extends SpielView {
     public WitchKarte warteAufKartenauswahl() {
         // Wartet, bis der Spieler eine Karte geklickt hat, die er ablegen will und gibt diese zurück
 
-        System.out.println("Warte auf Karte...");
+        System.out.println("\t\t\tWarte bis Spieler Karte ausgewählt hat...");
 
-        Platform.runLater(() -> hauptspielerUiHand.updateUi());
+        Platform.runLater(() -> hauptspielerUiHand.updateUi(false));
         schaetzungsRoot.setDisable(true);
 
         while (!hatKarteGeklickt.get())
@@ -103,7 +103,7 @@ public class WitchView extends SpielView {
     }
 
     public void updateUi() {
-        hauptspielerUiHand.updateUi();
+        hauptspielerUiHand.updateUi(true);
         trumpfUiKarte.uiErstellen(witch.gibTrumpfKarte());
         punktetafel.updateUi();
     }

@@ -61,19 +61,26 @@ public class Witch extends Spiel {
         // Große Runde = alle Leute legen Karten ab, bis sie keine mehr haben.
         // Kleine Runde = alle Leute legen 1 Karte ab.
 
-        new Thread(() -> {
-            for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++, ++rundenNummer) {
+        Thread t = new Thread(() -> {
+            for (int kartenProSpieler = 1; kartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; kartenProSpieler++, ++rundenNummer) {
 
-                System.out.println("\nRunde " + rundenNummer + " mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler");
+                System.out.println("---Große Runde " + rundenNummer + " mit " + kartenProSpieler + " Karte(n) pro Spieler---");
 
-                kartenAusteilen(anzahlKartenProSpieler);
+                kartenAusteilen(kartenProSpieler);
                 spielerSchaetzen();
 
                 // Spielen
                 int startSpielerDerKleinenRunde = start;
                 spielerAmZug = startSpielerDerKleinenRunde;
-                for (int anzahlUebrigerKarten = anzahlKartenProSpieler; anzahlUebrigerKarten > 0; anzahlUebrigerKarten--) {
+
+                System.out.println("\tEs wird gespielt ");
+
+                for (int uebrigeKarten = kartenProSpieler; uebrigeKarten > 0; uebrigeKarten--) {
                     // Jeder Stich
+
+                    int kleineRundeNummer = kartenProSpieler - uebrigeKarten;
+                    System.out.println("\t\t--Kleine Runde " + kleineRundeNummer + "--");
+
                     for (int i = 0; i < anzahlSpieler; i++) {
                         update();
                         spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
@@ -96,13 +103,16 @@ public class Witch extends Spiel {
                 kartenSammeln();
             }
 
+            System.out.println("Das Spiel ist vorbei");
             Platform.runLater(observerView::beendeSpiel);
-        }).start();
+        });
+        t.setDaemon(true);
+        t.start();
     }
 
     private void spielerSchaetzen() {
 
-        System.out.println("Es wird geschätzt");
+        System.out.println("\tEs wird geschätzt");
 
         for (int j = 0; j < anzahlSpieler; j++)
             spieler[j].schaetzen();
@@ -113,7 +123,7 @@ public class Witch extends Spiel {
     public void update() {
         // TODO: Wenn alle 60 Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
 
-        System.out.println("***Ui Update***");
+        // System.out.println("***Ui Update***");
         Platform.runLater(observerView::updateUi);
     }
 
@@ -126,10 +136,13 @@ public class Witch extends Spiel {
     }
 
     public void kartenAusteilen(int anzKarten) {
+
+        System.out.println("\tEs werden Karten ausgeteilt");
+
         // Trumpf festlegen                              Wenn nicht alle Karten verteilt werden
         trumpfKarte = WitchKartenset.gibZufaelligeKarte(kartenAnzahlInEinemSpiel / anzKarten != anzahlSpieler);
 
-        System.out.println("Es werden Karten ausgeteilt");
+        System.out.println("\t\tTrumpf: " + trumpfKarte.datenAlsString());
 
         // Karten austeilen
         for (WitchSpieler s : spieler)
@@ -147,20 +160,20 @@ public class Witch extends Spiel {
         }
 
         // Höchste Trumpffarbe
-        if (!trumpfKarte.istNarr() && !trumpfKarte.istZauberer()) { //Falls Trumpf keine weiße Karte ist
+        if (!trumpfKarte.istNarr() && !trumpfKarte.istZauberer()) { // Falls Trumpf keine weiße Karte ist
             int hoechste = 0;
             int s = 0;
+
             for (int i = 0; i < anzahlSpieler; i++) {
-                if (stich[i].farbe == trumpfKarte.farbe) {
-                    if (stich[i].wert > hoechste) {
-                        hoechste = stich[i].wert;
-                        s = i;
-                    }
+                if (stich[i].farbe == trumpfKarte.farbe && stich[i].wert > hoechste) {
+                    hoechste = stich[i].wert;
+                    s = i;
                 }
             }
 
             //Falls es eine Trumpfkarte (keinen Narren) gegeben hat
-            if (hoechste > 0) return (startSpieler + s) % anzahlSpieler;
+            if (hoechste > 0)
+                return (startSpieler + s) % anzahlSpieler;
         }
 
         // Höchste Karte (nicht Trumpf)
@@ -187,7 +200,7 @@ public class Witch extends Spiel {
 
     public void punkteVerteilen() {
 
-        System.out.println("Es werden Punkte verteilt");
+        System.out.println("\tEs werden Punkte verteilt");
 
         for (WitchSpieler s : spieler) {
             // Wenn falsch geschätzt wurde: -10 pro Stich daneben,

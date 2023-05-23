@@ -61,6 +61,9 @@ public class WitchView extends SpielView {
 
         System.out.println("Warte auf Schätzung...");
 
+        hauptspielerUiHand.setDisableAllCards(true);
+        schaetzungsRoot.setDisable(false);
+
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
 
@@ -73,6 +76,9 @@ public class WitchView extends SpielView {
         // Wartet, bis der Spieler eine Karte geklickt hat, die er ablegen will und gibt diese zurück
 
         System.out.println("Warte auf Karte...");
+
+        hauptspielerUiHand.setDisableAllCards(false);
+        schaetzungsRoot.setDisable(true);
 
         while (!hatKarteGeklickt.get())
             Witch.delay(50);

@@ -42,4 +42,9 @@ public class WitchHauptspielerUiHand {
             root.getChildren().add(kartenNode);
         }
     }
+
+    public void setDisableAllCards(boolean disable) {
+        for (Node child : root.getChildren())
+            child.setDisable(disable);
+    }
 }

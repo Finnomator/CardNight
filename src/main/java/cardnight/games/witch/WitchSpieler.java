@@ -104,4 +104,9 @@ public abstract class WitchSpieler extends Spieler {
         //→ Alle Handkarten sind spielbar
         return handkarten;
     }
+
+    @Override
+    public boolean istAmZug() {
+        return spiel.gibSpielerAmZug() == this;
+    }
 }

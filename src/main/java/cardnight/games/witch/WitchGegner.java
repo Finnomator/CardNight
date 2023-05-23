@@ -22,17 +22,12 @@ public class WitchGegner extends WitchSpieler {
         ArrayList<WitchKarte> spielbar = spielbareKarten();
 
         // Random Karte zum Testen TODO: smart AI
-        WitchKarte k = spielbar.get((int)(Math.random() * spielbar.size())); //Zufälliges Element der Liste
+        WitchKarte k = spielbar.get((int) (Math.random() * spielbar.size())); //Zufälliges Element der Liste
 
         handkarten.remove(k);
 
         System.out.println(name + " spielt Karte " + k.datenAlsString());
 
         return k;
-    }
-
-    @Override
-    public boolean istAmZug() {
-        throw new UnsupportedOperationException();
     }
 }

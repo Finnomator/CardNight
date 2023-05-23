@@ -19,9 +19,4 @@ public class WitchMensch extends WitchSpieler {
         handkarten.remove(karte);
         return karte;
     }
-
-    @Override
-    public boolean istAmZug() {
-        throw new UnsupportedOperationException();
-    }
 }

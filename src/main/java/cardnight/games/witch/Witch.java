@@ -7,7 +7,7 @@ import javafx.application.Platform;
 import java.util.ArrayList;
 
 public class Witch extends Spiel {
-    private final WitchSpieler[] spieler;
+    protected final WitchSpieler[] spieler;
     protected int anzahlSpieler;
     protected int start;
     protected WitchKarte[] stich;
@@ -143,7 +143,7 @@ public class Witch extends Spiel {
         }
 
         // Höchste Trumpffarbe
-        if (!trumpfKarte.istNarr() && !trumpfKarte.istZauberer()) { //Falls Trumpf eine weiße Karte ist
+        if (!trumpfKarte.istNarr() && !trumpfKarte.istZauberer()) { //Falls Trumpf keine weiße Karte ist
             int hoechste = 0;
             int s = 0;
             for (int i = 0; i < anzahlSpieler; i++) {

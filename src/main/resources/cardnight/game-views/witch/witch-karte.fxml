@@ -3,8 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 
-
-<Button fx:id="root" prefHeight="40.0" prefWidth="60.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchUiKarte">
+<Button fx:id="root" prefHeight="40.0" prefWidth="60.0" textOverrun="CLIP" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchUiKarte">
    <font>
       <Font size="30.0" />
    </font>

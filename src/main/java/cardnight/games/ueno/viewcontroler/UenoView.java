@@ -160,6 +160,7 @@ public class UenoView extends SpielView {
 
         if (!hauptSpieler.kannKarteAblegen()) {
             System.out.println(hauptSpieler.name + " konnte wieder nicht legen");
+            hauptSpielerTurnIndicator.setFill(Color.RED);
             gegnerZuege();
         } else {
             UenoKarte ablegbareKarte = hauptSpieler.ablegbareKarten().get(0);

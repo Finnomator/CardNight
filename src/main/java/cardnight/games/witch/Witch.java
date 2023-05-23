@@ -60,7 +60,7 @@ public class Witch extends Spiel {
         new Thread(() -> {
             for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++, ++rundenNummer) {
 
-                System.out.println("\nRunde mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler");
+                System.out.println("\nRunde " + rundenNummer + " mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler");
 
                 kartenAusteilen(anzahlKartenProSpieler);
                 spielerSchaetzen();
@@ -73,12 +73,14 @@ public class Witch extends Spiel {
                     for (int i = 0; i < anzahlSpieler; i++) {
                         update();
                         spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
+                        delay(500);
                         stich[i] = spieler[spielerAmZug].spielen();
                     }
 
                     // Der Stich wird dem Gewinner gegeben.
                     // Der Gewinner ist als Nächstes dran
                     startSpielerDerKleinenRunde = stichGeben(startSpielerDerKleinenRunde);
+                    spieler[startSpielerDerKleinenRunde].fuegeStichHinzu();
                     // Ablage wird geleert
                     stich = new WitchKarte[anzahlSpieler];
                     spielerAmZug = startSpielerDerKleinenRunde;
@@ -98,10 +100,8 @@ public class Witch extends Spiel {
 
         System.out.println("Es wird geschätzt");
 
-        for (int j = 0; j < anzahlSpieler; j++) {
-            delay(500);
+        for (int j = 0; j < anzahlSpieler; j++)
             spieler[j].schaetzen();
-        }
 
         update();
     }
@@ -110,19 +110,6 @@ public class Witch extends Spiel {
         // TODO: Wenn alle 60 Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
 
         System.out.println("***Ui Update***");
-        System.out.println("Trumpffarbe: " + trumpfKarte.farbe);
-        System.out.println("Am Zug: " + spieler[spielerAmZug].name);
-        System.out.println("Stich: ");
-
-        if (stich[0] != null)
-            for (WitchKarte witchKarte : stich)
-                System.out.println("\t" + witchKarte.datenAlsString());
-
-        System.out.println("Handkarten: ");
-
-        for (WitchKarte karte : spieler[0].gibHandkarten())
-            System.out.println("\t" + karte.datenAlsString());
-
         Platform.runLater(observerView::updateUi);
     }
 
@@ -168,10 +155,8 @@ public class Witch extends Spiel {
                 }
             }
 
-            if (hoechste > 0) { //Falls es eine Trumpfkarte (keinen Narren) gegeben hat
-                spieler[(startSpieler + s) % anzahlSpieler].fuegeStichHinzu();
-                return (startSpieler + s) % anzahlSpieler;
-            }
+            //Falls es eine Trumpfkarte (keinen Narren) gegeben hat
+            if (hoechste > 0) return (startSpieler + s) % anzahlSpieler;
         }
 
         // Höchste Karte (nicht Trumpf)
@@ -188,13 +173,11 @@ public class Witch extends Spiel {
                 s = i;
             }
         }
-        if (hoechste > 0) { // Falls es eine Farbige Karte gegeben hat (also nicht nur Narren)
-            spieler[(startSpieler + s) % anzahlSpieler].fuegeStichHinzu();
+        // Falls es eine Farbige Karte gegeben hat (also nicht nur Narren)
+        if (hoechste > 0)
             return (startSpieler + s) % anzahlSpieler;
-        }
 
         // Es gab also nur Narren
-        spieler[startSpieler].fuegeStichHinzu();
         return startSpieler;
     }
 

@@ -8,6 +8,7 @@ public class WitchMensch extends WitchSpieler {
     @Override
     public void schaetzen() {
         stichSchaetzung = spiel.gibObserverView().warteAufSchaetzung();
+        stichSchaetzungenProRunde.add(stichSchaetzung);
         System.out.println(name + " schätzt " + stichSchaetzung);
     }
 

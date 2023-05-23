@@ -43,8 +43,8 @@ public class WitchHauptspielerUiHand {
         }
     }
 
-    public void setDisableAllCards(boolean disable) {
+    public void disableAllCards() {
         for (Node child : root.getChildren())
-            child.setDisable(disable);
+            child.setDisable(true);
     }
 }

@@ -1,13 +1,12 @@
 package cardnight.games.witch.viewcontroller;
 
-import cardnight.games.Spieler;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchSpieler;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class WitchPunktetafel {
-
 
     public GridPane root;
     private WitchSpieler[] spieler;
@@ -36,8 +35,12 @@ public class WitchPunktetafel {
             for (int zeile = 0; zeile < spiel.gibRundenNummer(); ++zeile) {
 
                 Text uiText = new Text(String.valueOf(s.gibPunkte(zeile)));
+                HBox hBox = new HBox();
+                hBox.setSpacing(10);
+                hBox.getChildren().add(uiText);
+                hBox.getChildren().add(new Text(String.valueOf(s.gibStichSchaetzung(zeile))));
 
-                root.add(uiText, spalte + 1, zeile + 1);
+                root.add(hBox, spalte + 1, zeile + 1);
             }
         }
 

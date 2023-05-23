@@ -12,6 +12,7 @@ public class WitchGegner extends WitchSpieler {
     public void schaetzen() {
         //TODO: schätzung
         stichSchaetzung = 0;
+        stichSchaetzungenProRunde.add(stichSchaetzung);
 
         System.out.println(name + " schätzt " + stichSchaetzung + " Stich(e)");
     }

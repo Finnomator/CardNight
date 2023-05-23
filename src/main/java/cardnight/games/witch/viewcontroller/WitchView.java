@@ -3,10 +3,9 @@ package cardnight.games.witch.viewcontroller;
 import cardnight.GameOver;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
-import cardnight.games.ueno.viewcontroler.UenoKarteKlickEvent;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchKarte;
-import javafx.event.Event;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
@@ -73,7 +72,7 @@ public class WitchView extends SpielView {
 
         System.out.println("Warte auf Schätzung...");
 
-        hauptspielerUiHand.setDisableAllCards(true);
+        hauptspielerUiHand.disableAllCards();
         schaetzungsRoot.setDisable(false);
 
         while (!hatStichSchaetzungBestaetigt.get())
@@ -89,7 +88,7 @@ public class WitchView extends SpielView {
 
         System.out.println("Warte auf Karte...");
 
-        hauptspielerUiHand.setDisableAllCards(false);
+        Platform.runLater(() -> hauptspielerUiHand.updateUi());
         schaetzungsRoot.setDisable(true);
 
         while (!hatKarteGeklickt.get())

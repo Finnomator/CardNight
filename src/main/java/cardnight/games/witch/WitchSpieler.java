@@ -11,12 +11,14 @@ public abstract class WitchSpieler extends Spieler {
     protected int stichSchaetzung;
     protected ArrayList<WitchKarte> handkarten;
     protected ArrayList<Integer> punkteProRunde;
+    protected ArrayList<Integer> stichSchaetzungenProRunde;
 
     public WitchSpieler(String name, Witch spiel) {
         super(name, spiel);
         this.spiel = spiel;
         handkarten = new ArrayList<>();
         punkteProRunde = new ArrayList<>();
+        stichSchaetzungenProRunde = new ArrayList<>();
     }
 
     public abstract void schaetzen();
@@ -36,6 +38,7 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public void fuegeStichHinzu() {
+        System.out.println(name + " hat einen Stich erhalten");
         anzahlErhaltenerStiche++;
     }
 
@@ -49,6 +52,10 @@ public abstract class WitchSpieler extends Spieler {
 
     public int gibStichSchaetzung() {
         return stichSchaetzung;
+    }
+
+    public int gibStichSchaetzung(int runde) {
+        return stichSchaetzungenProRunde.get(runde);
     }
 
     @Override

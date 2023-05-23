@@ -41,13 +41,10 @@ public class TicTacToeView extends SpielView {
         Button src = (Button) actionEvent.getSource();
         src.setMouseTransparent(true);
 
-        if (ttt.gibSpielerAmZug().istX) {
-            src.setText("X");
-            src.setStyle("-fx-text-fill: red");
-        } else {
-            src.setText("O");
-            src.setStyle("-fx-text-fill: blue");
-        }
+        if (ttt.gibSpielerAmZug().istX)
+            src.setStyle("-fx-background-image: url('/cardnight/game-views/tictactoe/images/Kreuz.png')");
+        else
+            src.setStyle("-fx-background-image: url('/cardnight/game-views/tictactoe/images/Kreis.png')");
 
         if (ttt.istSpielBeendet())
             beendeSpiel();

@@ -10,7 +10,6 @@ public abstract class Spieler {
         this.spiel = spiel;
     }
 
-
     public void punkteHinzufuegen(int punkte) {
         this.punkte += punkte;
     }
@@ -18,4 +17,6 @@ public abstract class Spieler {
     public int gibPunkte() {
         return punkte;
     }
+
+    public abstract boolean istAmZug();
 }

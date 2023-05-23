@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+
+<HBox fx:id="root" maxHeight="-Infinity" StackPane.Alignment="BOTTOM_CENTER" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchHauptspielerUiHand">
+
+</HBox>

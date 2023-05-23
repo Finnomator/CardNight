@@ -1,19 +1,22 @@
 package cardnight.games.witch;
 
-public class WitchMensch extends WitchSpieler{
+public class WitchMensch extends WitchSpieler {
     public WitchMensch(String n, Witch s) {
         super(n, s);
     }
 
     @Override
     public void schaetzen() {
-        //TODO: UI abfrage
+        stichSchaetzung = spiel.gibObserverView().warteAufSchaetzung();
+        stichSchaetzungenProRunde.add(stichSchaetzung);
+        System.out.println(name + " schätzt " + stichSchaetzung);
     }
 
     @Override
     public WitchKarte spielen() {
-        //TODO: UI abfrage
-        return null;
+        WitchKarte karte = spiel.gibObserverView().warteAufKartenauswahl();
+        System.out.println(name + " spielte Karte: " + karte.datenAlsString());
+        handkarten.remove(karte);
+        return karte;
     }
-
 }

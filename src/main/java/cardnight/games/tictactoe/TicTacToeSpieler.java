@@ -11,4 +11,9 @@ public class TicTacToeSpieler extends Spieler {
         this.spiel = spiel;
         this.istX = istX;
     }
+
+    @Override
+    public boolean istAmZug() {
+        throw new UnsupportedOperationException();
+    }
 }

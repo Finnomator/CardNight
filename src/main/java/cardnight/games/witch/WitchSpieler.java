@@ -29,7 +29,7 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public void handkarteHinzufuegen(WitchKarte karte) {
-        System.out.println(name + " bekommt Karte: " + karte.datenAlsString());
+        System.out.println("\t\t" + name + " bekommt Karte: " + karte.datenAlsString());
         handkarten.add(karte);
     }
 
@@ -38,7 +38,7 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public void fuegeStichHinzu() {
-        System.out.println(name + " hat einen Stich erhalten");
+        System.out.println("\t" + name + " hat einen Stich erhalten");
         anzahlErhaltenerStiche++;
     }
 

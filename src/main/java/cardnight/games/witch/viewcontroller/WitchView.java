@@ -73,7 +73,7 @@ public class WitchView extends SpielView {
 
     public int warteAufSchaetzung() {
 
-        System.out.println("Warte auf Schätzung...");
+        System.out.println("\t\tWarte auf Schätzung vom Spieler...");
 
         hauptspielerUiHand.disableAllCards();
         schaetzungsRoot.setDisable(false);
@@ -89,7 +89,7 @@ public class WitchView extends SpielView {
     public WitchKarte warteAufKartenauswahl() {
         // Wartet, bis der Spieler eine Karte geklickt hat, die er ablegen will und gibt diese zurück
 
-        System.out.println("Warte auf Karte...");
+        System.out.println("\t\tWarte bis Spieler Karte ausgewählt hat...");
 
         Platform.runLater(() -> hauptspielerUiHand.updateUi());
         schaetzungsRoot.setDisable(true);

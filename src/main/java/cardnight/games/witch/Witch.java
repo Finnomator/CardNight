@@ -64,7 +64,7 @@ public class Witch extends Spiel {
         new Thread(() -> {
             for (int anzahlKartenProSpieler = 1; anzahlKartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; anzahlKartenProSpieler++, ++rundenNummer) {
 
-                System.out.println("\nRunde " + rundenNummer + " mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler");
+                System.out.println("---Runde " + rundenNummer + " mit " + anzahlKartenProSpieler + " Karte(n) pro Spieler---");
 
                 kartenAusteilen(anzahlKartenProSpieler);
                 spielerSchaetzen();
@@ -74,6 +74,9 @@ public class Witch extends Spiel {
                 spielerAmZug = startSpielerDerKleinenRunde;
                 for (int anzahlUebrigerKarten = anzahlKartenProSpieler; anzahlUebrigerKarten > 0; anzahlUebrigerKarten--) {
                     // Jeder Stich
+
+                    System.out.println("\tEs wird gespielt ");
+
                     for (int i = 0; i < anzahlSpieler; i++) {
                         update();
                         spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
@@ -96,13 +99,14 @@ public class Witch extends Spiel {
                 kartenSammeln();
             }
 
+            System.out.println("Das Spiel ist vorbei");
             Platform.runLater(observerView::beendeSpiel);
         }).start();
     }
 
     private void spielerSchaetzen() {
 
-        System.out.println("Es wird geschätzt");
+        System.out.println("\tEs wird geschätzt");
 
         for (int j = 0; j < anzahlSpieler; j++)
             spieler[j].schaetzen();
@@ -113,7 +117,7 @@ public class Witch extends Spiel {
     public void update() {
         // TODO: Wenn alle 60 Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
 
-        System.out.println("***Ui Update***");
+        // System.out.println("***Ui Update***");
         Platform.runLater(observerView::updateUi);
     }
 
@@ -126,10 +130,13 @@ public class Witch extends Spiel {
     }
 
     public void kartenAusteilen(int anzKarten) {
+
+        System.out.println("\tEs werden Karten ausgeteilt");
+
         // Trumpf festlegen                              Wenn nicht alle Karten verteilt werden
         trumpfKarte = WitchKartenset.gibZufaelligeKarte(kartenAnzahlInEinemSpiel / anzKarten != anzahlSpieler);
 
-        System.out.println("Es werden Karten ausgeteilt");
+        System.out.println("\t\tTrumpf: " + trumpfKarte.datenAlsString());
 
         // Karten austeilen
         for (WitchSpieler s : spieler)
@@ -187,7 +194,7 @@ public class Witch extends Spiel {
 
     public void punkteVerteilen() {
 
-        System.out.println("Es werden Punkte verteilt");
+        System.out.println("\tEs werden Punkte verteilt");
 
         for (WitchSpieler s : spieler) {
             // Wenn falsch geschätzt wurde: -10 pro Stich daneben,

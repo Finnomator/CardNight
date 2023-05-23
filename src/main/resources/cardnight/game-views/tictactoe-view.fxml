@@ -5,9 +5,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.TicTacToeView">
+<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.TicTacToeView">
 
-    <GridPane fx:id="tttFeld" GridPane.rowIndex="1" maxHeight="-Infinity" maxWidth="-Infinity">
+    <GridPane fx:id="tttFeld" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.rowIndex="1">
         <rowConstraints>
             <RowConstraints vgrow="NEVER" />
             <RowConstraints prefHeight="5" vgrow="NEVER" />
@@ -23,26 +23,25 @@
             <ColumnConstraints hgrow="NEVER" />
         </columnConstraints>
 
-        <Button prefHeight="88" prefWidth="88" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" />
+        <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" stylesheets="@../transparent-image-button.css" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" stylesheets="@../transparent-image-button.css" />
 
         <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="1" />
 
-        <Button prefHeight="88" prefWidth="88" GridPane.rowIndex="2" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+        <Button prefHeight="88" prefWidth="88" GridPane.rowIndex="2" stylesheets="@../transparent-image-button.css" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" GridPane.rowIndex="2" stylesheets="@../transparent-image-button.css" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" GridPane.rowIndex="2" stylesheets="@../transparent-image-button.css" />
 
         <Rectangle height="274" width="5" GridPane.columnIndex="1" GridPane.rowSpan="5" />
 
-        <Button prefHeight="88" prefWidth="88" GridPane.rowIndex="4" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+        <Button prefHeight="88" prefWidth="88" GridPane.rowIndex="4" stylesheets="@../transparent-image-button.css" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" GridPane.rowIndex="4" stylesheets="@../transparent-image-button.css" />
+        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" GridPane.rowIndex="4" stylesheets="@../transparent-image-button.css" />
 
         <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="3" />
 
         <Rectangle height="274" width="5" GridPane.columnIndex="3" GridPane.rowSpan="5" />
-
     </GridPane>
 
     <Text fx:id="gewinnerText" mouseTransparent="true" textAlignment="CENTER">

@@ -47,6 +47,8 @@ public class WitchView extends SpielView {
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
 
+        hatStichSchaetzungBestaetigt.set(false);
+
         return Integer.parseInt(schaetzungsEingabeFeld.getText());
     }
 

@@ -15,7 +15,7 @@
     </HBox>
 
     <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
-        <Text text="Wie viele Stiche wirst du diese Runde bekommen?" />
+        <Text text="Schätzung" />
         <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Sticheanzahl" />
         <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#schaetzungOkKlick" text="OK" />
     </VBox>
@@ -25,7 +25,7 @@
          <font>
             <Font size="22.0" />
          </font></Text>
-        <Text fx:id="rundenNummerText" text="1" >
+        <Text fx:id="rundenNummerText" text="1">
             <font>
             <Font size="22.0" />
         </font></Text>

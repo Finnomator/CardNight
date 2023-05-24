@@ -39,6 +39,7 @@ public class WitchView extends SpielView {
     private final AtomicBoolean hatKarteGeklickt = new AtomicBoolean(false);
     private final AtomicReference<WitchKarte> geklickteKarte = new AtomicReference<>();
     private HashMap<WitchGegner, WitchGegnerUiHand> gegnerUiHaende;
+    private WitchUiStichStapel uiStichStapel;
 
     public void initialize() throws IOException {
         //TODO: Anzeigen, welche Karten auf dem Stich (Ablagestapel) liegen
@@ -62,6 +63,12 @@ public class WitchView extends SpielView {
 
             gegnerUiHaende.put(gegner, uiHand);
         }
+
+        FXMLLoader stichLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/stich-stapel.fxml"));
+        Node uiStich = stichLoader.load();
+        root.getChildren().add(uiStich);
+        uiStichStapel = stichLoader.getController();
+        uiStichStapel.uiErstellen(witch);
 
         FXMLLoader trumpfKartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/witch-karte.fxml"));
         Node uiTrumpfKarte = trumpfKartenLoader.load();
@@ -126,6 +133,7 @@ public class WitchView extends SpielView {
         trumpfUiKarte.uiErstellen(witch.gibTrumpfKarte());
         punktetafel.updateUi();
         rundenNummerText.setText(String.valueOf(witch.gibRundenNummer() + 1));
+        uiStichStapel.updateUi();
 
         for (WitchGegnerUiHand hand : gegnerUiHaende.values())
             hand.updateUi();

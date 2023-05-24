@@ -44,8 +44,6 @@ public class WitchView extends SpielView {
     private WitchUiStichStapel uiStichStapel;
 
     public void initialize() throws IOException {
-        //TODO: Anzeigen, welche Karten auf dem Stich (Ablagestapel) liegen
-
         //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
         //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
         // Hallo, Finn hier. NÖ! (-> irgendwann?)

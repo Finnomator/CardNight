@@ -16,9 +16,26 @@
 
     <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
         <Text text="Schätzung" />
-        <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Sticheanzahl" />
+        <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Anzahl Stiche" />
         <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#schaetzungOkKlick" text="OK" />
     </VBox>
+
+    <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30" prefWidth="150" StackPane.alignment="BOTTOM_RIGHT">
+        <Text text="Erhaltene Stiche: ">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <Text fx:id="erhalteneSticheText" text="0">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+    </HBox>
+
 
     <HBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_CENTER">
         <Text text="Runde ">

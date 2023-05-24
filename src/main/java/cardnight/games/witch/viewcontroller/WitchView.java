@@ -31,6 +31,8 @@ public class WitchView extends SpielView {
     public Button schaetzungsOkButton;
     public HBox gegnerUiHaendeContainer;
     public Text rundenNummerText;
+    public Text schaetzungsText;
+    public Text erhalteneSticheText;
     private Witch witch;
     private WitchUiKarte trumpfUiKarte;
     private WitchHauptspielerUiHand hauptspielerUiHand;
@@ -102,7 +104,7 @@ public class WitchView extends SpielView {
         System.out.println("\t\tWarte auf Schätzung vom Spieler...");
 
         Platform.runLater(() -> hauptspielerUiHand.disableAllCards());
-        schaetzungsRoot.setVisible(true);
+        schaetzungsRoot.setDisable(false);
 
         hatStichSchaetzungBestaetigt.set(false);
 
@@ -118,7 +120,7 @@ public class WitchView extends SpielView {
         System.out.println("\t\t\tWarte bis Spieler Karte ausgewählt hat...");
 
         Platform.runLater(() -> hauptspielerUiHand.updateUi(false));
-        schaetzungsRoot.setVisible(false);
+        schaetzungsRoot.setDisable(true);
 
         while (!hatKarteGeklickt.get())
             Witch.delay(50);
@@ -134,6 +136,7 @@ public class WitchView extends SpielView {
         punktetafel.updateUi();
         rundenNummerText.setText(String.valueOf(witch.gibRundenNummer() + 1));
         uiStichStapel.updateUi();
+        erhalteneSticheText.setText(String.valueOf(witch.gibHauptspieler().gibAnzahlErzhaltenderStiche()));
 
         for (WitchGegnerUiHand hand : gegnerUiHaende.values())
             hand.updateUi();

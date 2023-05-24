@@ -18,6 +18,19 @@ public class WitchKarte extends Karte {
         return wert == 0;
     }
 
+    public int vergleichsWert(WitchKarte trumpf) {
+        if (istZauberer()) {
+            return 27;
+        }
+        if (istNarr()) {
+            return 0;
+        }
+        if (! trumpf.istNarr() && ! trumpf.istZauberer() && farbe == trumpf.farbe) {
+            return wert + 13;
+        }
+        return wert;
+    }
+
     @Override
     public String datenAlsString() {
         if (wert != 0 && wert != 14)

@@ -41,9 +41,6 @@ public class WitchView extends SpielView {
     private HashMap<WitchGegner, WitchGegnerUiHand> gegnerUiHaende;
 
     public void initialize() throws IOException {
-        //TODO: Die Anzahl der Stiche anzeigen, die jeder Spieler gerade hat
-        //TODO: Die Rückseiten der Gegnerkarten anzeigen
-        //TODO: Anzeigen, wer am Zug ist
         //TODO: Anzeigen, welche Karten auf dem Stich (Ablagestapel) liegen
 
         //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:

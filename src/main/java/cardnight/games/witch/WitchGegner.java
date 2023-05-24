@@ -11,7 +11,7 @@ public class WitchGegner extends WitchSpieler {
 
     @Override
     public void schaetzen() {
-        handkarten.sort((o1, o2) -> o1.vergleichsWert(spiel.trumpfKarte) - (o2.vergleichsWert(spiel.trumpfKarte)));
+        handkarten.sort((o1, o2) -> o1.vergleichsWert(spiel.gibTrumpfKarte()) - (o2.vergleichsWert(spiel.gibTrumpfKarte())));
         Collections.reverse(handkarten);
 
         stichSchaetzung = (int) Math.round(handSchaetzung(handkarten, istAmZug() ? 1 : 0));
@@ -41,19 +41,19 @@ public class WitchGegner extends WitchSpieler {
         double bewertung = 100;
 
         for (WitchKarte betrachteteKarte : spielbar) {
-            int karteAufStich = spiel.stich.length + 1;
-            for (int i = 0; i < spiel.stich.length; i++) {
-                if (spiel.stich[i] == null) {
+            int karteAufStich = spiel.gibStich().length + 1;
+            for (int i = 0; i < spiel.gibStich().length; i++) {
+                if (spiel.gibStich()[i] == null) {
                     karteAufStich = i;
                     break;
                 }
             }
-            WitchKarte [] neuerStich = spiel.stich.clone();
+            WitchKarte [] neuerStich = spiel.gibStich().clone();
             neuerStich[karteAufStich] = betrachteteKarte;
             double gewinnerStich = spiel.stichGeben(0, neuerStich, karteAufStich + 1);
             double machtStich = spiel.wahrscheinlichkeit(betrachteteKarte, handkarten, gewinnerStich == karteAufStich ? 1 : 0);
 
-            ArrayList<WitchKarte> neueHand = (ArrayList<WitchKarte>)handkarten.clone();
+            ArrayList<WitchKarte> neueHand = (ArrayList<WitchKarte>) handkarten.clone();
             neueHand.remove(betrachteteKarte);
 
             double neueSticheAnzahl = stichSchaetzung - anzahlErhaltenerStiche - machtStich;

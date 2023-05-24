@@ -7,13 +7,13 @@ import javafx.application.Platform;
 import java.util.ArrayList;
 
 public class Witch extends Spiel {
-    protected final WitchSpieler[] spieler;
-    protected int anzahlSpieler;
-    protected int start;
-    protected WitchKarte[] stich;
-    protected ArrayList<WitchKarte> benutzt;
-    protected int spielerAmZug;
-    protected WitchKarte trumpfKarte;
+    private final WitchSpieler[] spieler;
+    private final int anzahlSpieler;
+    private final int start;
+    private WitchKarte[] stich;
+    private final ArrayList<WitchKarte> benutzt;
+    private int spielerAmZug;
+    private WitchKarte trumpfKarte;
     private final int kartenAnzahlInEinemSpiel = 60;
     private final WitchView observerView;
     private int rundenNummer;

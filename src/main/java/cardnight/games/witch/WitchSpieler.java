@@ -74,7 +74,7 @@ public abstract class WitchSpieler extends Spieler {
         // Farbzwang
         WitchFarbe zwang = null;
 
-        for (WitchKarte imStapel : spiel.stich) {  //von unten nach oben im Stich
+        for (WitchKarte imStapel : spiel.gibStich()) {  //von unten nach oben im Stich
             if (imStapel != null) {
                 if (imStapel.wert != 0 && imStapel.wert != 14) {  //wenn die Karte nicht weiß ist
                     zwang = imStapel.farbe;  //Farbzwang ist die unterste Farbe

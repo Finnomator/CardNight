@@ -91,7 +91,7 @@ public class Witch extends Spiel {
 
                     // Der Stich wird dem Gewinner gegeben.
                     // Der Gewinner ist als Nächstes dran
-                    startSpielerDerKleinenRunde = stichGeben(startSpielerDerKleinenRunde);
+                    startSpielerDerKleinenRunde = stichGeben(startSpielerDerKleinenRunde, stich, anzahlSpieler);
                     spieler[startSpielerDerKleinenRunde].fuegeStichHinzu();
                     // Ablage wird geleert
                     stich = new WitchKarte[anzahlSpieler];
@@ -144,6 +144,7 @@ public class Witch extends Spiel {
         trumpfKarte = WitchKartenset.gibZufaelligeKarte(kartenAnzahlInEinemSpiel / anzKarten != anzahlSpieler);
 
         System.out.println("\t\tTrumpf: " + trumpfKarte.datenAlsString());
+        System.out.println("\t\tStartspieler: " + spieler[spielerAmZug].name);
 
         // Karten austeilen
         for (WitchSpieler s : spieler)
@@ -153,10 +154,10 @@ public class Witch extends Spiel {
         update();
     }
 
-    public int stichGeben(int startSpieler) {
+    public int stichGeben(int startSpieler, WitchKarte [] derStich, int anzahlKarten) {
         // Falls es einen Zauberer gab
-        for (int i = 0; i < anzahlSpieler; i++) {
-            if (stich[i].istZauberer())
+        for (int i = 0; i < anzahlKarten; i++) {
+            if (derStich[i].istZauberer())
                 return (startSpieler + i) % anzahlSpieler;
         }
 
@@ -165,9 +166,9 @@ public class Witch extends Spiel {
             int hoechste = 0;
             int s = 0;
 
-            for (int i = 0; i < anzahlSpieler; i++) {
-                if (stich[i].farbe == trumpfKarte.farbe && stich[i].wert > hoechste) {
-                    hoechste = stich[i].wert;
+            for (int i = 0; i < anzahlKarten; i++) {
+                if (derStich[i].farbe == trumpfKarte.farbe && derStich[i].wert > hoechste) {
+                    hoechste = derStich[i].wert;
                     s = i;
                 }
             }
@@ -181,13 +182,13 @@ public class Witch extends Spiel {
         WitchFarbe farbe = null;
         int hoechste = 0;
         int s = 0;
-        for (int i = 0; i < anzahlSpieler; i++) {
+        for (int i = 0; i < anzahlKarten; i++) {
 
-            if (farbe == null && !stich[i].istNarr())
-                farbe = stich[i].farbe;
+            if (farbe == null && !derStich[i].istNarr())
+                farbe = derStich[i].farbe;
 
-            if (stich[i].farbe == farbe && stich[i].wert > hoechste) {
-                hoechste = stich[i].wert;
+            if (derStich[i].farbe == farbe && derStich[i].wert > hoechste) {
+                hoechste = derStich[i].wert;
                 s = i;
             }
         }

@@ -5,6 +5,11 @@ import cardnight.games.Spiel;
 
 public class TicTacToe extends Spiel {
 
+    public TicTacToe() {
+        TicTacToeSpieler ts1 = new TicTacToeSpieler("Chris",this, true);
+        TicTacToeSpieler ts2 = new TicTacToeSpieler("Finn",this, false);
+    }
+
     public TicTacToeSpieler gibGewinner() {
         throw new UnsupportedOperationException();
     }

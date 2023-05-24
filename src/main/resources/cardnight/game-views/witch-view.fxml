@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchView">
     <Button mnemonicParsing="false" onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+
+    <HBox fx:id="gegnerUiHaendeContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10" StackPane.alignment="TOP_CENTER">
+      <StackPane.margin>
+         <Insets top="40.0" />
+      </StackPane.margin>
+    </HBox>
+
     <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
         <Text text="Wie viele Stiche wirst du diese Runde bekommen?" />
         <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Sticheanzahl" />
         <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#schaetzungOkKlick" text="OK" />
     </VBox>
+
+    <HBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+        <Text text="Runde ">
+         <font>
+            <Font size="22.0" />
+         </font></Text>
+        <Text fx:id="rundenNummerText" text="1" >
+            <font>
+            <Font size="22.0" />
+        </font></Text>
+    </HBox>
+
 </StackPane>

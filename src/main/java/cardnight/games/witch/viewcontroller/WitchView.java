@@ -6,7 +6,6 @@ import cardnight.games.SpielView;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchGegner;
 import cardnight.games.witch.WitchKarte;
-import cardnight.games.witch.WitchSpieler;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,7 +30,6 @@ public class WitchView extends SpielView {
     public Button schaetzungsOkButton;
     public HBox gegnerUiHaendeContainer;
     public Text rundenNummerText;
-    public Text schaetzungsText;
     public Text erhalteneSticheText;
     private Witch witch;
     private WitchUiKarte trumpfUiKarte;
@@ -109,7 +107,11 @@ public class WitchView extends SpielView {
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
 
-        return Integer.parseInt(schaetzungsEingabeFeld.getText());
+        try {
+            return Integer.parseInt(schaetzungsEingabeFeld.getText());
+        } catch (NumberFormatException ex) {
+            return warteAufSchaetzung();
+        }
     }
 
     public WitchKarte warteAufKartenauswahl() {

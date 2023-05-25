@@ -142,12 +142,11 @@ public class Witch extends Spiel {
 
     public void kartenAusteilen(int anzKarten) {
 
-        System.out.println("\tEs werden Karten ausgeteilt");
-
         // Trumpf festlegen                              Wenn nicht alle Karten verteilt werden
         trumpfKarte = WitchKartenset.gibZufaelligeKarte(kartenAnzahlInEinemSpiel / anzKarten != anzahlSpieler);
 
-        System.out.println("\t\tTrumpf: " + trumpfKarte.datenAlsString());
+        System.out.println("\tTrumpf: " + trumpfKarte.datenAlsString());
+        System.out.println("\tEs werden Karten ausgeteilt");
         System.out.println("\t\tStartspieler: " + spieler[spielerAmZug].name);
 
         // Karten austeilen

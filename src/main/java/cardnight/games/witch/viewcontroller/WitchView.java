@@ -46,7 +46,7 @@ public class WitchView extends SpielView {
         //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
         // Hallo, Finn hier. NÖ! (-> irgendwann?)
 
-        witch = new Witch(4, this);
+        witch = new Witch(4, 1000, this);
         gegnerUiHaende = new HashMap<>();
 
         for (int i = 1; i < witch.gibSpieler().length; ++i) {

@@ -17,10 +17,12 @@ public class Witch extends Spiel {
     private final int kartenAnzahlInEinemSpiel = 60;
     private final WitchView observerView;
     private int rundenNummer;
+    private final long gameDelayMillis;
 
-    public Witch(int anzahl, WitchView observerView) {
+    public Witch(int anzahl, long gameDelayMillis, WitchView observerView) {
         this.observerView = observerView;
         anzahlSpieler = anzahl;
+        this.gameDelayMillis = gameDelayMillis;
 
         spieler = new WitchSpieler[anzahl];
         spieler[0] = new WitchMensch("Hauptspieler", this);
@@ -69,7 +71,6 @@ public class Witch extends Spiel {
     public void game() {
         // Große Runde = alle Leute legen Karten ab, bis sie keine mehr haben.
         // Kleine Runde = alle Leute legen 1 Karte ab.
-        int GameDelay = 1000;
 
         Thread t = new Thread(() -> {
             for (int kartenProSpieler = 1; kartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; kartenProSpieler++, ++rundenNummer) {
@@ -94,11 +95,11 @@ public class Witch extends Spiel {
                     for (int i = 0; i < anzahlSpieler; i++) {
                         update();
                         spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
-                        delay(GameDelay);
+                        delay(gameDelayMillis);
                         stich[i] = spieler[spielerAmZug].spielen();
                     }
                     update();
-                    delay(GameDelay * 2);
+                    delay(gameDelayMillis * 2);
 
                     // Der Stich wird dem Gewinner gegeben.
                     // Der Gewinner ist als Nächstes dran
@@ -112,7 +113,7 @@ public class Witch extends Spiel {
 
                 punkteVerteilen();
                 update();
-                delay(GameDelay * 2);
+                delay(gameDelayMillis * 2);
                 kartenSammeln();
             }
 

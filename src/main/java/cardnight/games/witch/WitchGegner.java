@@ -30,7 +30,11 @@ public class WitchGegner extends WitchSpieler {
             anfaenge += wahrscheinlichkeit;
         }
 
-        return  schaetzung;
+        double durchschnittsSchaetzung = (double) karten.size() / spiel.gibAnzahlSpieler();
+        if (schaetzung > durchschnittsSchaetzung + 1) {
+            schaetzung = (2 * schaetzung + ((double) karten.size() / spiel.gibAnzahlSpieler())) / 3;
+        }
+        return schaetzung;
     }
 
     @Override

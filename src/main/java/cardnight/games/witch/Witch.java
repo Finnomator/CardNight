@@ -39,6 +39,10 @@ public class Witch extends Spiel {
         return trumpfKarte;
     }
 
+    public int gibAnzahlSpieler() {
+        return anzahlSpieler;
+    }
+
     public WitchSpieler[] gibSpieler() {
         return spieler;
     }
@@ -65,6 +69,7 @@ public class Witch extends Spiel {
     public void game() {
         // Große Runde = alle Leute legen Karten ab, bis sie keine mehr haben.
         // Kleine Runde = alle Leute legen 1 Karte ab.
+        int GameDelay = 1000;
 
         Thread t = new Thread(() -> {
             for (int kartenProSpieler = 1; kartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; kartenProSpieler++, ++rundenNummer) {
@@ -89,9 +94,11 @@ public class Witch extends Spiel {
                     for (int i = 0; i < anzahlSpieler; i++) {
                         update();
                         spielerAmZug = (startSpielerDerKleinenRunde + i) % anzahlSpieler;
-                        delay(500);
+                        delay(GameDelay);
                         stich[i] = spieler[spielerAmZug].spielen();
                     }
+                    update();
+                    delay(GameDelay * 2);
 
                     // Der Stich wird dem Gewinner gegeben.
                     // Der Gewinner ist als Nächstes dran
@@ -105,6 +112,7 @@ public class Witch extends Spiel {
 
                 punkteVerteilen();
                 update();
+                delay(GameDelay * 2);
                 kartenSammeln();
             }
 

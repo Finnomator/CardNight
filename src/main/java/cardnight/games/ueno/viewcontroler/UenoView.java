@@ -162,15 +162,16 @@ public class UenoView extends SpielView {
             System.out.println(hauptSpieler.name + " konnte wieder nicht legen");
             hauptSpielerTurnIndicator.setFill(Color.RED);
             gegnerZuege();
-        } else {
-            UenoKarte ablegbareKarte = hauptSpieler.ablegbareKarten().get(0);
-            if (ablegbareKarte.art == UenoKartenArt.FARBWAHL || ablegbareKarte.art == UenoKartenArt.PLUS_VIER)
-                ablegbareKarte.setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
-            updateUi();
-
-            System.out.println("Spieler zog nach und sollte folgende Karte legen können:");
-            System.out.println("\t" + ablegbareKarte.datenAlsString());
+            return;
         }
+
+        UenoKarte ablegbareKarte = hauptSpieler.ablegbareKarten().get(0);
+        if (ablegbareKarte.istSchwarz())
+            ablegbareKarte.setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
+        updateUi();
+
+        System.out.println("Spieler zog nach und sollte folgende Karte legen können:");
+        System.out.println("\t" + ablegbareKarte.datenAlsString());
     }
 
     // ÜNO Ui Update Methoden

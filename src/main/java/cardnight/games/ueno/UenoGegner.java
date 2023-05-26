@@ -9,10 +9,8 @@ public class UenoGegner extends UenoSpieler {
     public UenoKarte whaeleKarteZumAblegen() {
         for (UenoKarte karte : handkarten) {
             if (spiel.istKarteAblegbar(karte)) {
-
-                if (karte.art == UenoKartenArt.FARBWAHL || karte.art == UenoKartenArt.PLUS_VIER)
+                if (karte.istSchwarz())
                     karte.setzeFarbe(spiel.gibZuletztAbgelegteKarte().farbe);
-
                 return karte;
             }
         }

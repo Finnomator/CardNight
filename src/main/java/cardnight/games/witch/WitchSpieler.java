@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public abstract class WitchSpieler extends Spieler {
 
-    protected Witch spiel;
+    protected final Witch spiel;
     protected int anzahlErhaltenerStiche;
     protected int stichSchaetzung;
     protected ArrayList<WitchKarte> handkarten;
-    protected ArrayList<Integer> punkteProRunde;
-    protected ArrayList<Integer> stichSchaetzungenProRunde;
+    protected final ArrayList<Integer> punkteProRunde;
+    protected final ArrayList<Integer> stichSchaetzungenProRunde;
 
     public WitchSpieler(String name, Witch spiel) {
         super(name, spiel);

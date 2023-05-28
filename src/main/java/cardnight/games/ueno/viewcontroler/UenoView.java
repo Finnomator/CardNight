@@ -1,6 +1,7 @@
 package cardnight.games.ueno.viewcontroler;
 
 import cardnight.GameOver;
+import cardnight.Main;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
 import cardnight.games.ueno.*;
@@ -36,8 +37,9 @@ public class UenoView extends SpielView {
         int gegnerAnzahl = 3;
 
         ueno = new Ueno(gegnerAnzahl + 1, 7);
-        hauptSpieler = ueno.gibHauptSpieler();
+        Main.setzeAktuellesSpiel(ueno);
 
+        hauptSpieler = ueno.gibHauptSpieler();
         spielerHaende = new HashMap<>(gegnerAnzahl + 1);
 
         for (int i = 0; i < gegnerAnzahl; ++i) {

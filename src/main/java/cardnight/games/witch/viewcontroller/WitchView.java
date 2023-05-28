@@ -1,6 +1,7 @@
 package cardnight.games.witch.viewcontroller;
 
 import cardnight.GameOver;
+import cardnight.Main;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
 import cardnight.games.witch.Witch;
@@ -47,6 +48,8 @@ public class WitchView extends SpielView {
         // Hallo, Finn hier. NÖ! (-> irgendwann?)
 
         witch = new Witch(4, 1000, this);
+        Main.setzeAktuellesSpiel(witch);
+
         gegnerUiHaende = new HashMap<>();
 
         for (int i = 1; i < witch.gibSpieler().length; ++i) {

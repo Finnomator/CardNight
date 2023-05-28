@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchGegnerUiHand">
+
+    <Circle fx:id="turnIndicator" fill="RED" radius="10" />
+
+    <VBox alignment="CENTER">
+        <Text fx:id="nameText" />
+        <HBox>
+            <Text text="Stiche: " />
+            <Text fx:id="sticheText" text="0" />
+        </HBox>
+
+    </VBox>
+
+    <HBox fx:id="kartenBox" maxHeight="-Infinity" maxWidth="-Infinity" spacing="2.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" />
+</VBox>

@@ -5,17 +5,21 @@ import cardnight.Main;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
 import cardnight.games.witch.Witch;
+import cardnight.games.witch.WitchGegner;
 import cardnight.games.witch.WitchKarte;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -25,6 +29,9 @@ public class WitchView extends SpielView {
     public TextField schaetzungsEingabeFeld;
     public VBox schaetzungsRoot;
     public Button schaetzungsOkButton;
+    public HBox gegnerUiHaendeContainer;
+    public Text rundenNummerText;
+    public Text erhalteneSticheText;
     private Witch witch;
     private WitchUiKarte trumpfUiKarte;
     private WitchHauptspielerUiHand hauptspielerUiHand;
@@ -32,19 +39,37 @@ public class WitchView extends SpielView {
     private final AtomicBoolean hatStichSchaetzungBestaetigt = new AtomicBoolean(false);
     private final AtomicBoolean hatKarteGeklickt = new AtomicBoolean(false);
     private final AtomicReference<WitchKarte> geklickteKarte = new AtomicReference<>();
+    private HashMap<WitchGegner, WitchGegnerUiHand> gegnerUiHaende;
+    private WitchUiStichStapel uiStichStapel;
 
     public void initialize() throws IOException {
-        //TODO: Die Anzahl der Stiche anzeigen, die jeder Spieler gerade hat
-        //TODO: Die Rückseiten der Gegnerkarten anzeigen
-        //TODO: Anzeigen, wer am Zug ist
-        //TODO: Anzeigen, welche Karten auf dem Stich (Ablagestapel) liegen
-
         //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
         //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
         // Hallo, Finn hier. NÖ! (-> irgendwann?)
 
-        witch = new Witch(4, this);
+        witch = new Witch(4, 1000, this);
         Main.setzeAktuellesSpiel(witch);
+
+        gegnerUiHaende = new HashMap<>();
+
+        for (int i = 1; i < witch.gibSpieler().length; ++i) {
+            WitchGegner gegner = (WitchGegner) witch.gibSpieler()[i];
+
+            FXMLLoader gegnerHandLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/gegner-hand.fxml"));
+            Node gegnerHandNode = gegnerHandLoader.load();
+            
+            gegnerUiHaendeContainer.getChildren().add(gegnerHandNode);
+            WitchGegnerUiHand uiHand = gegnerHandLoader.getController();
+            uiHand.uiErstellen(gegner);
+
+            gegnerUiHaende.put(gegner, uiHand);
+        }
+
+        FXMLLoader stichLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/stich-stapel.fxml"));
+        Node uiStich = stichLoader.load();
+        root.getChildren().add(uiStich);
+        uiStichStapel = stichLoader.getController();
+        uiStichStapel.uiErstellen(witch);
 
         FXMLLoader trumpfKartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/witch-karte.fxml"));
         Node uiTrumpfKarte = trumpfKartenLoader.load();
@@ -85,7 +110,11 @@ public class WitchView extends SpielView {
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
 
-        return Integer.parseInt(schaetzungsEingabeFeld.getText());
+        try {
+            return Integer.parseInt(schaetzungsEingabeFeld.getText());
+        } catch (NumberFormatException ex) {
+            return warteAufSchaetzung();
+        }
     }
 
     public WitchKarte warteAufKartenauswahl() {
@@ -108,6 +137,12 @@ public class WitchView extends SpielView {
         hauptspielerUiHand.updateUi(true);
         trumpfUiKarte.uiErstellen(witch.gibTrumpfKarte());
         punktetafel.updateUi();
+        rundenNummerText.setText(String.valueOf(witch.gibRundenNummer() + 1));
+        uiStichStapel.updateUi();
+        erhalteneSticheText.setText(String.valueOf(witch.gibHauptspieler().gibAnzahlErzhaltenderStiche()));
+
+        for (WitchGegnerUiHand hand : gegnerUiHaende.values())
+            hand.updateUi();
     }
 
     @Override

@@ -1,6 +1,5 @@
 package cardnight.games.witch.viewcontroller;
 
-import cardnight.games.ueno.UenoKarte;
 import cardnight.games.witch.WitchKarte;
 import javafx.event.Event;
 import javafx.event.EventType;

@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public abstract class WitchSpieler extends Spieler {
 
-    protected Witch spiel;
+    protected final Witch spiel;
     protected int anzahlErhaltenerStiche;
     protected int stichSchaetzung;
     protected ArrayList<WitchKarte> handkarten;
-    protected ArrayList<Integer> punkteProRunde;
-    protected ArrayList<Integer> stichSchaetzungenProRunde;
+    protected final ArrayList<Integer> punkteProRunde;
+    protected final ArrayList<Integer> stichSchaetzungenProRunde;
 
     public WitchSpieler(String name, Witch spiel) {
         super(name, spiel);
@@ -74,7 +74,7 @@ public abstract class WitchSpieler extends Spieler {
         // Farbzwang
         WitchFarbe zwang = null;
 
-        for (WitchKarte imStapel : spiel.stich) {  //von unten nach oben im Stich
+        for (WitchKarte imStapel : spiel.gibStich()) {  //von unten nach oben im Stich
             if (imStapel != null) {
                 if (imStapel.wert != 0 && imStapel.wert != 14) {  //wenn die Karte nicht weiß ist
                     zwang = imStapel.farbe;  //Farbzwang ist die unterste Farbe

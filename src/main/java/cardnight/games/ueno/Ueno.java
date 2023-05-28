@@ -1,5 +1,6 @@
 package cardnight.games.ueno;
 
+import cardnight.Tools;
 import cardnight.games.Spiel;
 import cardnight.games.Spieler;
 
@@ -173,6 +174,11 @@ public class Ueno extends Spiel {
             return true;
 
         return fertigeSpieler.size() >= spieler.length - 1;
+    }
+
+    @Override
+    public String gibAnleitung() {
+        return Tools.readFile(getClass().getResource("/cardnight/anleitungen/UenoAnleitung"));
     }
 
     public boolean hatSpielerGewonnen(UenoSpieler spieler) {

@@ -4,11 +4,31 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(100, 100, 100, 0.5);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
-    <Button mnemonicParsing="false" onAction="#onFortsetzenClick" text="Fortsetzen" />
-    <Button mnemonicParsing="false" onAction="#onZumHauptmenueClick" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
-    <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
-        <Text text="🔊" />
-        <Slider fx:id="soundVolumeSlider" onMouseClicked="#onSoundSliderMouseClick"/>
-    </HBox>
-</StackPane>
+<GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(100, 100, 100, 0.5);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
+
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity">
+        <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" text="Fortsetzen" />
+        <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" text="Zurück zum Hauptmenü" />
+        <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
+            <Text text="🔊" />
+            <Slider fx:id="soundVolumeSlider" onMouseClicked="#onSoundSliderMouseClick" />
+        </HBox>
+    </VBox>
+
+    <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+        <Text text="So wird gespielt">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+        <Text fx:id="anleitungText" />
+    </VBox>
+
+
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints hgrow="ALWAYS" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints vgrow="ALWAYS" />
+   </rowConstraints>
+</GridPane>

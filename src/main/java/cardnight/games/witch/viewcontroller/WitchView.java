@@ -1,6 +1,7 @@
 package cardnight.games.witch.viewcontroller;
 
 import cardnight.GameOver;
+import cardnight.Main;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
 import cardnight.games.witch.Witch;
@@ -43,6 +44,7 @@ public class WitchView extends SpielView {
         // Hallo, Finn hier. NÖ! (-> irgendwann?)
 
         witch = new Witch(4, this);
+        Main.setzeAktuellesSpiel(witch);
 
         FXMLLoader trumpfKartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/witch-karte.fxml"));
         Node uiTrumpfKarte = trumpfKartenLoader.load();

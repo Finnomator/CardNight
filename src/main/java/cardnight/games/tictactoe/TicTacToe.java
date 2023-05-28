@@ -1,6 +1,11 @@
 package cardnight.games.tictactoe;
 
+import cardnight.Tools;
 import cardnight.games.Spiel;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
 public class TicTacToe extends Spiel {
@@ -16,5 +21,10 @@ public class TicTacToe extends Spiel {
 
     public boolean istSpielBeendet() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String gibAnleitung() {
+        return Tools.readFile(getClass().getResource("/cardnight/anleitungen/TicTacToeAnleitung"));
     }
 }

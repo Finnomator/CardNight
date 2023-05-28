@@ -1,7 +1,6 @@
 package cardnight.games.ueno.viewcontroler;
 
 import cardnight.games.ueno.UenoKarte;
-import cardnight.games.ueno.UenoKartenArt;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
@@ -18,12 +17,14 @@ public class UenoHauptspielerUiHand extends UenoUiHand {
 
         ArrayList<UenoKarte> ablegbareKarten = spieler.ablegbareKarten();
 
-        for (UenoKarte karte : spieler.gibHandkarten()) {
+        ArrayList<UenoKarte> gibHandkarten = spieler.gibHandkarten();
+        for (int i = 0, gibHandkartenSize = gibHandkarten.size(); i < gibHandkartenSize; i++) { // ConcurrentModificationException gibt's auch hier
+            UenoKarte karte = gibHandkarten.get(i);
 
             FXMLLoader loader;
             Node uiKarte;
 
-            if ((karte.art == UenoKartenArt.PLUS_VIER ||karte.art == UenoKartenArt.FARBWAHL) && karte.farbe == null) {
+            if (karte.istSchwarz()) {
                 loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/farbwahl-karte.fxml"));
                 try {
                     uiKarte = loader.load();

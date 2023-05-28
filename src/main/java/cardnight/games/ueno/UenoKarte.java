@@ -36,6 +36,10 @@ public class UenoKarte extends Karte {
         return effektWurdeAktiviert;
     }
 
+    public boolean istSchwarz() {
+        return (art == UenoKartenArt.PLUS_VIER || art == UenoKartenArt.FARBWAHL) && farbe == null;
+    }
+
     @Override
     public String datenAlsString() {
         return art + " " + farbe + " " + wert;

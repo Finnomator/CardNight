@@ -197,14 +197,11 @@ public class Ueno extends Spiel {
 
     public boolean istKarteAblegbar(UenoKarte karte) {
         UenoKarte obersteKarte = gibZuletztAbgelegteKarte();
-        if (karte.art == UenoKartenArt.ZAHL) {
+
+        if (karte.art == UenoKartenArt.ZAHL)
             return karte.wert == obersteKarte.wert || karte.farbe == obersteKarte.farbe;
-        } else if (karte.art == UenoKartenArt.FARBWAHL || karte.art == UenoKartenArt.PLUS_VIER) {
-            if (karte.farbe == null)
-                return true;
-            return karte.farbe == obersteKarte.farbe;
-        } else {
-            return karte.art == obersteKarte.art || karte.farbe == obersteKarte.farbe;
-        }
+        if (karte.art == UenoKartenArt.FARBWAHL || karte.art == UenoKartenArt.PLUS_VIER)
+            return karte.farbe == null || karte.farbe == obersteKarte.farbe;
+        return karte.art == obersteKarte.art || karte.farbe == obersteKarte.farbe;
     }
 }

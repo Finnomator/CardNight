@@ -1,5 +1,6 @@
 package cardnight.games.witch;
 
+import cardnight.Tools;
 import cardnight.games.Spiel;
 import cardnight.games.witch.viewcontroller.WitchView;
 import javafx.application.Platform;
@@ -300,5 +301,10 @@ public class Witch extends Spiel {
     @Override
     public boolean istSpielBeendet() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String gibAnleitung() {
+        return Tools.readFile(getClass().getResource("/cardnight/anleitungen/WitchAnleitung"));
     }
 }

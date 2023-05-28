@@ -1,6 +1,7 @@
 package cardnight.games.tictactoe;
 
 import cardnight.GameOver;
+import cardnight.Main;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
 import cardnight.games.Spieler;
@@ -26,6 +27,7 @@ public class TicTacToeView extends SpielView {
 
     public void initialize() {
         ttt = new TicTacToe();
+        Main.setzeAktuellesSpiel(ttt);
 
         for (Node node : tttFeld.getChildren()) {
             if (!(node instanceof Button))

@@ -25,6 +25,6 @@ public class TicTacToe extends Spiel {
 
     @Override
     public String gibAnleitung() {
-        return Tools.readFile(getClass().getResource("/cardnight/anleitungen/TicTacToeAnleitung"));
+        return Tools.readFile("/cardnight/anleitungen/TicTacToeAnleitung");
     }
 }

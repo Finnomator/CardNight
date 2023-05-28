@@ -178,7 +178,7 @@ public class Ueno extends Spiel {
 
     @Override
     public String gibAnleitung() {
-        return Tools.readFile(getClass().getResource("/cardnight/anleitungen/UenoAnleitung"));
+        return Tools.readFile("/cardnight/anleitungen/UenoAnleitung");
     }
 
     public boolean hatSpielerGewonnen(UenoSpieler spieler) {

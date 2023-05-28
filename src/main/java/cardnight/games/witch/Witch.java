@@ -402,6 +402,6 @@ public class Witch extends Spiel {
 
     @Override
     public String gibAnleitung() {
-        return Tools.readFile(getClass().getResource("/cardnight/anleitungen/WitchAnleitung"));
+        return Tools.readFile("/cardnight/anleitungen/WitchAnleitung");
     }
 }

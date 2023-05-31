@@ -87,7 +87,10 @@ public class WitchView extends SpielView {
         numericOnly(schaetzungsEingabeFeld);
 
         FXMLLoader handkartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/hauptspieler-hand.fxml"));
-        root.getChildren().add(handkartenLoader.load());
+        Node uiHauptHand = handkartenLoader.load();
+        GridPane.setRowIndex(uiHauptHand, 2);
+        GridPane.setHalignment(uiHauptHand, HPos.CENTER);
+        tableGrid.getChildren().add(uiHauptHand);
         hauptspielerUiHand = handkartenLoader.getController();
         hauptspielerUiHand.uiErstellen(witch.gibHauptspieler());
 

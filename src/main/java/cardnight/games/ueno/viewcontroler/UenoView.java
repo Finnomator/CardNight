@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -23,11 +24,11 @@ import java.util.HashMap;
 public class UenoView extends SpielView {
 
     public Button nachziehstapelButton;
-    public Button ablageStapelButton;
     public StackPane root;
     public Text gewinnerText;
     public HBox gegnerHaendeContainer;
     public Circle hauptSpielerTurnIndicator;
+    public ImageView ablagestapelImageView;
     private Ueno ueno;
     private HashMap<UenoSpieler, UenoUiHand> spielerHaende;
     private UenoSpieler hauptSpieler;
@@ -38,6 +39,7 @@ public class UenoView extends SpielView {
 
         ueno = new Ueno(gegnerAnzahl + 1, 7);
         Main.setzeAktuellesSpiel(ueno);
+        UenoKartenBilder.ladeBilder();
 
         hauptSpieler = ueno.gibHauptSpieler();
         spielerHaende = new HashMap<>(gegnerAnzahl + 1);
@@ -83,16 +85,16 @@ public class UenoView extends SpielView {
             return;
         }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
         if (ueno.mussVierZiehen())
             zieheKarten(gegner, 4);
         else if (ueno.mussZweiZiehen())
             zieheKarten(gegner, 2);
+
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         if (gegner.kannKarteAblegen()) {
             legeKarte(gegner, gegner.whaeleKarteZumAblegen());
@@ -186,8 +188,9 @@ public class UenoView extends SpielView {
 
             // Zeige oberste abgelegte Karte
             UenoKarte oberste = ueno.gibZuletztAbgelegteKarte();
-            ablageStapelButton.setStyle("-fx-background-color: " + UenoUiKarte.farbeZuString(oberste.farbe) + ";");
-            ablageStapelButton.setText(UenoUiKarte.uenoKartenArtZuString(oberste));
+            // TODO: to be changed
+            if (oberste.art == UenoKartenArt.ZAHL && oberste.farbe == UenoFarbe.ROT)
+                ablagestapelImageView.setImage(UenoKartenBilder.karteZuBild(oberste));
         });
     }
 

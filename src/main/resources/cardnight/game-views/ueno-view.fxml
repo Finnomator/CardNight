@@ -2,26 +2,38 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
 
-    <Button fx:id="nachziehstapelButton" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#nachziehstapelClick" prefHeight="66.0" prefWidth="112.0" text="ÜNO">
-        <StackPane.margin>
-            <Insets right="200.0" />
-        </StackPane.margin></Button>
+    <GridPane>
 
-    <HBox fx:id="gegnerHaendeContainer" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" StackPane.alignment="TOP_CENTER">
-        <StackPane.margin>
+        <AnchorPane maxHeight="-Infinity" prefHeight="300.0" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
+
+        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="nachziehstapelButton" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#nachziehstapelClick" prefHeight="66.0" prefWidth="112.0" text="ÜNO" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <ImageView fx:id="ablagestapelImageView" fitHeight="98.64" fitWidth="68.16" rotate="90.0" />
+        </HBox>
+
+
+        <HBox fx:id="gegnerHaendeContainer" maxHeight="-Infinity" maxWidth="-Infinity" spacing="100.0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" StackPane.alignment="TOP_CENTER">
+         <GridPane.margin>
             <Insets top="50.0" />
-        </StackPane.margin></HBox>
+         </GridPane.margin></HBox>
 
-    <Button fx:id="ablageStapelButton" layoutX="372.0" layoutY="169.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" text="0" StackPane.alignment="CENTER">
-        <StackPane.margin>
-            <Insets right="-200.0" />
-        </StackPane.margin></Button>
+      <columnConstraints>
+         <ColumnConstraints hgrow="ALWAYS" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints vgrow="ALWAYS" />
+      </rowConstraints>
+    </GridPane>
+
     <Text fx:id="gewinnerText" mouseTransparent="true" textAlignment="CENTER">
         <font>
             <Font size="27.0" />

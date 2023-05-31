@@ -26,7 +26,7 @@ public class UenoStandartUiKarte extends UenoUiKarte {
 
     private void bildSetzen(UenoKarte karte) {
 
-        ImageView img = new ImageView(UenoKartenBilder.zahlenKarten.get(karte.farbe)[karte.wert]);
+        ImageView img = new ImageView(UenoKartenBilder.karteZuBild(karte));
 
         if (karte.art == UenoKartenArt.ZAHL && karte.farbe == UenoFarbe.ROT)
             mainButton.setGraphic(img);

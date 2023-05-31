@@ -3,6 +3,7 @@ package cardnight.games.ueno.viewcontroler;
 import cardnight.Main;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.UenoKarte;
+import cardnight.games.ueno.UenoKartenArt;
 import javafx.scene.image.Image;
 
 import java.util.HashMap;
@@ -27,5 +28,12 @@ public class UenoKartenBilder {
                         56.8 * 2, 82.2 * 2, true, true);
             zahlenKarten.put(farbe, karten);
         }
+    }
+
+    public static Image karteZuBild(UenoKarte karte) {
+        if (karte.art == UenoKartenArt.ZAHL)
+            return zahlenKarten.get(karte.farbe)[karte.wert];
+
+        throw new RuntimeException();
     }
 }

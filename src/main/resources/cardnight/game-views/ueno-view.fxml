@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -12,9 +13,9 @@
 
         <AnchorPane maxHeight="-Infinity" prefHeight="300.0" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
 
-        <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <Button fx:id="nachziehstapelButton" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#nachziehstapelClick" prefHeight="66.0" prefWidth="112.0" text="ÜNO" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Button fx:id="ablageStapelButton" layoutX="372.0" layoutY="169.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" text="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" StackPane.alignment="CENTER" />
+            <ImageView fx:id="ablagestapelImageView" fitHeight="98.64" fitWidth="68.16" rotate="90.0" />
         </HBox>
 
 

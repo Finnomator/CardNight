@@ -3,6 +3,4 @@
 <?import javafx.scene.layout.*?>
 
 
-<HBox fx:id="handkartenBox" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" StackPane.alignment="BOTTOM_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoHauptspielerUiHand">
-
-</HBox>
+<HBox fx:id="handkartenBox" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoHauptspielerUiHand"/>

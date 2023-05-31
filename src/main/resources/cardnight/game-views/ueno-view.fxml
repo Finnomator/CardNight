@@ -9,9 +9,9 @@
 
 <StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
 
-    <GridPane>
+    <GridPane fx:id="tableGrid">
 
-        <AnchorPane maxHeight="-Infinity" prefHeight="300.0" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
 
         <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <Button fx:id="nachziehstapelButton" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#nachziehstapelClick" prefHeight="66.0" prefWidth="112.0" text="ÜNO" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
@@ -29,8 +29,8 @@
       </columnConstraints>
       <rowConstraints>
          <RowConstraints />
-         <RowConstraints />
          <RowConstraints vgrow="ALWAYS" />
+         <RowConstraints />
       </rowConstraints>
     </GridPane>
 

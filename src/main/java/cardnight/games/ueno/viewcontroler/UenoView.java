@@ -7,9 +7,11 @@ import cardnight.games.SpielView;
 import cardnight.games.ueno.*;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -29,6 +31,7 @@ public class UenoView extends SpielView {
     public HBox gegnerHaendeContainer;
     public Circle hauptSpielerTurnIndicator;
     public ImageView ablagestapelImageView;
+    public GridPane tableGrid;
     private Ueno ueno;
     private HashMap<UenoSpieler, UenoUiHand> spielerHaende;
     private UenoSpieler hauptSpieler;
@@ -54,7 +57,10 @@ public class UenoView extends SpielView {
         }
 
         FXMLLoader handLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/hauptspieler-hand.fxml"));
-        root.getChildren().add(handLoader.load());
+        Node uiHauptHand = handLoader.load();
+        GridPane.setRowIndex(uiHauptHand, 2);
+        GridPane.setHalignment(uiHauptHand, HPos.CENTER);
+        tableGrid.getChildren().add(uiHauptHand);
         UenoHauptspielerUiHand hauptHand = handLoader.getController();
         hauptHand.uiErstellen(hauptSpieler);
         spielerHaende.put(hauptSpieler, hauptHand);

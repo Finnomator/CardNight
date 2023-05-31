@@ -3,4 +3,4 @@
 <?import javafx.scene.layout.*?>
 
 
-<GridPane fx:id="root" hgap="7.0" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: lightgray;" vgap="3.0" StackPane.Alignment="CENTER_RIGHT" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchPunktetafel"/>
+<GridPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: lightgray; -fx-border-color: black;" StackPane.Alignment="CENTER_RIGHT" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchPunktetafel" />

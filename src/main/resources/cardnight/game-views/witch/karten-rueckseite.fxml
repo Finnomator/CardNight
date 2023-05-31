@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.Rectangle?>
+<Rectangle arcHeight="15.0" arcWidth="15.0" fill="gray" height="35.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
 
-<?import javafx.scene.control.Button?>
-<Button style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.14-internal"/>

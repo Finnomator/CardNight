@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchGegnerUiHand">
-
-    <Circle fx:id="turnIndicator" fill="RED" radius="10" />
-
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchGegnerUiHand">
     <VBox alignment="CENTER">
-        <Text fx:id="nameText" />
+        <Text fx:id="nameText" text="NAME" />
         <HBox>
             <Text text="Stiche: " />
             <Text fx:id="sticheText" text="0" />
         </HBox>
-
     </VBox>
-
-    <HBox fx:id="kartenBox" maxHeight="-Infinity" maxWidth="-Infinity" spacing="2.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" />
+    <StackPane>
+        <ProgressIndicator fx:id="thinkingProgress" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" stylesheets="@../hide-percentage.css" StackPane.alignment="TOP_CENTER">
+            <StackPane.margin>
+                <Insets top="3.0" />
+            </StackPane.margin></ProgressIndicator>
+        <ImageView fitHeight="154.0" fitWidth="127.5">
+            <Image url="@../images/stickman.png" />
+        </ImageView>
+        <HBox fx:id="kartenBox" maxHeight="-Infinity" maxWidth="-Infinity" spacing="-15.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin></HBox>
+    </StackPane>
 </VBox>

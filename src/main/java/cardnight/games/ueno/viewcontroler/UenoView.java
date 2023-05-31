@@ -84,16 +84,16 @@ public class UenoView extends SpielView {
             return;
         }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
         if (ueno.mussVierZiehen())
             zieheKarten(gegner, 4);
         else if (ueno.mussZweiZiehen())
             zieheKarten(gegner, 2);
+
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         if (gegner.kannKarteAblegen()) {
             legeKarte(gegner, gegner.whaeleKarteZumAblegen());

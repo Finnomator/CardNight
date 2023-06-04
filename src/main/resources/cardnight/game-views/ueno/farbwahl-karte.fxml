@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoFarbwahlUiKarte">
-   <ImageView fitWidth="113.6" preserveRatio="true">
-      <image>
-         <Image url="@images/farbwahl/UNO_Farbwahl%20schwarz.png" />
-      </image></ImageView>
+   <Button stylesheets="@../../transparent-image-button.css">
+      <graphic>
+         <ImageView fitWidth="113.6" preserveRatio="true">
+            <Image url="@images/farbwahl/UNO_Farbwahl%20schwarz.png" />
+         </ImageView>
+      </graphic>
+      <padding>
+         <Insets top="0.001" />
+      </padding>
+   </Button>
    <GridPane alignment="CENTER">
       <columnConstraints>
          <ColumnConstraints prefWidth="27.0" />

@@ -21,7 +21,7 @@
         <rowConstraints>
             <RowConstraints />
             <RowConstraints vgrow="ALWAYS" />
-            <RowConstraints />
+            <RowConstraints prefHeight="164.4" />
         </rowConstraints>
     </GridPane>
     <Button mnemonicParsing="false" onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />

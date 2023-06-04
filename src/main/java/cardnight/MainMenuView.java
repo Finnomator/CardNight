@@ -15,7 +15,7 @@ public class MainMenuView {
     public Slider soundVolumeSlider;
 
     public void initialize() {
-        soundVolumeSlider.setValue(Main.SOUND_VOLUME);
+        soundVolumeSlider.setValue(Main.getSoundVolume() * 100.0);
     }
 
     public void onTicTacToeClick() throws IOException {
@@ -35,8 +35,7 @@ public class MainMenuView {
     }
 
     public void onSoundSliderMouseClick() {
-        Main.SOUND_VOLUME = soundVolumeSlider.getValue();
-        System.out.println("Sound bei " + Main.SOUND_VOLUME + "%");
+        Main.setSoundVolume(soundVolumeSlider.getValue() / soundVolumeSlider.getMax());
     }
 
     public static void openLinkInBrowser(String link) {

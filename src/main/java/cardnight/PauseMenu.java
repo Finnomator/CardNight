@@ -22,7 +22,7 @@ public class PauseMenu {
     public Text anleitungText;
 
     public void initialize() {
-        soundVolumeSlider.setValue(Main.SOUND_VOLUME);
+        soundVolumeSlider.setValue(Main.getSoundVolume() * 100.0);
         Spiel spiel = Main.gibAktuellGespieltesSpiel();
         if (spiel != null)
             anleitungText.setText(spiel.gibAnleitung());
@@ -41,7 +41,6 @@ public class PauseMenu {
     }
 
     public void onSoundSliderMouseClick() {
-        Main.SOUND_VOLUME = soundVolumeSlider.getValue();
-        System.out.println("Sound volume is now " + Main.SOUND_VOLUME);
+        Main.setSoundVolume(soundVolumeSlider.getValue() / 100.0);
     }
 }

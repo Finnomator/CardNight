@@ -118,7 +118,8 @@ public class UenoView extends SpielView {
     }
 
     private void gegnerZuege() {
-        new Thread(() -> {
+        nachziehstapelButton.setDisable(true);
+        Thread t = new Thread(() -> {
 
             UenoSpieler naechster = ueno.nachsterSpieler(hauptSpieler);
             while (naechster != hauptSpieler) {
@@ -147,7 +148,9 @@ public class UenoView extends SpielView {
             nachziehstapelButton.setDisable(false);
             hauptSpielerTurnIndicator.setFill(Color.GREEN);
 
-        }).start();
+        });
+        t.setDaemon(true);
+        t.start();
     }
 
     // ÜNO Ui Interaktion

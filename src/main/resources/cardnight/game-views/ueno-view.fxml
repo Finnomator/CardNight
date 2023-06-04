@@ -13,18 +13,18 @@
 
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
 
-        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <Button fx:id="nachziehstapelButton" onAction="#nachziehstapelClick" rotate="90.0" stylesheets="@../transparent-image-button.css">
                 <graphic>
                     <ImageView fitWidth="90.0" preserveRatio="true">
-                        <Image url="@ueno/images/UNO_Rückseite.png"/>
+                        <Image url="@ueno/images/UNO_Rückseite.png" />
                     </ImageView>
                 </graphic>
             <padding>
                <Insets top="-6.0" />
             </padding>
             </Button>
-            <ImageView fx:id="ablagestapelImageView" fitWidth="100.0" preserveRatio="true" rotate="90.0" />
+            <ImageView fx:id="ablagestapelImageView" fitWidth="90.0" preserveRatio="true" rotate="90.0" />
         </HBox>
 
 

@@ -4,12 +4,17 @@ import cardnight.GameOver;
 import cardnight.Main;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
-import cardnight.games.ueno.*;
+import cardnight.games.ueno.Ueno;
+import cardnight.games.ueno.UenoGegner;
+import cardnight.games.ueno.UenoKarte;
+import cardnight.games.ueno.UenoSpieler;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -29,6 +34,7 @@ public class UenoView extends SpielView {
     public HBox gegnerHaendeContainer;
     public Circle hauptSpielerTurnIndicator;
     public ImageView ablagestapelImageView;
+    public GridPane tableGrid;
     private Ueno ueno;
     private HashMap<UenoSpieler, UenoUiHand> spielerHaende;
     private UenoSpieler hauptSpieler;
@@ -54,7 +60,10 @@ public class UenoView extends SpielView {
         }
 
         FXMLLoader handLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/hauptspieler-hand.fxml"));
-        root.getChildren().add(handLoader.load());
+        Node uiHauptHand = handLoader.load();
+        GridPane.setRowIndex(uiHauptHand, 2);
+        GridPane.setHalignment(uiHauptHand, HPos.CENTER);
+        tableGrid.getChildren().add(uiHauptHand);
         UenoHauptspielerUiHand hauptHand = handLoader.getController();
         hauptHand.uiErstellen(hauptSpieler);
         spielerHaende.put(hauptSpieler, hauptHand);
@@ -109,7 +118,8 @@ public class UenoView extends SpielView {
     }
 
     private void gegnerZuege() {
-        new Thread(() -> {
+        nachziehstapelButton.setDisable(true);
+        Thread t = new Thread(() -> {
 
             UenoSpieler naechster = ueno.nachsterSpieler(hauptSpieler);
             while (naechster != hauptSpieler) {
@@ -138,7 +148,9 @@ public class UenoView extends SpielView {
             nachziehstapelButton.setDisable(false);
             hauptSpielerTurnIndicator.setFill(Color.GREEN);
 
-        }).start();
+        });
+        t.setDaemon(true);
+        t.start();
     }
 
     // ÜNO Ui Interaktion
@@ -188,9 +200,8 @@ public class UenoView extends SpielView {
 
             // Zeige oberste abgelegte Karte
             UenoKarte oberste = ueno.gibZuletztAbgelegteKarte();
-            // TODO: to be changed
-            if (oberste.art == UenoKartenArt.ZAHL && oberste.farbe == UenoFarbe.ROT)
-                ablagestapelImageView.setImage(UenoKartenBilder.karteZuBild(oberste));
+
+            ablagestapelImageView.setImage(UenoKartenBilder.karteZuBild(oberste));
         });
     }
 

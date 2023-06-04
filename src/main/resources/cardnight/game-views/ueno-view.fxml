@@ -9,13 +9,22 @@
 
 <StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
 
-    <GridPane>
+    <GridPane fx:id="tableGrid">
 
-        <AnchorPane maxHeight="-Infinity" prefHeight="300.0" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
 
-        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-            <Button fx:id="nachziehstapelButton" layoutX="120.0" layoutY="169.0" mnemonicParsing="false" onAction="#nachziehstapelClick" prefHeight="66.0" prefWidth="112.0" text="ÜNO" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <ImageView fx:id="ablagestapelImageView" fitHeight="98.64" fitWidth="68.16" rotate="90.0" />
+        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="nachziehstapelButton" onAction="#nachziehstapelClick" rotate="90.0" stylesheets="@../transparent-image-button.css">
+                <graphic>
+                    <ImageView fitWidth="90.0" preserveRatio="true">
+                        <Image url="@ueno/images/UNO_Rückseite.png" />
+                    </ImageView>
+                </graphic>
+            <padding>
+               <Insets top="-6.0" />
+            </padding>
+            </Button>
+            <ImageView fx:id="ablagestapelImageView" fitWidth="90.0" preserveRatio="true" rotate="90.0" />
         </HBox>
 
 
@@ -29,8 +38,8 @@
       </columnConstraints>
       <rowConstraints>
          <RowConstraints />
-         <RowConstraints />
          <RowConstraints vgrow="ALWAYS" />
+         <RowConstraints />
       </rowConstraints>
     </GridPane>
 
@@ -42,7 +51,7 @@
 
     <Button onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
-    <Circle fx:id="hauptSpielerTurnIndicator" fill="green" radius="25.0" StackPane.alignment="BOTTOM_RIGHT">
+    <Circle fx:id="hauptSpielerTurnIndicator" fill="green" radius="25.0" visible="false" StackPane.alignment="BOTTOM_RIGHT">
       <StackPane.margin>
          <Insets bottom="60.0" />
       </StackPane.margin></Circle>

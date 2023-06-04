@@ -2,17 +2,14 @@ package cardnight.games.ueno.viewcontroler;
 
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.UenoKarte;
-import javafx.scene.text.Text;
 
 public class UenoFarbwahlUiKarte extends UenoUiKarte {
 
-    public Text artText;
     private UenoHauptspielerUiHand hauptspielerUiHand;
 
     public void uiErstellen(UenoKarte karte, UenoHauptspielerUiHand hand) {
         this.karte = karte;
         hauptspielerUiHand = hand;
-        artText.setText(uenoKartenArtZuString(karte));
     }
 
     public void redAction() {
@@ -33,10 +30,5 @@ public class UenoFarbwahlUiKarte extends UenoUiKarte {
     public void greenAction() {
         karte.farbe = UenoFarbe.GRUEN;
         hauptspielerUiHand.updateUi();
-    }
-
-    @Override
-    public void uiErstellen(UenoKarte karte) {
-        throw new RuntimeException();
     }
 }

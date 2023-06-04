@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 
-
-<Button fx:id="mainButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#mainButtonAction" prefWidth="100.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoStandartUiKarte" />
+<Button fx:id="mainButton" onAction="#mainButtonAction" stylesheets="@../../transparent-image-button.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoStandartUiKarte">
+   <padding>
+      <Insets bottom="-3" top="-1.0" />
+   </padding>
+</Button>

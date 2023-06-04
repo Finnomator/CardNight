@@ -9,17 +9,17 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoGegnerUiHand">
     <Text fx:id="nameText" />
     <StackPane>
-        <ImageView fitHeight="154.0" fitWidth="127.5">
+        <ImageView fitWidth="200.0" preserveRatio="true">
             <Image url="@../images/stickman.png" />
         </ImageView>
-        <HBox fx:id="kartenBox" maxHeight="-Infinity" maxWidth="-Infinity" spacing="-10.0">
+        <HBox fx:id="kartenBox" maxHeight="-Infinity" maxWidth="-Infinity" spacing="-15.0">
           <opaqueInsets>
              <Insets />
           </opaqueInsets>
           <VBox.margin>
              <Insets />
           </VBox.margin></HBox>
-      <ProgressIndicator fx:id="thinkingProgress" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" stylesheets="@../hide-percentage.css" StackPane.alignment="TOP_CENTER">
+      <ProgressIndicator fx:id="thinkingProgress" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="73.0" prefWidth="68.0" stylesheets="@../hide-percentage.css" StackPane.alignment="TOP_CENTER">
          <StackPane.margin>
             <Insets top="3.0" />
          </StackPane.margin></ProgressIndicator>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 
-
-<Button style="-fx-background-color: red; -fx-border-color: black; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" />
+<ImageView fitHeight="32" preserveRatio="true" xmlns="http://javafx.com/javafx/11.0.14-internal">
+    <Image url="@images/UNO_Rückseite.png" />
+</ImageView>

@@ -1,6 +1,7 @@
 package cardnight.games.ueno.viewcontroler;
 
 import cardnight.games.ueno.UenoKarte;
+import cardnight.games.ueno.UenoKartenArt;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
@@ -25,12 +26,18 @@ public class UenoHauptspielerUiHand extends UenoUiHand {
             Node uiKarte;
 
             if (karte.istSchwarz()) {
-                loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/farbwahl-karte.fxml"));
+
+                if (karte.art == UenoKartenArt.FARBWAHL)
+                    loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/farbwahl-karte.fxml"));
+                else
+                    loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/vier-ziehen-karte.fxml"));
+
                 try {
                     uiKarte = loader.load();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+
                 UenoFarbwahlUiKarte farbwahlUiKarte = loader.getController();
                 farbwahlUiKarte.uiErstellen(karte, this);
             } else {

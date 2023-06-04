@@ -4,7 +4,10 @@ import cardnight.GameOver;
 import cardnight.Main;
 import cardnight.PauseMenu;
 import cardnight.games.SpielView;
-import cardnight.games.ueno.*;
+import cardnight.games.ueno.Ueno;
+import cardnight.games.ueno.UenoGegner;
+import cardnight.games.ueno.UenoKarte;
+import cardnight.games.ueno.UenoSpieler;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -194,9 +197,8 @@ public class UenoView extends SpielView {
 
             // Zeige oberste abgelegte Karte
             UenoKarte oberste = ueno.gibZuletztAbgelegteKarte();
-            // TODO: to be changed
-            if (oberste.art == UenoKartenArt.ZAHL && oberste.farbe == UenoFarbe.ROT)
-                ablagestapelImageView.setImage(UenoKartenBilder.karteZuBild(oberste));
+
+            ablagestapelImageView.setImage(UenoKartenBilder.karteZuBild(oberste));
         });
     }
 

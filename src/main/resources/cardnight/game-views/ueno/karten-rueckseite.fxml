@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.image.*?>
 
-<Rectangle arcHeight="5.0" arcWidth="5.0" fill="red" height="24" stroke="BLACK" strokeType="INSIDE" width="16" xmlns="http://javafx.com/javafx/11.0.14-internal"/>
+<ImageView fitHeight="16.0" preserveRatio="true" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+    <Image url="@images/UNO_Rückseite.png" />
+</ImageView>

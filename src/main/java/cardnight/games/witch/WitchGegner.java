@@ -25,7 +25,7 @@ public class WitchGegner extends WitchSpieler {
 
         double schaetzung = 0;
         for (int i = 0; i < karten.size(); i++) {
-            double wahrscheinlichkeit = spiel.wahrscheinlichkeit(karten.get(i), karten, 0.5 + 0.75 * (anfaenge / (i + 1)));
+            double wahrscheinlichkeit = spiel.wahrscheinlichkeit(karten.get(i), karten, anfaenge / (i + 1));
             schaetzung += wahrscheinlichkeit;
             anfaenge += wahrscheinlichkeit;
         }
@@ -54,8 +54,14 @@ public class WitchGegner extends WitchSpieler {
             }
             WitchKarte [] neuerStich = spiel.gibStich().clone();
             neuerStich[karteAufStich] = betrachteteKarte;
-            double gewinnerStich = spiel.stichGeben(0, neuerStich, karteAufStich + 1);
-            double machtStich = spiel.wahrscheinlichkeit(betrachteteKarte, handkarten, gewinnerStich == karteAufStich ? 1 : 0);
+            int gewinnerStich = spiel.stichGeben(0, neuerStich, karteAufStich + 1);
+            double machtStich;
+            if (gewinnerStich == karteAufStich) {
+                machtStich = spiel.wahrscheinlichkeit(betrachteteKarte, handkarten, 1);
+            }
+            else {
+                machtStich = 0;
+            }
 
             ArrayList<WitchKarte> neueHand = (ArrayList<WitchKarte>) handkarten.clone();
             neueHand.remove(betrachteteKarte);

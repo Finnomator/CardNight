@@ -332,6 +332,9 @@ public class Witch extends Spiel {
     }
 
     public int anzahlUebrigerTruempfe(ArrayList<WitchKarte> neuBenutzt) {
+        if (trumpfKarte.istNarr() || trumpfKarte.istZauberer()) {
+            return 0;  // Falls der Trumpf weiß ist, gibt es keine Trümpfe
+        }
         int anzahlTruempfe = 13;
 
         // Alle schon benutzten Trümpfe werden abgezogen
@@ -372,8 +375,8 @@ public class Witch extends Spiel {
         double hatNarren = 1 - Math.pow(1 - (double) anzahlUebrigerNarren(neuBenutzt) / uebrig, anzKarten);
         double hatTruempfe = 1 - Math.pow(1 - (double) anzahlUebrigerTruempfe(neuBenutzt) / uebrig, anzKarten);
 
-        if (referenzKarte.farbe == trumpfKarte.farbe) {
-            hatTruempfe = 0;
+        if (referenzKarte.farbe == trumpfKarte.farbe && !trumpfKarte.istNarr() && !trumpfKarte.istZauberer()) {
+            hatTruempfe = 0;  //Wenn die Karte Trumpf ist, gibt es sozusagen "Keine Trümpfe"
         }
 
         // ungefähre Wahrscheinlichkeiten
@@ -386,9 +389,9 @@ public class Witch extends Spiel {
         double wahrscheinlichkeitBeiAnfang = mussSchlechtereLegen + wahrscheinlichkeitNichtZuStehlen * kannEntscheiden;
 
         double wahrscheinlichkeitBeiNichtAnfang = 0;
-        if (referenzKarte.farbe == trumpfKarte.farbe) {
-            //Die Wahrscheinlichkeit bei Trümpfen ist viel höher, wenn sie nicht anfangen
-            wahrscheinlichkeitBeiNichtAnfang = 1 - (1 - wahrscheinlichkeitBeiAnfang) / 2;
+        if (referenzKarte.farbe == trumpfKarte.farbe && !trumpfKarte.istNarr() && !trumpfKarte.istZauberer()) {
+            //Die Wahrscheinlichkeit bei Trümpfen ist höher, wenn sie nicht anfangen
+            wahrscheinlichkeitBeiNichtAnfang = Math.pow(wahrscheinlichkeitBeiAnfang, 0.75);
         }
 
         return wahrscheinlichekeitAnzufangen * wahrscheinlichkeitBeiAnfang + (1 - wahrscheinlichekeitAnzufangen) * wahrscheinlichkeitBeiNichtAnfang;

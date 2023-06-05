@@ -16,6 +16,8 @@ import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class TicTacToeView extends SpielView {
     public StackPane root;
@@ -24,18 +26,62 @@ public class TicTacToeView extends SpielView {
     public GridPane tttFeld;
 
     private TicTacToe ttt;
+    private AtomicBoolean zugGemacht = new AtomicBoolean();
+    private AtomicInteger gesetztesFeld = new AtomicInteger();
+    private Button[] feldBtns;
 
     public void initialize() {
-        ttt = new TicTacToe();
+
+        feldBtns = new Button[9];
+
+        ttt = new TicTacToe(this, true);
         Main.setzeAktuellesSpiel(ttt);
 
+        ttt.spielAblauf();
+
+        int i = 0;
         for (Node node : tttFeld.getChildren()) {
             if (!(node instanceof Button))
                 continue;
 
             Button btn = (Button) node;
+            feldBtns[i] = btn;
 
+            btn.setUserData(i);
             btn.setOnAction(this::btnAction);
+            ++i;
+        }
+    }
+
+    public void updateUi() {
+        String[] feld = ttt.gibFeld();
+
+        for (int i = 0; i < 9; ++i) {
+            if (feld[i].equals("x"))
+                feldBtns[i].setStyle("-fx-background-image: url('/cardnight/game-views/tictactoe/images/Kreuz.png')");
+            else if (feld[i].equals("o"))
+                feldBtns[i].setStyle("-fx-background-image: url('/cardnight/game-views/tictactoe/images/Kreis.png')");
+        }
+    }
+
+    public int warteAufSpielerZug(TicTacToeSpieler spieler) {
+        // Gibt zurück, auf welches Feld der Spieler sein Zug macht.
+
+        System.out.println("Warte auf Eingabe von " + spieler.name);
+
+        zugGemacht.set(false);
+
+        while (!zugGemacht.get())
+            delay(50);
+
+        return gesetztesFeld.get();
+    }
+
+    public static void delay(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -43,13 +89,8 @@ public class TicTacToeView extends SpielView {
         Button src = (Button) actionEvent.getSource();
         src.setMouseTransparent(true);
 
-        if (ttt.gibSpielerAmZug().istX)
-            src.setStyle("-fx-background-image: url('/cardnight/game-views/tictactoe/images/Kreuz.png')");
-        else
-            src.setStyle("-fx-background-image: url('/cardnight/game-views/tictactoe/images/Kreis.png')");
-
-        if (ttt.istSpielBeendet())
-            beendeSpiel();
+        gesetztesFeld.set((Integer) src.getUserData());
+        zugGemacht.set(true);
 
         actionEvent.consume();
     }

@@ -1,6 +1,6 @@
 package cardnight;
 
-import cardnight.games.tictactoe.TicTacToeView;
+import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.viewcontroller.WitchView;
 import javafx.scene.control.Slider;

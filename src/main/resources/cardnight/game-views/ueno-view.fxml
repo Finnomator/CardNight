@@ -27,7 +27,6 @@
             <ImageView fx:id="ablagestapelImageView" fitWidth="90.0" preserveRatio="true" rotate="90.0" />
         </HBox>
 
-
         <HBox fx:id="gegnerHaendeContainer" maxHeight="-Infinity" maxWidth="-Infinity" spacing="100.0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" StackPane.alignment="TOP_CENTER">
          <GridPane.margin>
             <Insets top="50.0" />
@@ -39,7 +38,7 @@
       <rowConstraints>
          <RowConstraints />
          <RowConstraints vgrow="ALWAYS" />
-         <RowConstraints />
+         <RowConstraints prefHeight="164.4"/>
       </rowConstraints>
     </GridPane>
 

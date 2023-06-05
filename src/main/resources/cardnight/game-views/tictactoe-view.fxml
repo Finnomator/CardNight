@@ -5,44 +5,62 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.TicTacToeView">
+<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.viewcontroller.TicTacToeView">
 
-    <GridPane fx:id="tttFeld" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.rowIndex="1">
-        <rowConstraints>
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints prefHeight="5" vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints prefHeight="5" vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-        </rowConstraints>
+    <GridPane fx:id="tableGrid">
+
+        <AnchorPane style="-fx-background-color: brown" GridPane.rowIndex="1" />
+
+        <GridPane fx:id="tttFeld" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <rowConstraints>
+                <RowConstraints vgrow="NEVER" />
+                <RowConstraints prefHeight="5" vgrow="NEVER" />
+                <RowConstraints vgrow="NEVER" />
+                <RowConstraints prefHeight="5" vgrow="NEVER" />
+                <RowConstraints vgrow="NEVER" />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" />
+                <ColumnConstraints hgrow="NEVER" prefWidth="5" />
+                <ColumnConstraints hgrow="NEVER" />
+                <ColumnConstraints hgrow="NEVER" prefWidth="5" />
+                <ColumnConstraints hgrow="NEVER" />
+            </columnConstraints>
+
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="2" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="4" />
+
+            <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="1" />
+
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.rowIndex="2" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+
+            <Rectangle height="274" width="5" GridPane.columnIndex="1" GridPane.rowSpan="5" />
+
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.rowIndex="4" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+
+            <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="3" />
+
+            <Rectangle height="274" width="5" GridPane.columnIndex="3" GridPane.rowSpan="5" />
+        </GridPane>
+
+        <HBox fx:id="handContainer" maxHeight="-Infinity" maxWidth="-Infinity" spacing="100" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+
         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" prefWidth="5" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" prefWidth="5" />
-            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="ALWAYS" />
         </columnConstraints>
+        <rowConstraints>
+            <RowConstraints prefHeight="242" />
+            <RowConstraints vgrow="ALWAYS" />
+            <RowConstraints prefHeight="164.4" />
+        </rowConstraints>
 
-        <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" stylesheets="@../transparent-image-button.css" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" stylesheets="@../transparent-image-button.css" />
-
-        <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="1" />
-
-        <Button prefHeight="88" prefWidth="88" GridPane.rowIndex="2" stylesheets="@../transparent-image-button.css" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" GridPane.rowIndex="2" stylesheets="@../transparent-image-button.css" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" GridPane.rowIndex="2" stylesheets="@../transparent-image-button.css" />
-
-        <Rectangle height="274" width="5" GridPane.columnIndex="1" GridPane.rowSpan="5" />
-
-        <Button prefHeight="88" prefWidth="88" GridPane.rowIndex="4" stylesheets="@../transparent-image-button.css" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="2" GridPane.rowIndex="4" stylesheets="@../transparent-image-button.css" />
-        <Button prefHeight="88" prefWidth="88" GridPane.columnIndex="4" GridPane.rowIndex="4" stylesheets="@../transparent-image-button.css" />
-
-        <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="3" />
-
-        <Rectangle height="274" width="5" GridPane.columnIndex="3" GridPane.rowSpan="5" />
     </GridPane>
+
 
     <Text fx:id="gewinnerText" mouseTransparent="true" textAlignment="CENTER">
         <font>
@@ -51,10 +69,4 @@
     </Text>
 
     <Button onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
-
-     <Label alignment="CENTER" text="Tic Tac Toe" StackPane.alignment="TOP_CENTER">
-         <font>
-             <Font size="25" />
-         </font>
-     </Label>
 </StackPane>

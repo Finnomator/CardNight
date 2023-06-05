@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane xmlns="http://javafx.com/javafx/11.0.14-internal">
+    <Rectangle arcHeight="10" arcWidth="10" fill="#eeeeee" height="164.6" stroke="#8a8a8a" strokeWidth="3.0" width="113.4"/>
+
+    <Button prefHeight="164.4" stylesheets="@../../transparent-image-button.css">
+        <graphic>
+            <ImageView>
+                <Image url="@images/Kreis.png" />
+            </ImageView>
+        </graphic>
+        <padding>
+            <Insets left="2.0" right="2.0" />
+        </padding>
+    </Button>
+</StackPane>

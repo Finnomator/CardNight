@@ -16,6 +16,14 @@ public class TicTacToeSpieler extends Spieler {
         zuege = new ArrayList<>();
     }
 
+    public int gibAnzahlHandKarten() {
+        if (istX) {
+            return 5 - zuege.size();
+        }
+
+        return 4 - zuege.size();
+    }
+
     public void zugSpeichern(int zug) {
         zuege.add(zug);
     }
@@ -26,6 +34,6 @@ public class TicTacToeSpieler extends Spieler {
 
     @Override
     public boolean istAmZug() {
-        throw new UnsupportedOperationException();
+        return spiel.gibSpielerAmZug() == this;
     }
 }

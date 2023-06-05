@@ -2,38 +2,35 @@ package cardnight.games.tictactoe;
 
 import cardnight.Tools;
 import cardnight.games.Spiel;
-import cardnight.games.ueno.UenoSpieler;
+import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
 import javafx.application.Platform;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 
 public class TicTacToe extends Spiel {
 
     private TicTacToeView observerView;
-    private TicTacToeSpieler xSpieler;
-    private TicTacToeSpieler oSpieler;
+    public final TicTacToeSpieler xSpieler;
+    public final TicTacToeSpieler oSpieler;
     private TicTacToeSpieler spielerAmZug;
     private String[] feld;
     private TicTacToeSpieler[] spieler;
     private TicTacToeSpieler gewinner;
     private boolean spieltGegenComputer;
+    private int zugNummer;
 
     public TicTacToe(TicTacToeView observerView, boolean spieltGegenComputer) {
         this.observerView = observerView;
         this.spieltGegenComputer = spieltGegenComputer;
 
-        xSpieler = new TicTacToeSpieler("Chris",this, true);
-        oSpieler = new TicTacToeSpieler("Finn",this, false);
+        xSpieler = new TicTacToeSpieler("X",this, true);
+        oSpieler = new TicTacToeSpieler("O",this, false);
         feld = new String[9];
         spieler = new TicTacToeSpieler[2];
         spieler[0] = xSpieler;
         spieler[1] = oSpieler;
+        spielerAmZug = xSpieler;
 
         Arrays.fill(feld, "");
     }
@@ -50,14 +47,15 @@ public class TicTacToe extends Spiel {
                 // warte bis Spieler Karte legt
                 spielerAmZug = xSpieler;
                 int gesetztesFeld = observerView.warteAufSpielerZug(xSpieler);
-                System.out.println(xSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
+                zugNummer++;
+                System.out.println("Zug " + zugNummer + ": " + xSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
                 xSpieler.zugSpeichern(gesetztesFeld);
                 feld[gesetztesFeld] = "x";
                 observerView.updateUi();
 
                 // hat jemand gewonnen?
                 gewinner = bestimmeGewinner();
-                if (gewinner != null)
+                if (istSpielBeendet())
                     break;
 
                 // Computer macht Zug bzw. warte auf den Zug des Anderen
@@ -67,20 +65,24 @@ public class TicTacToe extends Spiel {
                     gesetztesFeld = computerzugBerechnen();
                 else
                     gesetztesFeld = observerView.warteAufSpielerZug(oSpieler);
-                System.out.println(oSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
+
+                zugNummer++;
+                System.out.println("Zug " + zugNummer + ": " + oSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
                 // Zug in Array speichern
                 oSpieler.zugSpeichern(gesetztesFeld);
                 feld[gesetztesFeld] = "o";
 
                 // hat jemand gewonnen?
                 gewinner = bestimmeGewinner();
-                if (gewinner != null)
+                if (istSpielBeendet())
                     break;
 
-                Platform.runLater(() -> observerView.updateUi());
+                observerView.updateUi();
             }
 
-            Platform.runLater(() -> observerView.beendeSpiel());
+            observerView.updateUi();
+
+            observerView.beendeSpiel();
         });
 
         t.setDaemon(true);
@@ -88,12 +90,23 @@ public class TicTacToe extends Spiel {
     }
 
     public int computerzugBerechnen() {
+
+        delay(1000);
+
         int zahl = (int) (Math.random() * 8);
 
         while (!feld[zahl].equals(""))
             zahl = (int) (Math.random() * 8);
 
         return zahl;
+    }
+
+    private void delay(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private TicTacToeSpieler bestimmeGewinner() {
@@ -110,12 +123,26 @@ public class TicTacToe extends Spiel {
             String xo = spielerStrings[i];
             TicTacToeSpieler s = spieler[i];
 
+            // Horizontal
+
             if (feld[0].equals(xo) && feld[1].equals(xo) && feld[2].equals(xo))
                 return s;
             if (feld[3].equals(xo) && feld[4].equals(xo) && feld[5].equals(xo))
                 return s;
             if (feld[6].equals(xo) && feld[7].equals(xo) && feld[8].equals(xo))
                 return s;
+
+            // Vertical
+
+            if (feld[0].equals(xo) && feld[3].equals(xo) && feld[6].equals(xo))
+                return s;
+            if (feld[1].equals(xo) && feld[4].equals(xo) && feld[7].equals(xo))
+                return s;
+            if (feld[2].equals(xo) && feld[5].equals(xo) && feld[8].equals(xo))
+                return s;
+
+            // Schräg
+
             if (feld[0].equals(xo) && feld[4].equals(xo) && feld[8].equals(xo))
                 return s;
             if (feld[2].equals(xo) && feld[4].equals(xo) && feld[6].equals(xo))
@@ -134,8 +161,7 @@ public class TicTacToe extends Spiel {
     }
 
     public boolean istSpielBeendet() {
-        // TODO: implement this
-        return false;
+        return gewinner != null || zugNummer >= 9;
     }
 
     @Override

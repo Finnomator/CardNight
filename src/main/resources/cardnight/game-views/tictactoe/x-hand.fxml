@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<HBox fx:id="kartenBox" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cardnight.games.tictactoe.viewcontroller.TTTUiXHand" maxWidth="-Infinity" maxHeight="-Infinity">
+</HBox>

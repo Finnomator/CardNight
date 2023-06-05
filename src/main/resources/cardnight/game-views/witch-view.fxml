@@ -6,13 +6,25 @@
 <?import javafx.scene.text.*?>
 
 <StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchView">
-    <Button mnemonicParsing="false" onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
-    <HBox fx:id="gegnerUiHaendeContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10" StackPane.alignment="TOP_CENTER">
-      <StackPane.margin>
-         <Insets top="40.0" />
-      </StackPane.margin>
-    </HBox>
+    <GridPane fx:id="tableGrid">
+        <HBox fx:id="gegnerUiHaendeContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10" GridPane.halignment="CENTER">
+         <GridPane.margin>
+            <Insets top="50.0" />
+         </GridPane.margin></HBox>
+
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints vgrow="ALWAYS" />
+            <RowConstraints prefHeight="164.4" />
+        </rowConstraints>
+    </GridPane>
+    <Button mnemonicParsing="false" onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
     <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
         <Text text="Schätzung" />

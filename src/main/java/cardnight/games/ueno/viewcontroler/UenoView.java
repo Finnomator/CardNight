@@ -181,6 +181,7 @@ public class UenoView extends SpielView {
             return;
         }
 
+        // TODO: hier mal reinschaun, ob das die Farbe einer schwarzen Karte setzt, wenn die nachgezogene Karte ablegbar ist (sollte nicht so sein)
         UenoKarte ablegbareKarte = hauptSpieler.ablegbareKarten().get(0);
         if (ablegbareKarte.istSchwarz())
             ablegbareKarte.setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);

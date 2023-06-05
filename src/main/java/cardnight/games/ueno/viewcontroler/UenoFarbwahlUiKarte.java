@@ -3,8 +3,9 @@ package cardnight.games.ueno.viewcontroler;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.UenoKarte;
 
-public class UenoFarbwahlUiKarte extends UenoUiKarte {
+public class UenoFarbwahlUiKarte {
 
+    private UenoKarte karte;
     private UenoHauptspielerUiHand hauptspielerUiHand;
 
     public void uiErstellen(UenoKarte karte, UenoHauptspielerUiHand hand) {

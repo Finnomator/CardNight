@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.Rectangle?>
-<Rectangle arcHeight="5.0" arcWidth="5.0" fill="gray" height="32" stroke="BLACK" strokeType="INSIDE" width="22.1" xmlns="http://javafx.com/javafx/11.0.14-internal"/>
+<?import javafx.scene.image.*?>
+
+
+<ImageView fitHeight="32.0" preserveRatio="true" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <image>
+      <Image url="@images/Witch_Ruckseite.png" />
+   </image>
+</ImageView>

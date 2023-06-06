@@ -11,7 +11,7 @@ An implementation of the games [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-t
 ### Prebuild Jar
 
 - Make sure Java 8 is installed
-- Download and run the jar file of the latest release
+- Download and run the jar file of the latest [release](https://github.com/Finnomator/CardNight/releases)
 
 ## Playing a game
 

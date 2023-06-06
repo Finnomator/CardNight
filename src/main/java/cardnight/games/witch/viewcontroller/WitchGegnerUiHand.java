@@ -11,10 +11,11 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class WitchGegnerUiHand {
-    public Text sticheText;
     public Text nameText;
     public HBox kartenBox;
     public ProgressIndicator thinkingProgress;
+    public Text geschaetzteSticheText;
+    public Text erhalteneSticheText;
 
     private WitchGegner spieler;
 
@@ -31,7 +32,14 @@ public class WitchGegnerUiHand {
 
     public void updateUi() {
         setThinkingProgress(spieler.istAmZug());
-        sticheText.setText(String.valueOf(spieler.gibAnzahlErzhaltenderStiche()));
+        erhalteneSticheText.setText(String.valueOf(spieler.gibAnzahlErzhaltenderStiche()));
+
+        int schaetzung = spieler.gibStichSchaetzung();
+
+        if (schaetzung == -1)
+            geschaetzteSticheText.setText("tbd");
+        else
+            geschaetzteSticheText.setText(String.valueOf(schaetzung));
 
         kartenBox.getChildren().clear();
         for (WitchKarte ignored : spieler.gibHandkarten())

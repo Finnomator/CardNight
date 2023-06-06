@@ -9,9 +9,16 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchGegnerUiHand">
     <VBox alignment="CENTER">
         <Text fx:id="nameText" text="NAME" />
-        <HBox>
-            <Text text="Stiche: " />
-            <Text fx:id="sticheText" text="0" />
+        <HBox alignment="CENTER" spacing="10">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity">
+                <Text text="Schätzung: " />
+                <Text fx:id="geschaetzteSticheText" text="0" />
+            </HBox>
+
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity">
+                <Text text="Erhaltene Stiche: " />
+                <Text fx:id="erhalteneSticheText" text="0" />
+            </HBox>
         </HBox>
     </VBox>
     <StackPane>

@@ -40,16 +40,8 @@ public class UenoHauptspielerUiHand extends UenoUiHand {
 
                 UenoFarbwahlUiKarte farbwahlUiKarte = loader.getController();
                 farbwahlUiKarte.uiErstellen(karte, this);
-            } else {
-                loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/standard-karte.fxml"));
-                try {
-                    uiKarte = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                UenoStandartUiKarte standardKarte = loader.getController();
-                standardKarte.uiErstellen(karte);
-            }
+            } else
+                uiKarte = UenoRessourcen.erstelleStandardHandKarte(karte);
 
             uiKarte.setDisable(!ablegbareKarten.contains(karte) || !spieler.istAmZug());
 

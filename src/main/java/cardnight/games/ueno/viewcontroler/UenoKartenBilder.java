@@ -17,7 +17,14 @@ public class UenoKartenBilder {
     private static final String bilderPfad = "/cardnight/game-views/ueno/images/";
     public static final double bilderBreite = Main.HANDKARTE_BREITE;
 
+    private static boolean bilderWurdenSchonmalGeladen;
+
     public static void ladeBilder() {
+
+        if (bilderWurdenSchonmalGeladen)
+            return;
+
+        bilderWurdenSchonmalGeladen = true;
 
         zahlenKarten = new HashMap<>();
         aussetzenKarten = new HashMap<>();
@@ -52,7 +59,6 @@ public class UenoKartenBilder {
     }
 
     private static Image ladeBild(String subPath) {
-
         return new Image(Main.class.getResourceAsStream(bilderPfad + subPath),
                 bilderBreite, 0.0, true, true);
     }

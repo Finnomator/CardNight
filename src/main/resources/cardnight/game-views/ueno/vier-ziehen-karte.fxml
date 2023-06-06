@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoFarbwahlUiKarte">
 
     <Button stylesheets="@../../transparent-image-button.css">
@@ -20,16 +20,16 @@
 
     <GridPane alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints prefWidth="30.0" />
-            <ColumnConstraints prefWidth="30.0" />
+            <ColumnConstraints prefWidth="23.0" />
+            <ColumnConstraints prefWidth="23.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints prefHeight="40.0" />
-            <RowConstraints prefHeight="40.0" />
+            <RowConstraints prefHeight="34.0" />
+            <RowConstraints prefHeight="34.0" />
         </rowConstraints>
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#redAction" style="-fx-background-color: red;" />
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#yellowAction" style="-fx-background-color: yellow;" GridPane.columnIndex="1" />
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#greenAction" style="-fx-background-color: green;" GridPane.rowIndex="1" />
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#blueAction" style="-fx-background-color: blue;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#redAction" opacity="0.0" />
+        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#yellowAction" opacity="0.0" GridPane.columnIndex="1" />
+        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#greenAction" opacity="0.0" GridPane.rowIndex="1" />
+        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#blueAction" opacity="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </GridPane>
 </StackPane>

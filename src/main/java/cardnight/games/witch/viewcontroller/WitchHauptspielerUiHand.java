@@ -4,6 +4,8 @@ import cardnight.games.witch.WitchKarte;
 import cardnight.games.witch.WitchMensch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -26,18 +28,8 @@ public class WitchHauptspielerUiHand {
 
         for (int i = 0, handKartenSize = handKarten.size(); i < handKartenSize; i++) { // Ha, try beating this ConcurrentModificationException!
             WitchKarte karte = handKarten.get(i);
-            FXMLLoader kartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/witch-karte.fxml"));
 
-            Node kartenNode;
-            try {
-                kartenNode = kartenLoader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            WitchUiKarte uiKarte = kartenLoader.getController();
-            uiKarte.uiErstellen(karte);
-
+            Button kartenNode = WitchRessourcen.erstelleStandardHandKarte(karte);
             kartenNode.setDisable(disableKarten || !spielbareKarten.contains(karte));
 
             root.getChildren().add(kartenNode);

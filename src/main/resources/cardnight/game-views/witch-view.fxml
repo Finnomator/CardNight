@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -14,6 +15,16 @@
          </GridPane.margin></HBox>
 
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
+
+        <GridPane fx:id="tischContentContainer" alignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" maxWidth="-Infinity" maxHeight="-Infinity">
+            <ImageView fx:id="trumpfImageView" rotate="270.0" />
+
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints prefWidth="100" />
+                <ColumnConstraints prefWidth="164.4" />
+            </columnConstraints>
+        </GridPane>
 
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" />

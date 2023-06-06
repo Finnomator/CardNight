@@ -13,6 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -40,11 +42,17 @@ public class TicTacToeView extends SpielView {
     private TTTUiXHand uiXHand;
     private TTTUiOHand uiOHand;
     private boolean spielGegenComputer;
+    private Image XQuadratisch;
+    private Image OQuadratisch;
 
     @Override
     public void initialize() throws IOException {
 
         feldBtns = new Button[9];
+        OQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/O_quadratisch.png"),
+                87, 0, true, true);
+        XQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/X_quadratisch.png"),
+            87, 0, true, true);
 
         spielGegenComputer = true;
 
@@ -82,6 +90,7 @@ public class TicTacToeView extends SpielView {
                 continue;
 
             Button btn = (Button) node;
+            btn.setPadding(new Insets(0.001));
             feldBtns[i] = btn;
 
             btn.setUserData(i);
@@ -105,9 +114,9 @@ public class TicTacToeView extends SpielView {
 
             for (int i = 0; i < 9; ++i) {
                 if (feld[i].equals("x"))
-                    feldBtns[i].setStyle("-fx-background-image: url('/cardnight/game-views/tictactoe/images/Kreuz.png')");
+                    feldBtns[i].setGraphic(new ImageView(XQuadratisch));
                 else if (feld[i].equals("o"))
-                    feldBtns[i].setStyle("-fx-background-image: url('/cardnight/game-views/tictactoe/images/Kreis.png')");
+                    feldBtns[i].setGraphic(new ImageView(OQuadratisch));
 
                 feldBtns[i].setMouseTransparent((spielGegenComputer && ttt.oSpieler.istAmZug()) || feld[i].equals("x") || feld[i].equals("o"));
             }

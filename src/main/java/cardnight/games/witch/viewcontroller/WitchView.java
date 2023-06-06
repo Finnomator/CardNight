@@ -15,6 +15,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -33,8 +34,9 @@ public class WitchView extends SpielView {
     public Text rundenNummerText;
     public Text erhalteneSticheText;
     public GridPane tableGrid;
+    public ImageView trumpfImageView;
+    public GridPane tischContentContainer;
     private Witch witch;
-    private WitchUiKarte trumpfUiKarte;
     private WitchHauptspielerUiHand hauptspielerUiHand;
     private WitchPunktetafel punktetafel;
     private final AtomicBoolean hatStichSchaetzungBestaetigt = new AtomicBoolean(false);
@@ -47,6 +49,8 @@ public class WitchView extends SpielView {
         //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
         //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
         // Hallo, Finn hier. NÖ! (-> irgendwann?)
+
+        WitchKartenBilder.bilderLaden();
 
         witch = new Witch(4, 1000, this);
         Main.setzeAktuellesSpiel(witch);
@@ -68,22 +72,10 @@ public class WitchView extends SpielView {
 
         FXMLLoader stichLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/stich-stapel.fxml"));
         Node uiStich = stichLoader.load();
-        GridPane.setRowIndex(uiStich, 1);
-        GridPane.setHalignment(uiStich, HPos.CENTER);
-        GridPane.setValignment(uiStich, VPos.CENTER);
-        GridPane.setMargin(uiStich, new Insets(0, 200, 0, 0));
-        tableGrid.getChildren().add(uiStich);
+        tischContentContainer.add(uiStich, 2, 0);
         uiStichStapel = stichLoader.getController();
         uiStichStapel.uiErstellen(witch);
 
-        FXMLLoader trumpfKartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/witch-karte.fxml"));
-        Node uiTrumpfKarte = trumpfKartenLoader.load();
-        uiTrumpfKarte.setDisable(true);
-        GridPane.setHalignment(uiTrumpfKarte, HPos.CENTER);
-        GridPane.setValignment(uiTrumpfKarte, VPos.CENTER);
-        GridPane.setRowIndex(uiTrumpfKarte, 1);
-        tableGrid.getChildren().add(uiTrumpfKarte);
-        trumpfUiKarte = trumpfKartenLoader.getController();
         numericOnly(schaetzungsEingabeFeld);
 
         FXMLLoader handkartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/hauptspieler-hand.fxml"));
@@ -150,7 +142,7 @@ public class WitchView extends SpielView {
 
     public void updateUi() {
         hauptspielerUiHand.updateUi(true);
-        trumpfUiKarte.uiErstellen(witch.gibTrumpfKarte());
+        trumpfImageView.setImage(WitchKartenBilder.karteZuBild(witch.gibTrumpfKarte()));
         punktetafel.updateUi();
         rundenNummerText.setText(String.valueOf(witch.gibRundenNummer() + 1));
         uiStichStapel.updateUi();

@@ -2,12 +2,9 @@ package cardnight.games.witch.viewcontroller;
 
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchKarte;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-
-import java.io.IOException;
 
 public class WitchUiStichStapel {
     public StackPane root;
@@ -27,23 +24,13 @@ public class WitchUiStichStapel {
             if (karte == null)
                 continue;
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/witch-karte.fxml"));
-            Button karteBtn;
+            ImageView imgView = WitchRessourcen.erstelleKartenImageView(karte);
 
-            try {
-                karteBtn = loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            imgView.setRotate(270);
 
-            StackPane.setMargin(karteBtn, new Insets(0, 0, i * 30, 0));
-            karteBtn.setDisable(true);
-            karteBtn.setPrefWidth(100);
+            StackPane.setMargin(imgView, new Insets(0, 0, i * 30, 0));
 
-            WitchUiKarte uiKarte = loader.getController();
-            uiKarte.uiErstellen(karte);
-
-            root.getChildren().add(karteBtn);
+            root.getChildren().add(imgView);
         }
     }
 }

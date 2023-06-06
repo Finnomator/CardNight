@@ -34,15 +34,7 @@ public class WitchGegnerUiHand {
         sticheText.setText(String.valueOf(spieler.gibAnzahlErzhaltenderStiche()));
 
         kartenBox.getChildren().clear();
-
-        for (WitchKarte ignored : spieler.gibHandkarten()) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/karten-rueckseite.fxml"));
-
-            try {
-                kartenBox.getChildren().add(loader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        for (WitchKarte ignored : spieler.gibHandkarten())
+            kartenBox.getChildren().add(WitchRessourcen.erstelleKartenRueckseite());
     }
 }

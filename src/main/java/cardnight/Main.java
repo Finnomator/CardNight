@@ -20,6 +20,7 @@ public class Main {
 
     public static void main(String[] args) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 
+        SoundPlayer.ladeSounds();
 
         /*
         TODO: Das wird benutzt, sobald wir Hintergrundmusik haben

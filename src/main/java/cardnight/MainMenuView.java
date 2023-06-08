@@ -20,18 +20,22 @@ public class MainMenuView {
     }
 
     public void onTicTacToeClick() throws IOException {
+        SoundPlayer.klickSound();
         ScreenController.activateNewPane(TTTGegnerWahl.loadScene());
     }
 
     public void onWitchClick() throws IOException {
+        SoundPlayer.klickSound();
         ScreenController.activateNewPane(WitchView.loadScene());
     }
 
     public void onBeendenClick() {
+        SoundPlayer.klickSound();
         System.exit(0);
     }
 
     public void onUenoClick() throws IOException {
+        SoundPlayer.klickSound();
         ScreenController.activateNewPane(UenoView.loadScene());
     }
 

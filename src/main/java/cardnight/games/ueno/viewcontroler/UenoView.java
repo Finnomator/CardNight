@@ -126,7 +126,7 @@ public class UenoView extends SpielView {
                 gegnerZug((UenoGegner) naechster);
 
                 if (ueno.istSpielBeendet()) {
-                    beendeSpiel();
+                    Platform.runLater(this::beendeSpiel);
                     return;
                 }
 
@@ -181,14 +181,16 @@ public class UenoView extends SpielView {
             return;
         }
 
-        // TODO: hier mal reinschaun, ob das die Farbe einer schwarzen Karte setzt, wenn die nachgezogene Karte ablegbar ist (sollte nicht so sein)
-        UenoKarte ablegbareKarte = hauptSpieler.ablegbareKarten().get(0);
-        if (ablegbareKarte.istSchwarz())
-            ablegbareKarte.setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
+        ArrayList<UenoKarte> ablegbareKarten = hauptSpieler.ablegbareKarten();
+
+        if (ablegbareKarten.size() == 1 && ablegbareKarten.get(0).istSchwarz())
+            ablegbareKarten.get(0).setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
+
         updateUi();
 
-        System.out.println("Spieler zog nach und sollte folgende Karte legen können:");
-        System.out.println("\t" + ablegbareKarte.datenAlsString());
+        System.out.println("Spieler zog nach und sollte folgende Karte(n) legen können:");
+        for (UenoKarte ablegbareKarte : ablegbareKarten)
+            System.out.println("\t" + ablegbareKarte.datenAlsString());
     }
 
     // ÜNO Ui Update Methoden

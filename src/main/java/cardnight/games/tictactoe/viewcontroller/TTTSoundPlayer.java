@@ -11,16 +11,20 @@ import java.util.Random;
 public class TTTSoundPlayer {
 
     private static Clip[] ueberlegenSounds;
-    private static Clip feldAusgesuchtSound;
+    private static Clip[] feldAusgesuchtSounds;
     private static Clip hatGewonnenSound;
+    private static Clip hatVerlorenSound;
 
     public static void ladeSounds() {
-        feldAusgesuchtSound = ladeClip("TicTacToe_Ausgesucht.wav");
         hatGewonnenSound = ladeClip("TicTacToe_Gewinner_Sound.wav");
+        hatVerlorenSound = ladeClip("TicTacToe_Verlieren.wav");
 
         ueberlegenSounds = new Clip[3];
-        for (int i = 0; i < 3; ++i)
+        feldAusgesuchtSounds = new Clip[3];
+        for (int i = 0; i < 3; ++i) {
             ueberlegenSounds[i] = ladeClip("TicTacToe_Uberlegen_" + (i + 1) + ".wav");
+            feldAusgesuchtSounds[i] = ladeClip("TicTacToe_Ausgesucht_" + (i + 1) + ".wav");
+        }
     }
 
     private static Clip ladeClip(String pfad) {
@@ -35,15 +39,19 @@ public class TTTSoundPlayer {
         }
     }
 
-    public static void feldAusgesucht() {
-        SoundPlayer.playSoundAsync(feldAusgesuchtSound);
+    public static void randomFeldAusgesucht() {
+        SoundPlayer.playSoundAsync(feldAusgesuchtSounds[new Random().nextInt(3)]);
     }
 
     public static void gewonnen() {
         SoundPlayer.playSoundAsync(hatGewonnenSound);
     }
 
+    public static void verloren() {
+        SoundPlayer.playSoundAsync(hatVerlorenSound);
+    }
+
     public static void randomUeberlegen() {
-        SoundPlayer.playSoundAsync(ueberlegenSounds[new Random().nextInt(ueberlegenSounds.length)]);
+        SoundPlayer.playSoundAsync(ueberlegenSounds[new Random().nextInt(3)]);
     }
 }

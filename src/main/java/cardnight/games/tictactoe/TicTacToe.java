@@ -4,7 +4,6 @@ import cardnight.Tools;
 import cardnight.games.Spiel;
 import cardnight.games.tictactoe.viewcontroller.TTTSoundPlayer;
 import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
-import javafx.application.Platform;
 
 import java.util.Arrays;
 
@@ -79,7 +78,7 @@ public class TicTacToe extends Spiel {
                     break;
 
                 if (spieltGegenComputer)
-                    TTTSoundPlayer.feldAusgesucht();
+                    TTTSoundPlayer.randomFeldAusgesucht();
 
                 delay(400);
 

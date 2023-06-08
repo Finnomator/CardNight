@@ -168,11 +168,13 @@ public class TicTacToeView extends SpielView {
             Platform.runLater(() -> {
                 gewinnerText.setText(gewinner.name + " hat gewonnen");
 
-                 if (spielGegenComputer && gewinner == ttt.oSpieler)
-                    gegnerUiHand.setHappy(true);
+                if (spielGegenComputer) {
+                    if (gewinner == ttt.oSpieler)
+                        gegnerUiHand.setHappy(true);
+                    else
+                        TTTSoundPlayer.verloren();
+                }
             });
-
-
         }
 
         delay(1000);

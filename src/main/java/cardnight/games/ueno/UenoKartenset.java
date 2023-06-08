@@ -6,7 +6,7 @@ import java.util.Collections;
 public class UenoKartenset {
     public static final UenoKarte[] UENO_KARTEN = new UenoKarte[108];
 
-    public static void kartenErstellen() {
+    private static void kartenErstellen() {
         int idx = 0;
         for (UenoFarbe farbe : UenoFarbe.values()) {
             for (int i = 0; i < 10; ++i)
@@ -30,6 +30,7 @@ public class UenoKartenset {
     }
 
     public static UenoKarte[] erstelleGemischtesSet() {
+        kartenErstellen();
         UenoKarte[] shuffled = new UenoKarte[108];
         System.arraycopy(UENO_KARTEN, 0, shuffled, 0, 108);
         Collections.shuffle(Arrays.asList(shuffled));

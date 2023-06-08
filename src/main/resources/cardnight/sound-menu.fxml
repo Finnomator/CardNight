@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cardnight.SoundMenu"
+      maxHeight="-Infinity" maxWidth="-Infinity">
+
+    <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
+        <Text text="🎵" />
+        <Slider fx:id="soundVolumeSlider" onMouseClicked="#onSoundSliderMouseClick" />
+    </HBox>
+</VBox>

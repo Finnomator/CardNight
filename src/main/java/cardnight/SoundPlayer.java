@@ -18,9 +18,13 @@ public class SoundPlayer {
     }
 
     public static void klickSound() {
+        playSoundAsync(klickSoundEffekt);
+    }
+
+    public static void playSoundAsync(Clip sound) {
         new Thread(() -> {
-            klickSoundEffekt.setFramePosition(0);
-            klickSoundEffekt.start();
+            sound.setFramePosition(0);
+            sound.start();
         }).start();
     }
 }

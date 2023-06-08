@@ -3,6 +3,7 @@ package cardnight.games.ueno.viewcontroler;
 import cardnight.GameOver;
 import cardnight.Main;
 import cardnight.PauseMenu;
+import cardnight.SoundPlayer;
 import cardnight.games.SpielView;
 import cardnight.games.ueno.Ueno;
 import cardnight.games.ueno.UenoGegner;
@@ -45,6 +46,7 @@ public class UenoView extends SpielView {
         ueno = new Ueno(gegnerAnzahl + 1, 7);
         Main.setzeAktuellesSpiel(ueno);
         UenoKartenBilder.ladeBilder();
+        UenoSoundPlayer.ladeSounds();
 
         hauptSpieler = ueno.gibHauptSpieler();
         spielerHaende = new HashMap<>(gegnerAnzahl + 1);
@@ -93,9 +95,11 @@ public class UenoView extends SpielView {
             return;
         }
 
-        if (ueno.mussVierZiehen())
+        if (ueno.mussVierZiehen()) {
+            if (gegner.gibHandkarten().size() == 1 || gegner.gibHandkarten().size() > 12) // Da wär ich aber auch mad D:
+                UenoSoundPlayer.fYou();
             zieheKarten(gegner, 4);
-        else if (ueno.mussZweiZiehen())
+        } else if (ueno.mussZweiZiehen())
             zieheKarten(gegner, 2);
 
         try {
@@ -107,9 +111,12 @@ public class UenoView extends SpielView {
         if (gegner.kannKarteAblegen()) {
             legeKarte(gegner, gegner.whaeleKarteZumAblegen());
 
-            if (gegner.istFertig())
+            if (gegner.istFertig()) {
                 ueno.fuegeFertigenSpielerHinzu(gegner);
-
+                UenoSoundPlayer.unoUno();
+            } else if (gegner.gibHandkarten().size() == 1)
+                UenoSoundPlayer.uno();
+                
         } else {
             System.out.println(gegner.name + " konnte nicht ablegen");
             zieheKarten(gegner, 1);
@@ -212,6 +219,7 @@ public class UenoView extends SpielView {
 
     @Override
     public void pauseClick() throws IOException {
+        SoundPlayer.klickSound();
         root.getChildren().add(PauseMenu.loadScene());
     }
 

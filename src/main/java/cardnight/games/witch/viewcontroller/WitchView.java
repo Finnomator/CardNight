@@ -3,6 +3,7 @@ package cardnight.games.witch.viewcontroller;
 import cardnight.GameOver;
 import cardnight.Main;
 import cardnight.PauseMenu;
+import cardnight.SoundPlayer;
 import cardnight.games.SpielView;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchGegner;
@@ -117,6 +118,8 @@ public class WitchView extends SpielView {
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
 
+        schaetzungsRoot.setDisable(true);
+
         try {
             return Integer.parseInt(schaetzungsEingabeFeld.getText());
         } catch (NumberFormatException ex) {
@@ -130,7 +133,6 @@ public class WitchView extends SpielView {
         System.out.println("\t\t\tWarte bis Spieler Karte ausgewählt hat...");
 
         Platform.runLater(() -> hauptspielerUiHand.updateUi(false));
-        schaetzungsRoot.setDisable(true);
 
         while (!hatKarteGeklickt.get())
             Witch.delay(50);
@@ -163,6 +165,7 @@ public class WitchView extends SpielView {
 
     @Override
     public void pauseClick() throws IOException {
+        SoundPlayer.klickSound();
         root.getChildren().add(PauseMenu.loadScene());
     }
 
@@ -171,6 +174,7 @@ public class WitchView extends SpielView {
     }
 
     public void schaetzungOkKlick() {
+        SoundPlayer.klickSound();
         hatStichSchaetzungBestaetigt.set(true);
     }
 

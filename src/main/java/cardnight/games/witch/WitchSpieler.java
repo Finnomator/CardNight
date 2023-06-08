@@ -19,6 +19,7 @@ public abstract class WitchSpieler extends Spieler {
         handkarten = new ArrayList<>();
         punkteProRunde = new ArrayList<>();
         stichSchaetzungenProRunde = new ArrayList<>();
+        stichSchaetzung = -1;
     }
 
     public abstract void schaetzen();
@@ -49,6 +50,8 @@ public abstract class WitchSpieler extends Spieler {
     public void setzeAnzahlErhalteneSticheZurueck() {
         anzahlErhaltenerStiche = 0;
     }
+
+    public void setzeAnzahlGeschaetzteSticheZurueck() { stichSchaetzung = -1;}
 
     public int gibStichSchaetzung() {
         return stichSchaetzung;

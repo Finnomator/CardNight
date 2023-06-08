@@ -3,6 +3,7 @@ package cardnight.games.tictactoe.viewcontroller;
 import cardnight.GameOver;
 import cardnight.Main;
 import cardnight.PauseMenu;
+import cardnight.SoundPlayer;
 import cardnight.games.SpielView;
 import cardnight.games.Spieler;
 
@@ -41,7 +42,7 @@ public class TicTacToeView extends SpielView {
     private TTTGegnerUiHand gegnerUiHand;
     private TTTUiXHand uiXHand;
     private TTTUiOHand uiOHand;
-    private boolean spielGegenComputer;
+    protected static boolean spielGegenComputer;
     private Image XQuadratisch;
     private Image OQuadratisch;
 
@@ -54,7 +55,7 @@ public class TicTacToeView extends SpielView {
         XQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/X_quadratisch.png"),
             87, 0, true, true);
 
-        spielGegenComputer = true;
+        TTTSoundPlayer.ladeSounds();
 
         ttt = new TicTacToe(this, spielGegenComputer);
         Main.setzeAktuellesSpiel(ttt);
@@ -159,11 +160,21 @@ public class TicTacToeView extends SpielView {
 
         Spieler gewinner = ttt.gibGewinner();
 
-        if (gewinner == null)
+        if (gewinner == null) {
             System.out.println("Das Spiel ist vorbei, Unentschieden!");
-        else {
+            Platform.runLater(() -> gewinnerText.setText("Unentschieden!"));
+        } else {
             System.out.println("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
-            Platform.runLater(() -> gewinnerText.setText(gewinner.name + " hat gewonnen"));
+            Platform.runLater(() -> {
+                gewinnerText.setText(gewinner.name + " hat gewonnen");
+
+                if (spielGegenComputer) {
+                    if (gewinner == ttt.oSpieler)
+                        gegnerUiHand.setHappy(true);
+                    else
+                        TTTSoundPlayer.verloren();
+                }
+            });
         }
 
         delay(1000);
@@ -179,6 +190,7 @@ public class TicTacToeView extends SpielView {
 
     @Override
     public void pauseClick() throws IOException {
+        SoundPlayer.klickSound();
         root.getChildren().add(PauseMenu.loadScene());
     }
 

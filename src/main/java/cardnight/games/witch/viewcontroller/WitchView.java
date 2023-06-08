@@ -117,6 +117,8 @@ public class WitchView extends SpielView {
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
 
+        schaetzungsRoot.setDisable(true);
+
         try {
             return Integer.parseInt(schaetzungsEingabeFeld.getText());
         } catch (NumberFormatException ex) {
@@ -130,7 +132,6 @@ public class WitchView extends SpielView {
         System.out.println("\t\t\tWarte bis Spieler Karte ausgewählt hat...");
 
         Platform.runLater(() -> hauptspielerUiHand.updateUi(false));
-        schaetzungsRoot.setDisable(true);
 
         while (!hatKarteGeklickt.get())
             Witch.delay(50);

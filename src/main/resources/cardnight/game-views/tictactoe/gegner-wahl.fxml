@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl">
+
+    <Label text="Gegen wen möchtest du spielen?" StackPane.alignment="TOP_CENTER">
+      <font>
+         <Font size="20.0" />
+      </font></Label>
+
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="3">
+        <Button maxWidth="1.7976931348623157E308" onAction="#gegenComputerKlick" text="Gegen den Computer" />
+        <Button maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" text="Gegen einen Menschen" />
+    </VBox>
+
+    <Button onAction="#zuruckZumHauptmenuKlick" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
+
+</StackPane>

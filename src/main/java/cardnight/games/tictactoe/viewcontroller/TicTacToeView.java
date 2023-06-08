@@ -41,7 +41,7 @@ public class TicTacToeView extends SpielView {
     private TTTGegnerUiHand gegnerUiHand;
     private TTTUiXHand uiXHand;
     private TTTUiOHand uiOHand;
-    private boolean spielGegenComputer;
+    protected static boolean spielGegenComputer;
     private Image XQuadratisch;
     private Image OQuadratisch;
 
@@ -53,8 +53,6 @@ public class TicTacToeView extends SpielView {
                 87, 0, true, true);
         XQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/X_quadratisch.png"),
             87, 0, true, true);
-
-        spielGegenComputer = true;
 
         ttt = new TicTacToe(this, spielGegenComputer);
         Main.setzeAktuellesSpiel(ttt);

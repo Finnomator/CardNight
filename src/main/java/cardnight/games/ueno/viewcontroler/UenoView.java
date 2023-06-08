@@ -3,6 +3,7 @@ package cardnight.games.ueno.viewcontroler;
 import cardnight.GameOver;
 import cardnight.Main;
 import cardnight.PauseMenu;
+import cardnight.SoundPlayer;
 import cardnight.games.SpielView;
 import cardnight.games.ueno.Ueno;
 import cardnight.games.ueno.UenoGegner;
@@ -212,6 +213,7 @@ public class UenoView extends SpielView {
 
     @Override
     public void pauseClick() throws IOException {
+        SoundPlayer.klickSound();
         root.getChildren().add(PauseMenu.loadScene());
     }
 

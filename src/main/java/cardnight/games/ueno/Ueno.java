@@ -32,8 +32,6 @@ public class Ueno extends Spiel {
 
     public Ueno(int spielerAnzahl, int kartenProSpieler) {
 
-        UenoKartenset.kartenErstellen();
-
         ablagestapel = new Stack<>();
         erstelleNeuenNachziehstapel();
         spieler = new UenoSpieler[spielerAnzahl];
@@ -62,6 +60,11 @@ public class Ueno extends Spiel {
 
     public UenoKarte gibZuletztAbgelegteKarte() {
         return ablagestapel.peek();
+    }
+
+    public void fuegeFertigenSpielerHinzu(UenoSpieler spieler) {
+        assert spieler.istFertig();
+        fertigeSpieler.add(spieler);
     }
 
     public UenoSpieler gibAktivenSpieler() {
@@ -106,9 +109,6 @@ public class Ueno extends Spiel {
 
     public UenoSpieler nachsterSpieler(Spieler momentanAktiverSpieler) {
 
-        if (gibHauptSpieler().istFertig())
-            if (!fertigeSpieler.contains(gibHauptSpieler()))
-                fertigeSpieler.add(gibHauptSpieler());
         if (richtungswechsel())
             invertierteRichtung = !invertierteRichtung;
 
@@ -137,8 +137,6 @@ public class Ueno extends Spiel {
 
         if (naechster.istFertig()) {
             System.out.println(naechster.name + " wurde ausgelassen, da er fertig ist");
-            if (!fertigeSpieler.contains(naechster))
-                fertigeSpieler.add(naechster);
             return nachsterSpieler(naechster);
         }
         return naechster;

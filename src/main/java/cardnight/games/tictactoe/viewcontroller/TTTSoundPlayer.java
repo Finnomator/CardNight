@@ -4,6 +4,7 @@ import cardnight.Main;
 import cardnight.SoundPlayer;
 
 import javax.sound.sampled.*;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.util.Random;
 
@@ -24,7 +25,8 @@ public class TTTSoundPlayer {
 
     private static Clip ladeClip(String pfad) {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/cardnight/game-views/tictactoe/sounds/" + pfad));
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(
+                    Main.class.getResourceAsStream("/cardnight/game-views/tictactoe/sounds/" + pfad)));
             Clip clip = (Clip) AudioSystem.getLine(new DataLine.Info(Clip.class, audioInputStream.getFormat()));
             clip.open(audioInputStream);
             return clip;

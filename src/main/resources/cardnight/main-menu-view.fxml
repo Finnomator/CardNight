@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane prefHeight="480" prefWidth="720" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
+<StackPane fx:id="root" prefHeight="480" prefWidth="720" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
+
+    <ImageView fx:id="hintergrundImageView" preserveRatio="true" />
 
     <Label text="Card Night" textAlignment="CENTER" StackPane.alignment="TOP_CENTER">
         <font>
@@ -13,9 +16,9 @@
     </Label>
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="CENTER">
-        <Button onAction="#onTicTacToeClick" prefHeight="70" prefWidth="112" text="Tic Tac Toe" />
-        <Button onAction="#onUenoClick" prefHeight="70" prefWidth="112" text="ÜNO" />
-        <Button onAction="#onWitchClick" prefHeight="70" prefWidth="112" text="Witch" />
+        <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" text="Tic Tac Toe" />
+        <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" text="ÜNO" />
+        <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" text="Witch" />
     </VBox>
 
     <Button onAction="#onBeendenClick" prefHeight="70" prefWidth="112" text="Beenden" StackPane.alignment="BOTTOM_CENTER" />

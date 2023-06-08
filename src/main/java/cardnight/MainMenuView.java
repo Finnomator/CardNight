@@ -3,6 +3,9 @@ package cardnight;
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.viewcontroller.WitchView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,8 +14,13 @@ import java.net.URL;
 
 public class MainMenuView {
 
-    public void initialize() {
+    public ImageView hintergrundImageView;
+    public StackPane root;
 
+    public void initialize() {
+        MainMenuBilder.ladeBilder();
+        hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(100));
+        setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
     }
 
     public void onTicTacToeClick() throws IOException {
@@ -43,11 +51,39 @@ public class MainMenuView {
         }
     }
 
+    private void setzeHintergrund(Image img) {
+        hintergrundImageView.setImage(img);
+    }
+
     public void githubRepoLinkClick() {
         openLinkInBrowser(Main.GitHubRepo);
     }
 
     public void reportBugLinkClick() {
         openLinkInBrowser(Main.BugReportUrl);
+    }
+
+    public void mouseEnteredTTT() {
+        setzeHintergrund(MainMenuBilder.gibHintergrundBild(SpielTyp.TIC_TAC_TOE));
+    }
+
+    public void mouseExitedTTT() {
+        setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
+    }
+
+    public void mouseExitedUeno() {
+        setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
+    }
+
+    public void mouseEnteredWitch() {
+        setzeHintergrund(MainMenuBilder.gibHintergrundBild(SpielTyp.WITCH));
+    }
+
+    public void mouseEnteredUeno() {
+        setzeHintergrund(MainMenuBilder.gibHintergrundBild(SpielTyp.UENO));
+    }
+
+    public void mouseExitedWitch() {
+        setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
     }
 }

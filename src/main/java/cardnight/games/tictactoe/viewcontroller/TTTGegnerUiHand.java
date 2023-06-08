@@ -1,10 +1,12 @@
 package cardnight.games.tictactoe.viewcontroller;
 
+import cardnight.games.Ressourcen;
 import cardnight.games.tictactoe.TicTacToeSpieler;
 import cardnight.games.ueno.UenoKarte;
 import cardnight.games.ueno.UenoSpieler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
@@ -13,6 +15,7 @@ import java.io.IOException;
 public class TTTGegnerUiHand extends TTTUiHand {
     public HBox kartenBox;
     public ProgressIndicator thinkingProgress;
+    public ImageView stickmanImageView;
 
     @Override
     public void uiErstellen(TicTacToeSpieler spieler) {
@@ -23,6 +26,15 @@ public class TTTGegnerUiHand extends TTTUiHand {
 
     private void setThinkingStatus(boolean thinking) {
         thinkingProgress.setVisible(thinking);
+    }
+
+    public void setHappy(boolean happy) {
+        if (happy)
+            stickmanImageView.setImage(Ressourcen.stickmanHappyImage);
+        else
+            stickmanImageView.setImage(Ressourcen.stickmanImage);
+
+        setThinkingStatus(!happy);
     }
 
     @Override

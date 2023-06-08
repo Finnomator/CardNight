@@ -1,5 +1,6 @@
 package cardnight;
 
+import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
 import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.viewcontroller.WitchView;
@@ -19,7 +20,7 @@ public class MainMenuView {
     }
 
     public void onTicTacToeClick() throws IOException {
-        ScreenController.activateNewPane(TicTacToeView.loadScene());
+        ScreenController.activateNewPane(TTTGegnerWahl.loadScene());
     }
 
     public void onWitchClick() throws IOException {

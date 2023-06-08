@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -88,10 +89,8 @@ public class WitchView extends SpielView {
 
         FXMLLoader punktetafelLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/punktetafel.fxml"));
         Node uiPunkteTafel = punktetafelLoader.load();
-        GridPane.setHalignment(uiPunkteTafel, HPos.RIGHT);
-        GridPane.setValignment(uiPunkteTafel, VPos.CENTER);
-        GridPane.setRowIndex(uiPunkteTafel, 1);
-        tableGrid.getChildren().add(uiPunkteTafel);
+        StackPane.setAlignment(uiPunkteTafel, Pos.CENTER_RIGHT);
+        root.getChildren().add(uiPunkteTafel);
         punktetafel = punktetafelLoader.getController();
         punktetafel.uiErstellen(witch);
 

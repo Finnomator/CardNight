@@ -32,7 +32,6 @@ public class UenoView extends SpielView {
     public StackPane root;
     public Text gewinnerText;
     public HBox gegnerHaendeContainer;
-    public Circle hauptSpielerTurnIndicator;
     public ImageView ablagestapelImageView;
     public GridPane tableGrid;
     private Ueno ueno;
@@ -146,7 +145,6 @@ public class UenoView extends SpielView {
                 zieheKarten(spieler, 2);
 
             nachziehstapelButton.setDisable(false);
-            hauptSpielerTurnIndicator.setFill(Color.GREEN);
 
         });
         t.setDaemon(true);
@@ -159,8 +157,6 @@ public class UenoView extends SpielView {
 
         // Spieler legt eine Karte
         legeKarte(hauptSpieler, event.geklickteKarte);
-
-        hauptSpielerTurnIndicator.setFill(Color.RED);
 
         // Gegner machen ihre Züge
         gegnerZuege();
@@ -176,7 +172,6 @@ public class UenoView extends SpielView {
 
         if (!hauptSpieler.kannKarteAblegen()) {
             System.out.println(hauptSpieler.name + " konnte wieder nicht legen");
-            hauptSpielerTurnIndicator.setFill(Color.RED);
             gegnerZuege();
             return;
         }

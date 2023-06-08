@@ -43,4 +43,8 @@ public class UenoSpieler extends Spieler {
     public boolean istAmZug() {
         return spiel.gibAktivenSpieler() == this;
     }
+
+    public boolean istFertig() {
+        return handkarten.size() == 0;
+    }
 }

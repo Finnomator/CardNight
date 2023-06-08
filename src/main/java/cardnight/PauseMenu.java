@@ -29,10 +29,12 @@ public class PauseMenu {
     }
 
     public void onFortsetzenClick() {
+        SoundPlayer.klickSound();
         ((Pane) root.getParent()).getChildren().remove(root);
     }
 
     public void onZumHauptmenueClick() {
+        SoundPlayer.klickSound();
         ScreenController.activate("main-menu-view");
     }
 

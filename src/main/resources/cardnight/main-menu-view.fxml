@@ -20,10 +20,7 @@
 
     <Button onAction="#onBeendenClick" prefHeight="70" prefWidth="112" text="Beenden" StackPane.alignment="BOTTOM_CENTER" />
 
-    <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
-        <Text text="🔊" />
-        <Slider fx:id="soundVolumeSlider" onMouseClicked="#onSoundSliderMouseClick" />
-    </HBox>
+    <fx:include source="sound-menu.fxml" StackPane.alignment="TOP_RIGHT" />
 
     <Text text="Developed by: Finn, Christian, Marc, David" StackPane.alignment="BOTTOM_RIGHT" />
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">

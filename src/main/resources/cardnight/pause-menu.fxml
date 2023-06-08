@@ -9,10 +9,7 @@
     <VBox maxHeight="-Infinity" maxWidth="-Infinity">
         <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" text="Fortsetzen" />
         <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" text="Zurück zum Hauptmenü" />
-        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
-            <Text text="🔊" />
-            <Slider fx:id="soundVolumeSlider" onMouseClicked="#onSoundSliderMouseClick" />
-        </HBox>
+        <fx:include source="sound-menu.fxml" />
     </VBox>
 
     <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.SoundMenu">
+
+    <Button fx:id="soundEnableButton" onAction="#soundEnableKlick" prefWidth="36.0" stylesheets="@transparent-image-button.css" text="🔊">
+      <font>
+         <Font size="14.0" />
+      </font></Button>
+
+    <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
+        <Text text="🎵">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Slider fx:id="musicVolumeSlider" onMouseClicked="#musicSliderMouseClick" />
+    </HBox>
+
+</HBox>

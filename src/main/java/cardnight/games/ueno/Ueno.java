@@ -106,7 +106,7 @@ public class Ueno extends Spiel {
 
     public UenoSpieler nachsterSpieler(Spieler momentanAktiverSpieler) {
 
-        if (hatSpielerGewonnen(gibHauptSpieler()))
+        if (gibHauptSpieler().istFertig())
             if (!fertigeSpieler.contains(gibHauptSpieler()))
                 fertigeSpieler.add(gibHauptSpieler());
         if (richtungswechsel())
@@ -135,7 +135,7 @@ public class Ueno extends Spiel {
 
         UenoSpieler naechster = spieler[aktiverSpieler];
 
-        if (hatSpielerGewonnen(naechster)) {
+        if (naechster.istFertig()) {
             System.out.println(naechster.name + " wurde ausgelassen, da er fertig ist");
             if (!fertigeSpieler.contains(naechster))
                 fertigeSpieler.add(naechster);
@@ -170,19 +170,13 @@ public class Ueno extends Spiel {
     }
 
     public boolean istSpielBeendet() {
-        if (hatSpielerGewonnen(gibHauptSpieler()))
-            return true;
+        return gibHauptSpieler().istFertig() || fertigeSpieler.size() >= spieler.length - 1;
 
-        return fertigeSpieler.size() >= spieler.length - 1;
     }
 
     @Override
     public String gibAnleitung() {
         return Tools.readFile("/cardnight/anleitungen/UenoAnleitung");
-    }
-
-    public boolean hatSpielerGewonnen(UenoSpieler spieler) {
-        return spieler.gibHandkarten().size() == 0;
     }
 
     private void karteAblegen(UenoKarte karte) {

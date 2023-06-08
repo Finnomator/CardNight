@@ -23,6 +23,7 @@ public class GameOver {
     }
 
     public void onZumHauptmenueClick() {
+        SoundPlayer.klickSound();
         ScreenController.activate("main-menu-view");
     }
 }

@@ -20,6 +20,8 @@ public class MainMenuBilder {
 
     public static void ladeBilder() {
         ticTacToeHintergrund = ladeBild("hintergruende/TicTacToe_Background.png");
+        uenoHintergrund = ladeBild("hintergruende/UNO_Background.png");
+
         tttButton = ladeBild("button-hintergruende/TicTacToe_Button.png");
         tttButtonHovered = ladeBild("button-hintergruende/TicTacToe_Button_hovered.png");
         uenoButton = ladeBild("button-hintergruende/UNO_Button.png");
@@ -52,14 +54,15 @@ public class MainMenuBilder {
     }
 
     public static Image gibHintergrundBild(SpielTyp spiel) {
-        if (spiel == SpielTyp.TIC_TAC_TOE)
-            return ticTacToeHintergrund;
+        switch (spiel) {
 
-        if (spiel == SpielTyp.UENO)
-            return null;
-
-        if (spiel == SpielTyp.WITCH)
-            return null;
+            case TIC_TAC_TOE:
+                return ticTacToeHintergrund;
+            case UENO:
+                return uenoHintergrund;
+            case WITCH:
+                return witchHintergrund;
+        }
 
         throw new RuntimeException();
     }

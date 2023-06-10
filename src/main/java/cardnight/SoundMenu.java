@@ -17,7 +17,7 @@ public class SoundMenu {
         soundEnableButton.setText(Main.enableSound? "\uD83D\uDD0A" : "\uD83D\uDD07");
     }
 
-    public void musicSliderMouseClick(MouseEvent mouseEvent) {
+    public void musicSliderMouseClick() {
         Main.setMusicVolume(musicVolumeSlider.getValue() / 100.0);
     }
 }

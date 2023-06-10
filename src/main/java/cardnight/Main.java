@@ -50,10 +50,10 @@ public class Main {
     }
 
     public static void setMusicVolume(double musicVolume) {
+        Main.musicVolume = musicVolume;
         throw new UnsupportedOperationException();
         /*
         TODO: Das wird benutzt, sobald wir Hintergrundmusik haben
-        Main.soundVolume = soundVolume;
         float range = volumeControl.getMaximum() - volumeControl.getMinimum();
         float gain = (float) (range * soundVolume + volumeControl.getMinimum());
         volumeControl.setValue(gain);

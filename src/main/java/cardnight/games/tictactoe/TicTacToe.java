@@ -88,238 +88,215 @@ public class TicTacToe extends Spiel {
         t.setDaemon(true);
         t.start();
     }
-
     public boolean istLeer() {
-        for(int i = 0; i<feld.length; i++) {
-            if(feld[i]==null) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        return istLeer();
+
     }
 
     private int computerzugMachen() {
-
         String[] spielerStrings = {"x", "o"};
-
-        for (int i = 0; i < 2; ++i) {
-
-            if(istLeer()) {
-                String o = spielerStrings[i];
-                TicTacToeSpieler s = spieler[i];
-
-                if (feld[0].equals(o) && feld[1].equals(o)) {
-                    feld[2] = o;
-                    return 2;
-                }
-                if(feld[3].equals(o) && feld[4].equals(o)) {
-                    feld[5] = o;
-                    return 5;
-                }
-                if(feld[6].equals(o) && feld[7].equals(o)) {
-                    feld[8] = o;
-                    return 8;
-                }
-                if(feld[1].equals(o) && feld[2].equals(o)) {
-                    feld[0] = o;
-                    return 0;
-                }
-                if(feld[4].equals(o) && feld[5].equals(o)) {
-                    feld[3] = o;
-                    return 3;
-                }
-                if(feld[7].equals(o) && feld[8].equals(o)) {
-                    feld[6] = o;
-                    return 6;
-                }
-                if(feld[0].equals(o) && feld[3].equals(o)) {
-                    feld[6] = o;
-                    return 6;
-                }
-                if(feld[1].equals(o) && feld[4].equals(o)) {
-                    feld[7] = o;
-                    return 7;
-                }
-                if(feld[2].equals(o) && feld[5].equals(o)) {
-                    feld[8] = o;
-                    return 8;
-                }
-                if(feld[3].equals(o) && feld[6].equals(o)) {
-                    feld[0] = o;
-                    return 0;
-                }
-                if(feld[4].equals(o) && feld[7].equals(o)) {
-                    feld[1] = o;
-                    return 1;
-                }
-                if(feld[5].equals(o) && feld[8].equals(o)) {
-                    feld[2] = o;
-                    return 2;
-                }
-                if(feld[0].equals(o) && feld[4].equals(o)) {
-                    feld[8] = o;
-                    return 8;
-                }
-                if(feld[4].equals(o) && feld[8].equals(o)) {
-                    feld[0] = o;
-                    return 0;
-                }
-                if(feld[6].equals(o) && feld[4].equals(o)) {
-                    feld[2] = o;
-                    return 2;
-                }
-                if(feld[4].equals(o) && feld[2].equals(o)) {
-                    feld[6] = o;
-                    return 6;
-                }
-                if(feld[0].equals(o) && feld[2].equals(o)) {
-                    feld[1] = o;
-                    return 1;
-                }
-                if(feld[3].equals(o) && feld[5].equals(o)) {
-                    feld[4] = o;
-                    return 4;
-                }
-                if(feld[6].equals(o) && feld[8].equals(o)) {
-                    feld[7] = o;
-                    return 7;
-                }
-                if(feld[0].equals(o) && feld[6].equals(o)) {
-                    feld[3] = o;
-                    return 3;
-                }
-                if(feld[1].equals(o) && feld[7].equals(o)) {
-                    feld[4] = o;
-                    return 4;
-                }
-                if(feld[2].equals(o) && feld[8].equals(o)) {
-                    feld[5] = o;
-                    return 5;
-                }
-                if(feld[0].equals(o) && feld[8].equals(o)) {
-                    feld[4] = o;
-                    return 4;
-                }
-                if(feld[2].equals(o) && feld[6].equals(o)) {
-                    feld[4] = o;
-                    return 4;
-                }
+        for (int i=0 ; i<2 ; ++i) {
+            String x = spielerStrings[i];
+            String o = spielerStrings [i];
+            TicTacToeSpieler s = spieler [i];
+            if (feld[0].equals(o) && feld[1].equals(o) && feld[2].istLeer()) {
+                feld [2]= o;
+                return 2;
+            }
+            else if (feld [3].equals(o) && feld [4].equals(o) && feld[5].istLeer()) {
+                feld [5] = o;
+                return 5;
+            }
+            else if (feld[6].equals(o) && feld [7].equals(o) && feld[8].istLeer()){
+                feld [8] = o;
+                return 8;
+            }
+            else if(feld[1].equals(o) && feld [2].equals(o) && feld [0].istLeer()) {
+                feld[0]= o;
+                return 0;
+            }
+            else if(feld [4].equals(o) && feld [5].equals(o) && feld [3].istLeer()) {
+                feld [3]= o;
+                return 3;
+            }
+            if (feld[7].equals(o) && feld [8].equals(o) && feld [6].istLeer()) {
+                feld[6]= o;
+                return 6;
+            }
+            else if(feld[0].equals(o) && feld [2].equals(o) && feld [1].istLeer()) {
+                feld[1]= o;
+                return 1;
+            }
+            else if(feld [3].equals(o) && feld [5].equals(o) && feld [4].istLeer()) {
+                feld [4]= o;
+                return 4;
+            }
+            if (feld[6].equals(o) && feld [8].equals(o) && feld [7].istLeer()) {
+                feld[7]= o;
+                return 7;
+            }
+            else if (feld[0].equals(o) && feld [3].equals(0) && feld [6].istLeer()) {
+                feld [6] = o;
+                return 6;
+            }
+            else if(feld[1].equals(o) && feld [4].equals(o) && feld [7].istLeer()) {
+                feld[7] = o;
+                return 7;
+            }
+            else if(feld [2].equals(o) && feld [5].equals(o) && feld [8].istLeer()) {
+                feld [8] = o;
+                return 8;
+            }
+            else if(feld[3].equals(o) && feld [6].equals(o) && feld [0].istLeer()) {
+                feld [0]= o;
+                return 0;
+            }
+            else if(feld [4].equals(o) && feld [7].equals(o) && feld [1].istLeer()) {
+                feld[1] = o;
+                return 1;
+            }
+            else if(feld[5].equals(o) && feld [8].equals(o) && feld [2].istLeer()) {
+                feld[2] = o;
+                return 2;
+            }
+            else if(feld[0].equals(o) && feld [6].equals(o) && feld [3].istLeer()) {
+                feld [3]= o;
+                return 3;
+            }
+            else if(feld [1].equals(o) && feld [7].equals(o) && feld [4].istLeer()) {
+                feld[4] = o;
+                return 4;
+            }
+            else if(feld[2].equals(o) && feld [8].equals(o) && feld [5].istLeer()) {
+                feld[5] = o;
+                return 5;
+            }
+            else if(feld[0].equals(o) && feld [4].equals(o)&& feld [8].istLeer()) {
+                feld[8] = o;
+                return 8;
+            }
+            else if(feld[4].equals(o) && feld [8].equals(o) && feld [0].istLeer()) {
+                feld[0] = o;
+                return 0;
+            }
+            else if(feld[0].equals(o) && feld [8].equals(o) && feld [4].istLeer()) {
+                feld[4] = o;
+                return 4;
+            }
+            else if(feld[6].equals(o) && feld [4].equals(o) && feld [2].istLeer()) {
+                feld[2] = o;
+                return 2;
+            }
+            else if(feld[4].equals(o) && feld [2].equals(o) && feld [6].istLeer()) {
+                feld[6] = o;
+                return 6;
+            }
+            else if(feld[6].equals(o) && feld [2].equals(o) && feld [4].istLeer()) {
+                feld[4] = o;
+                return 4;
+            }
+            if (feld[0].equals(o) && feld[1].equals(o) && feld [2].istLeer()) {
+                feld [2]= o;
+                return 2;
+            }
+            else if (feld [3].equals(o) && feld [4].equals(o) && feld [5].istLeer()) {
+                feld [5] = o;
+                return 5;
+            }
+            else if (feld[6].equals(o) && feld [7].equals(o) && feld [8].istLeer()){
+                feld [8] = o;
+                return 8;
+            }
+            else if(feld[1].equals(o) && feld [2].equals(o) && feld [0].istLeer()) {
+                feld[0]= o;
+                return 0;
+            }
+            else if(feld [4].equals(o) && feld [5].equals(o) && feld [3].istLeer()) {
+                feld [3]= o;
+                return 3;
+            }
+            if (feld[7].equals(o) && feld [8].equals(o) && feld [6].istLeer()) {
+                feld[6]= o;
+                return 6;
+            }
+            else if(feld[0].equals(o) && feld [2].equals(o) && feld [1].istLeer()) {
+                feld[1]= o;
+                return 1;
+            }
+            else if(feld [3].equals(o) && feld [5].equals(o) && feld [4].istLeer()) {
+                feld [4]= o;
+                return 4;
+            }
+            else if (feld[6].equals(x) && feld [8].equals(x) && feld [7].istLeer()) {
+                feld[7]= o;
+                return 7;
+            }
+            else if (feld[0].equals(x) && feld [3].equals(x) && feld [6].istLeer()) {
+                feld [6] = o;
+                return 6;
+            }
+            else if(feld[1].equals(x) && feld [4].equals(x) && feld [7].istLeer()) {
+                feld[7] = o;
+                return 7;
+            }
+            else if(feld [2].equals(x) && feld [5].equals(x) && feld [8].istLeer()) {
+                feld [8] = o;
+                return 8;
+            }
+            else if(feld[3].equals(x) && feld [6].equals(x) && feld [0].istLeer()) {
+                feld [0]= o;
+                return 0;
+            }
+            else if(feld [4].equals(x) && feld [7].equals(x) && feld [1].istLeer()) {
+                feld[1] = o;
+                return 1;
+            }
+            else if(feld[5].equals(x) && feld [8].equals(x) && feld [2].istLeer()) {
+                feld[2] = o;
+                return 2;
+            }
+            else if(feld[0].equals(x) && feld [6].equals(x) && feld [3].istLeer()) {
+                feld [3]= o;
+                return 3;
+            }
+            else if(feld [1].equals(x) && feld [7].equals(x) && feld [4].istLeer()) {
+                feld[4] = o;
+                return 4;
+            }
+            else if(feld[2].equals(x) && feld [8].equals(x) && feld [5].istLeer()) {
+                feld[5] = o;
+                return 5;
+            }
+            else if(feld[0].equals(x) && feld [4].equals(x)&& feld [8].istLeer()) {
+                feld[8] = o;
+                return 8;
+            }
+            else if(feld[4].equals(x) && feld [8].equals(x) && feld [0].istLeer()) {
+                feld[0] = o;
+                return 0;
+            }
+            else if(feld[0].equals(x) && feld [8].equals(x) && feld [4].istLeer()) {
+                feld[4] = o;
+                return 4;
+            }
+            else if(feld[6].equals(x) && feld [4].equals(x) && feld [2].istLeer()) {
+                feld[2] = o;
+                return 2;
+            }
+            else if(feld[4].equals(x) && feld [2].equals(x) && feld [6].istLeer()) {
+                feld[6] = o;
+                return 6;
+            }
+            else if(feld[6].equals(x) && feld [2].equals(x) && feld [4].istLeer()) {
+                feld[4] = o;
+                return 4;
             }
             else {
-                computerzugBerechnen();
-            }
-        }
-
-
-
-        for (int i = 0; i < 2; ++i) {
-
-            String x = spielerStrings[i];
-            String o = spielerStrings[i];
-            TicTacToeSpieler s = spieler[i];
-
-            if (feld[0].equals(x) && feld[1].equals(x)) {
-                feld[2] = o;
-                return 2;
-            }
-            if(feld[3].equals(x) && feld[4].equals(x)) {
-                feld[5] = o;
-                return 5;
-            }
-            if(feld[6].equals(x) && feld[7].equals(x)) {
-                feld[8] = o;
-                return 8;
-            }
-            if(feld[1].equals(x) && feld[2].equals(x)) {
-                feld[0] = o;
-                return 0;
-            }
-            if(feld[4].equals(x) && feld[5].equals(x)) {
-                feld[3] = o;
-                return 3;
-            }
-            if(feld[7].equals(x) && feld[8].equals(x)) {
-                feld[6] = o;
-                return 6;
-            }
-            if(feld[0].equals(x) && feld[3].equals(x)) {
-                feld[6] = o;
-                return 6;
-            }
-            if(feld[1].equals(x) && feld[4].equals(x)) {
-                feld[7] = o;
-                return 7;
-            }
-            if(feld[2].equals(x) && feld[5].equals(x)) {
-                feld[8] = o;
-                return 8;
-            }
-            if(feld[3].equals(x) && feld[6].equals(x)) {
-                feld[0] = o;
-                return 0;
-            }
-            if(feld[4].equals(x) && feld[7].equals(x)) {
-                feld[1] = o;
-                return 1;
-            }
-            if(feld[5].equals(x) && feld[8].equals(x)) {
-                feld[2] = o;
-                return 2;
-            }
-            if(feld[0].equals(x) && feld[4].equals(x)) {
-                feld[8] = o;
-                return 8;
-            }
-            if(feld[4].equals(x) && feld[8].equals(x)) {
-                feld[0] = o;
-                return 0;
-            }
-            if(feld[6].equals(x) && feld[4].equals(x)) {
-                feld[2] = o;
-                return 2;
-            }
-            if(feld[4].equals(x) && feld[2].equals(x)) {
-                feld[6] = o;
-                return 6;
-            }
-            if(feld[0].equals(x) && feld[2].equals(x)) {
-                feld[1] = o;
-                return 1;
-            }
-            if(feld[3].equals(x) && feld[5].equals(x)) {
-                feld[4] = o;
-                return 4;
-            }
-            if(feld[6].equals(x) && feld[8].equals(x)) {
-                feld[7] = o;
-                return 7;
-            }
-            if(feld[0].equals(x) && feld[6].equals(x)) {
-                feld[3] = o;
-                return 3;
-            }
-            if(feld[1].equals(x) && feld[7].equals(x)) {
-                feld[4] = o;
-                return 4;
-            }
-            if(feld[2].equals(x) && feld[8].equals(x)) {
-                feld[5] = o;
-                return 5;
-            }
-            if(feld[0].equals(x) && feld[8].equals(x)) {
-                feld[4] = o;
-                return 4;
-            }
-            if(feld[2].equals(x) && feld[6].equals(x)) {
-                feld[4] = o;
-                return 4;
-            }
-        }
-        return 0;
-    }
+                int zahl = (int) (Math.random() * 8);
+                while (!feld[zahl].equals("")) {
+                    zahl = (int) (Math.random() * 8);
+                }
+                return zahl;
+            }}}
 
     public int computerzugBerechnen() {
 

@@ -147,6 +147,30 @@ public class TicTacToe extends Spiel {
             if(feld[4].equals(o) && feld[2].equals(o)) {
                 feld[6] = o;
             }
+            if(feld[0].equals(o) && feld[2].equals(o)) {
+                feld[1] = o;
+            }
+            if(feld[3].equals(o) && feld[5].equals(o)) {
+                feld[4] = o;
+            }
+            if(feld[6].equals(o) && feld[8].equals(o)) {
+                feld[7] = o;
+            }
+            if(feld[0].equals(o) && feld[6].equals(o)) {
+                feld[3] = o;
+            }
+            if(feld[1].equals(o) && feld[7].equals(o)) {
+                feld[4] = o;
+            }
+            if(feld[2].equals(o) && feld[8].equals(o)) {
+                feld[5] = o;
+            }
+            if(feld[0].equals(o) && feld[8].equals(o)) {
+                feld[4] = o;
+            }
+            if(feld[2].equals(o) && feld[6].equals(o)) {
+                feld[4] = o;
+            }
         }
 
         for (int i = 0; i < 2; ++i) {
@@ -202,6 +226,30 @@ public class TicTacToe extends Spiel {
             }
             if(feld[4].equals(x) && feld[2].equals(x)) {
                 feld[6] = o;
+            }
+            if(feld[0].equals(x) && feld[2].equals(x)) {
+                feld[1] = o;
+            }
+            if(feld[3].equals(x) && feld[5].equals(x)) {
+                feld[4] = o;
+            }
+            if(feld[6].equals(x) && feld[8].equals(x)) {
+                feld[7] = o;
+            }
+            if(feld[0].equals(x) && feld[6].equals(x)) {
+                feld[3] = o;
+            }
+            if(feld[1].equals(x) && feld[7].equals(x)) {
+                feld[4] = o;
+            }
+            if(feld[2].equals(x) && feld[8].equals(x)) {
+                feld[5] = o;
+            }
+            if(feld[0].equals(x) && feld[8].equals(x)) {
+                feld[4] = o;
+            }
+            if(feld[2].equals(x) && feld[6].equals(x)) {
+                feld[4] = o;
             }
         }
     }

@@ -38,7 +38,7 @@
       <rowConstraints>
          <RowConstraints />
          <RowConstraints vgrow="ALWAYS" />
-         <RowConstraints prefHeight="164.4"/>
+         <RowConstraints prefHeight="164.4" />
       </rowConstraints>
     </GridPane>
 
@@ -48,7 +48,7 @@
         </font>
     </Text>
 
-    <Button onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <Button onAction="#pauseClick" stylesheets="@../button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
     <Circle fx:id="hauptSpielerTurnIndicator" fill="green" radius="25.0" visible="false" StackPane.alignment="BOTTOM_RIGHT">
       <StackPane.margin>

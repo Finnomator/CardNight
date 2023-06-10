@@ -7,8 +7,8 @@
 <GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(100, 100, 100, 0.5);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity">
-        <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" text="Fortsetzen" />
-        <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" text="Zurück zum Hauptmenü" />
+        <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" stylesheets="@button-style.css" text="Fortsetzen" />
+        <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" stylesheets="@button-style.css" text="Zurück zum Hauptmenü" />
         <fx:include source="sound-menu.fxml" />
     </VBox>
 

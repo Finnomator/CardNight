@@ -16,7 +16,7 @@
 
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
 
-        <GridPane fx:id="tischContentContainer" alignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" maxWidth="-Infinity" maxHeight="-Infinity">
+        <GridPane fx:id="tischContentContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <ImageView fx:id="trumpfImageView" rotate="270.0" />
 
             <columnConstraints>
@@ -24,6 +24,9 @@
                 <ColumnConstraints prefWidth="100" />
                 <ColumnConstraints prefWidth="164.4" />
             </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
 
         <columnConstraints>
@@ -35,12 +38,12 @@
             <RowConstraints prefHeight="164.4" />
         </rowConstraints>
     </GridPane>
-    <Button mnemonicParsing="false" onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <Button mnemonicParsing="false" onAction="#pauseClick" stylesheets="@../button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
     <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
         <Text text="Schätzung" />
         <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Anzahl Stiche" />
-        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#schaetzungOkKlick" text="OK" />
+        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#schaetzungOkKlick" stylesheets="@../button-style.css" text="OK" />
     </VBox>
 
     <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30" prefWidth="150" StackPane.alignment="BOTTOM_RIGHT">

@@ -14,8 +14,15 @@ public class TTTSoundPlayer {
     private static Clip[] feldAusgesuchtSounds;
     private static Clip hatGewonnenSound;
     private static Clip hatVerlorenSound;
+    private static boolean soundsWurdenGeladen;
 
     public static void ladeSounds() {
+
+        if (soundsWurdenGeladen)
+            return;
+
+        soundsWurdenGeladen = true;
+
         hatGewonnenSound = ladeClip("TicTacToe_Gewinner_Sound.wav");
         hatVerlorenSound = ladeClip("TicTacToe_Verlieren.wav");
 

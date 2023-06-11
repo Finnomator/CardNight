@@ -1,24 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane prefHeight="480" prefWidth="720" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
+<StackPane fx:id="root" prefHeight="480" prefWidth="720" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
 
-    <Label text="Card Night" textAlignment="CENTER" StackPane.alignment="TOP_CENTER">
-        <font>
-            <Font size="25.0" />
-        </font>
-    </Label>
+    <ImageView fx:id="hintergrundImageView" preserveRatio="true" />
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="CENTER">
-        <Button onAction="#onTicTacToeClick" prefHeight="70" prefWidth="112" text="Tic Tac Toe" />
-        <Button onAction="#onUenoClick" prefHeight="70" prefWidth="112" text="ÜNO" />
-        <Button onAction="#onWitchClick" prefHeight="70" prefWidth="112" text="Witch" />
+        <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
+            <graphic>
+                <ImageView fx:id="tttButtonImgView" fitHeight="70" preserveRatio="true">
+                    <Image url="@images/button-hintergruende/TicTacToe_Button.png" />
+                </ImageView>
+            </graphic>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets top="0.001" />
+         </padding>
+        </Button>
+        <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
+            <graphic>
+                <ImageView fx:id="uenoButtonImgView" fitHeight="70.0" preserveRatio="true">
+                    <Image url="@images/button-hintergruende/UNO_Button.png" />
+                </ImageView>
+            </graphic>
+         <padding>
+            <Insets top="0.001" />
+         </padding>
+        </Button>
+        <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
+            <graphic>
+                <ImageView fx:id="witchButtonImgView" fitHeight="70.0" preserveRatio="true">
+                    <Image url="@images/button-hintergruende/Witch_Button.png" />
+                </ImageView>
+            </graphic>
+         <padding>
+            <Insets top="0.001" />
+         </padding>
+        </Button>
     </VBox>
 
-    <Button onAction="#onBeendenClick" prefHeight="70" prefWidth="112" text="Beenden" StackPane.alignment="BOTTOM_CENTER" />
+    <Button onAction="#onBeendenClick" onMouseEntered="#mouseEnteredBeenden" onMouseExited="#mouseExitedBeenden" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css" StackPane.alignment="BOTTOM_CENTER">
+        <graphic>
+            <ImageView fx:id="beendenButtonImgView" fitHeight="70.0" preserveRatio="true">
+                <Image url="@images/button-hintergruende/End_Button.png" />
+            </ImageView>
+        </graphic>
+      <padding>
+         <Insets top="0.001" />
+      </padding>
+    </Button>
 
     <fx:include source="sound-menu.fxml" StackPane.alignment="TOP_RIGHT" />
 
@@ -27,4 +65,12 @@
         <Hyperlink onAction="#githubRepoLinkClick" text="GitHub Repo" />
         <Hyperlink onAction="#reportBugLinkClick" text="Report Bug" />
     </VBox>
+
+    <ImageView fitHeight="130.0" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+      <image>
+         <Image url="@images/CardNight_Title.png" />
+      </image>
+      <effect>
+         <Glow level="0.41" />
+      </effect></ImageView>
 </StackPane>

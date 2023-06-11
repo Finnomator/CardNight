@@ -9,14 +9,14 @@ import java.util.Arrays;
 
 public class TicTacToe extends Spiel {
 
-    private TicTacToeView observerView;
+    private final TicTacToeView observerView;
     public final TicTacToeSpieler xSpieler;
     public final TicTacToeSpieler oSpieler;
     private TicTacToeSpieler spielerAmZug;
-    private String[] feld;
-    private TicTacToeSpieler[] spieler;
+    private final String[] feld;
+    private final TicTacToeSpieler[] spieler;
     private TicTacToeSpieler gewinner;
-    private boolean spieltGegenComputer;
+    private final boolean spieltGegenComputer;
     private int zugNummer;
 
     public TicTacToe(TicTacToeView observerView, boolean spieltGegenComputer) {

@@ -25,7 +25,7 @@ public class MainMenuView {
 
     public void initialize() {
         MainMenuBilder.ladeBilder();
-        hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(100));
+        hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(500));
         setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
     }
 

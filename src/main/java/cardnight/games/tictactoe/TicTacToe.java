@@ -95,8 +95,8 @@ public class TicTacToe extends Spiel {
     }
 
     private int computerzugMachen() {
-        delay(2000);
         TTTSoundPlayer.randomUeberlegen();
+        delay(2000);
         return TicTacToeGegner.zugMachen(feld);
     }
 

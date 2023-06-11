@@ -2,6 +2,7 @@ package cardnight.games.tictactoe;
 
 import cardnight.Tools;
 import cardnight.games.Spiel;
+import cardnight.games.tictactoe.viewcontroller.TTTSoundPlayer;
 import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
 
 import java.util.Arrays;
@@ -76,6 +77,11 @@ public class TicTacToe extends Spiel {
                 if (istSpielBeendet())
                     break;
 
+                if (spieltGegenComputer)
+                    TTTSoundPlayer.randomFeldAusgesucht();
+
+                delay(400);
+
                 observerView.updateUi();
             }
 
@@ -90,12 +96,13 @@ public class TicTacToe extends Spiel {
 
     private int computerzugMachen() {
         delay();
+        TTTSoundPlayer.randomUeberlegen();
         return TicTacToeGegner.zugMachen(feld);
     }
 
     private void delay() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -9,7 +9,7 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoGegnerUiHand">
     <Text fx:id="nameText" />
     <StackPane>
-        <ImageView fitWidth="200.0" preserveRatio="true">
+        <ImageView fx:id="stickmanImageView" fitHeight="241.57" preserveRatio="true">
             <Image url="@../images/stickman.png" />
         </ImageView>
         <HBox fx:id="kartenBox" maxHeight="-Infinity" maxWidth="-Infinity" spacing="-15.0"/>

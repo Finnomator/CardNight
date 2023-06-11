@@ -29,12 +29,14 @@ public class TTTGegnerUiHand extends TTTUiHand {
     }
 
     public void setHappy(boolean happy) {
-        if (happy)
+        if (happy) {
             stickmanImageView.setImage(Ressourcen.stickmanHappyImage);
-        else
+            TTTSoundPlayer.gewonnen();
+        } else
             stickmanImageView.setImage(Ressourcen.stickmanImage);
 
-        setThinkingStatus(!happy);
+        if (happy)
+            setThinkingStatus(false);
     }
 
     @Override

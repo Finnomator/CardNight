@@ -10,16 +10,18 @@ import java.io.IOException;
 public class Main {
 
     public static Stage mainStage;
-    private static double soundVolume = 0.5;
+    private static double musicVolume = 0.5;
     public static final String GitHubRepo = "https://github.com/Finnomator/CardNight";
     public static final String BugReportUrl = "https://github.com/Finnomator/CardNight/issues/new";
     public static final double HANDKARTE_BREITE = 113.6;
     public static final double GEGNERKARTE_HOEHE = 32.0;
     private static Spiel spielDasGespieltWird;
     private static FloatControl volumeControl;
+    public static boolean enableSound = true;
 
     public static void main(String[] args) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 
+        SoundPlayer.ladeSounds();
 
         /*
         TODO: Das wird benutzt, sobald wir Hintergrundmusik haben
@@ -43,15 +45,15 @@ public class Main {
         return spielDasGespieltWird;
     }
 
-    public static double getSoundVolume() {
-        return soundVolume;
+    public static double getMusicVolume() {
+        return musicVolume;
     }
 
-    public static void setSoundVolume(double soundVolume) {
+    public static void setMusicVolume(double musicVolume) {
+        Main.musicVolume = musicVolume;
         throw new UnsupportedOperationException();
         /*
         TODO: Das wird benutzt, sobald wir Hintergrundmusik haben
-        Main.soundVolume = soundVolume;
         float range = volumeControl.getMaximum() - volumeControl.getMinimum();
         float gain = (float) (range * soundVolume + volumeControl.getMinimum());
         volumeControl.setValue(gain);

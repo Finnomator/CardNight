@@ -32,8 +32,6 @@ public class Ueno extends Spiel {
 
     public Ueno(int spielerAnzahl, int kartenProSpieler) {
 
-        UenoKartenset.kartenErstellen();
-
         ablagestapel = new Stack<>();
         erstelleNeuenNachziehstapel();
         spieler = new UenoSpieler[spielerAnzahl];
@@ -62,6 +60,11 @@ public class Ueno extends Spiel {
 
     public UenoKarte gibZuletztAbgelegteKarte() {
         return ablagestapel.peek();
+    }
+
+    public void fuegeFertigenSpielerHinzu(UenoSpieler spieler) {
+        assert spieler.istFertig();
+        fertigeSpieler.add(spieler);
     }
 
     public UenoSpieler gibAktivenSpieler() {
@@ -106,9 +109,6 @@ public class Ueno extends Spiel {
 
     public UenoSpieler nachsterSpieler(Spieler momentanAktiverSpieler) {
 
-        if (hatSpielerGewonnen(gibHauptSpieler()))
-            if (!fertigeSpieler.contains(gibHauptSpieler()))
-                fertigeSpieler.add(gibHauptSpieler());
         if (richtungswechsel())
             invertierteRichtung = !invertierteRichtung;
 
@@ -135,10 +135,8 @@ public class Ueno extends Spiel {
 
         UenoSpieler naechster = spieler[aktiverSpieler];
 
-        if (hatSpielerGewonnen(naechster)) {
+        if (naechster.istFertig()) {
             System.out.println(naechster.name + " wurde ausgelassen, da er fertig ist");
-            if (!fertigeSpieler.contains(naechster))
-                fertigeSpieler.add(naechster);
             return nachsterSpieler(naechster);
         }
         return naechster;
@@ -170,19 +168,13 @@ public class Ueno extends Spiel {
     }
 
     public boolean istSpielBeendet() {
-        if (hatSpielerGewonnen(gibHauptSpieler()))
-            return true;
+        return gibHauptSpieler().istFertig() || fertigeSpieler.size() >= spieler.length - 1;
 
-        return fertigeSpieler.size() >= spieler.length - 1;
     }
 
     @Override
     public String gibAnleitung() {
         return Tools.readFile("/cardnight/anleitungen/UenoAnleitung");
-    }
-
-    public boolean hatSpielerGewonnen(UenoSpieler spieler) {
-        return spieler.gibHandkarten().size() == 0;
     }
 
     private void karteAblegen(UenoKarte karte) {

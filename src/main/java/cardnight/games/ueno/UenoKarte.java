@@ -1,6 +1,7 @@
 package cardnight.games.ueno;
 
 import cardnight.games.Karte;
+import cardnight.games.ueno.viewcontroler.UenoSoundPlayer;
 
 public class UenoKarte extends Karte {
 
@@ -30,6 +31,14 @@ public class UenoKarte extends Karte {
 
     public void aktiviereEffekt() {
         effektWurdeAktiviert = true;
+
+        switch (art) {
+            case RICHTUNGSWECHSEL:
+                UenoSoundPlayer.reverse();
+                break;
+            case AUSSETZEN:
+                UenoSoundPlayer.skip();
+        }
     }
 
     public boolean wurdeEffektAktiviert() {

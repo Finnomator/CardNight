@@ -234,6 +234,7 @@ public class Witch extends Spiel {
         for (WitchSpieler s : spieler) {
             s.clearHandkarten();
             s.setzeAnzahlErhalteneSticheZurueck();
+            s.setzeAnzahlGeschaetzteSticheZurueck();
         }
         stich = new WitchKarte[anzahlSpieler];
         benutzt.clear();

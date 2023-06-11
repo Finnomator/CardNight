@@ -27,15 +27,15 @@ public class UenoRessourcen {
     }
 
     public static ImageView erstelleKartenRueckseite() {
-        ImageView kartenRueckseite = new ImageView();
-        kartenRueckseite.setImage(ladeBild("UNO_Rückseite.png", 0, 32, true));
+        ImageView kartenRueckseite = new ImageView(ladeBild("UNO_Rückseite.png", 0, Main.GEGNERKARTE_HOEHE, true));
         return kartenRueckseite;
     }
 
     public static Button erstelleStandardHandKarte(UenoKarte karte) {
         Button btn = new Button();
-        ImageView kartenBild = new ImageView();
-        kartenBild.setImage(UenoKartenBilder.karteZuBild(karte));
+        ImageView kartenBild = new ImageView(UenoKartenBilder.karteZuBild(karte));
+        kartenBild.setPreserveRatio(true);
+        kartenBild.setFitWidth(Main.HANDKARTE_BREITE);
 
         btn.getStylesheets().add(Main.class.getResource("/cardnight/transparent-image-button.css").toExternalForm());
         btn.setGraphic(kartenBild);

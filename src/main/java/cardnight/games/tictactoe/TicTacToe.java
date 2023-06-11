@@ -3,7 +3,6 @@ package cardnight.games.tictactoe;
 import cardnight.Tools;
 import cardnight.games.Spiel;
 import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
-import javafx.application.Platform;
 
 import java.util.Arrays;
 
@@ -90,13 +89,13 @@ public class TicTacToe extends Spiel {
     }
 
     private int computerzugMachen() {
-        delay(1000);
+        delay();
         return TicTacToeGegner.zugMachen(feld);
     }
 
-    private void delay(long millis) {
+    private void delay() {
         try {
-            Thread.sleep(millis);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

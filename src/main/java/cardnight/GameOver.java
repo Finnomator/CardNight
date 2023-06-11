@@ -2,20 +2,21 @@ package cardnight;
 
 import cardnight.games.ueno.viewcontroler.UenoView;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class GameOver {
-    public Text nachrichtText;
+    public Label nachrichtText;
+    private static String nachricht;
 
     public void initialize() {
-
+        nachrichtText.setText(nachricht);
     }
 
-    public void setzeNachricht(String nachricht) {
-        nachrichtText.setText(nachricht);
+    public static void setzeNachricht(String text) {
+        nachricht = text;
     }
 
     public static StackPane loadScene() throws IOException {

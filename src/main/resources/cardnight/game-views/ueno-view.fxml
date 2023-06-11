@@ -42,12 +42,6 @@
       </rowConstraints>
     </GridPane>
 
-    <Text fx:id="gewinnerText" mouseTransparent="true" textAlignment="CENTER">
-        <font>
-            <Font size="27.0" />
-        </font>
-    </Text>
-
     <Button onAction="#pauseClick" stylesheets="@../button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
     <Circle fx:id="hauptSpielerTurnIndicator" fill="green" radius="25.0" visible="false" StackPane.alignment="BOTTOM_RIGHT">

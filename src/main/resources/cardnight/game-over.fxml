@@ -4,13 +4,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(100, 100, 100, 0.5);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.GameOver">
+<StackPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(255,255,255,0.73);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.GameOver">
 
 
-    <Text fx:id="nachrichtText" text="GAME OVER">
+    <Label stylesheets="@fonts/game-over.css" text="GAME OVER" StackPane.alignment="TOP_CENTER">
       <font>
-         <Font size="33.0" />
-      </font></Text>
+         <Font size="130.0" />
+      </font></Label>
+
+    <Label fx:id="nachrichtText" stylesheets="@fonts/game-over.css" text="NACHRICHT">
+      <font>
+         <Font size="63.0" />
+      </font></Label>
 
     <Button onAction="#onZumHauptmenueClick" stylesheets="@button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
 

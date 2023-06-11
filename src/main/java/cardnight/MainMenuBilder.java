@@ -21,6 +21,7 @@ public class MainMenuBilder {
     public static void ladeBilder() {
         ticTacToeHintergrund = ladeBild("hintergruende/TicTacToe_Background.png");
         uenoHintergrund = ladeBild("hintergruende/UNO_Background.png");
+        witchHintergrund = ladeBild("hintergruende/Witch_Background.png");
 
         tttButton = ladeBild("button-hintergruende/TicTacToe_Button.png");
         tttButtonHovered = ladeBild("button-hintergruende/TicTacToe_Button_hovered.png");

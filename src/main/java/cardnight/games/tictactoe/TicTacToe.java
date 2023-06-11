@@ -95,14 +95,14 @@ public class TicTacToe extends Spiel {
     }
 
     private int computerzugMachen() {
-        delay();
+        delay(2000);
         TTTSoundPlayer.randomUeberlegen();
         return TicTacToeGegner.zugMachen(feld);
     }
 
-    private void delay() {
+    private void delay(long millis) {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(millis);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -10,53 +10,71 @@
 <StackPane fx:id="root" prefHeight="480" prefWidth="720" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
 
     <ImageView fx:id="hintergrundImageView" preserveRatio="true" />
+    <GridPane StackPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints vgrow="ALWAYS" />
+        </rowConstraints>
 
-    <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="CENTER">
-        <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
-            <graphic>
-                <ImageView fx:id="tttButtonImgView" fitHeight="70" preserveRatio="true">
-                    <Image url="@images/button-hintergruende/TicTacToe_Button.png" />
-                </ImageView>
-            </graphic>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets top="0.001" />
-         </padding>
-        </Button>
-        <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
-            <graphic>
-                <ImageView fx:id="uenoButtonImgView" fitHeight="70.0" preserveRatio="true">
-                    <Image url="@images/button-hintergruende/UNO_Button.png" />
-                </ImageView>
-            </graphic>
-         <padding>
-            <Insets top="0.001" />
-         </padding>
-        </Button>
-        <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
-            <graphic>
-                <ImageView fx:id="witchButtonImgView" fitHeight="70.0" preserveRatio="true">
-                    <Image url="@images/button-hintergruende/Witch_Button.png" />
-                </ImageView>
-            </graphic>
-         <padding>
-            <Insets top="0.001" />
-         </padding>
-        </Button>
-    </VBox>
+       <ImageView fx:id="linkeSpinKarte" fitHeight="150.0" preserveRatio="true" GridPane.halignment="CENTER">
+           <Image url="@game-views/ueno/images/UNO_Rückseite.png" />
+       </ImageView>
 
-    <Button onAction="#onBeendenClick" onMouseEntered="#mouseEnteredBeenden" onMouseExited="#mouseExitedBeenden" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css" StackPane.alignment="BOTTOM_CENTER">
-        <graphic>
-            <ImageView fx:id="beendenButtonImgView" fitHeight="70.0" preserveRatio="true">
-                <Image url="@images/button-hintergruende/End_Button.png" />
-            </ImageView>
-        </graphic>
-      <padding>
-         <Insets top="0.001" />
-      </padding>
-    </Button>
+        <ImageView fx:id="rechteSpinKarte" fitHeight="150.0" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <Image url="@game-views/ueno/images/UNO_Rückseite.png" />
+        </ImageView>
+
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
+                <graphic>
+                    <ImageView fx:id="tttButtonImgView" fitHeight="70" preserveRatio="true">
+                        <Image url="@images/button-hintergruende/TicTacToe_Button.png" />
+                    </ImageView>
+                </graphic>
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+                <padding>
+                    <Insets top="0.001" />
+                </padding>
+            </Button>
+            <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
+                <graphic>
+                    <ImageView fx:id="uenoButtonImgView" fitHeight="70.0" preserveRatio="true">
+                        <Image url="@images/button-hintergruende/UNO_Button.png" />
+                    </ImageView>
+                </graphic>
+                <padding>
+                    <Insets top="0.001" />
+                </padding>
+            </Button>
+            <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
+                <graphic>
+                    <ImageView fx:id="witchButtonImgView" fitHeight="70.0" preserveRatio="true">
+                        <Image url="@images/button-hintergruende/Witch_Button.png" />
+                    </ImageView>
+                </graphic>
+                <padding>
+                    <Insets top="0.001" />
+                </padding>
+            </Button>
+        </VBox>
+
+       <Button onAction="#onBeendenClick" onMouseEntered="#mouseEnteredBeenden" onMouseExited="#mouseExitedBeenden" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+           <graphic>
+               <ImageView fx:id="beendenButtonImgView" fitHeight="70.0" preserveRatio="true">
+                   <Image url="@images/button-hintergruende/End_Button.png" />
+               </ImageView>
+           </graphic>
+         <padding>
+            <Insets top="0.001" />
+         </padding>
+       </Button>
+    </GridPane>
 
     <fx:include source="sound-menu.fxml" StackPane.alignment="TOP_RIGHT" />
 
@@ -67,10 +85,9 @@
     </VBox>
 
     <ImageView fitHeight="130.0" preserveRatio="true" StackPane.alignment="TOP_CENTER">
-      <image>
-         <Image url="@images/CardNight_Title.png" />
-      </image>
-      <effect>
-         <Glow level="0.41" />
-      </effect></ImageView>
+        <effect>
+            <Glow level="0.41" />
+        </effect>
+        <Image url="@images/CardNight_Title.png" />
+    </ImageView>
 </StackPane>

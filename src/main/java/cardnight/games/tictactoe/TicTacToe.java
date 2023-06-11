@@ -77,10 +77,10 @@ public class TicTacToe extends Spiel {
                 if (istSpielBeendet())
                     break;
 
-                if (spieltGegenComputer)
+                if (spieltGegenComputer) {
                     TTTSoundPlayer.randomFeldAusgesucht();
-
-                delay(400);
+                    delay(400);
+                }
 
                 observerView.updateUi();
             }

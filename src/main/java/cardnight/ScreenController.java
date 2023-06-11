@@ -13,6 +13,10 @@ public class ScreenController {
         main = scene;
     }
 
+    public static Pane getScreen(String name) {
+        return screenMap.get(name);
+    }
+
     public static void addScreen(String name, Pane pane) {
         screenMap.put(name, pane);
     }

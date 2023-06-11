@@ -13,9 +13,16 @@ public class UenoSoundPlayer {
     private static Clip skipSound;
     private static Clip unoSound;
     private static Clip unoUnoSound;
+    private static boolean soundsWurdenGeladen;
 
 
     public static void ladeSounds() {
+
+        if (soundsWurdenGeladen)
+            return;
+
+        soundsWurdenGeladen = true;
+
         fYouSound = ladeClip("UNO_F.wav");
         reverseSound = ladeClip("UNO_Reverse.wav");
         skipSound = ladeClip("UNO_Skip.wav");

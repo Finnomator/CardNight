@@ -38,7 +38,7 @@ public class WitchKartenBilder {
     }
 
     private static Image ladeBild(String pfad) {
-        return new Image(Main.class.getResourceAsStream("/cardnight/game-views/witch/images/" + pfad));
+        return new Image(Main.class.getResourceAsStream("/cardnight/game-views/witch/images/" + pfad), 113.4, 0, true, true);
     }
 
     public static Image karteZuBild(WitchKarte karte) {

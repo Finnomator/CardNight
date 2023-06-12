@@ -4,6 +4,7 @@ import cardnight.games.witch.WitchGegner;
 import cardnight.games.witch.WitchKarte;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -43,6 +44,6 @@ public class WitchGegnerUiHand {
 
         kartenBox.getChildren().clear();
         for (WitchKarte ignored : spieler.gibHandkarten())
-            kartenBox.getChildren().add(WitchRessourcen.erstelleKartenRueckseite());
+            kartenBox.getChildren().add(new ImageView(WitchKartenBilder.witchKartenRueckseite));
     }
 }

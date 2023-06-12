@@ -1,11 +1,14 @@
 package cardnight.games.witch.viewcontroller;
 
 import cardnight.Main;
+import cardnight.Tools;
+import cardnight.games.Ressourcen;
 import cardnight.games.witch.WitchFarbe;
 import cardnight.games.witch.WitchKarte;
 import javafx.scene.image.Image;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class WitchKartenBilder {
 
@@ -53,6 +56,9 @@ public class WitchKartenBilder {
 
         if (karte.istNarr())
             return narrenKarten.get(karte.farbe);
+
+        if (karte.wert == 1 && karte.farbe == WitchFarbe.GELB && Tools.random.nextInt(10) == 0) // What could this mean? ㄟ( ▔, ▔ )ㄏ
+            return Ressourcen.dieDiebin;
 
         return farbigeKarten.get(karte.farbe)[karte.wert - 1];
     }

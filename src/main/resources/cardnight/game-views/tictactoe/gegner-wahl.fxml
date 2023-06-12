@@ -25,7 +25,7 @@
         </Button>
         <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" prefWidth="165.0" stylesheets="@../../button-style.css" text="Gegen einen Menschen">
             <graphic>
-                <ImageView fitHeight="100.0" preserveRatio="true">
+                <ImageView fx:id="gegenMenschImgView" fitHeight="100.0" preserveRatio="true">
                     <Image url="@images/Gegen_Mensch.png" />
                 </ImageView>
             </graphic>

@@ -10,6 +10,14 @@
 <StackPane fx:id="root" prefHeight="480" prefWidth="720" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
 
     <ImageView fx:id="hintergrundImageView" preserveRatio="true" />
+
+    <ImageView fitHeight="130.0" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+        <effect>
+            <Glow level="0.41" />
+        </effect>
+        <Image url="@images/CardNight_Title.png" />
+    </ImageView>
+
     <GridPane StackPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" />
@@ -31,8 +39,8 @@
         <VBox maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="CENTER">
             <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
                 <graphic>
-                    <ImageView fx:id="tttButtonImgView" fitHeight="70" preserveRatio="true">
-                        <Image url="@images/button-hintergruende/TicTacToe_Button.png" />
+                    <ImageView fx:id="tttButtonImgView">
+                        <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/TicTacToe_Button.png" />
                     </ImageView>
                 </graphic>
                 <VBox.margin>
@@ -44,8 +52,8 @@
             </Button>
             <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
                 <graphic>
-                    <ImageView fx:id="uenoButtonImgView" fitHeight="70.0" preserveRatio="true">
-                        <Image url="@images/button-hintergruende/UNO_Button.png" />
+                    <ImageView fx:id="uenoButtonImgView">
+                        <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/UNO_Button.png" />
                     </ImageView>
                 </graphic>
                 <padding>
@@ -54,8 +62,8 @@
             </Button>
             <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
                 <graphic>
-                    <ImageView fx:id="witchButtonImgView" fitHeight="70.0" preserveRatio="true">
-                        <Image url="@images/button-hintergruende/Witch_Button.png" />
+                    <ImageView fx:id="witchButtonImgView">
+                        <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/Witch_Button.png" />
                     </ImageView>
                 </graphic>
                 <padding>
@@ -66,8 +74,8 @@
 
        <Button onAction="#onBeendenClick" onMouseEntered="#mouseEnteredBeenden" onMouseExited="#mouseExitedBeenden" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
            <graphic>
-               <ImageView fx:id="beendenButtonImgView" fitHeight="70.0" preserveRatio="true">
-                   <Image url="@images/button-hintergruende/End_Button.png" />
+               <ImageView fx:id="beendenButtonImgView">
+                   <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/End_Button.png" />
                </ImageView>
            </graphic>
          <padding>
@@ -83,11 +91,4 @@
         <Hyperlink onAction="#githubRepoLinkClick" text="GitHub Repo" />
         <Hyperlink onAction="#reportBugLinkClick" text="Report Bug" />
     </VBox>
-
-    <ImageView fitHeight="130.0" preserveRatio="true" StackPane.alignment="TOP_CENTER">
-        <effect>
-            <Glow level="0.41" />
-        </effect>
-        <Image url="@images/CardNight_Title.png" />
-    </ImageView>
 </StackPane>

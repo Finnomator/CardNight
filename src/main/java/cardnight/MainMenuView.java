@@ -38,7 +38,13 @@ public class MainMenuView {
         hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(500));
         linkeSpinKarte.fitHeightProperty().bind(root.heightProperty().divide(2.5));
         rechteSpinKarte.fitHeightProperty().bind(root.heightProperty().divide(2.5));
-        setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
+
+        tttButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.TIC_TAC_TOE, false));
+        uenoButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.UENO, false));
+        witchButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.WITCH, false));
+        beendenButtonImgView.setImage(MainMenuBilder.beendenButtonBild(false));
+
+        setzeHintergrund(null);
         startRotatingCards();
     }
 
@@ -89,13 +95,13 @@ public class MainMenuView {
     }
 
     public void mouseExitedTTT() {
-        setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
+        setzeHintergrund(null);
         tttButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.TIC_TAC_TOE, false));
         zeigeSpinKarten(true);
     }
 
     public void mouseExitedUeno() {
-        setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
+        setzeHintergrund(null);
         uenoButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.UENO, false));
         zeigeSpinKarten(true);
     }
@@ -113,7 +119,7 @@ public class MainMenuView {
     }
 
     public void mouseExitedWitch() {
-        setzeHintergrund(MainMenuBilder.gibDefaultHintergrund());
+        setzeHintergrund(null);
         witchButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.WITCH, false));
         zeigeSpinKarten(true);
     }

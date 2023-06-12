@@ -1,11 +1,13 @@
 package cardnight.games.ueno;
 
 import cardnight.Tools;
+import cardnight.games.GegnerNamen;
 import cardnight.games.Spiel;
 import cardnight.games.Spieler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Stack;
 
 public class Ueno extends Spiel {
@@ -37,11 +39,14 @@ public class Ueno extends Spiel {
         spieler = new UenoSpieler[spielerAnzahl];
         fertigeSpieler = new ArrayList<>();
 
-        for (int i = 0; i < spielerAnzahl; ++i) {
-            if (i == 0)
-                spieler[i] = new UenoSpieler("Hauptspieler", this);
-            else
-                spieler[i] = new UenoGegner("Gegner " + i, this);
+        spieler[0] = new UenoSpieler("Du", this);
+        for (int i = 0; i < kartenProSpieler; ++i)
+            spieler[0].fuegeKarteHinzu(karteNachziehen());
+
+        ArrayList<String> gegnerNamen = GegnerNamen.gibZufaelligeNamen(spielerAnzahl - 1);
+
+        for (int i = 1; i < spielerAnzahl; ++i) {
+            spieler[i] = new UenoGegner(gegnerNamen.get(i - 1), this);
 
             for (int j = 0; j < kartenProSpieler; ++j)
                 spieler[i].fuegeKarteHinzu(karteNachziehen());

@@ -7,8 +7,6 @@ public class MainMenuBilder {
     private static Image ticTacToeHintergrund;
     private static Image uenoHintergrund;
     private static Image witchHintergrund;
-    private static Image defaultHintergrund;
-
     private static Image tttButton;
     private static Image tttButtonHovered;
     private static Image uenoButton;
@@ -21,19 +19,16 @@ public class MainMenuBilder {
     public static void ladeBilder() {
         ticTacToeHintergrund = ladeBild("hintergruende/TicTacToe_Background.png");
         uenoHintergrund = ladeBild("hintergruende/UNO_Background.png");
+        witchHintergrund = ladeBild("hintergruende/Witch_Background.png");
 
-        tttButton = ladeBild("button-hintergruende/TicTacToe_Button.png");
-        tttButtonHovered = ladeBild("button-hintergruende/TicTacToe_Button_hovered.png");
-        uenoButton = ladeBild("button-hintergruende/UNO_Button.png");
-        uenoButtonHovered = ladeBild("button-hintergruende/UNO_Button_hovered.png");
-        witchButton = ladeBild("button-hintergruende/Witch_Button.png");
-        witchButtonHovered = ladeBild("button-hintergruende/Witch_Button_hovered.png");
-        beendenButton = ladeBild("button-hintergruende/End_Button.png");
-        beendenButtonHovered = ladeBild("button-hintergruende/End_Button_hovered.png");
-    }
-
-    public static Image gibDefaultHintergrund() {
-        return defaultHintergrund;
+        tttButton = ladeBild("button-hintergruende/TicTacToe_Button.png", 0, 70);
+        tttButtonHovered = ladeBild("button-hintergruende/TicTacToe_Button_hovered.png", 0, 70);
+        uenoButton = ladeBild("button-hintergruende/UNO_Button.png", 0, 70);
+        uenoButtonHovered = ladeBild("button-hintergruende/UNO_Button_hovered.png", 0, 70);
+        witchButton = ladeBild("button-hintergruende/Witch_Button.png", 0, 70);
+        witchButtonHovered = ladeBild("button-hintergruende/Witch_Button_hovered.png", 0, 70);
+        beendenButton = ladeBild("button-hintergruende/End_Button.png", 0, 70);
+        beendenButtonHovered = ladeBild("button-hintergruende/End_Button_hovered.png", 0, 70);
     }
 
     public static Image gibButtonBild(SpielTyp spiel, boolean hovered) {
@@ -68,6 +63,10 @@ public class MainMenuBilder {
     }
 
     private static Image ladeBild(String pfad) {
-        return new Image(Main.class.getResourceAsStream("/cardnight/images/" + pfad));
+        return ladeBild(pfad, 0, 0);
+    }
+
+    private static Image ladeBild(String pfad, double breite, double hoehe) {
+        return new Image(Main.class.getResourceAsStream("/cardnight/images/" + pfad), breite, hoehe, true, true);
     }
 }

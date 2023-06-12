@@ -1,0 +1,7 @@
+@font-face {
+    src: url(AlgerianCondensedStd.otf);
+}
+
+.label {
+    -fx-font-family: 'Algerian Condensed Std';
+}

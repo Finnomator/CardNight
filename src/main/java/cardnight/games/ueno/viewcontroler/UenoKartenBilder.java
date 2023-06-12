@@ -8,13 +8,14 @@ import javafx.scene.image.Image;
 import java.util.HashMap;
 
 public class UenoKartenBilder {
-    private static HashMap<UenoFarbe, Image[]> zahlenKarten;
-    private static HashMap<UenoFarbe, Image> aussetzenKarten;
-    private static HashMap<UenoFarbe, Image> zweiZiehenKarten;
-    private static HashMap<UenoFarbe, Image> vierZiehenKarten;
-    private static HashMap<UenoFarbe, Image> farbwahlKarten;
-    private static HashMap<UenoFarbe, Image> richtungswechselKarten;
+    public static HashMap<UenoFarbe, Image[]> zahlenKarten;
+    public static HashMap<UenoFarbe, Image> aussetzenKarten;
+    public static HashMap<UenoFarbe, Image> zweiZiehenKarten;
+    public static HashMap<UenoFarbe, Image> vierZiehenKarten;
+    public static HashMap<UenoFarbe, Image> farbwahlKarten;
+    public static HashMap<UenoFarbe, Image> richtungswechselKarten;
     private static final String bilderPfad = "/cardnight/game-views/ueno/images/";
+    public static final double bilderBreite = Main.HANDKARTE_BREITE;
 
     private static boolean bilderWurdenSchonmalGeladen;
 
@@ -58,7 +59,8 @@ public class UenoKartenBilder {
     }
 
     private static Image ladeBild(String subPath) {
-        return new Image(Main.class.getResourceAsStream(bilderPfad + subPath));
+        return new Image(Main.class.getResourceAsStream(bilderPfad + subPath),
+                bilderBreite, 0.0, true, true);
     }
 
     public static Image karteZuBild(UenoKarte karte) {

@@ -11,31 +11,11 @@ import java.util.HashMap;
 
 public class UenoRessourcen {
 
-    private static final HashMap<String, Image> geladeneBilder = new HashMap<>();
-
-    public static Image ladeBild(String pfad, double width, double height, boolean preserveRatio) {
-
-        if (geladeneBilder.containsKey(pfad))
-            return geladeneBilder.get(pfad);
-
-        Image img = new Image(Main.class.getResourceAsStream("/cardnight/game-views/ueno/images/" + pfad),
-                width, height, preserveRatio, true);
-
-        geladeneBilder.put(pfad, img);
-
-        return img;
-    }
-
-    public static ImageView erstelleKartenRueckseite() {
-        ImageView kartenRueckseite = new ImageView();
-        kartenRueckseite.setImage(ladeBild("UNO_Rückseite.png", 0, 32, true));
-        return kartenRueckseite;
-    }
+    public static final Image uenoKartenRueckseite = UenoKartenBilder.ladeBild("UNO_Rückseite.png", 0, Main.GEGNERKARTE_HOEHE);
 
     public static Button erstelleStandardHandKarte(UenoKarte karte) {
         Button btn = new Button();
-        ImageView kartenBild = new ImageView();
-        kartenBild.setImage(UenoKartenBilder.karteZuBild(karte));
+        ImageView kartenBild = new ImageView(UenoKartenBilder.karteZuBild(karte));
 
         btn.getStylesheets().add(Main.class.getResource("/cardnight/transparent-image-button.css").toExternalForm());
         btn.setGraphic(kartenBild);

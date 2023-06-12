@@ -15,7 +15,6 @@ public class UenoKartenBilder {
     public static HashMap<UenoFarbe, Image> farbwahlKarten;
     public static HashMap<UenoFarbe, Image> richtungswechselKarten;
     private static final String bilderPfad = "/cardnight/game-views/ueno/images/";
-    public static final double bilderBreite = Main.HANDKARTE_BREITE;
 
     private static boolean bilderWurdenSchonmalGeladen;
 
@@ -60,7 +59,12 @@ public class UenoKartenBilder {
 
     private static Image ladeBild(String subPath) {
         return new Image(Main.class.getResourceAsStream(bilderPfad + subPath),
-                bilderBreite, 0.0, true, true);
+                Main.HANDKARTE_BREITE, 0.0, true, true);
+    }
+
+    public static Image ladeBild(String subPath, double breite, double hoehe) {
+        return new Image(Main.class.getResourceAsStream(bilderPfad + subPath),
+                breite, hoehe, true, true);
     }
 
     public static Image karteZuBild(UenoKarte karte) {

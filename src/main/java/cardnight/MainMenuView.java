@@ -2,11 +2,9 @@ package cardnight;
 
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
 import cardnight.games.ueno.UenoFarbe;
-import cardnight.games.ueno.UenoKarte;
 import cardnight.games.ueno.viewcontroler.UenoKartenBilder;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.WitchFarbe;
-import cardnight.games.witch.WitchKarte;
 import cardnight.games.witch.viewcontroller.WitchKartenBilder;
 import cardnight.games.witch.viewcontroller.WitchView;
 import javafx.animation.Animation;
@@ -37,8 +35,6 @@ public class MainMenuView {
 
     public void initialize() {
         MainMenuBilder.ladeBilder();
-        UenoKartenBilder.ladeBilder();
-        WitchKartenBilder.bilderLaden();
         hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(500));
         linkeSpinKarte.fitHeightProperty().bind(root.heightProperty().divide(2.5));
         rechteSpinKarte.fitHeightProperty().bind(root.heightProperty().divide(2.5));
@@ -174,16 +170,18 @@ public class MainMenuView {
 
         int rndGame = rnd.nextInt(2);
 
+        String farbe;
+        int zahl;
+
         switch (rndGame) {
             case 0:
-                String farbe = UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)].toString().toLowerCase();
-                int zahl = rnd.nextInt(10);
-                return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png",  0.0, 0.0);
+                farbe = UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)].toString().toLowerCase();
+                zahl = rnd.nextInt(10);
+                return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png",  0, 0);
             case 1:
-                return WitchKartenBilder.karteZuBild(new WitchKarte(
-                        WitchFarbe.values()[rnd.nextInt(WitchFarbe.values().length)],
-                        rnd.nextInt(15)
-                ));
+                farbe = WitchFarbe.values()[rnd.nextInt(WitchFarbe.values().length)].toString().toLowerCase();
+                zahl = rnd.nextInt(13) + 1;
+                return WitchKartenBilder.ladeBild(farbe + "/Witch_" + farbe + "_" + zahl + ".png", 0, 0);
         }
 
         throw new RuntimeException();

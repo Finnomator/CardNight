@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-
 <StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
 
     <GridPane fx:id="tableGrid">
@@ -16,8 +14,8 @@
         <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <Button fx:id="nachziehstapelButton" onAction="#nachziehstapelClick" rotate="90.0" stylesheets="@../transparent-image-button.css">
                 <graphic>
-                    <ImageView fitWidth="90.0" preserveRatio="true">
-                        <Image url="@ueno/images/UNO_Rückseite.png" />
+                    <ImageView>
+                        <Image url="@ueno/images/UNO_Rückseite.png" requestedWidth="90" preserveRatio="true"/>
                     </ImageView>
                 </graphic>
             <padding>

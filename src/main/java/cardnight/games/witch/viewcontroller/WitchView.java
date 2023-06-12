@@ -3,6 +3,7 @@ package cardnight.games.witch.viewcontroller;
 import cardnight.GameOver;
 import cardnight.Main;
 import cardnight.PauseMenu;
+import cardnight.SoundPlayer;
 import cardnight.games.SpielView;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchGegner;
@@ -10,15 +11,13 @@ import cardnight.games.witch.WitchKarte;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -32,8 +31,8 @@ public class WitchView extends SpielView {
     public VBox schaetzungsRoot;
     public Button schaetzungsOkButton;
     public HBox gegnerUiHaendeContainer;
-    public Text rundenNummerText;
-    public Text erhalteneSticheText;
+    public Label rundenNummerText;
+    public Label erhalteneSticheText;
     public GridPane tableGrid;
     public ImageView trumpfImageView;
     public GridPane tischContentContainer;
@@ -163,6 +162,7 @@ public class WitchView extends SpielView {
 
     @Override
     public void pauseClick() throws IOException {
+        SoundPlayer.klickSound();
         root.getChildren().add(PauseMenu.loadScene());
     }
 
@@ -171,6 +171,7 @@ public class WitchView extends SpielView {
     }
 
     public void schaetzungOkKlick() {
+        SoundPlayer.klickSound();
         hatStichSchaetzungBestaetigt.set(true);
     }
 

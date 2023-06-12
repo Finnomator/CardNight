@@ -17,22 +17,22 @@ import java.io.IOException;
 
 public class PauseMenu {
 
-    public Slider soundVolumeSlider;
     public GridPane root;
     public Text anleitungText;
 
     public void initialize() {
-        soundVolumeSlider.setValue(Main.getSoundVolume() * 100.0);
         Spiel spiel = Main.gibAktuellGespieltesSpiel();
         if (spiel != null)
             anleitungText.setText(spiel.gibAnleitung());
     }
 
     public void onFortsetzenClick() {
+        SoundPlayer.klickSound();
         ((Pane) root.getParent()).getChildren().remove(root);
     }
 
     public void onZumHauptmenueClick() {
+        SoundPlayer.klickSound();
         ScreenController.activate("main-menu-view");
     }
 
@@ -40,7 +40,4 @@ public class PauseMenu {
         return new FXMLLoader(Main.class.getResource("/cardnight/pause-menu.fxml")).load();
     }
 
-    public void onSoundSliderMouseClick() {
-        Main.setSoundVolume(soundVolumeSlider.getValue() / 100.0);
-    }
 }

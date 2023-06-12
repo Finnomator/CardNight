@@ -9,7 +9,7 @@
 
     <Label text="Gegen wen möchtest du spielen?" StackPane.alignment="TOP_CENTER">
       <font>
-         <Font size="20.0" />
+         <Font name="Sitka Text" size="24.0" />
       </font></Label>
 
     <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="3">
@@ -19,6 +19,9 @@
                     <Image url="@images/Gegen_Computer.png" />
                 </ImageView>
             </graphic>
+            <font>
+                <Font name="Sitka Text" />
+            </font>
         </Button>
         <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" prefWidth="165.0" stylesheets="@../../button-style.css" text="Gegen einen Menschen">
             <graphic>
@@ -26,9 +29,16 @@
                     <Image url="@images/Gegen_Mensch.png" />
                 </ImageView>
             </graphic>
+            <font>
+                <Font name="Sitka Text" />
+            </font>
         </Button>
     </HBox>
 
-    <Button onAction="#zuruckZumHauptmenuKlick" stylesheets="@../../button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
+    <Button onAction="#zuruckZumHauptmenuKlick" stylesheets="@../../button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER">
+        <font>
+            <Font name="Sitka Text" />
+        </font>
+    </Button>
 
 </StackPane>

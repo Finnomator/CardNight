@@ -11,15 +11,13 @@ import cardnight.games.witch.WitchKarte;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -33,8 +31,8 @@ public class WitchView extends SpielView {
     public VBox schaetzungsRoot;
     public Button schaetzungsOkButton;
     public HBox gegnerUiHaendeContainer;
-    public Text rundenNummerText;
-    public Text erhalteneSticheText;
+    public Label rundenNummerText;
+    public Label erhalteneSticheText;
     public GridPane tableGrid;
     public ImageView trumpfImageView;
     public GridPane tischContentContainer;

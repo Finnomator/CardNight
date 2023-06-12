@@ -176,10 +176,9 @@ public class MainMenuView {
 
         switch (rndGame) {
             case 0:
-                return UenoKartenBilder.karteZuBild(new UenoKarte(
-                        rnd.nextInt(10),
-                        UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)]
-                ));
+                String farbe = UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)].toString().toLowerCase();
+                int zahl = rnd.nextInt(10);
+                return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png",  0.0, 0.0);
             case 1:
                 return WitchKartenBilder.karteZuBild(new WitchKarte(
                         WitchFarbe.values()[rnd.nextInt(WitchFarbe.values().length)],

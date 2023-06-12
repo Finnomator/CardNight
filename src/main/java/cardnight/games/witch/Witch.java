@@ -121,6 +121,7 @@ public class Witch extends Spiel {
                 kartenSammeln();
             }
 
+            update();
             System.out.println("Das Spiel ist vorbei");
             Platform.runLater(observerView::beendeSpiel);
         });

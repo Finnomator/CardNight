@@ -8,6 +8,7 @@ import cardnight.games.SpielView;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchGegner;
 import cardnight.games.witch.WitchKarte;
+import cardnight.games.witch.WitchSpieler;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -20,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
@@ -52,7 +54,7 @@ public class WitchView extends SpielView {
 
         WitchKartenBilder.bilderLaden();
 
-        witch = new Witch(4, 1000, this);
+        witch = new Witch(6, 1000, this);
         Main.setzeAktuellesSpiel(witch);
 
         gegnerUiHaende = new HashMap<>();
@@ -153,6 +155,18 @@ public class WitchView extends SpielView {
 
     @Override
     public void beendeSpiel() {
+
+        String nachricht = "Platzierung:";
+
+        ArrayList<WitchSpieler> sortierteSpieler = witch.platzierung();
+
+        for (int i = 0; i < sortierteSpieler.size(); i++) {
+            WitchSpieler s = sortierteSpieler.get(i);
+            nachricht += "\t" + (i + 1) + ". " + s.name + " (" + s.gibPunkte() + " Punkte)\n";
+        }
+
+        GameOver.setzeNachricht(nachricht);
+
         try {
             root.getChildren().add(GameOver.loadScene());
         } catch (IOException e) {

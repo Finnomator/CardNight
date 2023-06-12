@@ -58,7 +58,13 @@ public class UenoKartenBilder {
     }
 
     private static Image ladeBild(String subPath) {
-        return new Image(Main.class.getResourceAsStream(bilderPfad + subPath));
+        return new Image(Main.class.getResourceAsStream(bilderPfad + subPath),
+                Main.HANDKARTE_BREITE, 0.0, true, true);
+    }
+
+    public static Image ladeBild(String subPath, double breite, double hoehe) {
+        return new Image(Main.class.getResourceAsStream(bilderPfad + subPath),
+                breite, hoehe, true, true);
     }
 
     public static Image karteZuBild(UenoKarte karte) {

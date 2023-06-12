@@ -32,7 +32,6 @@ public class UenoView extends SpielView {
     public Button nachziehstapelButton;
     public StackPane root;
     public HBox gegnerHaendeContainer;
-    public Circle hauptSpielerTurnIndicator;
     public ImageView ablagestapelImageView;
     public GridPane tableGrid;
     private Ueno ueno;
@@ -111,10 +110,13 @@ public class UenoView extends SpielView {
 
         if (gegner.kannKarteAblegen()) {
             legeKarte(gegner, gegner.whaeleKarteZumAblegen());
-            if (gegner.gibHandkarten().size() == 1)
-                UenoSoundPlayer.uno();
-            else if (gegner.gibHandkarten().size() == 0)
+
+            if (gegner.istFertig()) {
+                ueno.fuegeFertigenSpielerHinzu(gegner);
                 UenoSoundPlayer.unoUno();
+            } else if (gegner.gibHandkarten().size() == 1)
+                UenoSoundPlayer.uno();
+                
         } else {
             System.out.println(gegner.name + " konnte nicht ablegen");
             zieheKarten(gegner, 1);
@@ -127,36 +129,36 @@ public class UenoView extends SpielView {
 
     private void gegnerZuege() {
         nachziehstapelButton.setDisable(true);
-        Thread t = new Thread(() -> {
 
-            UenoSpieler naechster = ueno.nachsterSpieler(hauptSpieler);
-            while (naechster != hauptSpieler) {
-                gegnerZug((UenoGegner) naechster);
+        UenoSpieler naechster = ueno.nachsterSpieler(hauptSpieler);
+        while (naechster != hauptSpieler) {
+            gegnerZug((UenoGegner) naechster);
 
-                if (ueno.istSpielBeendet()) {
-                    Platform.runLater(this::beendeSpiel);
-                    return;
-                }
-
-                naechster = ueno.nachsterSpieler(naechster);
+            if (ueno.istSpielBeendet()) {
+                Platform.runLater(this::beendeSpiel);
+                return;
             }
 
-            updateUi();
+            naechster = ueno.nachsterSpieler(naechster);
+        }
 
-            // Dinge tun, bevor der Spieler wieder Karten legen kann
-            UenoSpieler spieler = hauptSpieler;
-            if (ueno.mussAussetzen()) {
-                System.out.println(spieler.name + " musste aussetzen");
-                gegnerZuege();
-            } else if (ueno.mussVierZiehen())
-                zieheKarten(spieler, 4);
-            else if (ueno.mussZweiZiehen())
-                zieheKarten(spieler, 2);
+        updateUi();
 
-            nachziehstapelButton.setDisable(false);
-            hauptSpielerTurnIndicator.setFill(Color.GREEN);
+        // Dinge tun, bevor der Spieler wieder Karten legen kann
+        UenoSpieler spieler = hauptSpieler;
+        if (ueno.mussAussetzen()) {
+            System.out.println(spieler.name + " musste aussetzen");
+            gegnerZuege();
+        } else if (ueno.mussVierZiehen())
+            zieheKarten(spieler, 4);
+        else if (ueno.mussZweiZiehen())
+            zieheKarten(spieler, 2);
 
-        });
+        nachziehstapelButton.setDisable(false);
+    }
+
+    private void gegnerZuegeAsync() {
+        Thread t = new Thread(this::gegnerZuege);
         t.setDaemon(true);
         t.start();
     }
@@ -168,10 +170,8 @@ public class UenoView extends SpielView {
         // Spieler legt eine Karte
         legeKarte(hauptSpieler, event.geklickteKarte);
 
-        hauptSpielerTurnIndicator.setFill(Color.RED);
-
         // Gegner machen ihre Züge
-        gegnerZuege();
+        gegnerZuegeAsync();
 
         if (ueno.istSpielBeendet())
             beendeSpiel();
@@ -184,8 +184,7 @@ public class UenoView extends SpielView {
 
         if (!hauptSpieler.kannKarteAblegen()) {
             System.out.println(hauptSpieler.name + " konnte wieder nicht legen");
-            hauptSpielerTurnIndicator.setFill(Color.RED);
-            gegnerZuege();
+            gegnerZuegeAsync();
             return;
         }
 

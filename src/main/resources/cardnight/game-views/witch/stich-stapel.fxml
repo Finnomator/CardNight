@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.StackPane?>
-<StackPane alignment="BOTTOM_CENTER" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchUiStichStapel"/>
+<?import javafx.scene.layout.*?>
+
+
+<StackPane fx:id="root" alignment="BOTTOM_CENTER" maxHeight="-Infinity" rotate="270" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchUiStichStapel" />

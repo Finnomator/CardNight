@@ -44,9 +44,4 @@
 
     <Button onAction="#pauseClick" stylesheets="@../button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
-    <Circle fx:id="hauptSpielerTurnIndicator" fill="green" radius="25.0" visible="false" StackPane.alignment="BOTTOM_RIGHT">
-      <StackPane.margin>
-         <Insets bottom="60.0" />
-      </StackPane.margin></Circle>
-
 </StackPane>

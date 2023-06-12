@@ -39,8 +39,7 @@ public class UenoGegnerUiHand extends UenoUiHand {
         setHappy(spieler.istFertig());
 
         kartenBox.getChildren().clear();
-        for (UenoKarte ignored : spieler.gibHandkarten()) {
-            kartenBox.getChildren().add(UenoRessourcen.erstelleKartenRueckseite());
-        }
+        for (UenoKarte ignored : spieler.gibHandkarten())
+            kartenBox.getChildren().add(new ImageView(UenoRessourcen.uenoKartenRueckseite));
     }
 }

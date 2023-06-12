@@ -10,6 +10,7 @@ public class Ressourcen {
     // Alte Designs
 
     public static final Image dieDiebin = ladeBild("alte-designs/Witch_1_gelb.png", Main.HANDKARTE_BREITE, 0);
+    public static final Image einWuerdigerGegner = ladeBild("alte-designs/IPS_Gegen_Mensch.png", 0, 100);
 
     private static Image ladeBild(String pfad) {
         return new Image(Main.class.getResourceAsStream("/cardnight/" + pfad));

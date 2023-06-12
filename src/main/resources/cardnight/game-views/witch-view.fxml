@@ -17,7 +17,7 @@
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
 
         <GridPane fx:id="tischContentContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-            <ImageView fx:id="trumpfImageView" rotate="270.0" preserveRatio="true" fitWidth="113.6"/>
+            <ImageView fx:id="trumpfImageView" rotate="270.0" />
 
             <columnConstraints>
                 <ColumnConstraints />

@@ -1,6 +1,5 @@
 package cardnight.games.witch.viewcontroller;
 
-import cardnight.Main;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchKarte;
 import javafx.geometry.Insets;
@@ -26,8 +25,6 @@ public class WitchUiStichStapel {
                 continue;
 
             ImageView imgView = WitchRessourcen.erstelleKartenImageView(karte);
-            imgView.setPreserveRatio(true);
-            imgView.setFitWidth(Main.HANDKARTE_BREITE);
 
             StackPane.setMargin(imgView, new Insets(0, -i * 40, 0, 0));
 

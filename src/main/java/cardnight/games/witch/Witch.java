@@ -1,11 +1,13 @@
 package cardnight.games.witch;
 
 import cardnight.Tools;
+import cardnight.games.GegnerNamen;
 import cardnight.games.Spiel;
 import cardnight.games.witch.viewcontroller.WitchView;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Witch extends Spiel {
     private final WitchSpieler[] spieler;
@@ -26,9 +28,10 @@ public class Witch extends Spiel {
         this.gameDelayMillis = gameDelayMillis;
 
         spieler = new WitchSpieler[anzahl];
-        spieler[0] = new WitchMensch("Hauptspieler", this);
+        spieler[0] = new WitchMensch("Du", this);
+        ArrayList<String> gegnerNamen = GegnerNamen.gibZufaelligeNamen(anzahlSpieler - 1);
         for (int i = 1; i < anzahlSpieler; i++)
-            spieler[i] = new WitchGegner("Gegner " + i, this);
+            spieler[i] = new WitchGegner(gegnerNamen.get(i - 1), this);
 
         start = (int) (Math.random() * anzahl);
         spielerAmZug = start;

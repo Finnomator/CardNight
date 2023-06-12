@@ -14,6 +14,7 @@ public class UenoKartenBilder {
     private static HashMap<UenoFarbe, Image> vierZiehenKarten;
     private static HashMap<UenoFarbe, Image> farbwahlKarten;
     private static HashMap<UenoFarbe, Image> richtungswechselKarten;
+    public static final Image uenoKartenRueckseite = UenoKartenBilder.ladeBild("UNO_Rückseite.png", 0, Main.GEGNERKARTE_HOEHE);
     private static final String bilderPfad = "/cardnight/game-views/ueno/images/";
 
     private static boolean bilderWurdenSchonmalGeladen;

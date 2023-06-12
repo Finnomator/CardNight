@@ -40,6 +40,6 @@ public class UenoGegnerUiHand extends UenoUiHand {
 
         kartenBox.getChildren().clear();
         for (UenoKarte ignored : spieler.gibHandkarten())
-            kartenBox.getChildren().add(new ImageView(UenoRessourcen.uenoKartenRueckseite));
+            kartenBox.getChildren().add(new ImageView(UenoKartenBilder.uenoKartenRueckseite));
     }
 }

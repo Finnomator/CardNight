@@ -11,8 +11,6 @@ import java.util.HashMap;
 
 public class UenoRessourcen {
 
-    public static final Image uenoKartenRueckseite = UenoKartenBilder.ladeBild("UNO_Rückseite.png", 0, Main.GEGNERKARTE_HOEHE);
-
     public static Button erstelleStandardHandKarte(UenoKarte karte) {
         Button btn = new Button();
         ImageView kartenBild = new ImageView(UenoKartenBilder.karteZuBild(karte));

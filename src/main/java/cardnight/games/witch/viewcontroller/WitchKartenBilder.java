@@ -12,7 +12,7 @@ public class WitchKartenBilder {
     private static final HashMap<WitchFarbe, Image[]> farbigeKarten = new HashMap<>(52);
     private static final HashMap<WitchFarbe, Image> hexenKarten = new HashMap<>(4);
     private static final HashMap<WitchFarbe, Image> narrenKarten = new HashMap<>(4);
-
+    public static final Image witchKartenRueckseite = ladeBild("Witch_Ruckseite.png", 0, Main.GEGNERKARTE_HOEHE);
     private static boolean bilderWurdenGeladen;
 
     public static void bilderLaden() {
@@ -38,7 +38,11 @@ public class WitchKartenBilder {
     }
 
     private static Image ladeBild(String pfad) {
-        return new Image(Main.class.getResourceAsStream("/cardnight/game-views/witch/images/" + pfad), 113.4, 0, true, true);
+        return ladeBild(pfad, Main.HANDKARTE_BREITE, 0);
+    }
+
+    public static Image ladeBild(String pfad, double breite, double hoehe) {
+        return new Image(Main.class.getResourceAsStream("/cardnight/game-views/witch/images/" + pfad), breite, hoehe, true, true);
     }
 
     public static Image karteZuBild(WitchKarte karte) {

@@ -61,12 +61,5 @@
 
     </GridPane>
 
-
-    <Text fx:id="gewinnerText" mouseTransparent="true" textAlignment="CENTER">
-        <font>
-            <Font size="27.0" />
-        </font>
-    </Text>
-
-    <Button onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <Button onAction="#pauseClick" stylesheets="@../button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 </StackPane>

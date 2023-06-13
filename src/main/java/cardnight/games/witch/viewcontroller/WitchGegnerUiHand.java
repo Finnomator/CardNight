@@ -3,6 +3,7 @@ package cardnight.games.witch.viewcontroller;
 import cardnight.games.witch.WitchGegner;
 import cardnight.games.witch.WitchKarte;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -12,11 +13,11 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class WitchGegnerUiHand {
-    public Text nameText;
+    public Label nameText;
     public HBox kartenBox;
     public ProgressIndicator thinkingProgress;
-    public Text geschaetzteSticheText;
-    public Text erhalteneSticheText;
+    public Label geschaetzteSticheText;
+    public Label erhalteneSticheText;
 
     private WitchGegner spieler;
 

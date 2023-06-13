@@ -28,13 +28,13 @@ public class UenoView extends SpielView {
 
     public Button nachziehstapelButton;
     public StackPane root;
-    public Text gewinnerText;
     public HBox gegnerHaendeContainer;
     public ImageView ablagestapelImageView;
     public GridPane tableGrid;
     private Ueno ueno;
     private HashMap<UenoSpieler, UenoUiHand> spielerHaende;
     private UenoSpieler hauptSpieler;
+    private boolean spielIstBeendet;
 
     public void initialize() throws IOException {
 
@@ -222,6 +222,11 @@ public class UenoView extends SpielView {
 
     @Override
     public void beendeSpiel() {
+        
+        if (spielIstBeendet)
+            return;
+
+        spielIstBeendet = true;
 
         Logger.log("Das Spiel ist vorbei, die Gewinner:");
         ArrayList<UenoSpieler> gewinner = ueno.gibGewinner();
@@ -229,7 +234,14 @@ public class UenoView extends SpielView {
         for (int i = 0; i < gewinner.size(); ++i)
             Logger.log((i+1) + ".\t" + gewinner.get(i).name);
 
-        gewinnerText.setText(gewinner.get(0).name + " hat gewonnen");
+        if (gewinner.size() == 1)
+            GameOver.setzeNachricht("Du hast gewonnen!");
+        else {
+            String nachricht = "Die Gewinner:";
+            for (int i = 0; i < gewinner.size(); ++i)
+                nachricht += "\n" + (i + 1) + ".\t" + gewinner.get(i).name;
+            GameOver.setzeNachricht(nachricht);
+        }
 
         try {
             root.getChildren().add(GameOver.loadScene());

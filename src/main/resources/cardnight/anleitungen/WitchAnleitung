@@ -10,23 +10,27 @@ Aufbau des Spiels:
     Daraufhin muss jeder Spieler sagen, wie viele Stiche er macht. Danach beginnen die Auslegerunden.
     Die erste Auslegerunde jeder Runde eröffnet man immer selbst. Danach eröffnet immer der Spieler
     die Auslegerunde, welcher den letzten Stich gemacht hat.
+
     Was ist eine Auslegerunde?
-    In einer Auslegerunde legt jeder Spieler nacheinander eine Karte aus. Die stärkste Karte gewinnt. Der
-    Spieler, welche diese Karte ausgespielt hat, bekommt dann einen Stich.
+        In einer Auslegerunde legt jeder Spieler nacheinander eine Karte aus. Die stärkste Karte gewinnt. Der
+        Spieler, welche diese Karte ausgespielt hat, bekommt dann einen Stich.
+
     Was ist ein Stich?
-    Ein Stich macht man, indem man in einer Auslegrunde die stärkste Karte spielt. In Runde 1 kann man
-    demnach maximal 1 Stich machen, in Runde 5 fünf Stiche, usw.
+        Ein Stich macht man, indem man in einer Auslegrunde die stärkste Karte spielt. In Runde 1 kann man
+        demnach maximal 1 Stich machen, in Runde 5 fünf Stiche, usw.
+
     Was ist der Trumpf?
-    Die Farbe der Karte, welche offen auf dem Tisch liegt, ist Trumpf. Eine Karte dieser Farbe ist stärker als
-    jede Karte einer anderen Farbe, ausgeschlossen der Witcher, welche immer die stärksten Karten sind
-    und der Narren, welche unabhängig von Farbe immer die schwächste Karte ist.
+        Die Farbe der Karte, welche offen auf dem Tisch liegt, ist Trumpf. Eine Karte dieser Farbe ist stärker als
+        jede Karte einer anderen Farbe, ausgeschlossen der Witcher, welche immer die stärksten Karten sind
+        und der Narren, welche unabhängig von Farbe immer die schwächste Karte ist.
 
 Einen Zug machen:
     Wenn man selbst als erster auslegen darf, hat man freie Wahl welche Karte man ausspielt. Wenn ein
     anderer Spieler beginnt, muss man die Farbe, welcher dieser auslegt, zugeben. Wenn man die Farbe
     nicht zugeben kann, hat man wieder freie Wahl. Nur Witcher und Narren können unabhängig davon,
     ob man zugeben kann, ausgespielt werden.
-    Ziel des Spiels:
+
+Ziel des Spiels:
     Das Ziel des Spiels ist es in jeder Runde exakt so viele Stiche machen, wie zuvor angesagt, um am
     Ende die meisten Punkte zu erzielen.
 
@@ -43,7 +47,8 @@ Beispiel 1:
     Trumpf ist rot. S1 legt eine grüne 5. S2 legt eine grüne 8. S3 legt eine rote 1. S4 legt eine grüne 13.
     In diesem Szenario geht der Stich an S3, da der Spieler keine grüne Karte ausspielen konnte und sich
     daraufhin für die rote 1 entschieden hat und rot Trumpf ist.
-    Beispiel 2:
+
+Beispiel 2:
     Trumpf ist rot. S1 legt eine grüne 5. S2 legt eine grüne 8. S3 legt eine rote 1. S4 legt einen Witcher.
     In diesem Szenario geht der Stich an S4, da der Witcher jegliche andere Karte schlägt. Es ist unwichtig,
     ob S4 die Farbe hätte zugeben können.

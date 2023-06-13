@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
+import javafx.scene.control.Hyperlink;
 
 import java.awt.*;
 import java.io.IOException;
@@ -33,8 +34,10 @@ public class MainMenuView {
     public ImageView beendenButtonImgView;
     public ImageView linkeSpinKarte;
     public ImageView rechteSpinKarte;
+    public Hyperlink debugLink;
 
     public void initialize() {
+        debugLink.setVisited(Main.debugMode);
         MainMenuBilder.ladeBilder();
         hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(500));
         linkeSpinKarte.fitHeightProperty().bind(root.heightProperty().divide(2.5));
@@ -201,5 +204,15 @@ public class MainMenuView {
     private void zeigeSpinKarten(boolean sichtbar) {
         linkeSpinKarte.setVisible(sichtbar);
         rechteSpinKarte.setVisible(sichtbar);
+    }
+
+    public void debugClick() {
+        Main.debugMode = !Main.debugMode;
+        debugLink.setVisited(Main.debugMode);
+
+        if (Main.debugMode)
+            DebugWindow.oeffnen();
+        else
+            DebugWindow.schliessen();
     }
 }

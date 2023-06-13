@@ -18,6 +18,7 @@ public class Main {
     private static Spiel spielDasGespieltWird;
     private static FloatControl volumeControl;
     public static boolean enableSound = true;
+    public static boolean debugMode;
 
     public static void main(String[] args) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 
@@ -58,7 +59,7 @@ public class Main {
         float gain = (float) (range * soundVolume + volumeControl.getMinimum());
         volumeControl.setValue(gain);
 
-        System.out.println("Sound: " + soundVolume);
+        Logger.log("Sound: " + soundVolume);
          */
     }
 }

@@ -1,9 +1,6 @@
 package cardnight.games.tictactoe.viewcontroller;
 
-import cardnight.GameOver;
-import cardnight.Main;
-import cardnight.PauseMenu;
-import cardnight.SoundPlayer;
+import cardnight.*;
 import cardnight.games.SpielView;
 import cardnight.games.Spieler;
 
@@ -30,6 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TicTacToeView extends SpielView {
     public StackPane root;
 
+    public Text gewinnerText;
     public GridPane tttFeld;
     public GridPane tableGrid;
     public HBox handContainer;
@@ -126,7 +124,7 @@ public class TicTacToeView extends SpielView {
     public int warteAufSpielerZug(TicTacToeSpieler spieler) {
         // Gibt zurück, auf welches Feld der Spieler sein Zug macht.
 
-        System.out.println("Warte auf Eingabe von " + spieler.name);
+        Logger.log("Warte auf Eingabe von " + spieler.name);
 
         zugGemacht.set(false);
 
@@ -160,11 +158,13 @@ public class TicTacToeView extends SpielView {
         Spieler gewinner = ttt.gibGewinner();
 
         if (gewinner == null) {
-            System.out.println("Das Spiel ist vorbei, Unentschieden!");
+            Logger.log("Das Spiel ist vorbei, Unentschieden!");
             Platform.runLater(() -> GameOver.setzeNachricht("UNENTSCHIEDEN!"));
         } else {
-            System.out.println("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
+            Logger.log("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
             Platform.runLater(() -> {
+                gewinnerText.setText(gewinner.name + " hat gewonnen");
+
                 if (spielGegenComputer) {
                     if (gewinner == ttt.oSpieler) {
                         gegnerUiHand.setHappy(true);

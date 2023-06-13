@@ -220,9 +220,6 @@ public class UenoView extends SpielView {
 
         ArrayList<UenoKarte> ablegbareKarten = hauptSpieler.ablegbareKarten();
 
-        if (ablegbareKarten.size() == 1 && ablegbareKarten.get(0).istSchwarz())
-            ablegbareKarten.get(0).setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
-
         updateUi();
 
         Logger.log("Spieler zog nach und sollte folgende Karte(n) legen können:");

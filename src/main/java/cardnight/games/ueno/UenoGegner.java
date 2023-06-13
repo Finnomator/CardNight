@@ -1,6 +1,7 @@
 package cardnight.games.ueno;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UenoGegner extends UenoSpieler {
 
@@ -11,7 +12,7 @@ public class UenoGegner extends UenoSpieler {
     public UenoKarte whaeleKarteZumAblegen() {
         UenoKarte wahl = vorAuswahl();
         if (wahl != null && wahl.istSchwarz())
-            wahl.setzeFarbe(spiel.gibZuletztAbgelegteKarte().farbe);
+            wahl.setzeFarbe(meisteFarbeAufDerHand());
         return wahl;
     }
 
@@ -46,6 +47,30 @@ public class UenoGegner extends UenoSpieler {
         }
 
         return ablegbare.get(0);
+    }
+
+    private UenoFarbe meisteFarbeAufDerHand() {
+        HashMap<UenoFarbe, Integer> zaehlung = new HashMap<>(4);
+
+        for (UenoFarbe farbe : UenoFarbe.values())
+            zaehlung.put(farbe, 0);
+
+        for (UenoKarte karte : handkarten) {
+            if (karte.farbe != null)
+                zaehlung.put(karte.farbe, zaehlung.get(karte.farbe) + 1);
+        }
+
+        int max = 0;
+        UenoFarbe maxFarbe = UenoFarbe.BLAU;
+
+        for (UenoFarbe farbe : zaehlung.keySet()) {
+            if (zaehlung.get(farbe) > max) {
+                max = zaehlung.get(farbe);
+                maxFarbe = farbe;
+            }
+        }
+
+        return maxFarbe;
     }
 
     public static ArrayList<UenoKarte> filterNachArt(UenoKartenArt art, ArrayList<UenoKarte> karten, boolean invertiert) {

@@ -40,18 +40,18 @@ public class TTTSoundPlayer {
     }
 
     public static void randomFeldAusgesucht() {
-        SoundPlayer.playSoundAsync(feldAusgesuchtSounds[new Random().nextInt(3)]);
+        SoundPlayer.playSound(feldAusgesuchtSounds[new Random().nextInt(3)]);
     }
 
     public static void gewonnen() {
-        SoundPlayer.playSoundAsync(hatGewonnenSound);
+        SoundPlayer.playSound(hatGewonnenSound);
     }
 
     public static void verloren() {
-        SoundPlayer.playSoundAsync(hatVerlorenSound);
+        SoundPlayer.playSound(hatVerlorenSound);
     }
 
     public static void randomUeberlegen() {
-        SoundPlayer.playSoundAsync(ueberlegenSounds[new Random().nextInt(3)]);
+        SoundPlayer.playSound(ueberlegenSounds[new Random().nextInt(3)]);
     }
 }

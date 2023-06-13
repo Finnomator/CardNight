@@ -2,10 +2,12 @@ package cardnight.games.ueno.viewcontroler;
 
 import cardnight.Main;
 import cardnight.SoundPlayer;
+import cardnight.games.ueno.UenoFarbe;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class UenoSoundPlayer {
     private static Clip fYouSound;
@@ -13,6 +15,12 @@ public class UenoSoundPlayer {
     private static Clip skipSound;
     private static Clip unoSound;
     private static Clip unoUnoSound;
+    private static Clip duHastGewonnenSound;
+    private static Clip rundenStartSound;
+    private static Clip vierZiehenSound;
+    private static Clip zweiZiehenSound;
+    private static HashMap<UenoFarbe, Clip> farbwahlSounds;
+
     private static boolean soundsWurdenGeladen;
 
 
@@ -28,6 +36,16 @@ public class UenoSoundPlayer {
         skipSound = ladeClip("UNO_Skip.wav");
         unoSound = ladeClip("UNO_Sound.wav");
         unoUnoSound = ladeClip("UNO_UNO_Sound.wav");
+        duHastGewonnenSound = ladeClip("UNO_You_win.wav");
+        rundenStartSound = ladeClip("UNO_Start_Ansager.wav");
+        vierZiehenSound = ladeClip("UNO_Draw_4.wav");
+        zweiZiehenSound = ladeClip("UNO_Draw_2.wav");
+
+        farbwahlSounds = new HashMap<>(4);
+        farbwahlSounds.put(UenoFarbe.ROT, ladeClip("UNO_rot.wav"));
+        farbwahlSounds.put(UenoFarbe.GRUEN, ladeClip("UNO_grun.wav"));
+        farbwahlSounds.put(UenoFarbe.BLAU, ladeClip("UNO_blau.wav"));
+        farbwahlSounds.put(UenoFarbe.GELB, ladeClip("UNO_gelb.wav"));
     }
 
     private static Clip ladeClip(String pfad) {
@@ -43,22 +61,45 @@ public class UenoSoundPlayer {
     }
 
     public static void fYou() {
-        SoundPlayer.playSoundAsync(fYouSound);
+        SoundPlayer.playSound(fYouSound);
     }
 
     public static void reverse() {
-        SoundPlayer.playSoundAsync(reverseSound);
+        SoundPlayer.playSound(reverseSound);
     }
 
     public static void skip() {
-        SoundPlayer.playSoundAsync(skipSound);
+        SoundPlayer.playSound(skipSound);
     }
 
     public static void uno() {
-        SoundPlayer.playSoundAsync(unoSound);
+        SoundPlayer.playSound(unoSound);
     }
 
     public static void unoUno() {
-        SoundPlayer.playSoundAsync(unoUnoSound);
+        SoundPlayer.playSound(unoUnoSound);
+    }
+
+    public static void duHastGewonnen() {
+        SoundPlayer.playSound(duHastGewonnenSound);
+    }
+
+    public static void start(boolean async) {
+        if (async)
+            SoundPlayer.playSound(rundenStartSound);
+        else
+            SoundPlayer.playSound(rundenStartSound);
+    }
+
+    public static void vierZiehen() {
+        SoundPlayer.playSound(vierZiehenSound);
+    }
+
+    public static void zweiZiehen() {
+        SoundPlayer.playSound(zweiZiehenSound);
+    }
+
+    public static void farbwahl(UenoFarbe farbe) {
+        SoundPlayer.playSound(farbwahlSounds.get(farbe));
     }
 }

@@ -174,8 +174,6 @@ public class TicTacToeView extends SpielView {
         } else {
             Logger.log("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
             Platform.runLater(() -> {
-                gewinnerText.setText(gewinner.name + " hat gewonnen");
-
                 if (spielGegenComputer) {
                     if (gewinner == ttt.oSpieler) {
                         gegnerUiHand.setHappy(true);

@@ -12,12 +12,14 @@
         <fx:include source="sound-menu.fxml" />
     </VBox>
 
-    <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-        <Text text="So wird gespielt">
+    <VBox alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+        <Label text="So wird gespielt">
          <font>
             <Font size="21.0" />
-         </font></Text>
-        <Text fx:id="anleitungText" />
+         </font></Label>
+        <ScrollPane fitToWidth="true" stylesheets="@transparent-scroll-pane.css" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+            <Label fx:id="anleitungText" wrapText="true" />
+        </ScrollPane>
     </VBox>
 
 

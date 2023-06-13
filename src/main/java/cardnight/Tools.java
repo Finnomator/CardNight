@@ -10,7 +10,7 @@ public class Tools {
     public static String readFile(String resourcePath) {
         try (InputStream in = Tools.class.getResourceAsStream(resourcePath);
              BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
-             return reader.lines().collect(Collectors.joining());
+             return reader.lines().collect(Collectors.joining("\n"));
         } catch (IOException e) {
             throw new RuntimeException();
         }

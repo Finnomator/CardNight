@@ -1,5 +1,6 @@
 package cardnight.games.ueno;
 
+import cardnight.Logger;
 import cardnight.Tools;
 import cardnight.games.GegnerNamen;
 import cardnight.games.Spiel;
@@ -141,7 +142,7 @@ public class Ueno extends Spiel {
         UenoSpieler naechster = spieler[aktiverSpieler];
 
         if (naechster.istFertig()) {
-            System.out.println(naechster.name + " wurde ausgelassen, da er fertig ist");
+            Logger.log(naechster.name + " wurde ausgelassen, da er fertig ist");
             return nachsterSpieler(naechster);
         }
         return naechster;
@@ -154,17 +155,17 @@ public class Ueno extends Spiel {
     }
 
     private void erstelleNeuenNachziehstapel() {
-        System.out.println("Ein neuer Nachziehstapel wurde erstellt");
+        Logger.log("Ein neuer Nachziehstapel wurde erstellt");
         nachziehstapel = new Stack<>();
         nachziehstapel.addAll(Arrays.asList(UenoKartenset.erstelleGemischtesSet()));
     }
 
     public void nKartenNachziehen(UenoSpieler spieler, int n) {
-        System.out.println(spieler.name + " zieht " + n + " Karte(n) nach:");
+        Logger.log(spieler.name + " zieht " + n + " Karte(n) nach:");
         for (int i = 0; i < n; ++i) {
             UenoKarte karte = karteNachziehen();
             spieler.fuegeKarteHinzu(karte);
-            System.out.println("\t" + karte.datenAlsString());
+            Logger.log("\t" + karte.datenAlsString());
         }
     }
 
@@ -189,7 +190,7 @@ public class Ueno extends Spiel {
     public void karteAblegen(UenoSpieler spieler, UenoKarte karte) {
         karteAblegen(karte);
         spieler.entferneKarte(karte);
-        System.out.println(spieler.name + " legte " + karte.datenAlsString());
+        Logger.log(spieler.name + " legte " + karte.datenAlsString());
     }
 
     public boolean istKarteAblegbar(UenoKarte karte) {

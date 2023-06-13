@@ -1,5 +1,6 @@
 package cardnight.games.witch;
 
+import cardnight.Logger;
 import cardnight.Tools;
 import cardnight.games.GegnerNamen;
 import cardnight.games.Spiel;
@@ -79,7 +80,7 @@ public class Witch extends Spiel {
         Thread t = new Thread(() -> {
             for (int kartenProSpieler = 1; kartenProSpieler <= kartenAnzahlInEinemSpiel / anzahlSpieler; kartenProSpieler++, ++rundenNummer) {
 
-                System.out.println("---Große Runde " + rundenNummer + " mit " + kartenProSpieler + " Karte(n) pro Spieler---");
+                Logger.log("---Große Runde " + rundenNummer + " mit " + kartenProSpieler + " Karte(n) pro Spieler---");
 
                 int startSpielerDerKleinenRunde = (start + kartenProSpieler - 1) % anzahlSpieler;
                 spielerAmZug = startSpielerDerKleinenRunde;
@@ -88,13 +89,13 @@ public class Witch extends Spiel {
                 spielerSchaetzen();
 
                 // Spielen
-                System.out.println("\tEs wird gespielt ");
+                Logger.log("\tEs wird gespielt ");
 
                 for (int uebrigeKarten = kartenProSpieler; uebrigeKarten > 0; uebrigeKarten--) {
                     // Jeder Stich
 
                     int kleineRundeNummer = kartenProSpieler - uebrigeKarten;
-                    System.out.println("\t\t--Kleine Runde " + kleineRundeNummer + "--");
+                    Logger.log("\t\t--Kleine Runde " + kleineRundeNummer + "--");
 
                     for (int i = 0; i < anzahlSpieler; i++) {
                         update();
@@ -121,7 +122,7 @@ public class Witch extends Spiel {
                 kartenSammeln();
             }
 
-            System.out.println("Das Spiel ist vorbei");
+            Logger.log("Das Spiel ist vorbei");
             Platform.runLater(observerView::beendeSpiel);
         });
         t.setDaemon(true);
@@ -130,7 +131,7 @@ public class Witch extends Spiel {
 
     private void spielerSchaetzen() {
 
-        System.out.println("\tEs wird geschätzt");
+        Logger.log("\tEs wird geschätzt");
 
         for (int j = 0; j < anzahlSpieler; j++)
             spieler[j].schaetzen();
@@ -141,7 +142,7 @@ public class Witch extends Spiel {
     public void update() {
         // TODO: Wenn alle 60 Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
 
-        // System.out.println("***Ui Update***");
+        // Logger.log("***Ui Update***");
         Platform.runLater(observerView::updateUi);
     }
 
@@ -158,9 +159,9 @@ public class Witch extends Spiel {
         // Trumpf festlegen                              Wenn nicht alle Karten verteilt werden
         trumpfKarte = WitchKartenset.gibZufaelligeKarte(kartenAnzahlInEinemSpiel / anzKarten != anzahlSpieler);
 
-        System.out.println("\tTrumpf: " + trumpfKarte.datenAlsString());
-        System.out.println("\tEs werden Karten ausgeteilt");
-        System.out.println("\t\tStartspieler: " + spieler[spielerAmZug].name);
+        Logger.log("\tTrumpf: " + trumpfKarte.datenAlsString());
+        Logger.log("\tEs werden Karten ausgeteilt");
+        Logger.log("\t\tStartspieler: " + spieler[spielerAmZug].name);
 
         // Karten austeilen
         for (WitchSpieler s : spieler)
@@ -218,7 +219,7 @@ public class Witch extends Spiel {
 
     public void punkteVerteilen() {
 
-        System.out.println("\tEs werden Punkte verteilt");
+        Logger.log("\tEs werden Punkte verteilt");
 
         for (WitchSpieler s : spieler) {
             // Wenn falsch geschätzt wurde: -10 pro Stich daneben,

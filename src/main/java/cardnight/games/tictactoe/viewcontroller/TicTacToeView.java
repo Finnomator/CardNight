@@ -1,9 +1,6 @@
 package cardnight.games.tictactoe.viewcontroller;
 
-import cardnight.GameOver;
-import cardnight.Main;
-import cardnight.PauseMenu;
-import cardnight.SoundPlayer;
+import cardnight.*;
 import cardnight.games.SpielView;
 import cardnight.games.Spieler;
 
@@ -127,7 +124,7 @@ public class TicTacToeView extends SpielView {
     public int warteAufSpielerZug(TicTacToeSpieler spieler) {
         // Gibt zurück, auf welches Feld der Spieler sein Zug macht.
 
-        System.out.println("Warte auf Eingabe von " + spieler.name);
+        Logger.log("Warte auf Eingabe von " + spieler.name);
 
         zugGemacht.set(false);
 
@@ -161,10 +158,10 @@ public class TicTacToeView extends SpielView {
         Spieler gewinner = ttt.gibGewinner();
 
         if (gewinner == null) {
-            System.out.println("Das Spiel ist vorbei, Unentschieden!");
+            Logger.log("Das Spiel ist vorbei, Unentschieden!");
             Platform.runLater(() -> gewinnerText.setText("Unentschieden!"));
         } else {
-            System.out.println("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
+            Logger.log("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
             Platform.runLater(() -> {
                 gewinnerText.setText(gewinner.name + " hat gewonnen");
 

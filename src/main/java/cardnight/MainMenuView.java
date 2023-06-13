@@ -8,6 +8,7 @@ import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.WitchFarbe;
 import cardnight.games.witch.viewcontroller.WitchKartenBilder;
 import cardnight.games.witch.viewcontroller.WitchView;
+import javafx.scene.control.Hyperlink;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,7 +17,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
-import javafx.scene.control.Hyperlink;
 
 import java.awt.*;
 import java.io.IOException;

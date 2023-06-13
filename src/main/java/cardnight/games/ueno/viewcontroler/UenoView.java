@@ -222,7 +222,6 @@ public class UenoView extends SpielView {
 
     @Override
     public void beendeSpiel() {
-
         if (spielIstBeendet)
             return;
 

@@ -1,24 +1,18 @@
 package cardnight;
 
 import cardnight.games.Spiel;
-import cardnight.games.ueno.viewcontroler.UenoView;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Slider;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
-//import javafx.scene.web.WebView;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class PauseMenu {
 
     public GridPane root;
-    public Text anleitungText;
+    public Label anleitungText;
 
     public void initialize() {
         Spiel spiel = Main.gibAktuellGespieltesSpiel();

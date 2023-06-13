@@ -3,6 +3,7 @@ package cardnight;
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.viewcontroller.WitchView;
+import javafx.scene.control.Hyperlink;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,8 +12,10 @@ import java.net.URL;
 
 public class MainMenuView {
 
-    public void initialize() {
+    public Hyperlink debugLink;
 
+    public void initialize() {
+        debugLink.setVisited(Main.debugMode);
     }
 
     public void onTicTacToeClick() throws IOException {
@@ -49,5 +52,15 @@ public class MainMenuView {
 
     public void reportBugLinkClick() {
         openLinkInBrowser(Main.BugReportUrl);
+    }
+
+    public void debugClick() {
+        Main.debugMode = !Main.debugMode;
+        debugLink.setVisited(Main.debugMode);
+
+        if (Main.debugMode)
+            DebugWindow.oeffnen();
+        else
+            DebugWindow.schliessen();
     }
 }

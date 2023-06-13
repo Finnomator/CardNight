@@ -1,5 +1,6 @@
 package cardnight.games.tictactoe;
 
+import cardnight.Logger;
 import cardnight.Tools;
 import cardnight.games.Spiel;
 import cardnight.games.tictactoe.viewcontroller.TTTSoundPlayer;
@@ -10,14 +11,14 @@ import java.util.Arrays;
 
 public class TicTacToe extends Spiel {
 
-    private TicTacToeView observerView;
+    private final TicTacToeView observerView;
     public final TicTacToeSpieler xSpieler;
     public final TicTacToeSpieler oSpieler;
     private TicTacToeSpieler spielerAmZug;
-    private String[] feld;
-    private TicTacToeSpieler[] spieler;
+    private final String[] feld;
+    private final TicTacToeSpieler[] spieler;
     private TicTacToeSpieler gewinner;
-    private boolean spieltGegenComputer;
+    private final boolean spieltGegenComputer;
     private int zugNummer;
 
     public TicTacToe(TicTacToeView observerView, boolean spieltGegenComputer) {
@@ -48,7 +49,7 @@ public class TicTacToe extends Spiel {
                 spielerAmZug = xSpieler;
                 int gesetztesFeld = observerView.warteAufSpielerZug(xSpieler);
                 zugNummer++;
-                System.out.println("Zug " + zugNummer + ": " + xSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
+                Logger.log("Zug " + zugNummer + ": " + xSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
                 xSpieler.zugSpeichern(gesetztesFeld);
                 feld[gesetztesFeld] = "x";
                 observerView.updateUi();
@@ -62,12 +63,12 @@ public class TicTacToe extends Spiel {
                 // boolean im Konstruktor, ob gegen Mensch oder Computer
                 spielerAmZug = oSpieler;
                 if (spieltGegenComputer)
-                    gesetztesFeld = computerzugBerechnen();
+                    gesetztesFeld = computerzugMachen();
                 else
                     gesetztesFeld = observerView.warteAufSpielerZug(oSpieler);
 
                 zugNummer++;
-                System.out.println("Zug " + zugNummer + ": " + oSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
+                Logger.log("Zug " + zugNummer + ": " + oSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
                 // Zug in Array speichern
                 oSpieler.zugSpeichern(gesetztesFeld);
                 feld[gesetztesFeld] = "o";
@@ -94,18 +95,10 @@ public class TicTacToe extends Spiel {
         t.start();
     }
 
-    public int computerzugBerechnen() {
-
+    private int computerzugMachen() {
         TTTSoundPlayer.randomUeberlegen();
-
         delay(2000);
-
-        int zahl = (int) (Math.random() * 8);
-
-        while (!feld[zahl].equals(""))
-            zahl = (int) (Math.random() * 8);
-
-        return zahl;
+        return TicTacToeGegner.zugMachen(feld);
     }
 
     private void delay(long millis) {

@@ -24,6 +24,7 @@
 
     <Text text="Developed by: Finn, Christian, Marc, David" StackPane.alignment="BOTTOM_RIGHT" />
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
+        <Hyperlink fx:id="debugLink" onAction="#debugClick" text="Debug" />
         <Hyperlink onAction="#githubRepoLinkClick" text="GitHub Repo" />
         <Hyperlink onAction="#reportBugLinkClick" text="Report Bug" />
     </VBox>

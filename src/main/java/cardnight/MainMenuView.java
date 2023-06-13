@@ -32,16 +32,14 @@ public class MainMenuView {
     public ImageView uenoButtonImgView;
     public ImageView witchButtonImgView;
     public ImageView beendenButtonImgView;
-    public ImageView linkeSpinKarte;
-    public ImageView rechteSpinKarte;
+    public ImageView spinKarte;
     public Hyperlink debugLink;
 
     public void initialize() {
         debugLink.setVisited(Main.debugMode);
         MainMenuBilder.ladeBilder();
         hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(500));
-        linkeSpinKarte.fitHeightProperty().bind(root.heightProperty().divide(2.5));
-        rechteSpinKarte.fitHeightProperty().bind(root.heightProperty().divide(2.5));
+        spinKarte.fitHeightProperty().bind(root.heightProperty().subtract(500));
 
         tttButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.TIC_TAC_TOE, false));
         uenoButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.UENO, false));
@@ -138,38 +136,27 @@ public class MainMenuView {
 
     private void startRotatingCards() {
 
-        Rotate linkeYRotation = new Rotate(0, Rotate.Y_AXIS);
-        Rotate rechteYRotation = new Rotate(0, Rotate.Y_AXIS);
+        Rotate yRotation = new Rotate(0, Rotate.Y_AXIS);
+        Rotate zRotation = new Rotate(-34.66, Rotate.Z_AXIS);
 
-        Rotate linkeZRotation = new Rotate(-34.66, Rotate.Z_AXIS);
-        Rotate rechteZRotation = new Rotate(34.66, Rotate.Z_AXIS);
+        zRotation.pivotXProperty().bind(spinKarte.fitHeightProperty().divide(2).divide(1.447));
+        zRotation.pivotYProperty().bind(spinKarte.fitHeightProperty().divide(2));
+        yRotation.pivotXProperty().bind(spinKarte.fitHeightProperty().divide(2).divide(1.447));
+        yRotation.pivotYProperty().bind(spinKarte.fitHeightProperty().divide(2));
 
-        linkeZRotation.pivotXProperty().bind(linkeSpinKarte.fitHeightProperty().divide(2).divide(1.447));
-        linkeZRotation.pivotYProperty().bind(linkeSpinKarte.fitHeightProperty().divide(2));
-        linkeYRotation.pivotXProperty().bind(linkeSpinKarte.fitHeightProperty().divide(2).divide(1.447));
-        linkeYRotation.pivotYProperty().bind(linkeSpinKarte.fitHeightProperty().divide(2));
-
-        rechteZRotation.pivotXProperty().bind(rechteSpinKarte.fitHeightProperty().divide(2).divide(1.447));
-        rechteZRotation.pivotYProperty().bind(rechteSpinKarte.fitHeightProperty().divide(2));
-        rechteYRotation.pivotXProperty().bind(rechteSpinKarte.fitHeightProperty().divide(2).divide(1.447));
-        rechteYRotation.pivotYProperty().bind(rechteSpinKarte.fitHeightProperty().divide(2));
-
-        linkeSpinKarte.getTransforms().addAll(linkeYRotation, linkeZRotation);
-        rechteSpinKarte.getTransforms().addAll(rechteYRotation, rechteZRotation);
+        spinKarte.getTransforms().addAll(yRotation, zRotation);
 
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(10), actionEvent -> {
 
-            int winkel = (int) Math.abs(linkeYRotation.getAngle()) % 360;
+            int winkel = (int) Math.abs(yRotation.getAngle()) % 360;
 
             if (winkel == 90 || winkel == 270) {
-                linkeSpinKarte.setImage(randomKartenBild());
-                rechteSpinKarte.setImage(randomKartenBild());
+                spinKarte.setImage(randomKartenBild());
             }
 
-            linkeYRotation.setAngle(linkeYRotation.getAngle() - 1);
-            rechteYRotation.setAngle(rechteYRotation.getAngle() + 1);
+            yRotation.setAngle(yRotation.getAngle() + 1);
         }));
         timeline.play();
     }
@@ -202,8 +189,7 @@ public class MainMenuView {
     }
 
     private void zeigeSpinKarten(boolean sichtbar) {
-        linkeSpinKarte.setVisible(sichtbar);
-        rechteSpinKarte.setVisible(sichtbar);
+        spinKarte.setVisible(sichtbar);
     }
 
     public void debugClick() {

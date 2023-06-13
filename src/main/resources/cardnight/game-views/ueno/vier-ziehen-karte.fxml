@@ -7,7 +7,7 @@
 
 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoFarbwahlUiKarte">
 
-    <Button stylesheets="@../../transparent-image-button.css">
+    <Button stylesheets="@../../styles/transparent-image-button.css">
         <graphic>
             <ImageView fitWidth="113.6" preserveRatio="true">
                 <Image url="@images/vier-ziehen/UNO_Karte_vier_ziehen_schwarz.png" />

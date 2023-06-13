@@ -1,1 +1,57 @@
-<ÜNO Anleitung>
+Karten:
+    Eine Karte besteht aus einer Farbe (Grün/Blau/Gelb/Rot) und einer Ziffer (0-9). Zudem gibt es noch
+    einige Sonderkarten, welche im Bereich Sonderkarten erklärt werden.
+
+Beginn:
+    Am Anfang des Spiels hat der Spieler wie auch die 1 bis 3 Gegner jeweils sieben Karten auf der Hand
+    und eine Karte liegt offen sichtbar auf dem Tisch. Der Spieler beginnt mit seinem Zug, woraufhin es
+    im Uhrzeigersinn weitergeht.
+
+Einen Zug machen:
+    Zu Beginn eines Zuges hat jeder Spieler die Möglichkeit eine Karte nachzuziehen. Wenn ein Spieler
+    keine passende Karte zum Ablegen hat, muss dieser nachziehen. In diesem Fall ist jeder seiner
+    aktuellen Karten deaktiviert. Man kann pro Zug nur eine Karte nachziehen. Kann ein Spieler nach dem
+    Nachziehen nicht ablegen, so ist automatisch der nächste Spieler an der Reihe.
+    Man kann eine Karte nur ablegen, wenn die Farbe oder die Zahl beziehungsweise das Symbol
+    identisch zur offenliegenden Karte auf dem Ablagestapel ist. Karten, die nicht ablegbar sind, sind
+    automatisch deaktiviert. Wenn man mehrere passende Karten hat, ist es egal, welche man legt. Es
+    kann jedoch nur eine Karte pro Zug gelegt werden. Danach ist dein Zug beendet und es sind
+    nacheinander die Computergegner dran.
+
+Ziel des Spiels:
+    Um zu gewinnen, muss man als erster alle seine Karten abgelegt haben. Das Spiel endet, sobald der
+    Spieler dies erreicht oder wenn jeder seiner Gegenspieler das erreicht.
+
+Sonderkarten:
+    1. +2-Karte:
+        Wird diese Karte gelegt, zieht der nächste Spieler sofort automatisch zwei Karten nach. Dies
+        gilt auch wenn er eine +2-Karte auf der Hand hat. Er kann diese erst nach dem Nachziehen
+        ablegen.
+
+    2. Farbwahl:
+        Bei dieser Karte darf der Besitzer sich eine Farbe aussuchen. Die Karte ist zunächst schwarz
+        und zeigt die vier Farben in der Mitte der Karte. Um eine Farbe zu wählen, muss man auf die
+        gewünschte Farbe klicken. Die Karte ändert daraufhin ihre Farbe. Man muss sich vor dem
+        Ablegen der Karte entscheiden welche Farbe diese hat, muss sie dann jedoch nicht
+        ausspielen. Achtung: Wenn der Spieler keine Karte ablegen kann und diese Karte nachzieht,
+        wird sie automatisch auf die Farbe der zuletzt gelegten Karte gesetzt.
+
+    3. Aussetzen:
+        Der auf den kartelegenden Spieler folgende Spieler wird beim Gebrauch dieser Karte
+        übersprungen.
+
+    4. Richtungswechsel:
+        Die Spielrichtung ändert sich bei dieser Karte. Anstatt im wird nun gegen den Uhrzeigersinn
+        gespielt oder andersrum. Bei zwei Spielern hat die Karte keinen Einfluss und wie eine
+        normale Karte zu behandeln.
+
+    5. +4-Karte:
+        Bei dieser Karte wird die Farbwahl und die +2 Karte kombiniert. Der Spieler darf sich eine
+        Farbe aussuchen wie bei der Farbwahl-Karte. Zudem zieht der darauffolgende Spieler immer
+        sofort automatisch vier Karten nach. Dies gilt auch wenn er eine +4-Karte auf der Hand hat.
+        Er kann diese erst nach dem Nachziehen ablegen. Die Karte ist zunächst schwarz und zeigt die
+        vier Farben in der Mitte der Karte. Um eine Farbe zu wählen, muss man auf die gewünschte
+        Farbe klicken. Die Karte ändert daraufhin ihre Farbe. Man muss sich vor dem Ablegen der
+        Karte entscheiden welche Farbe diese hat, muss sie dann jedoch nicht ausspielen. Achtung:
+        Wenn der Spieler keine Karte ablegen kann und diese Karte nachzieht, wird sie automatisch
+        auf die Farbe der zuletzt gelegten Karte gesetzt.

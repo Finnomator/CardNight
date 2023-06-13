@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoFarbwahlUiKarte">
-   <Button stylesheets="@../../transparent-image-button.css">
+   <Button stylesheets="@../../styles/transparent-image-button.css">
       <graphic>
          <ImageView fitWidth="113.6" preserveRatio="true">
             <Image url="@images/farbwahl/UNO_Farbwahl%20schwarz.png" />
@@ -26,8 +26,8 @@
          <RowConstraints prefHeight="29.0" />
       </rowConstraints>
       <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#redAction" opacity="0.0" />
-      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#yellowAction" stylesheets="@../../transparent-image-button.css" GridPane.columnIndex="1" />
-      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#greenAction" stylesheets="@../../transparent-image-button.css" GridPane.rowIndex="1" />
-      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#blueAction" stylesheets="@../../transparent-image-button.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#yellowAction" stylesheets="@../../styles/transparent-image-button.css" GridPane.columnIndex="1" />
+      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#greenAction" stylesheets="@../../styles/transparent-image-button.css" GridPane.rowIndex="1" />
+      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#blueAction" stylesheets="@../../styles/transparent-image-button.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </GridPane>
 </StackPane>

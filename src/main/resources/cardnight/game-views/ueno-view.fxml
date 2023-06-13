@@ -5,21 +5,21 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
+<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
 
     <GridPane fx:id="tableGrid">
 
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #00091f;" GridPane.rowIndex="1" />
 
         <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-            <Button fx:id="nachziehstapelButton" onAction="#nachziehstapelClick" rotate="90.0" stylesheets="@../transparent-image-button.css">
+            <Button fx:id="nachziehstapelButton" onAction="#nachziehstapelClick" rotate="90.0" stylesheets="@../styles/transparent-image-button.css">
                 <graphic>
                     <ImageView>
                         <Image url="@ueno/images/UNO_Rückseite.png" requestedWidth="90" preserveRatio="true"/>
                     </ImageView>
                 </graphic>
             <padding>
-               <Insets top="-6.0" />
+               <Insets top="0.001" />
             </padding>
             </Button>
             <ImageView fx:id="ablagestapelImageView" fitWidth="90.0" preserveRatio="true" rotate="90.0" />
@@ -40,6 +40,6 @@
       </rowConstraints>
     </GridPane>
 
-    <Button onAction="#pauseClick" stylesheets="@../button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <Button onAction="#pauseClick" stylesheets="@../styles/button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
 </StackPane>

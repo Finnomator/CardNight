@@ -8,27 +8,27 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchGegnerUiHand">
     <VBox alignment="CENTER">
-        <Label fx:id="nameText" stylesheets="@../../fonts/algerian-condensed.css" text="NAME">
+        <Label fx:id="nameText" stylesheets="@../../fonts/algerian-condensed.css" text="NAME" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></Label>
         <HBox maxHeight="-Infinity" maxWidth="-Infinity">
-            <Label stylesheets="@../../fonts/algerian-condensed.css" text="Schätzung: ">
+            <Label stylesheets="@../../fonts/algerian-condensed.css" text="Schätzung: " textFill="WHITE">
             <font>
                <Font size="15.0" />
             </font></Label>
-            <Label fx:id="geschaetzteSticheText" stylesheets="@../../fonts/algerian-condensed.css" text="0">
+            <Label fx:id="geschaetzteSticheText" stylesheets="@../../fonts/algerian-condensed.css" text="0" textFill="WHITE">
             <font>
                <Font size="15.0" />
             </font></Label>
         </HBox>
 
         <HBox maxHeight="-Infinity" maxWidth="-Infinity">
-            <Label stylesheets="@../../fonts/algerian-condensed.css" text="Erhaltene Stiche: ">
+            <Label stylesheets="@../../fonts/algerian-condensed.css" text="Erhaltene Stiche: " textFill="WHITE">
             <font>
                <Font size="15.0" />
             </font></Label>
-            <Label fx:id="erhalteneSticheText" stylesheets="@../../fonts/algerian-condensed.css" text="0">
+            <Label fx:id="erhalteneSticheText" stylesheets="@../../fonts/algerian-condensed.css" text="0" textFill="WHITE">
             <font>
                <Font size="15.0" />
             </font></Label>

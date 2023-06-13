@@ -19,6 +19,7 @@ public class UenoSoundPlayer {
     private static Clip rundenStartSound;
     private static Clip vierZiehenSound;
     private static Clip zweiZiehenSound;
+    private static Clip rundeVorbeiSound;
     private static HashMap<UenoFarbe, Clip> farbwahlSounds;
 
     private static boolean soundsWurdenGeladen;
@@ -40,6 +41,7 @@ public class UenoSoundPlayer {
         rundenStartSound = ladeClip("UNO_Start_Ansager.wav");
         vierZiehenSound = ladeClip("UNO_Draw_4.wav");
         zweiZiehenSound = ladeClip("UNO_Draw_2.wav");
+        rundeVorbeiSound = ladeClip("UNO_The_round_is_over.wav");
 
         farbwahlSounds = new HashMap<>(4);
         farbwahlSounds.put(UenoFarbe.ROT, ladeClip("UNO_rot.wav"));
@@ -97,6 +99,10 @@ public class UenoSoundPlayer {
 
     public static void zweiZiehen() {
         SoundPlayer.playSound(zweiZiehenSound);
+    }
+
+    public static void rundeVorbei() {
+        SoundPlayer.playSound(rundenStartSound);
     }
 
     public static void farbwahl(UenoFarbe farbe) {

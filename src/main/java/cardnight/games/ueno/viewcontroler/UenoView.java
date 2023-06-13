@@ -261,6 +261,8 @@ public class UenoView extends SpielView {
 
         if (gewinner.get(0) == hauptSpieler)
             UenoSoundPlayer.duHastGewonnen();
+        else
+            UenoSoundPlayer.rundeVorbei();
 
         try {
             root.getChildren().add(GameOver.loadScene());

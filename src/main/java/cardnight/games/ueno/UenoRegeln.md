@@ -15,7 +15,7 @@
     - ... die Art der Karte (also Richtungswechsel, +2, Aussetzen)...
   
   ... gleich der zuletzt abgelegten Karte ist  
-  **Anmerkung:** Der Spieler wählt zuerst die Farbe einer Farbwahlkarte aus, bevor er diese ablegt. Er muss sie dann aber nicht ablegen
+  **Anmerkung:** Der Spieler wählt zuerst die Farbe einer Farbwahlkarte aus, bevor er diese ablegt. Er muss sie dann aber nicht ablegen, allerdings kann die Farbe nicht mehr geändert werden.
 - Das Spiel ist vorbei, wenn der Spieler alle Karten abgelegt hat oder alle Gegner ihre Karten abgelegt haben
 
 ## Nachziehen
@@ -24,10 +24,6 @@
 - Wenn er dann keine Karte ablegen kann, ist automatisch der nächste Spieler am Zug
 
 ## Kartenzwänge
-
-### Durch Nachziehen
-
-- Wenn der Spieler eine Karte nachzieht und die nachgezogene Karte eine Farbwahl bzw. eine +4 ist, dann wird die Farbe der nachgezogenen Karte automatisch auf die Farbe der zuletzt abgelegten Karte gesetzt
 
 ### Durch Karten eines anderen Spielers
 

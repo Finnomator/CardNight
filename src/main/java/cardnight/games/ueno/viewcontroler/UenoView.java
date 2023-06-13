@@ -170,6 +170,11 @@ public class UenoView extends SpielView {
         // Spieler legt eine Karte
         legeKarte(hauptSpieler, event.geklickteKarte);
 
+        if (ueno.istSpielBeendet()) {
+            beendeSpiel();
+            return;
+        }
+
         // Gegner machen ihre Züge
         gegnerZuegeAsync();
 

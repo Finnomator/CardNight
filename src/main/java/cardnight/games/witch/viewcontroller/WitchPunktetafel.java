@@ -24,6 +24,8 @@ public class WitchPunktetafel extends GridPane {
         spieler = spiel.gibSpieler();
 
         background.setOpacity(0.5);
+        background.fitHeightProperty().bind(heightProperty().subtract(50));
+        background.setPreserveRatio(true);
         setValignment(background, VPos.CENTER);
         setHalignment(background, HPos.CENTER);
 

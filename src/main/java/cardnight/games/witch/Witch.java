@@ -9,6 +9,9 @@ import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Witch extends Spiel {
     private final WitchSpieler[] spieler;
@@ -122,6 +125,7 @@ public class Witch extends Spiel {
                 kartenSammeln();
             }
 
+            update();
             Logger.log("Das Spiel ist vorbei");
             Platform.runLater(observerView::beendeSpiel);
         });
@@ -411,5 +415,12 @@ public class Witch extends Spiel {
     @Override
     public String gibAnleitung() {
         return Tools.readFile("/cardnight/anleitungen/WitchAnleitung");
+    }
+
+    public ArrayList<WitchSpieler> platzierung() {
+        ArrayList<WitchSpieler> sortierteSpieler = new ArrayList<>(Arrays.asList(spieler));
+        sortierteSpieler.sort(Comparator.comparingInt(WitchSpieler::gibGesamtPunkte));
+        Collections.reverse(sortierteSpieler);
+        return sortierteSpieler;
     }
 }

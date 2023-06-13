@@ -72,6 +72,14 @@ public abstract class WitchSpieler extends Spieler {
         return punkteProRunde.get(runde);
     }
 
+    public int gibGesamtPunkte() {
+        int summe = 0;
+        for (int inRunde : punkteProRunde) {
+            summe += inRunde;
+        }
+        return summe;
+    }
+
     public ArrayList<WitchKarte> spielbareKarten() {
         ArrayList<WitchKarte> spielbar = new ArrayList<>();  //Alle Karten die spielbar sind
 

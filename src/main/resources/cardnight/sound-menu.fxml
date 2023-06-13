@@ -6,13 +6,13 @@
 
 <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.SoundMenu">
 
-    <Button fx:id="soundEnableButton" onAction="#soundEnableKlick" prefWidth="36.0" stylesheets="@transparent-image-button.css" text="🔊">
+    <Button fx:id="soundEnableButton" onAction="#soundEnableKlick" prefWidth="36.0" stylesheets="@styles/transparent-image-button.css" text="🔊" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font size="14.0" />
       </font></Button>
 
     <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
-        <Text text="🎵">
+        <Text fill="WHITE" text="🎵">
          <font>
             <Font size="14.0" />
          </font></Text>

@@ -3,13 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.viewcontroller.TicTacToeView">
+<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.viewcontroller.TicTacToeView">
 
     <GridPane fx:id="tableGrid">
 
-        <AnchorPane style="-fx-background-color: brown" GridPane.rowIndex="1" />
+        <AnchorPane style="-fx-background-color: #00091f" GridPane.rowIndex="1" />
 
         <GridPane fx:id="tttFeld" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <rowConstraints>
@@ -27,25 +26,25 @@
                 <ColumnConstraints hgrow="NEVER" />
             </columnConstraints>
 
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" />
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="2" />
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="4" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="2" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="4" />
 
-            <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="1" />
+            <Rectangle fill="WHITE" height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="1" />
 
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.rowIndex="2" />
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.rowIndex="2" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="4" GridPane.rowIndex="2" />
 
-            <Rectangle height="274" width="5" GridPane.columnIndex="1" GridPane.rowSpan="5" />
+            <Rectangle fill="WHITE" height="274" width="5" GridPane.columnIndex="1" GridPane.rowSpan="5" />
 
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.rowIndex="4" />
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button prefHeight="88" prefWidth="88" stylesheets="@../transparent-image-button.css" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.rowIndex="4" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button prefHeight="88" prefWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="4" GridPane.rowIndex="4" />
 
-            <Rectangle height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="3" />
+            <Rectangle fill="WHITE" height="5" width="274" GridPane.columnSpan="5" GridPane.rowIndex="3" />
 
-            <Rectangle height="274" width="5" GridPane.columnIndex="3" GridPane.rowSpan="5" />
+            <Rectangle fill="WHITE" height="274" width="5" GridPane.columnIndex="3" GridPane.rowSpan="5" />
         </GridPane>
 
         <HBox fx:id="handContainer" maxHeight="-Infinity" maxWidth="-Infinity" spacing="100" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
@@ -61,5 +60,5 @@
 
     </GridPane>
 
-    <Button onAction="#pauseClick" stylesheets="@../button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <Button onAction="#pauseClick" stylesheets="@../styles/button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 </StackPane>

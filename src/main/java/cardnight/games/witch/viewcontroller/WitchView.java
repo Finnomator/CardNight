@@ -83,12 +83,9 @@ public class WitchView extends SpielView {
         hauptspielerUiHand = handkartenLoader.getController();
         hauptspielerUiHand.uiErstellen(witch.gibHauptspieler());
 
-        FXMLLoader punktetafelLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/punktetafel.fxml"));
-        Node uiPunkteTafel = punktetafelLoader.load();
-        StackPane.setAlignment(uiPunkteTafel, Pos.CENTER_RIGHT);
-        root.getChildren().add(uiPunkteTafel);
-        punktetafel = punktetafelLoader.getController();
-        punktetafel.uiErstellen(witch);
+        punktetafel =  new WitchPunktetafel(witch);
+        StackPane.setAlignment(punktetafel, Pos.CENTER_RIGHT);
+        root.getChildren().add(punktetafel);
 
         root.addEventFilter(WitchKartenKlickEvent.ANY, this::handleWitchKartenClick);
 

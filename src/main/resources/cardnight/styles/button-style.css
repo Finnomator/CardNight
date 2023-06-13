@@ -1,0 +1,15 @@
+.button {
+    -fx-border-color: black;
+    -fx-border-radius: 5;
+    -fx-border-width: 3;
+    -fx-background-color: linear-gradient(to bottom right, #22258d, #302e98);
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI";
+    -fx-effect: dropshadow(three-pass-box, rgba(100, 100, 111, 0.2), 20, 0, 0, 3);
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(to top left, #22258d, #302e98);
+    -fx-effect: null;
+}

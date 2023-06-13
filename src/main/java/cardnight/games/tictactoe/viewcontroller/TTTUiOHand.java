@@ -2,14 +2,11 @@ package cardnight.games.tictactoe.viewcontroller;
 
 import cardnight.Main;
 import cardnight.games.tictactoe.TicTacToeSpieler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-
-import java.io.IOException;
 
 public class TTTUiOHand extends TTTUiHand {
     public HBox kartenBox;
@@ -34,7 +31,7 @@ public class TTTUiOHand extends TTTUiHand {
         for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i) {
             Button btn = new Button();
             btn.setPadding(new Insets(0.001));
-            btn.getStylesheets().add(getClass().getResource("/cardnight/transparent-image-button.css").toExternalForm());
+            btn.getStylesheets().add(getClass().getResource("/cardnight/styles/transparent-image-button.css").toExternalForm());
             btn.setGraphic(new ImageView(oHandkartenBild));
             kartenBox.getChildren().add(btn);
         }

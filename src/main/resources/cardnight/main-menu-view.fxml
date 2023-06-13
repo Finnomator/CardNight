@@ -7,9 +7,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" prefHeight="480" prefWidth="720" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
+<StackPane fx:id="root" prefHeight="480" prefWidth="720" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
 
     <ImageView fx:id="hintergrundImageView" preserveRatio="true" />
+
+    <ImageView fx:id="spinKarte" fitHeight="150.0" preserveRatio="true">
+        <Image url="@game-views/ueno/images/UNO_Rückseite.png" />
+    </ImageView>
 
     <ImageView fitHeight="130.0" preserveRatio="true" StackPane.alignment="TOP_CENTER">
         <effect>
@@ -18,75 +22,56 @@
         <Image url="@images/CardNight_Title.png" />
     </ImageView>
 
-    <GridPane StackPane.alignment="CENTER">
-        <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="ALWAYS" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints vgrow="ALWAYS" />
-        </rowConstraints>
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity">
+        <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css">
+            <graphic>
+                <ImageView fx:id="tttButtonImgView">
+                    <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/TicTacToe_Button.png" />
+                </ImageView>
+            </graphic>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <padding>
+                <Insets top="0.001" />
+            </padding>
+        </Button>
+        <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css">
+            <graphic>
+                <ImageView fx:id="uenoButtonImgView">
+                    <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/UNO_Button.png" />
+                </ImageView>
+            </graphic>
+            <padding>
+                <Insets top="0.001" />
+            </padding>
+        </Button>
+        <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css">
+            <graphic>
+                <ImageView fx:id="witchButtonImgView">
+                    <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/Witch_Button.png" />
+                </ImageView>
+            </graphic>
+            <padding>
+                <Insets top="0.001" />
+            </padding>
+        </Button>
+    </VBox>
 
-       <ImageView fx:id="linkeSpinKarte" fitHeight="150.0" preserveRatio="true" GridPane.halignment="CENTER">
-           <Image url="@game-views/ueno/images/UNO_Rückseite.png" />
-       </ImageView>
-
-        <ImageView fx:id="rechteSpinKarte" fitHeight="150.0" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-            <Image url="@game-views/ueno/images/UNO_Rückseite.png" />
-        </ImageView>
-
-        <VBox maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-            <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
-                <graphic>
-                    <ImageView fx:id="tttButtonImgView">
-                        <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/TicTacToe_Button.png" />
-                    </ImageView>
-                </graphic>
-                <VBox.margin>
-                    <Insets />
-                </VBox.margin>
-                <padding>
-                    <Insets top="0.001" />
-                </padding>
-            </Button>
-            <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
-                <graphic>
-                    <ImageView fx:id="uenoButtonImgView">
-                        <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/UNO_Button.png" />
-                    </ImageView>
-                </graphic>
-                <padding>
-                    <Insets top="0.001" />
-                </padding>
-            </Button>
-            <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css">
-                <graphic>
-                    <ImageView fx:id="witchButtonImgView">
-                        <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/Witch_Button.png" />
-                    </ImageView>
-                </graphic>
-                <padding>
-                    <Insets top="0.001" />
-                </padding>
-            </Button>
-        </VBox>
-
-       <Button onAction="#onBeendenClick" onMouseEntered="#mouseEnteredBeenden" onMouseExited="#mouseExitedBeenden" prefHeight="70" prefWidth="112" stylesheets="@transparent-image-button.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-           <graphic>
-               <ImageView fx:id="beendenButtonImgView">
-                   <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/End_Button.png" />
-               </ImageView>
-           </graphic>
-         <padding>
-            <Insets top="0.001" />
-         </padding>
-       </Button>
-    </GridPane>
+   <Button onAction="#onBeendenClick" onMouseEntered="#mouseEnteredBeenden" onMouseExited="#mouseExitedBeenden" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css" StackPane.alignment="BOTTOM_CENTER">
+       <graphic>
+           <ImageView fx:id="beendenButtonImgView">
+               <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/End_Button.png" />
+           </ImageView>
+       </graphic>
+     <padding>
+        <Insets top="0.001" />
+     </padding>
+   </Button>
 
     <fx:include source="sound-menu.fxml" StackPane.alignment="TOP_RIGHT" />
 
-    <Text text="Developed by: Finn, Christian, Marc, David" StackPane.alignment="BOTTOM_RIGHT" />
+    <Text fill="WHITE" text="Developed by: Finn, Christian, Marc, David" StackPane.alignment="BOTTOM_RIGHT" />
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
         <Hyperlink fx:id="debugLink" onAction="#debugClick" text="Debug" />
         <Hyperlink onAction="#githubRepoLinkClick" text="GitHub Repo" />

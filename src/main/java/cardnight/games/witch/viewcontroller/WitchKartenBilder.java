@@ -13,6 +13,7 @@ public class WitchKartenBilder {
     private static final HashMap<WitchFarbe, Image> hexenKarten = new HashMap<>(4);
     private static final HashMap<WitchFarbe, Image> narrenKarten = new HashMap<>(4);
     public static final Image witchKartenRueckseite = ladeBild("Witch_Ruckseite.png", 0, Main.GEGNERKARTE_HOEHE);
+    public static final Image punkteTafelBackground = ladeBild("Punktetafel_Background.png", Main.HANDKARTE_BREITE, 0);
     private static boolean bilderWurdenGeladen;
 
     public static void bilderLaden() {

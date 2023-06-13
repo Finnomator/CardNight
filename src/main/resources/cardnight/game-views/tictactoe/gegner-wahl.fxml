@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -8,14 +9,36 @@
 
     <Label text="Gegen wen möchtest du spielen?" StackPane.alignment="TOP_CENTER">
       <font>
-         <Font size="20.0" />
+         <Font name="Sitka Text" size="24.0" />
       </font></Label>
 
-    <VBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="3">
-        <Button maxWidth="1.7976931348623157E308" onAction="#gegenComputerKlick" text="Gegen den Computer" />
-        <Button maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" text="Gegen einen Menschen" />
-    </VBox>
+    <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="3">
+        <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenComputerKlick" prefWidth="165.0" stylesheets="@../../button-style.css" text="Gegen den Computer">
+            <graphic>
+                <ImageView fitHeight="100.0" preserveRatio="true">
+                    <Image url="@images/Gegen_Computer.png" />
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Sitka Text" />
+            </font>
+        </Button>
+        <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" prefWidth="165.0" stylesheets="@../../button-style.css" text="Gegen einen Menschen">
+            <graphic>
+                <ImageView fitHeight="100.0" preserveRatio="true">
+                    <Image url="@images/Gegen_Mensch.png" />
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Sitka Text" />
+            </font>
+        </Button>
+    </HBox>
 
-    <Button onAction="#zuruckZumHauptmenuKlick" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
+    <Button onAction="#zuruckZumHauptmenuKlick" stylesheets="@../../button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER">
+        <font>
+            <Font name="Sitka Text" />
+        </font>
+    </Button>
 
 </StackPane>

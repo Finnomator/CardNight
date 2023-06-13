@@ -16,14 +16,17 @@
 
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: brown;" GridPane.rowIndex="1" />
 
-        <GridPane fx:id="tischContentContainer" alignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" maxWidth="-Infinity" maxHeight="-Infinity">
-            <ImageView fx:id="trumpfImageView" rotate="270.0" />
+        <GridPane fx:id="tischContentContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <ImageView fx:id="trumpfImageView" fitWidth="113.6" preserveRatio="true" rotate="270.0" />
 
             <columnConstraints>
                 <ColumnConstraints />
                 <ColumnConstraints prefWidth="100" />
                 <ColumnConstraints prefWidth="164.4" />
             </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
 
         <columnConstraints>
@@ -35,25 +38,28 @@
             <RowConstraints prefHeight="164.4" />
         </rowConstraints>
     </GridPane>
-    <Button mnemonicParsing="false" onAction="#pauseClick" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <Button mnemonicParsing="false" onAction="#pauseClick" stylesheets="@../button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
     <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
-        <Text text="Schätzung" />
+        <Label stylesheets="@../fonts/algerian-condensed.css" text="Schätzung">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
         <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Anzahl Stiche" />
-        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#schaetzungOkKlick" text="OK" />
+        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#schaetzungOkKlick" stylesheets="@../button-style.css" text="OK" />
     </VBox>
 
     <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30" prefWidth="150" StackPane.alignment="BOTTOM_RIGHT">
-        <Text text="Erhaltene Stiche: ">
+        <Label stylesheets="@../fonts/algerian-condensed.css" text="Erhaltene Stiche: ">
             <font>
-                <Font size="16.0" />
+                <Font size="18.0" />
             </font>
-        </Text>
-        <Text fx:id="erhalteneSticheText" text="0">
+        </Label>
+        <Label fx:id="erhalteneSticheText" stylesheets="@../fonts/algerian-condensed.css" text="0">
             <font>
-                <Font size="16.0" />
+                <Font size="18.0" />
             </font>
-        </Text>
+        </Label>
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
@@ -61,14 +67,14 @@
 
 
     <HBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_CENTER">
-        <Text text="Runde ">
+        <Label stylesheets="@../fonts/algerian-condensed.css" text="Runde ">
          <font>
-            <Font size="22.0" />
-         </font></Text>
-        <Text fx:id="rundenNummerText" text="1">
+            <Font size="28.0" />
+         </font></Label>
+        <Label fx:id="rundenNummerText" stylesheets="@../fonts/algerian-condensed.css" text="1">
             <font>
-            <Font size="22.0" />
-        </font></Text>
+            <Font size="28.0" />
+        </font></Label>
     </HBox>
 
 </StackPane>

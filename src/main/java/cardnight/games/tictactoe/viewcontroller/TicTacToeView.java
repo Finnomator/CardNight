@@ -27,7 +27,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TicTacToeView extends SpielView {
     public StackPane root;
 
-    public Text gewinnerText;
     public GridPane tttFeld;
     public GridPane tableGrid;
     public HBox handContainer;
@@ -159,18 +158,20 @@ public class TicTacToeView extends SpielView {
 
         if (gewinner == null) {
             Logger.log("Das Spiel ist vorbei, Unentschieden!");
-            Platform.runLater(() -> gewinnerText.setText("Unentschieden!"));
+            Platform.runLater(() -> GameOver.setzeNachricht("UNENTSCHIEDEN!"));
         } else {
             Logger.log("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
             Platform.runLater(() -> {
-                gewinnerText.setText(gewinner.name + " hat gewonnen");
-
                 if (spielGegenComputer) {
-                    if (gewinner == ttt.oSpieler)
+                    if (gewinner == ttt.oSpieler) {
                         gegnerUiHand.setHappy(true);
-                    else
+                        GameOver.setzeNachricht("Der Computer hat dich geschlagen!");
+                    } else {
                         TTTSoundPlayer.verloren();
-                }
+                        GameOver.setzeNachricht("Du hast den Computer geschlagen!");
+                    }
+                } else
+                    GameOver.setzeNachricht(gewinner.name + " hat gewonnen!");
             });
         }
 

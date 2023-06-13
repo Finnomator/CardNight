@@ -1,0 +1,7 @@
+@font-face {
+    src: url(game_over.ttf);
+}
+
+.label {
+    -fx-font-family: 'Game Over';
+}

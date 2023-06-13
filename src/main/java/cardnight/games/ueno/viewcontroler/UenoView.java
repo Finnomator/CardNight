@@ -6,6 +6,7 @@ import cardnight.games.ueno.Ueno;
 import cardnight.games.ueno.UenoGegner;
 import cardnight.games.ueno.UenoKarte;
 import cardnight.games.ueno.UenoSpieler;
+import cardnight.games.witch.Witch;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -69,6 +70,14 @@ public class UenoView extends SpielView {
         root.addEventFilter(UenoKarteKlickEvent.ANY, this::handleUenoKartenKlick);
 
         updateUi();
+
+        uiHauptHand.setDisable(true);
+        UenoSoundPlayer.start(false);
+
+        new Thread(() -> {
+            Witch.delay(3000);
+            Platform.runLater(() -> uiHauptHand.setDisable(false));
+        }).start();
     }
 
     // Basic Methoden für alle Spieler
@@ -79,6 +88,25 @@ public class UenoView extends SpielView {
     }
 
     private void legeKarte(UenoSpieler spieler, UenoKarte karte) {
+
+        switch (karte.art) {
+            case RICHTUNGSWECHSEL:
+                UenoSoundPlayer.reverse();
+                break;
+            case AUSSETZEN:
+                UenoSoundPlayer.skip();
+                break;
+            case PLUS_VIER:
+                UenoSoundPlayer.vierZiehen();
+                break;
+            case PLUS_ZWEI:
+                UenoSoundPlayer.zweiZiehen();
+                break;
+            case FARBWAHL:
+                UenoSoundPlayer.farbwahl(karte.farbe);
+                break;
+        }
+
         ueno.karteAblegen(spieler, karte);
         updateUi();
     }
@@ -113,7 +141,7 @@ public class UenoView extends SpielView {
                 UenoSoundPlayer.unoUno();
             } else if (gegner.gibHandkarten().size() == 1)
                 UenoSoundPlayer.uno();
-                
+
         } else {
             Logger.log(gegner.name + " konnte nicht ablegen");
             zieheKarten(gegner, 1);
@@ -242,6 +270,11 @@ public class UenoView extends SpielView {
                 nachricht += "\n" + (i + 1) + ".\t" + gewinner.get(i).name;
             GameOver.setzeNachricht(nachricht);
         }
+
+        if (gewinner.get(0) == hauptSpieler)
+            UenoSoundPlayer.duHastGewonnen();
+        else
+            UenoSoundPlayer.rundeVorbei();
 
         try {
             root.getChildren().add(GameOver.loadScene());

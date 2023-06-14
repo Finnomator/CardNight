@@ -9,26 +9,23 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 public class TTTUiOHand extends TTTUiHand {
-    public HBox kartenBox;
-
+    
     public static final Image oHandkartenBild = new Image(Main.class.getResourceAsStream(
             "/cardnight/game-views/tictactoe/images/O_Handkarte.png"),
             Main.HANDKARTE_BREITE, 0, true, true);
 
-    @Override
-    public void uiErstellen(TicTacToeSpieler spieler) {
-        this.spieler = spieler;
-        updateUi();
+    public TTTUiOHand(TicTacToeSpieler spieler) {
+        super(spieler);
     }
 
     @Override
     public void updateUi() {
 
-        kartenBox.setDisable(!spieler.istAmZug());
+        setOpacity(spieler.istAmZug()? 1 : 0.5);
 
-        kartenBox.getChildren().clear();
+        getChildren().clear();
 
         for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i)
-            kartenBox.getChildren().add(new ImageView(oHandkartenBild));
+            getChildren().add(new ImageView(oHandkartenBild));
     }
 }

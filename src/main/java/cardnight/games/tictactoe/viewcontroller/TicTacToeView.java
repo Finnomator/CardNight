@@ -165,7 +165,7 @@ public class TicTacToeView extends SpielView {
     public void disableGame(boolean disable) {
         Platform.runLater(() -> {
             tableGrid.setDisable(disable);
-            handContainer.setDisable(disable);
+            handContainer.setOpacity(disable? 0.5 : 1);
         });
     }
 

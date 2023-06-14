@@ -24,7 +24,7 @@ public class TTTUiXHand extends TTTUiHand {
     @Override
     public void updateUi() {
 
-        kartenBox.setDisable(!spieler.istAmZug());
+        kartenBox.setOpacity(spieler.istAmZug()? 1 : 0.5);
 
         kartenBox.getChildren().clear();
 

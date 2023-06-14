@@ -11,6 +11,9 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Witch extends Spiel {
     private final WitchSpieler[] spieler;
@@ -124,6 +127,7 @@ public class Witch extends Spiel {
                 kartenSammeln();
             }
 
+            update();
             Logger.log("Das Spiel ist vorbei");
             Platform.runLater(observerView::beendeSpiel);
         });
@@ -417,5 +421,12 @@ public class Witch extends Spiel {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<WitchSpieler> platzierung() {
+        ArrayList<WitchSpieler> sortierteSpieler = new ArrayList<>(Arrays.asList(spieler));
+        sortierteSpieler.sort(Comparator.comparingInt(WitchSpieler::gibGesamtPunkte));
+        Collections.reverse(sortierteSpieler);
+        return sortierteSpieler;
     }
 }

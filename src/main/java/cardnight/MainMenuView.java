@@ -1,5 +1,6 @@
 package cardnight;
 
+import cardnight.games.Ressourcen;
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.viewcontroler.UenoKartenBilder;
@@ -25,7 +26,6 @@ import java.util.Random;
 
 public class MainMenuView {
 
-    public Hyperlink debugLink;
     public ImageView hintergrundImageView;
     public StackPane root;
     public ImageView tttButtonImgView;
@@ -33,6 +33,7 @@ public class MainMenuView {
     public ImageView witchButtonImgView;
     public ImageView beendenButtonImgView;
     public ImageView spinKarte;
+    public Hyperlink debugLink;
 
     public void initialize() {
         debugLink.setVisited(Main.debugMode);
@@ -175,6 +176,10 @@ public class MainMenuView {
                 zahl = rnd.nextInt(10);
                 return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png",  0, 0);
             case 1:
+
+                if (rnd.nextInt(100) == 0) // What could this be? 👀
+                    return Ressourcen.dieDiebin;
+
                 farbe = WitchFarbe.values()[rnd.nextInt(WitchFarbe.values().length)].toString().toLowerCase();
                 zahl = rnd.nextInt(13) + 1;
                 return WitchKartenBilder.ladeBild(farbe + "/Witch_" + farbe + "_" + zahl + ".png", 0, 0);

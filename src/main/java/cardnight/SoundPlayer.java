@@ -20,20 +20,14 @@ public class SoundPlayer {
     }
 
     public static void klickSound() {
-        new Thread(() -> {
-            klickSoundEffekt.setFramePosition(0);
-            klickSoundEffekt.start();
-        }).start();
+        playSound(klickSoundEffekt);
     }
 
-    public static void playSoundAsync(Clip sound) {
-
+    public static void playSound(Clip sound) {
         if (!Main.enableSound)
             return;
 
-        new Thread(() -> {
-            sound.setFramePosition(0);
-            sound.start();
-        }).start();
+        sound.setFramePosition(0);
+        sound.start();
     }
 }

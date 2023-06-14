@@ -6,6 +6,7 @@ import cardnight.games.ueno.Ueno;
 import cardnight.games.ueno.UenoGegner;
 import cardnight.games.ueno.UenoKarte;
 import cardnight.games.ueno.UenoSpieler;
+import cardnight.games.witch.Witch;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -33,6 +34,7 @@ public class UenoView extends SpielView {
     public GridPane tableGrid;
     private Ueno ueno;
     private HashMap<UenoSpieler, UenoUiHand> spielerHaende;
+    private Node uiHauptHand;
     private UenoSpieler hauptSpieler;
     private boolean spielIstBeendet;
 
@@ -58,7 +60,7 @@ public class UenoView extends SpielView {
         }
 
         FXMLLoader handLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/hauptspieler-hand.fxml"));
-        Node uiHauptHand = handLoader.load();
+        uiHauptHand = handLoader.load();
         GridPane.setRowIndex(uiHauptHand, 2);
         GridPane.setHalignment(uiHauptHand, HPos.CENTER);
         tableGrid.getChildren().add(uiHauptHand);
@@ -69,6 +71,14 @@ public class UenoView extends SpielView {
         root.addEventFilter(UenoKarteKlickEvent.ANY, this::handleUenoKartenKlick);
 
         updateUi();
+
+        disableGame(true);
+        UenoSoundPlayer.start(false);
+
+        new Thread(() -> {
+            Witch.delay(3000);
+            disableGame(false);
+        }).start();
     }
 
     // Basic Methoden für alle Spieler
@@ -79,8 +89,34 @@ public class UenoView extends SpielView {
     }
 
     private void legeKarte(UenoSpieler spieler, UenoKarte karte) {
+
+        switch (karte.art) {
+            case RICHTUNGSWECHSEL:
+                UenoSoundPlayer.reverse();
+                break;
+            case AUSSETZEN:
+                UenoSoundPlayer.skip();
+                break;
+            case PLUS_VIER:
+                UenoSoundPlayer.vierZiehen();
+                break;
+            case PLUS_ZWEI:
+                UenoSoundPlayer.zweiZiehen();
+                break;
+            case FARBWAHL:
+                UenoSoundPlayer.farbwahl(karte.farbe);
+                break;
+        }
+
         ueno.karteAblegen(spieler, karte);
         updateUi();
+    }
+
+    private void disableGame(boolean disable) {
+        Platform.runLater(() -> {
+            uiHauptHand.setDisable(disable);
+            nachziehstapelButton.setDisable(disable);
+        });
     }
 
     // Gegner Logik
@@ -99,6 +135,8 @@ public class UenoView extends SpielView {
         } else if (ueno.mussZweiZiehen())
             zieheKarten(gegner, 2);
 
+        updateUi();
+
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
@@ -113,7 +151,7 @@ public class UenoView extends SpielView {
                 UenoSoundPlayer.unoUno();
             } else if (gegner.gibHandkarten().size() == 1)
                 UenoSoundPlayer.uno();
-                
+
         } else {
             Logger.log(gegner.name + " konnte nicht ablegen");
             zieheKarten(gegner, 1);
@@ -125,7 +163,7 @@ public class UenoView extends SpielView {
     }
 
     private void gegnerZuege() {
-        nachziehstapelButton.setDisable(true);
+        disableGame(true);
 
         UenoSpieler naechster = ueno.nachsterSpieler(hauptSpieler);
         while (naechster != hauptSpieler) {
@@ -151,7 +189,7 @@ public class UenoView extends SpielView {
         else if (ueno.mussZweiZiehen())
             zieheKarten(spieler, 2);
 
-        nachziehstapelButton.setDisable(false);
+        disableGame(false);
     }
 
     private void gegnerZuegeAsync() {
@@ -164,8 +202,15 @@ public class UenoView extends SpielView {
 
     public void handleUenoKartenKlick(UenoKarteKlickEvent event) {
 
+        disableGame(true);
+
         // Spieler legt eine Karte
         legeKarte(hauptSpieler, event.geklickteKarte);
+
+        if (ueno.istSpielBeendet()) {
+            beendeSpiel();
+            return;
+        }
 
         // Gegner machen ihre Züge
         gegnerZuegeAsync();
@@ -186,9 +231,6 @@ public class UenoView extends SpielView {
         }
 
         ArrayList<UenoKarte> ablegbareKarten = hauptSpieler.ablegbareKarten();
-
-        if (ablegbareKarten.size() == 1 && ablegbareKarten.get(0).istSchwarz())
-            ablegbareKarten.get(0).setzeFarbe(ueno.gibZuletztAbgelegteKarte().farbe);
 
         updateUi();
 
@@ -222,11 +264,12 @@ public class UenoView extends SpielView {
 
     @Override
     public void beendeSpiel() {
-        
         if (spielIstBeendet)
             return;
 
         spielIstBeendet = true;
+
+        disableGame(true);
 
         Logger.log("Das Spiel ist vorbei, die Gewinner:");
         ArrayList<UenoSpieler> gewinner = ueno.gibGewinner();
@@ -242,6 +285,11 @@ public class UenoView extends SpielView {
                 nachricht += "\n" + (i + 1) + ".\t" + gewinner.get(i).name;
             GameOver.setzeNachricht(nachricht);
         }
+
+        if (gewinner.get(0) == hauptSpieler)
+            UenoSoundPlayer.duHastGewonnen();
+        else
+            UenoSoundPlayer.rundeVorbei();
 
         try {
             root.getChildren().add(GameOver.loadScene());

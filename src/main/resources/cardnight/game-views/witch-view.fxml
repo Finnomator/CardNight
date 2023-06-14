@@ -24,9 +24,6 @@
                 <ColumnConstraints prefWidth="100" />
                 <ColumnConstraints prefWidth="164.4" />
             </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-         </rowConstraints>
         </GridPane>
 
         <columnConstraints>

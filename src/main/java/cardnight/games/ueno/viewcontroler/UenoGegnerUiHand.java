@@ -8,6 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 public class UenoGegnerUiHand extends UenoUiHand {
     public HBox kartenBox;
     public Text nameText;
@@ -39,7 +41,9 @@ public class UenoGegnerUiHand extends UenoUiHand {
         setHappy(spieler.istFertig());
 
         kartenBox.getChildren().clear();
-        for (UenoKarte ignored : spieler.gibHandkarten())
+
+        ArrayList<UenoKarte> gibHandkarten = spieler.gibHandkarten();
+        for (int i = 0, gibHandkartenSize = gibHandkarten.size(); i < gibHandkartenSize; i++) // ConcurrentModificationException
             kartenBox.getChildren().add(new ImageView(UenoKartenBilder.uenoKartenRueckseite));
     }
 }

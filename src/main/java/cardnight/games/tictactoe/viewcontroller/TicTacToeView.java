@@ -6,6 +6,7 @@ import cardnight.games.Spieler;
 
 import cardnight.games.tictactoe.TicTacToe;
 import cardnight.games.tictactoe.TicTacToeSpieler;
+import cardnight.games.ueno.viewcontroler.UenoSoundPlayer;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -94,6 +95,16 @@ public class TicTacToeView extends SpielView {
             btn.setOnAction(this::btnAction);
             ++i;
         }
+
+        if (spielGegenComputer) {
+            disableGame(true);
+            TTTSoundPlayer.start();
+
+            new Thread(() -> {
+                delay(3500);
+                disableGame(false);
+            }).start();
+        }
     }
 
     public void updateUi() {
@@ -151,8 +162,17 @@ public class TicTacToeView extends SpielView {
         actionEvent.consume();
     }
 
+    public void disableGame(boolean disable) {
+        Platform.runLater(() -> {
+            tableGrid.setDisable(disable);
+            handContainer.setDisable(disable);
+        });
+    }
+
     @Override
     public void beendeSpiel() {
+
+        disableGame(true);
 
         Spieler gewinner = ttt.gibGewinner();
 

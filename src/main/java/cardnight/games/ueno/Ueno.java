@@ -176,8 +176,11 @@ public class Ueno extends Spiel {
     }
 
     public boolean istSpielBeendet() {
-        return gibHauptSpieler().istFertig() || fertigeSpieler.size() >= spieler.length - 1;
 
+        if (gibHauptSpieler().istFertig() && !fertigeSpieler.contains(gibHauptSpieler()))
+            fertigeSpieler.add(gibHauptSpieler());
+
+        return gibHauptSpieler().istFertig() || fertigeSpieler.size() >= spieler.length - 1;
     }
 
     @Override
@@ -205,7 +208,7 @@ public class Ueno extends Spiel {
         if (karte.art == UenoKartenArt.ZAHL)
             return karte.wert == obersteKarte.wert || karte.farbe == obersteKarte.farbe;
         if (karte.art == UenoKartenArt.FARBWAHL || karte.art == UenoKartenArt.PLUS_VIER)
-            return karte.farbe == null || karte.farbe == obersteKarte.farbe;
+            return true;
         return karte.art == obersteKarte.art || karte.farbe == obersteKarte.farbe;
     }
 }

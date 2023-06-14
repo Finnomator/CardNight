@@ -17,9 +17,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -250,7 +247,9 @@ public class UenoView extends SpielView {
 
     @Override
     public void beendeSpiel() {
-        
+
+        Logger.log("Das Spiel ist vorbei, die Gewinner:");
+
         if (spielIstBeendet)
             return;
 

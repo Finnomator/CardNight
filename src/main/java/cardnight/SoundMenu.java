@@ -4,6 +4,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 
+import java.util.Random;
+
 public class SoundMenu {
     public Button soundEnableButton;
     public Slider musicVolumeSlider;
@@ -19,5 +21,8 @@ public class SoundMenu {
 
     public void musicSliderMouseClick() {
         Main.setMusicVolume(musicVolumeSlider.getValue() / 100.0);
+
+        if (new Random().nextInt(20) == 0) // 🤔
+            SoundPlayer.soundEinstellen();
     }
 }

@@ -7,13 +7,13 @@
 
 <GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0,0,0,0.7);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
 
-    <VBox maxHeight="-Infinity" maxWidth="-Infinity" GridPane.valignment="TOP">
-        <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" stylesheets="@styles/button-style.css" text="Fortsetzen" />
-        <StackPane style="-fx-border-color: black; -fx-border-width: 3; -fx-border-radius: 5;">
+    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="104.0" prefWidth="196.0" GridPane.valignment="TOP">
+        <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" stylesheets="@styles/button-style.css" text="Fortsetzen" StackPane.alignment="TOP_CENTER" />
+        <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
+        <StackPane maxHeight="-Infinity" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-radius: 5;">
             <fx:include source="sound-menu.fxml" />
         </StackPane>
-        <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" />
-    </VBox>
+    </StackPane>
 
     <ScrollPane fitToWidth="true" stylesheets="@styles/transparent-scroll-pane.css" vbarPolicy="ALWAYS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" VBox.vgrow="ALWAYS">
         <VBox alignment="TOP_CENTER">

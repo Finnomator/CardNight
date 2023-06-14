@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -10,9 +11,12 @@
     <Label text="Gegen wen möchtest du spielen?" textFill="WHITE" StackPane.alignment="TOP_CENTER">
       <font>
          <Font name="Sitka Text" size="24.0" />
-      </font></Label>
+      </font>
+      <StackPane.margin>
+         <Insets top="15.0" />
+      </StackPane.margin></Label>
 
-    <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="3">
+    <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0">
         <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenComputerKlick" prefWidth="165.0" stylesheets="@../../styles/button-style.css" text="Gegen den Computer">
             <graphic>
                 <ImageView fitHeight="100.0" preserveRatio="true">
@@ -23,6 +27,12 @@
                 <Font name="Sitka Text" />
             </font>
         </Button>
+
+        <Label text="oder" textFill="WHITE" StackPane.alignment="TOP_CENTER">
+            <font>
+                <Font name="Sitka Text" size="24.0" />
+            </font></Label>
+
         <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" prefWidth="165.0" stylesheets="@../../styles/button-style.css" text="Gegen einen Menschen">
             <graphic>
                 <ImageView fx:id="gegenMenschImgView" fitHeight="100.0" preserveRatio="true">

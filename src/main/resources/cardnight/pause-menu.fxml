@@ -13,6 +13,9 @@
         <StackPane maxHeight="-Infinity" style="-fx-border-color: linear-gradient(to top left, #001F33, #0A1166); -fx-border-width: 3; -fx-border-radius: 5;">
             <fx:include source="sound-menu.fxml" />
         </StackPane>
+      <GridPane.margin>
+         <Insets left="15.0" top="15.0" />
+      </GridPane.margin>
     </StackPane>
 
     <ScrollPane fitToWidth="true" stylesheets="@styles/transparent-scroll-pane.css" vbarPolicy="ALWAYS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" VBox.vgrow="ALWAYS">
@@ -21,6 +24,9 @@
                 <font>
                     <Font name="Segoe UI" size="24.0" />
                 </font>
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
             </Label>
             <Label fx:id="anleitungText" textFill="WHITE" wrapText="true">
                 <font>

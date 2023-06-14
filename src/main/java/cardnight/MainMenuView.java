@@ -15,6 +15,8 @@ import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Box;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
@@ -32,19 +34,22 @@ public class MainMenuView {
     public ImageView uenoButtonImgView;
     public ImageView witchButtonImgView;
     public ImageView beendenButtonImgView;
-    public ImageView spinKarte;
     public Hyperlink debugLink;
+    public Box spinnBox;
 
     public void initialize() {
         debugLink.setVisited(Main.debugMode);
         MainMenuBilder.ladeBilder();
         hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(500));
-        spinKarte.fitHeightProperty().bind(root.heightProperty().subtract(500));
+        spinnBox.heightProperty().bind(root.heightProperty().divide(2));
+        spinnBox.widthProperty().bind(spinnBox.heightProperty().multiply(0.69));
 
         tttButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.TIC_TAC_TOE, false));
         uenoButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.UENO, false));
         witchButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.WITCH, false));
         beendenButtonImgView.setImage(MainMenuBilder.beendenButtonBild(false));
+
+        setzeBoxFace();
 
         setzeHintergrund(null);
         startRotatingCards();
@@ -93,37 +98,37 @@ public class MainMenuView {
     public void mouseEnteredTTT() {
         setzeHintergrund(MainMenuBilder.gibHintergrundBild(SpielTyp.TIC_TAC_TOE));
         tttButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.TIC_TAC_TOE, true));
-        zeigeSpinKarten(false);
+        zeigeSpinnBox(false);
     }
 
     public void mouseExitedTTT() {
         setzeHintergrund(null);
         tttButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.TIC_TAC_TOE, false));
-        zeigeSpinKarten(true);
+        zeigeSpinnBox(true);
     }
 
     public void mouseExitedUeno() {
         setzeHintergrund(null);
         uenoButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.UENO, false));
-        zeigeSpinKarten(true);
+        zeigeSpinnBox(true);
     }
 
     public void mouseEnteredWitch() {
         setzeHintergrund(MainMenuBilder.gibHintergrundBild(SpielTyp.WITCH));
         witchButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.WITCH, true));
-        zeigeSpinKarten(false);
+        zeigeSpinnBox(false);
     }
 
     public void mouseEnteredUeno() {
         setzeHintergrund(MainMenuBilder.gibHintergrundBild(SpielTyp.UENO));
         uenoButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.UENO, true));
-        zeigeSpinKarten(false);
+        zeigeSpinnBox(false);
     }
 
     public void mouseExitedWitch() {
         setzeHintergrund(null);
         witchButtonImgView.setImage(MainMenuBilder.gibButtonBild(SpielTyp.WITCH, false));
-        zeigeSpinKarten(true);
+        zeigeSpinnBox(true);
     }
 
     public void mouseEnteredBeenden() {
@@ -137,14 +142,9 @@ public class MainMenuView {
     private void startRotatingCards() {
 
         Rotate yRotation = new Rotate(0, Rotate.Y_AXIS);
-        Rotate zRotation = new Rotate(-34.66, Rotate.Z_AXIS);
+        // Rotate zRotation = new Rotate(-34.66, Rotate.Z_AXIS);
 
-        zRotation.pivotXProperty().bind(spinKarte.fitHeightProperty().divide(2).divide(1.447));
-        zRotation.pivotYProperty().bind(spinKarte.fitHeightProperty().divide(2));
-        yRotation.pivotXProperty().bind(spinKarte.fitHeightProperty().divide(2).divide(1.447));
-        yRotation.pivotYProperty().bind(spinKarte.fitHeightProperty().divide(2));
-
-        spinKarte.getTransforms().addAll(yRotation, zRotation);
+        spinnBox.getTransforms().addAll(yRotation);
 
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -152,13 +152,18 @@ public class MainMenuView {
 
             int winkel = (int) Math.abs(yRotation.getAngle()) % 360;
 
-            if (winkel == 90 || winkel == 270) {
-                spinKarte.setImage(randomKartenBild());
-            }
+            if (winkel == 90 || winkel == 270)
+                setzeBoxFace();
 
             yRotation.setAngle(yRotation.getAngle() + 1);
         }));
         timeline.play();
+    }
+
+    private void setzeBoxFace() {
+        PhongMaterial material = new PhongMaterial();
+        material.setDiffuseMap(randomKartenBild());
+        spinnBox.setMaterial(material);
     }
 
     private static Image randomKartenBild() {
@@ -188,8 +193,8 @@ public class MainMenuView {
         throw new RuntimeException();
     }
 
-    private void zeigeSpinKarten(boolean sichtbar) {
-        spinKarte.setVisible(sichtbar);
+    private void zeigeSpinnBox(boolean sichtbar) {
+        spinnBox.setVisible(sichtbar);
     }
 
     public void debugClick() {

@@ -48,9 +48,9 @@ public class TicTacToeView extends SpielView {
 
         feldBtns = new Button[9];
         OQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/O_quadratisch.png"),
-                87, 0, true, true);
+                88, 0, true, true);
         XQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/X_quadratisch.png"),
-            87, 0, true, true);
+            88, 0, true, true);
 
         TTTSoundPlayer.ladeSounds();
 

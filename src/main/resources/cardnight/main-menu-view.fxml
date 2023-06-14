@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" prefHeight="480" prefWidth="720" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
+<StackPane fx:id="root" minHeight="800" minWidth="1422" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
 
     <ImageView fx:id="hintergrundImageView" preserveRatio="true" />
 

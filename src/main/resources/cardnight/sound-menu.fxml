@@ -16,7 +16,7 @@
          <font>
             <Font size="14.0" />
          </font></Text>
-        <Slider fx:id="musicVolumeSlider" onMouseClicked="#musicSliderMouseClick" />
+        <Slider fx:id="musicVolumeSlider" blockIncrement="0.0" onMouseClicked="#musicSliderMouseClick" />
     </HBox>
 
 </HBox>

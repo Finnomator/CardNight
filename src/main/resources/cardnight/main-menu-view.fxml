@@ -5,15 +5,12 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" prefHeight="480" prefWidth="1080" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
+<StackPane fx:id="root" prefHeight="480" prefWidth="720" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
 
     <ImageView fx:id="hintergrundImageView" preserveRatio="true" />
-
-    <ImageView fx:id="spinKarte" fitHeight="150.0" preserveRatio="true">
-        <Image url="@game-views/ueno/images/UNO_Rückseite.png" />
-    </ImageView>
 
     <ImageView fitHeight="130.0" preserveRatio="true" StackPane.alignment="TOP_CENTER">
         <effect>
@@ -21,6 +18,8 @@
         </effect>
         <Image url="@images/CardNight_Title.png" />
     </ImageView>
+
+    <Box fx:id="spinnBox" depth="0.001" height="160.0" width="110.0" />
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity">
         <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css">

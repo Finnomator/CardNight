@@ -37,8 +37,11 @@ public class TTTGegnerUiHand extends TTTUiHand {
         if (happy) {
             stickmanImageView.setImage(Ressourcen.stickmanHappyImage);
             TTTSoundPlayer.gewonnen();
-        } else
+            kartenBox.setOpacity(0);
+        } else {
             stickmanImageView.setImage(Ressourcen.stickmanImage);
+            kartenBox.setOpacity(1);
+        }
 
         if (happy)
             setThinkingStatus(false);

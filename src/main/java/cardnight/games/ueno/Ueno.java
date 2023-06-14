@@ -6,6 +6,8 @@ import cardnight.games.GegnerNamen;
 import cardnight.games.Spiel;
 import cardnight.games.Spieler;
 
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -180,7 +182,11 @@ public class Ueno extends Spiel {
 
     @Override
     public String gibAnleitung() {
-        return Tools.readFile("/cardnight/anleitungen/UenoAnleitung");
+        try {
+            return Tools.readFile(Paths.get(getClass().getResource("/cardnight/anleitungen/UenoAnleitung").toURI()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void karteAblegen(UenoKarte karte) {

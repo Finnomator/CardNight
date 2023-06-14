@@ -247,6 +247,11 @@ public class UenoView extends SpielView {
 
     @Override
     public void beendeSpiel() {
+        
+        if (spielIstBeendet)
+            return;
+
+        spielIstBeendet = true;
 
         Logger.log("Das Spiel ist vorbei, die Gewinner:");
         if (spielIstBeendet)

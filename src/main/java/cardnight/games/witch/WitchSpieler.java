@@ -1,5 +1,6 @@
 package cardnight.games.witch;
 
+import cardnight.Logger;
 import cardnight.games.Spieler;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public void handkarteHinzufuegen(WitchKarte karte) {
-        System.out.println("\t\t" + name + " bekommt Karte: " + karte.datenAlsString());
+        Logger.log("\t\t" + name + " bekommt Karte: " + karte.datenAlsString());
         handkarten.add(karte);
     }
 
@@ -39,7 +40,7 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public void fuegeStichHinzu() {
-        System.out.println("\t\t" + name + " hat den Stich erhalten");
+        Logger.log("\t\t" + name + " hat den Stich erhalten");
         anzahlErhaltenerStiche++;
     }
 

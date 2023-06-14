@@ -1,14 +1,12 @@
 package cardnight.games.tictactoe.viewcontroller;
 
-import cardnight.GameOver;
-import cardnight.Main;
-import cardnight.PauseMenu;
-import cardnight.SoundPlayer;
+import cardnight.*;
 import cardnight.games.SpielView;
 import cardnight.games.Spieler;
 
 import cardnight.games.tictactoe.TicTacToe;
 import cardnight.games.tictactoe.TicTacToeSpieler;
+import cardnight.games.ueno.viewcontroler.UenoSoundPlayer;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -97,6 +95,16 @@ public class TicTacToeView extends SpielView {
             btn.setOnAction(this::btnAction);
             ++i;
         }
+
+        if (spielGegenComputer) {
+            xHandNode.setDisable(true);
+            TTTSoundPlayer.start();
+
+            new Thread(() -> {
+                delay(3500);
+                xHandNode.setDisable(false);
+            }).start();
+        }
     }
 
     public void updateUi() {
@@ -126,7 +134,7 @@ public class TicTacToeView extends SpielView {
     public int warteAufSpielerZug(TicTacToeSpieler spieler) {
         // Gibt zurück, auf welches Feld der Spieler sein Zug macht.
 
-        System.out.println("Warte auf Eingabe von " + spieler.name);
+        Logger.log("Warte auf Eingabe von " + spieler.name);
 
         zugGemacht.set(false);
 
@@ -160,10 +168,10 @@ public class TicTacToeView extends SpielView {
         Spieler gewinner = ttt.gibGewinner();
 
         if (gewinner == null) {
-            System.out.println("Das Spiel ist vorbei, Unentschieden!");
+            Logger.log("Das Spiel ist vorbei, Unentschieden!");
             Platform.runLater(() -> GameOver.setzeNachricht("UNENTSCHIEDEN!"));
         } else {
-            System.out.println("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
+            Logger.log("Das Spiel ist vorbei, der Gewinner: " + gewinner.name);
             Platform.runLater(() -> {
                 if (spielGegenComputer) {
                     if (gewinner == ttt.oSpieler) {

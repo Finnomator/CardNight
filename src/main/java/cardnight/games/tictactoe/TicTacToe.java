@@ -1,5 +1,6 @@
 package cardnight.games.tictactoe;
 
+import cardnight.Logger;
 import cardnight.Tools;
 import cardnight.games.Spiel;
 import cardnight.games.tictactoe.viewcontroller.TTTSoundPlayer;
@@ -48,7 +49,7 @@ public class TicTacToe extends Spiel {
                 spielerAmZug = xSpieler;
                 int gesetztesFeld = observerView.warteAufSpielerZug(xSpieler);
                 zugNummer++;
-                System.out.println("Zug " + zugNummer + ": " + xSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
+                Logger.log("Zug " + zugNummer + ": " + xSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
                 xSpieler.zugSpeichern(gesetztesFeld);
                 feld[gesetztesFeld] = "x";
                 observerView.updateUi();
@@ -67,7 +68,7 @@ public class TicTacToe extends Spiel {
                     gesetztesFeld = observerView.warteAufSpielerZug(oSpieler);
 
                 zugNummer++;
-                System.out.println("Zug " + zugNummer + ": " + oSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
+                Logger.log("Zug " + zugNummer + ": " + oSpieler.name + " hat auf Feld " + gesetztesFeld + " gelegt");
                 // Zug in Array speichern
                 oSpieler.zugSpeichern(gesetztesFeld);
                 feld[gesetztesFeld] = "o";

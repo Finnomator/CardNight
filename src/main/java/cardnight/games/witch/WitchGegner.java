@@ -1,5 +1,7 @@
 package cardnight.games.witch;
 
+import cardnight.Logger;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,7 +19,7 @@ public class WitchGegner extends WitchSpieler {
         stichSchaetzung = (int) Math.round(handSchaetzung(handkarten, istAmZug() ? 1 : 0));
         stichSchaetzungenProRunde.add(stichSchaetzung);
 
-        System.out.println("\t\t" + name + " schätzt " + stichSchaetzung + " Stich(e)");
+        Logger.log("\t\t" + name + " schätzt " + stichSchaetzung + " Stich(e)");
     }
 
     public double handSchaetzung(ArrayList<WitchKarte> karten, double faengtAn) {
@@ -84,7 +86,7 @@ public class WitchGegner extends WitchSpieler {
 
         handkarten.remove(besterZug);
 
-        System.out.println("\t\t\t" + name + " spielt Karte " + besterZug.datenAlsString());
+        Logger.log("\t\t\t" + name + " spielt Karte " + besterZug.datenAlsString());
 
         return besterZug;
     }

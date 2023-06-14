@@ -8,6 +8,7 @@ import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.WitchFarbe;
 import cardnight.games.witch.viewcontroller.WitchKartenBilder;
 import cardnight.games.witch.viewcontroller.WitchView;
+import javafx.scene.control.Hyperlink;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -34,7 +35,10 @@ public class MainMenuView {
     public ImageView linkeSpinKarte;
     public ImageView rechteSpinKarte;
 
+    public Hyperlink debugLink;
+
     public void initialize() {
+        debugLink.setVisited(Main.debugMode);
         MainMenuBilder.ladeBilder();
         hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(500));
         linkeSpinKarte.fitHeightProperty().bind(root.heightProperty().divide(2.5));
@@ -87,6 +91,16 @@ public class MainMenuView {
 
     public void reportBugLinkClick() {
         openLinkInBrowser(Main.BugReportUrl);
+    }
+
+    public void debugClick() {
+        Main.debugMode = !Main.debugMode;
+        debugLink.setVisited(Main.debugMode);
+
+        if (Main.debugMode)
+            DebugWindow.oeffnen();
+        else
+            DebugWindow.schliessen();
     }
 
     public void mouseEnteredTTT() {

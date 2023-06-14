@@ -1,9 +1,6 @@
 package cardnight.games.witch.viewcontroller;
 
-import cardnight.GameOver;
-import cardnight.Main;
-import cardnight.PauseMenu;
-import cardnight.SoundPlayer;
+import cardnight.*;
 import cardnight.games.SpielView;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchGegner;
@@ -105,7 +102,7 @@ public class WitchView extends SpielView {
 
     public int warteAufSchaetzung() {
 
-        System.out.println("\t\tWarte auf Schätzung vom Spieler...");
+        Logger.log("\t\tWarte auf Schätzung vom Spieler...");
 
         Platform.runLater(() -> hauptspielerUiHand.disableAllCards());
         schaetzungsRoot.setDisable(false);
@@ -127,7 +124,7 @@ public class WitchView extends SpielView {
     public WitchKarte warteAufKartenauswahl() {
         // Wartet, bis der Spieler eine Karte geklickt hat, die er ablegen will und gibt diese zurück
 
-        System.out.println("\t\t\tWarte bis Spieler Karte ausgewählt hat...");
+        Logger.log("\t\t\tWarte bis Spieler Karte ausgewählt hat...");
 
         Platform.runLater(() -> hauptspielerUiHand.updateUi(false));
 

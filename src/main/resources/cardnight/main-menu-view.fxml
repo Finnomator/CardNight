@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" prefHeight="480" prefWidth="1080" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
+<StackPane fx:id="root" prefHeight="800" prefWidth="1422" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.MainMenuView">
 
     <ImageView fx:id="hintergrundImageView" preserveRatio="true" />
 
@@ -15,11 +15,14 @@
         <Image url="@game-views/ueno/images/UNO_Rückseite.png" />
     </ImageView>
 
-    <ImageView fitHeight="130.0" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+    <ImageView fitHeight="150.0" preserveRatio="true" StackPane.alignment="TOP_CENTER">
         <effect>
             <Glow level="0.41" />
         </effect>
         <Image url="@images/CardNight_Title.png" />
+      <StackPane.margin>
+         <Insets top="15.0" />
+      </StackPane.margin>
     </ImageView>
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity">

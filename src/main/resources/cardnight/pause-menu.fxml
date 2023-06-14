@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
+<GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0,0,0,0.7);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" GridPane.valignment="TOP">
         <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" stylesheets="@styles/button-style.css" text="Fortsetzen" />

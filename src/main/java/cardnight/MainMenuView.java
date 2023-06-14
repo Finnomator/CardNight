@@ -2,6 +2,8 @@ package cardnight;
 
 import cardnight.games.Ressourcen;
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
+import cardnight.games.tictactoe.viewcontroller.TTTUiOHand;
+import cardnight.games.tictactoe.viewcontroller.TTTUiXHand;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.viewcontroler.UenoKartenBilder;
 import cardnight.games.ueno.viewcontroler.UenoView;
@@ -170,17 +172,22 @@ public class MainMenuView {
 
         Random rnd = new Random();
 
-        int rndGame = rnd.nextInt(2);
+        int rndGame = rnd.nextInt(3);
 
         String farbe;
         int zahl;
 
         switch (rndGame) {
             case 0:
+                if (rnd.nextInt(2) == 0)
+                    return TTTUiXHand.xHandkartenBild;
+                else
+                    return TTTUiOHand.oHandkartenBild;
+            case 1:
                 farbe = UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)].toString().toLowerCase();
                 zahl = rnd.nextInt(10);
                 return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png",  0, 0);
-            case 1:
+            case 2:
 
                 if (rnd.nextInt(100) == 0) // What could this be? 👀
                     return Ressourcen.dieDiebin;

@@ -21,7 +21,11 @@ public class TTTUiXHand extends TTTUiHand {
 
         getChildren().clear();
 
-        for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i)
-            getChildren().add(new ImageView(xHandkartenBild));
+        for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i) {
+            ImageView img = new ImageView(xHandkartenBild);
+            img.setPreserveRatio(true);
+            img.setFitWidth(Main.HANDKARTE_BREITE);
+            getChildren().add(img);
+        }
     }
 }

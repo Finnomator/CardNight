@@ -12,7 +12,7 @@ public class TTTUiOHand extends TTTUiHand {
     
     public static final Image oHandkartenBild = new Image(Main.class.getResourceAsStream(
             "/cardnight/game-views/tictactoe/images/O_Handkarte.png"),
-            Main.HANDKARTE_BREITE, 0, true, true);
+            0, 0, true, true);
 
     public TTTUiOHand(TicTacToeSpieler spieler) {
         super(spieler);
@@ -25,7 +25,11 @@ public class TTTUiOHand extends TTTUiHand {
 
         getChildren().clear();
 
-        for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i)
-            getChildren().add(new ImageView(oHandkartenBild));
+        for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i) {
+            ImageView img = new ImageView(oHandkartenBild);
+            img.setPreserveRatio(true);
+            img.setFitWidth(Main.HANDKARTE_BREITE);
+            getChildren().add(img);
+        }
     }
 }

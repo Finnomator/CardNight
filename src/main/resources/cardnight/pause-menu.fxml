@@ -7,10 +7,10 @@
 
 <GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0,0,0,0.7);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
 
-    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="104.0" prefWidth="196.0" GridPane.valignment="TOP">
+    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="115.0" prefWidth="196.0" GridPane.valignment="TOP">
         <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" stylesheets="@styles/button-style.css" text="Fortsetzen" StackPane.alignment="TOP_CENTER" />
         <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
-        <StackPane maxHeight="-Infinity" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-radius: 5;">
+        <StackPane maxHeight="-Infinity" style="-fx-border-color: linear-gradient(to top left, #001F33, #0A1166); -fx-border-width: 3; -fx-border-radius: 5;">
             <fx:include source="sound-menu.fxml" />
         </StackPane>
     </StackPane>

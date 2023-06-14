@@ -23,7 +23,7 @@
     </ImageView>
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity">
-        <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css">
+        <Button onAction="#onTicTacToeClick" onMouseEntered="#mouseEnteredTTT" onMouseExited="#mouseExitedTTT" prefHeight="70" prefWidth="112" stylesheets="@styles/absolute-transparent-image-button.css">
             <graphic>
                 <ImageView fx:id="tttButtonImgView">
                     <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/TicTacToe_Button.png" />
@@ -36,7 +36,7 @@
                 <Insets top="0.001" />
             </padding>
         </Button>
-        <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css">
+        <Button onAction="#onUenoClick" onMouseEntered="#mouseEnteredUeno" onMouseExited="#mouseExitedUeno" prefHeight="70" prefWidth="112" stylesheets="@styles/absolute-transparent-image-button.css">
             <graphic>
                 <ImageView fx:id="uenoButtonImgView">
                     <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/UNO_Button.png" />
@@ -46,7 +46,7 @@
                 <Insets top="0.001" />
             </padding>
         </Button>
-        <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css">
+        <Button onAction="#onWitchClick" onMouseEntered="#mouseEnteredWitch" onMouseExited="#mouseExitedWitch" prefHeight="70" prefWidth="112" stylesheets="@styles/absolute-transparent-image-button.css">
             <graphic>
                 <ImageView fx:id="witchButtonImgView">
                     <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/Witch_Button.png" />
@@ -58,7 +58,7 @@
         </Button>
     </VBox>
 
-   <Button onAction="#onBeendenClick" onMouseEntered="#mouseEnteredBeenden" onMouseExited="#mouseExitedBeenden" prefHeight="70" prefWidth="112" stylesheets="@styles/transparent-image-button.css" StackPane.alignment="BOTTOM_CENTER">
+   <Button onAction="#onBeendenClick" onMouseEntered="#mouseEnteredBeenden" onMouseExited="#mouseExitedBeenden" prefHeight="70" prefWidth="112" stylesheets="@styles/absolute-transparent-image-button.css" StackPane.alignment="BOTTOM_CENTER">
        <graphic>
            <ImageView fx:id="beendenButtonImgView">
                <Image preserveRatio="true" requestedHeight="70" url="@images/button-hintergruende/End_Button.png" />

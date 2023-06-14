@@ -28,12 +28,7 @@ public class TTTUiOHand extends TTTUiHand {
 
         kartenBox.getChildren().clear();
 
-        for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i) {
-            Button btn = new Button();
-            btn.setPadding(new Insets(0.001));
-            btn.getStylesheets().add(getClass().getResource("/cardnight/styles/transparent-image-button.css").toExternalForm());
-            btn.setGraphic(new ImageView(oHandkartenBild));
-            kartenBox.getChildren().add(btn);
-        }
+        for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i)
+            kartenBox.getChildren().add(new ImageView(oHandkartenBild));
     }
 }

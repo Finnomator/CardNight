@@ -103,15 +103,17 @@ public class WitchView extends SpielView {
 
         Logger.log("\t\tWarte auf Schätzung vom Spieler...");
 
-        Platform.runLater(() -> hauptspielerUiHand.disableAllCards());
-        schaetzungsRoot.setDisable(false);
+        Platform.runLater(() -> {
+            hauptspielerUiHand.disableAllCards();
+            schaetzungsRoot.setDisable(false);
+        });
 
         hatStichSchaetzungBestaetigt.set(false);
 
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
 
-        schaetzungsRoot.setDisable(true);
+         Platform.runLater(() -> schaetzungsRoot.setDisable(true));
 
         try {
             return Integer.parseInt(schaetzungsEingabeFeld.getText());

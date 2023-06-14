@@ -102,7 +102,7 @@ public class UenoSoundPlayer {
     }
 
     public static void rundeVorbei() {
-        SoundPlayer.playSound(rundenStartSound);
+        SoundPlayer.playSound(rundeVorbeiSound);
     }
 
     public static void farbwahl(UenoFarbe farbe) {

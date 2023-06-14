@@ -28,7 +28,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TicTacToeView extends SpielView {
     public StackPane root;
 
-    public Text gewinnerText;
     public GridPane tttFeld;
     public GridPane tableGrid;
     public HBox handContainer;
@@ -98,12 +97,12 @@ public class TicTacToeView extends SpielView {
         }
 
         if (spielGegenComputer) {
-            xHandNode.setDisable(true);
+            disableGame(true);
             TTTSoundPlayer.start();
 
             new Thread(() -> {
                 delay(3500);
-                xHandNode.setDisable(false);
+                disableGame(false);
             }).start();
         }
     }
@@ -163,8 +162,17 @@ public class TicTacToeView extends SpielView {
         actionEvent.consume();
     }
 
+    public void disableGame(boolean disable) {
+        Platform.runLater(() -> {
+            tableGrid.setDisable(disable);
+            handContainer.setDisable(disable);
+        });
+    }
+
     @Override
     public void beendeSpiel() {
+
+        disableGame(true);
 
         Spieler gewinner = ttt.gibGewinner();
 

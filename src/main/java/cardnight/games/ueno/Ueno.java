@@ -174,8 +174,11 @@ public class Ueno extends Spiel {
     }
 
     public boolean istSpielBeendet() {
-        return gibHauptSpieler().istFertig() || fertigeSpieler.size() >= spieler.length - 1;
 
+        if (gibHauptSpieler().istFertig() && !fertigeSpieler.contains(gibHauptSpieler()))
+            fertigeSpieler.add(gibHauptSpieler());
+
+        return gibHauptSpieler().istFertig() || fertigeSpieler.size() >= spieler.length - 1;
     }
 
     @Override

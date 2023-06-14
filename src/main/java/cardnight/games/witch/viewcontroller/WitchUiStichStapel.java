@@ -27,9 +27,9 @@ public class WitchUiStichStapel {
 
             ImageView imgView = WitchRessourcen.erstelleKartenImageView(karte);
             imgView.setPreserveRatio(true);
-            imgView.setFitWidth(Main.HANDKARTE_BREITE);
+            imgView.setFitWidth(150);
 
-            StackPane.setMargin(imgView, new Insets(0, -i * 40, 0, 0));
+            StackPane.setMargin(imgView, new Insets(0, -i * 50, 0, 0));
 
             root.getChildren().add(imgView);
         }

@@ -16,8 +16,8 @@
 
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #00091f;" GridPane.rowIndex="1" />
 
-        <GridPane fx:id="tischContentContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-            <ImageView fx:id="trumpfImageView" fitWidth="113.6" preserveRatio="true" rotate="270.0" />
+        <GridPane fx:id="tischContentContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" rotate="-60.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <ImageView fx:id="trumpfImageView" fitWidth="150" preserveRatio="true" rotate="270.0" />
 
             <columnConstraints>
                 <ColumnConstraints />
@@ -27,6 +27,9 @@
          <rowConstraints>
             <RowConstraints />
          </rowConstraints>
+         <rotationAxis>
+            <Point3D x="1.0" />
+         </rotationAxis>
         </GridPane>
 
         <columnConstraints>

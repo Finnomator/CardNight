@@ -39,7 +39,7 @@ public class WitchKartenBilder {
     }
 
     private static Image ladeBild(String pfad) {
-        return ladeBild(pfad, Main.HANDKARTE_BREITE, 0);
+        return ladeBild(pfad, 150, 0);
     }
 
     public static Image ladeBild(String pfad, double breite, double hoehe) {

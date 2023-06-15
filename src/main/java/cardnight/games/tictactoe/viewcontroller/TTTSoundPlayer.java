@@ -18,8 +18,15 @@ public class TTTSoundPlayer {
     private static Clip wellPlayedSound;
     private static Clip startClassicSound;
     private static Clip startSupremacySound;
+    private static boolean soundsWurdenGeladen;
 
     public static void ladeSounds() {
+
+        if (soundsWurdenGeladen)
+            return;
+
+        soundsWurdenGeladen = true;
+
         hatGewonnenSound = ladeClip("TicTacToe_Gewinner_Sound.wav");
         hatVerlorenSound = ladeClip("TicTacToe_Verlieren.wav");
         wellPlayedSound = ladeClip("TicTacToe_Well_played.wav");

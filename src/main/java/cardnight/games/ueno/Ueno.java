@@ -6,6 +6,8 @@ import cardnight.games.GegnerNamen;
 import cardnight.games.Spiel;
 import cardnight.games.Spieler;
 
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -174,13 +176,20 @@ public class Ueno extends Spiel {
     }
 
     public boolean istSpielBeendet() {
-        return gibHauptSpieler().istFertig() || fertigeSpieler.size() >= spieler.length - 1;
 
+        if (gibHauptSpieler().istFertig() && !fertigeSpieler.contains(gibHauptSpieler()))
+            fertigeSpieler.add(gibHauptSpieler());
+
+        return gibHauptSpieler().istFertig() || fertigeSpieler.size() >= spieler.length - 1;
     }
 
     @Override
     public String gibAnleitung() {
-        return Tools.readFile("/cardnight/anleitungen/UenoAnleitung");
+        try {
+            return Tools.readFile(Paths.get(getClass().getResource("/cardnight/anleitungen/UenoAnleitung").toURI()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void karteAblegen(UenoKarte karte) {
@@ -199,7 +208,7 @@ public class Ueno extends Spiel {
         if (karte.art == UenoKartenArt.ZAHL)
             return karte.wert == obersteKarte.wert || karte.farbe == obersteKarte.farbe;
         if (karte.art == UenoKartenArt.FARBWAHL || karte.art == UenoKartenArt.PLUS_VIER)
-            return karte.farbe == null || karte.farbe == obersteKarte.farbe;
+            return true;
         return karte.art == obersteKarte.art || karte.farbe == obersteKarte.farbe;
     }
 }

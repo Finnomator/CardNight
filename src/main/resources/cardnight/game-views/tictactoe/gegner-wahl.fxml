@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl">
+<StackPane prefHeight="400.0" prefWidth="600.0" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl">
 
-    <Label text="Gegen wen möchtest du spielen?" StackPane.alignment="TOP_CENTER">
+    <Label text="Gegen wen möchtest du spielen?" textFill="WHITE" StackPane.alignment="TOP_CENTER">
       <font>
          <Font name="Sitka Text" size="24.0" />
-      </font></Label>
+      </font>
+      <StackPane.margin>
+         <Insets top="15.0" />
+      </StackPane.margin></Label>
 
-    <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="3">
-        <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenComputerKlick" prefWidth="165.0" stylesheets="@../../button-style.css" text="Gegen den Computer">
+    <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0">
+        <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenComputerKlick" prefWidth="165.0" stylesheets="@../../styles/button-style.css" text="Gegen den Computer">
             <graphic>
                 <ImageView fitHeight="100.0" preserveRatio="true">
                     <Image url="@images/Gegen_Computer.png" />
@@ -23,7 +27,13 @@
                 <Font name="Sitka Text" />
             </font>
         </Button>
-        <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" prefWidth="165.0" stylesheets="@../../button-style.css" text="Gegen einen Menschen">
+
+        <Label text="oder" textFill="WHITE" StackPane.alignment="TOP_CENTER">
+            <font>
+                <Font name="Sitka Text" size="24.0" />
+            </font></Label>
+
+        <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" prefWidth="165.0" stylesheets="@../../styles/button-style.css" text="Gegen einen Menschen">
             <graphic>
                 <ImageView fx:id="gegenMenschImgView" fitHeight="100.0" preserveRatio="true">
                     <Image url="@images/Gegen_Mensch.png" />
@@ -35,7 +45,7 @@
         </Button>
     </HBox>
 
-    <Button onAction="#zuruckZumHauptmenuKlick" stylesheets="@../../button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER">
+    <Button onAction="#zuruckZumHauptmenuKlick" stylesheets="@../../styles/button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER">
         <font>
             <Font name="Sitka Text" />
         </font>

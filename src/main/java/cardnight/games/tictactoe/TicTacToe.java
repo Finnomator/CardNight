@@ -6,6 +6,9 @@ import cardnight.games.Spiel;
 import cardnight.games.tictactoe.viewcontroller.TTTSoundPlayer;
 import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
 
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 
 
@@ -78,10 +81,10 @@ public class TicTacToe extends Spiel {
                 if (istSpielBeendet())
                     break;
 
-                if (spieltGegenComputer)
+                if (spieltGegenComputer) {
                     TTTSoundPlayer.randomFeldAusgesucht();
-
-                delay(400);
+                    delay(400);
+                }
 
                 observerView.updateUi();
             }
@@ -166,6 +169,10 @@ public class TicTacToe extends Spiel {
 
     @Override
     public String gibAnleitung() {
-        return Tools.readFile("/cardnight/anleitungen/TicTacToeAnleitung");
+        try {
+            return Tools.readFile(Paths.get(getClass().getResource("/cardnight/anleitungen/TicTacToeAnleitung").toURI()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

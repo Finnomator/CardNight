@@ -2,9 +2,9 @@ package cardnight;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,13 +21,14 @@ public class MainController extends Application {
         loadViews();
 
         Scene mainScene = new Scene(ScreenController.getScreen("main-menu-view"));
+        PerspectiveCamera cam = new PerspectiveCamera();
+        mainScene.setCamera(cam);
+        mainScene.getStylesheets().add(getClass().getResource("/cardnight/styles/background-gradient.css").toExternalForm());
         ScreenController.setScene(mainScene);
 
         stage.setScene(mainScene);
         stage.setTitle("Card Night");
         stage.show();
-
-        ScreenController.activate("main-menu-view");
     }
 
     private void loadViews() throws IOException {

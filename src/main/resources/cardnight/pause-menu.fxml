@@ -1,31 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(100, 100, 100, 0.5);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
+<GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0,0,0,0.7);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
 
-    <VBox maxHeight="-Infinity" maxWidth="-Infinity">
-        <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" stylesheets="@button-style.css" text="Fortsetzen" />
-        <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" stylesheets="@button-style.css" text="Zurück zum Hauptmenü" />
-        <fx:include source="sound-menu.fxml" />
-    </VBox>
+    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="115.0" prefWidth="196.0" GridPane.valignment="TOP">
+        <Button maxWidth="1.7976931348623157E308" onAction="#onFortsetzenClick" stylesheets="@styles/button-style.css" text="Fortsetzen" StackPane.alignment="TOP_CENTER" />
+        <Button maxWidth="1.7976931348623157E308" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
+        <StackPane maxHeight="-Infinity" style="-fx-border-color: linear-gradient(to top left, #001F33, #0A1166); -fx-border-width: 3; -fx-border-radius: 5;">
+            <fx:include source="sound-menu.fxml" />
+        </StackPane>
+      <GridPane.margin>
+         <Insets left="15.0" top="15.0" />
+      </GridPane.margin>
+    </StackPane>
 
-    <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-        <Text text="So wird gespielt">
-         <font>
-            <Font size="21.0" />
-         </font></Text>
-        <Text fx:id="anleitungText" />
-    </VBox>
+    <ScrollPane fitToWidth="true" stylesheets="@styles/transparent-scroll-pane.css" vbarPolicy="ALWAYS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" VBox.vgrow="ALWAYS">
+        <VBox alignment="TOP_CENTER">
+            <Label text="So wird gespielt" textFill="WHITE">
+                <font>
+                    <Font name="Segoe UI" size="24.0" />
+                </font>
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+            </Label>
+            <Label fx:id="anleitungText" textFill="WHITE" wrapText="true">
+                <font>
+                    <Font name="Segoe UI" size="14.0" />
+                </font>
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+            </Label>
+            <padding>
+                <Insets bottom="20.0" />
+            </padding>
+        </VBox>
+    </ScrollPane>
 
-
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints hgrow="ALWAYS" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints vgrow="ALWAYS" />
-   </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="ALWAYS" />
+    </rowConstraints>
 </GridPane>

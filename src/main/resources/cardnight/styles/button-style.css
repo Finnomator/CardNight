@@ -1,0 +1,15 @@
+.button {
+    -fx-border-color: linear-gradient(to top left, #001F33, #0A1166);
+    -fx-border-radius: 5;
+    -fx-border-width: 5;
+    -fx-background-color: radial-gradient(focus-angle 250deg, focus-distance 200% , center 50% 50% , radius 70% , #4e26b2, #22258d);
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(100, 100, 111, 0.2), 20, 0, 0, 3);
+}
+
+.button:hover{
+    -fx-background-color: radial-gradient(focus-angle 70deg, focus-distance 200% , center 50% 50% , radius 70% , #4e26b2, #22258d);
+    -fx-border-color: linear-gradient(to bottom right, #001F33, #0A1166);
+    -fx-effect: null;
+}

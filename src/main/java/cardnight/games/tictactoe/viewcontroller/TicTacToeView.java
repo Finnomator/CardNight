@@ -3,11 +3,10 @@ package cardnight.games.tictactoe.viewcontroller;
 import cardnight.*;
 import cardnight.games.SpielView;
 import cardnight.games.Spieler;
-
 import cardnight.games.tictactoe.TicTacToe;
 import cardnight.games.tictactoe.TicTacToeSpieler;
-import cardnight.games.ueno.viewcontroler.UenoSoundPlayer;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -18,8 +17,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
-import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -33,8 +30,8 @@ public class TicTacToeView extends SpielView {
     public HBox handContainer;
 
     private TicTacToe ttt;
-    private AtomicBoolean zugGemacht = new AtomicBoolean();
-    private AtomicInteger gesetztesFeld = new AtomicInteger();
+    private final AtomicBoolean zugGemacht = new AtomicBoolean();
+    private final AtomicInteger gesetztesFeld = new AtomicInteger();
     private Button[] feldBtns;
     private TTTGegnerUiHand gegnerUiHand;
     private TTTUiXHand uiXHand;
@@ -48,20 +45,17 @@ public class TicTacToeView extends SpielView {
 
         feldBtns = new Button[9];
         OQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/O_quadratisch.png"),
-                87, 0, true, true);
+                88, 0, true, true);
         XQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/X_quadratisch.png"),
-            87, 0, true, true);
+            88, 0, true, true);
 
         TTTSoundPlayer.ladeSounds();
 
         ttt = new TicTacToe(this, spielGegenComputer);
         Main.setzeAktuellesSpiel(ttt);
 
-        FXMLLoader xHandLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/tictactoe/x-hand.fxml"));
-        Node xHandNode = xHandLoader.load();
-        uiXHand = xHandLoader.getController();
-        uiXHand.uiErstellen(ttt.xSpieler);
-        handContainer.getChildren().add(xHandNode);
+        uiXHand = new TTTUiXHand(ttt.xSpieler);
+        handContainer.getChildren().add(uiXHand);
 
         if (spielGegenComputer) {
             FXMLLoader gegnerHandLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/tictactoe/gegner-hand.fxml"));
@@ -72,11 +66,8 @@ public class TicTacToeView extends SpielView {
             GridPane.setMargin(gegnerHandNode, new Insets(50, 0, 0, 0));
             tableGrid.add(gegnerHandNode, 0, 0);
         } else {
-            FXMLLoader oHandLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/tictactoe/o-hand.fxml"));
-            Node oHandNode = oHandLoader.load();
-            uiOHand = oHandLoader.getController();
-            uiOHand.uiErstellen(ttt.oSpieler);
-            handContainer.getChildren().add(oHandNode);
+            uiOHand = new TTTUiOHand(ttt.oSpieler);
+            handContainer.getChildren().add(uiOHand);
         }
 
 
@@ -97,12 +88,12 @@ public class TicTacToeView extends SpielView {
         }
 
         if (spielGegenComputer) {
-            xHandNode.setDisable(true);
+            disableGame(true);
             TTTSoundPlayer.start();
 
             new Thread(() -> {
                 delay(3500);
-                xHandNode.setDisable(false);
+                disableGame(false);
             }).start();
         }
     }
@@ -162,8 +153,17 @@ public class TicTacToeView extends SpielView {
         actionEvent.consume();
     }
 
+    public void disableGame(boolean disable) {
+        Platform.runLater(() -> {
+            tableGrid.setDisable(disable);
+            handContainer.setOpacity(disable? 0.5 : 1);
+        });
+    }
+
     @Override
     public void beendeSpiel() {
+
+        disableGame(true);
 
         Spieler gewinner = ttt.gibGewinner();
 

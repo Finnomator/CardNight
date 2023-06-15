@@ -17,6 +17,11 @@
          <Font size="63.0" />
       </font></Label>
 
-    <Button onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_CENTER" spacing="3">
+        <Button maxWidth="Infinity" onAction="#onNochmalSpielenClick" stylesheets="@styles/button-style.css" text="Nochmal Spielen" />
+        <Button maxWidth="Infinity" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" />
+    </VBox>
+
+    <fx:include source="sound-menu.fxml" StackPane.alignment="TOP_RIGHT" />
 
 </StackPane>

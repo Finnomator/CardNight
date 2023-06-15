@@ -8,7 +8,7 @@
 
     <GridPane fx:id="tableGrid">
         <StackPane style="-fx-background-color: #00091f; -fx-border-color: white; -fx-border-width: 5;" GridPane.rowIndex="1">
-            <GridPane fx:id="tttFeld" rotate="-60.0" maxWidth="-Infinity" maxHeight="-Infinity" style="-fx-border-color: rgba(255,255,255,0.16); -fx-border-width: 5; -fx-border-radius: 5;">
+            <GridPane fx:id="tttFeld" maxHeight="-Infinity" maxWidth="-Infinity" rotate="-60.0" style="-fx-border-color: rgba(255,255,255,0.16); -fx-border-width: 5; -fx-border-radius: 5;">
                 <rowConstraints>
                     <RowConstraints vgrow="NEVER" />
                     <RowConstraints minHeight="5" vgrow="NEVER" />
@@ -24,17 +24,15 @@
                     <ColumnConstraints hgrow="NEVER" />
                 </columnConstraints>
 
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" />
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="2" />
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="4" />
-
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.rowIndex="2" />
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.rowIndex="4" />
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-image-button.css" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="2" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="4" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" GridPane.rowIndex="2" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" GridPane.rowIndex="4" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <Button minHeight="88" minWidth="88" stylesheets="@../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="4" GridPane.rowIndex="4" />
 
                 <AnchorPane minHeight="5.0" style="-fx-background-color: white;" GridPane.columnSpan="5" GridPane.rowIndex="1" />
                 <AnchorPane minHeight="5.0" style="-fx-background-color: white;" GridPane.columnSpan="5" GridPane.rowIndex="3" />

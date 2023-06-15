@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoFarbwahlUiKarte">
+<StackPane maxHeight="Infinity" maxWidth="Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoFarbwahlUiKarte">
 
     <Button stylesheets="@../../styles/transparent-image-button.css">
         <graphic>
@@ -27,9 +27,9 @@
             <RowConstraints prefHeight="34.0" />
             <RowConstraints prefHeight="34.0" />
         </rowConstraints>
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#redAction" opacity="0.0" />
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#yellowAction" opacity="0.0" GridPane.columnIndex="1" />
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#greenAction" opacity="0.0" GridPane.rowIndex="1" />
-        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#blueAction" opacity="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#redAction" stylesheets="@../../styles/transparent-button-with-hover-effect.css" />
+        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#yellowAction" stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="1" />
+        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#greenAction" stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.rowIndex="1" />
+        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#blueAction" stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </GridPane>
 </StackPane>

@@ -18,7 +18,7 @@
       </font></Label>
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_CENTER" spacing="3">
-        <Button maxWidth="Infinity" onAction="#onNochmalSpielenClick" stylesheets="@styles/button-style.css" text="Nochmal Spielen" />
+        <Button maxWidth="Infinity" onAction="#onNochmalSpielenClick" stylesheets="@styles/button-style.css" text="Erneut Spielen" />
         <Button maxWidth="Infinity" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" />
     </VBox>
 

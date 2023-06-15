@@ -12,6 +12,7 @@
         <StackPane maxHeight="-Infinity" style="-fx-border-color: linear-gradient(to top left, #001F33, #0A1166); -fx-border-width: 3; -fx-border-radius: 5;">
             <fx:include source="sound-menu.fxml" />
         </StackPane>
+        <Button maxWidth="Infinity" onAction="#onErneutSpielenClick" stylesheets="@styles/button-style.css" text="Neues Spiel" />
         <Button maxWidth="Infinity" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" />
         <GridPane.margin>
          <Insets left="15.0" top="15.0" />

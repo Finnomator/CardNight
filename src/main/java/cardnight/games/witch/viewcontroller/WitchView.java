@@ -27,7 +27,7 @@ public class WitchView extends SpielView {
 
     public StackPane root;
     public TextField schaetzungsEingabeFeld;
-    public VBox schaetzungsRoot;
+    public StackPane schaetzungsRoot;
     public Button schaetzungsOkButton;
     public HBox gegnerUiHaendeContainer;
     public Label rundenNummerText;

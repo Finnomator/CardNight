@@ -46,16 +46,14 @@
     </GridPane>
     <Button mnemonicParsing="false" onAction="#pauseClick" stylesheets="@../styles/button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
-    <StackPane fx:id="schaetzungsRoot" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="77.0" prefWidth="149.0" StackPane.alignment="BOTTOM_LEFT">
-        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="Infinity" onAction="#schaetzungOkKlick" stylesheets="@../styles/button-style.css" text="OK" StackPane.alignment="BOTTOM_CENTER" />
-        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" StackPane.alignment="TOP_CENTER">
-            <Label stylesheets="@../fonts/algerian-condensed.css" text="Schätzung" textFill="WHITE">
+    <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="77.0" prefWidth="149.0" StackPane.alignment="BOTTOM_LEFT">
+        <Label stylesheets="@../fonts/algerian-condensed.css" text="Schätzung" textFill="WHITE">
              <font>
                 <Font size="18.0" />
              </font></Label>
-            <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Anzahl Stiche" />
-        </VBox>
-    </StackPane>
+        <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Anzahl Stiche" />
+        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="Infinity" onAction="#schaetzungOkKlick" stylesheets="@../styles/button-style.css" text="OK" />
+    </VBox>
 
     <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30" prefWidth="150" StackPane.alignment="BOTTOM_RIGHT">
         <Label stylesheets="@../fonts/algerian-condensed.css" text="Erhaltene Stiche: " textFill="WHITE">

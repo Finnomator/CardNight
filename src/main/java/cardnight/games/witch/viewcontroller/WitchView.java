@@ -15,10 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,7 +28,7 @@ public class WitchView extends SpielView {
 
     public StackPane root;
     public TextField schaetzungsEingabeFeld;
-    public StackPane schaetzungsRoot;
+    public VBox schaetzungsRoot;
     public Button schaetzungsOkButton;
     public HBox gegnerUiHaendeContainer;
     public Label rundenNummerText;

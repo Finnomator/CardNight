@@ -11,7 +11,7 @@ public class WitchUiKarte {
 
         this.karte = karte;
 
-        switch (karte.farbe){
+        switch (karte.farbe) {
             case ROT:
                 root.setStyle("-fx-background-color: red");
                 break;

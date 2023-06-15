@@ -2,15 +2,10 @@ package cardnight.games.witch.viewcontroller;
 
 import cardnight.games.witch.WitchGegner;
 import cardnight.games.witch.WitchKarte;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
-
-import java.io.IOException;
 
 public class WitchGegnerUiHand {
     public Label nameText;

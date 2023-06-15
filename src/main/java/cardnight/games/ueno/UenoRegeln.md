@@ -9,13 +9,14 @@
 - Alle legen nacheinander eine Karte, nach folgenden Regeln:  
   Eine Karte kann abgelegt werden, wenn...
     - ... die Zahl der Karte...  
-    *oder*
+      *oder*
     - ... die Farbe der Karte...  
-    *oder*
+      *oder*
     - ... die Art der Karte (also Richtungswechsel, +2, Aussetzen)...
-  
+
   ... gleich der zuletzt abgelegten Karte ist  
-  **Anmerkung:** Der Spieler wählt zuerst die Farbe einer Farbwahlkarte aus, bevor er diese ablegt. Er muss sie dann aber nicht ablegen, allerdings kann die Farbe nicht mehr geändert werden.
+  **Anmerkung:** Der Spieler wählt zuerst die Farbe einer Farbwahlkarte aus, bevor er diese ablegt. Er muss sie dann
+  aber nicht ablegen, allerdings kann die Farbe nicht mehr geändert werden.
 - Das Spiel ist vorbei, wenn der Spieler alle Karten abgelegt hat oder alle Gegner ihre Karten abgelegt haben
 
 ## Nachziehen
@@ -27,7 +28,8 @@
 
 ### Durch Karten eines anderen Spielers
 
-- Wenn ein Spieler eine +2 Karte ablegt, muss der nächste Spieler sofort zwei Karten ablegen, auch wenn er eine +2 ablegen könnte
+- Wenn ein Spieler eine +2 Karte ablegt, muss der nächste Spieler sofort zwei Karten ablegen, auch wenn er eine +2
+  ablegen könnte
 - Dasselbe gilt für +4
 - Die aussetzen Karte überspringt den nächsten Spieler
 - Die richtungswechsel Karte wechselt die Spielrichtung und wirkt wie eine normale Karte, wenn es nur zwei Spieler gibt

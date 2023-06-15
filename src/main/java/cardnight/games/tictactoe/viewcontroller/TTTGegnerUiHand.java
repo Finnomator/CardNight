@@ -17,7 +17,7 @@ public class TTTGegnerUiHand {
     private TicTacToeSpieler spieler;
 
     public static final Image tttKartenRueckseite = new Image(Main.class.getResourceAsStream(
-       "/cardnight/game-views/tictactoe/images/TicTacToe_Ruckseite.png"),
+            "/cardnight/game-views/tictactoe/images/TicTacToe_Ruckseite.png"),
             0, Main.GEGNERKARTE_HOEHE, true, true);
 
     public void uiErstellen(TicTacToeSpieler spieler) {

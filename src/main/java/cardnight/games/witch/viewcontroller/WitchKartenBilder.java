@@ -8,7 +8,6 @@ import cardnight.games.witch.WitchKarte;
 import javafx.scene.image.Image;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public class WitchKartenBilder {
 

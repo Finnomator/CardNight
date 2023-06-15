@@ -47,7 +47,7 @@ public class TicTacToeView extends SpielView {
         OQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/O_quadratisch.png"),
                 88, 0, true, true);
         XQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/X_quadratisch.png"),
-            88, 0, true, true);
+                88, 0, true, true);
 
         TTTSoundPlayer.ladeSounds();
 
@@ -156,7 +156,7 @@ public class TicTacToeView extends SpielView {
     public void disableGame(boolean disable) {
         Platform.runLater(() -> {
             tableGrid.setDisable(disable);
-            handContainer.setOpacity(disable? 0.5 : 1);
+            handContainer.setOpacity(disable ? 0.5 : 1);
         });
     }
 

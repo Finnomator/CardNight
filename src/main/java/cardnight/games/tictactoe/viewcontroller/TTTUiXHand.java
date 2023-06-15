@@ -17,7 +17,7 @@ public class TTTUiXHand extends TTTUiHand {
     @Override
     public void updateUi() {
 
-        setOpacity(spieler.istAmZug()? 1 : 0.5);
+        setOpacity(spieler.istAmZug() ? 1 : 0.5);
 
         getChildren().clear();
 

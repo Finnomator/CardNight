@@ -2,7 +2,6 @@ package cardnight;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
-import javafx.scene.input.MouseEvent;
 
 import java.util.Random;
 
@@ -16,7 +15,7 @@ public class SoundMenu {
 
     public void soundEnableKlick() {
         Main.enableSound = !Main.enableSound;
-        soundEnableButton.setText(Main.enableSound? "\uD83D\uDD0A" : "\uD83D\uDD07");
+        soundEnableButton.setText(Main.enableSound ? "\uD83D\uDD0A" : "\uD83D\uDD07");
     }
 
     public void musicSliderMouseClick() {

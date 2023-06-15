@@ -54,14 +54,13 @@ public class WitchGegner extends WitchSpieler {
                     break;
                 }
             }
-            WitchKarte [] neuerStich = spiel.gibStich().clone();
+            WitchKarte[] neuerStich = spiel.gibStich().clone();
             neuerStich[karteAufStich] = betrachteteKarte;
             int gewinnerStich = spiel.stichGeben(0, neuerStich, karteAufStich + 1);
             double machtStich;
             if (gewinnerStich == karteAufStich) {
                 machtStich = spiel.wahrscheinlichkeit(betrachteteKarte, handkarten, 1);
-            }
-            else {
+            } else {
                 machtStich = 0;
             }
 
@@ -78,7 +77,6 @@ public class WitchGegner extends WitchSpieler {
                 besterZug = betrachteteKarte;
             }
         }
-
 
 
         // Random Karte zum Testen

@@ -8,6 +8,7 @@ public class UenoSpieler extends Spieler {
 
     protected final ArrayList<UenoKarte> handkarten;
     protected final Ueno spiel;
+
     public UenoSpieler(String name, Ueno spiel) {
         super(name, spiel);
         this.spiel = spiel;
@@ -24,7 +25,7 @@ public class UenoSpieler extends Spieler {
 
     public ArrayList<UenoKarte> ablegbareKarten() {
         ArrayList<UenoKarte> karten = new ArrayList<>();
-        for(UenoKarte karte : handkarten) {
+        for (UenoKarte karte : handkarten) {
             if (spiel.istKarteAblegbar(karte))
                 karten.add(karte);
         }

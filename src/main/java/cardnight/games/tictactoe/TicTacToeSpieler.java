@@ -8,7 +8,8 @@ public class TicTacToeSpieler extends Spieler {
 
     protected TicTacToe spiel;
     public final boolean istX;
-    private ArrayList<Integer> zuege;
+    private final ArrayList<Integer> zuege;
+
     public TicTacToeSpieler(String name, TicTacToe spiel, boolean istX) {
         super(name, spiel);
         this.spiel = spiel;

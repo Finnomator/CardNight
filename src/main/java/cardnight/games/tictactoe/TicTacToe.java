@@ -7,7 +7,6 @@ import cardnight.games.tictactoe.viewcontroller.TTTSoundPlayer;
 import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
 
 import java.net.URISyntaxException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -28,8 +27,8 @@ public class TicTacToe extends Spiel {
         this.observerView = observerView;
         this.spieltGegenComputer = spieltGegenComputer;
 
-        xSpieler = new TicTacToeSpieler("X",this, true);
-        oSpieler = new TicTacToeSpieler("O",this, false);
+        xSpieler = new TicTacToeSpieler("X", this, true);
+        oSpieler = new TicTacToeSpieler("O", this, false);
         feld = new String[9];
         spieler = new TicTacToeSpieler[2];
         spieler[0] = xSpieler;

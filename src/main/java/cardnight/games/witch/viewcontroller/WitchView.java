@@ -15,7 +15,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,7 +64,7 @@ public class WitchView extends SpielView {
 
             FXMLLoader gegnerHandLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/gegner-hand.fxml"));
             Node gegnerHandNode = gegnerHandLoader.load();
-            
+
             gegnerUiHaendeContainer.getChildren().add(gegnerHandNode);
             WitchGegnerUiHand uiHand = gegnerHandLoader.getController();
             uiHand.uiErstellen(gegner);
@@ -85,7 +88,7 @@ public class WitchView extends SpielView {
         hauptspielerUiHand = handkartenLoader.getController();
         hauptspielerUiHand.uiErstellen(witch.gibHauptspieler());
 
-        punktetafel =  new WitchPunktetafel(witch);
+        punktetafel = new WitchPunktetafel(witch);
         StackPane.setAlignment(punktetafel, Pos.CENTER_RIGHT);
         root.getChildren().add(punktetafel);
 
@@ -113,7 +116,7 @@ public class WitchView extends SpielView {
         while (!hatStichSchaetzungBestaetigt.get())
             Witch.delay(50);
 
-         Platform.runLater(() -> schaetzungsRoot.setDisable(true));
+        Platform.runLater(() -> schaetzungsRoot.setDisable(true));
 
         try {
             return Integer.parseInt(schaetzungsEingabeFeld.getText());

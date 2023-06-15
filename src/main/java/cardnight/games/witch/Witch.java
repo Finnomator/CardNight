@@ -11,7 +11,6 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -58,6 +57,7 @@ public class Witch extends Spiel {
     public WitchSpieler[] gibSpieler() {
         return spieler;
     }
+
     public WitchMensch gibHauptspieler() {
         return (WitchMensch) spieler[0];
     }
@@ -177,7 +177,7 @@ public class Witch extends Spiel {
         update();
     }
 
-    public int stichGeben(int startSpieler, WitchKarte [] derStich, int anzahlKarten) {
+    public int stichGeben(int startSpieler, WitchKarte[] derStich, int anzahlKarten) {
         // Falls es einen Zauberer gab
         for (int i = 0; i < anzahlKarten; i++) {
             if (derStich[i].istZauberer())
@@ -299,7 +299,7 @@ public class Witch extends Spiel {
 
         // Alle schon benutzten besseren gleichfarbigen Karten werden abgezogen
         for (WitchKarte i : neuBenutzt)
-            if (i.farbe == referenzKarte.farbe && i.wert > referenzKarte.wert && ! i.istZauberer())
+            if (i.farbe == referenzKarte.farbe && i.wert > referenzKarte.wert && !i.istZauberer())
                 anzahlBessererKarten--;
 
         return anzahlBessererKarten;
@@ -311,11 +311,12 @@ public class Witch extends Spiel {
 
         // Alle schon benutzten besseren gleichfarbigen Karten werden abgezogen
         for (WitchKarte i : neuBenutzt)
-            if (i.farbe == referenzKarte.farbe && i.wert < referenzKarte.wert && ! i.istZauberer())
+            if (i.farbe == referenzKarte.farbe && i.wert < referenzKarte.wert && !i.istZauberer())
                 anzahlSchlechtererKarten--;
 
         return anzahlSchlechtererKarten;
     }
+
     public int anzahlUebrigerZauberer(ArrayList<WitchKarte> neuBenutzt) {
         // Die 4 Zauberer
         int anzahlZauberer = 4;
@@ -350,7 +351,7 @@ public class Witch extends Spiel {
 
         // Alle schon benutzten Trümpfe werden abgezogen
         for (WitchKarte i : neuBenutzt) {
-            if (i.farbe == trumpfKarte.farbe && ! i.istNarr() && ! i.istZauberer())
+            if (i.farbe == trumpfKarte.farbe && !i.istNarr() && !i.istZauberer())
                 anzahlTruempfe--;
         }
 

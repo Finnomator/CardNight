@@ -5,7 +5,6 @@ import cardnight.ScreenController;
 import cardnight.SoundPlayer;
 import cardnight.Tools;
 import cardnight.games.Ressourcen;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;

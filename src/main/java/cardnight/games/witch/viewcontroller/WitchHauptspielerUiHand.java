@@ -2,13 +2,10 @@ package cardnight.games.witch.viewcontroller;
 
 import cardnight.games.witch.WitchKarte;
 import cardnight.games.witch.WitchMensch;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class WitchHauptspielerUiHand {

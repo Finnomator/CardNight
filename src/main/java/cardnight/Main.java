@@ -4,7 +4,9 @@ import cardnight.games.Spiel;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class Main {

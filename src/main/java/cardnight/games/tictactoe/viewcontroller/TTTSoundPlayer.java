@@ -2,7 +2,6 @@ package cardnight.games.tictactoe.viewcontroller;
 
 import cardnight.Main;
 import cardnight.SoundPlayer;
-import cardnight.Tools;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;

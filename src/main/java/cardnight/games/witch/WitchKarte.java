@@ -5,6 +5,7 @@ import cardnight.games.Karte;
 public class WitchKarte extends Karte {
     public final WitchFarbe farbe;
     public final int wert;
+
     public WitchKarte(WitchFarbe farbe, int wert) {
         this.farbe = farbe;
         this.wert = wert;
@@ -25,7 +26,7 @@ public class WitchKarte extends Karte {
         if (istNarr()) {
             return 0;
         }
-        if (! trumpf.istNarr() && ! trumpf.istZauberer() && farbe == trumpf.farbe) {
+        if (!trumpf.istNarr() && !trumpf.istZauberer() && farbe == trumpf.farbe) {
             return wert + 13;
         }
         return wert;

@@ -34,18 +34,18 @@ public class MainMenuBilder {
     public static Image gibButtonBild(SpielTyp spiel, boolean hovered) {
         switch (spiel) {
             case TIC_TAC_TOE:
-                return hovered? tttButtonHovered : tttButton;
+                return hovered ? tttButtonHovered : tttButton;
             case UENO:
-                return hovered? uenoButtonHovered : uenoButton;
+                return hovered ? uenoButtonHovered : uenoButton;
             case WITCH:
-                return hovered? witchButtonHovered : witchButton;
+                return hovered ? witchButtonHovered : witchButton;
         }
 
         throw new RuntimeException();
     }
 
     public static Image beendenButtonBild(boolean hovered) {
-        return hovered? beendenButtonHovered : beendenButton;
+        return hovered ? beendenButtonHovered : beendenButton;
     }
 
     public static Image gibHintergrundBild(SpielTyp spiel) {

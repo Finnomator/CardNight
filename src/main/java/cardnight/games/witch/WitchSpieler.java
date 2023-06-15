@@ -24,6 +24,7 @@ public abstract class WitchSpieler extends Spieler {
     }
 
     public abstract void schaetzen();
+
     public abstract WitchKarte spielen();
 
     public ArrayList<WitchKarte> gibHandkarten() {
@@ -52,7 +53,9 @@ public abstract class WitchSpieler extends Spieler {
         anzahlErhaltenerStiche = 0;
     }
 
-    public void setzeAnzahlGeschaetzteSticheZurueck() { stichSchaetzung = -1;}
+    public void setzeAnzahlGeschaetzteSticheZurueck() {
+        stichSchaetzung = -1;
+    }
 
     public int gibStichSchaetzung() {
         return stichSchaetzung;
@@ -102,7 +105,7 @@ public abstract class WitchSpieler extends Spieler {
                 }
             }
 
-            if (! spielbar.isEmpty()) { //Falls es Karten dieser Farbe gibt
+            if (!spielbar.isEmpty()) { //Falls es Karten dieser Farbe gibt
                 for (WitchKarte k : handkarten) {
                     if (k.wert == 0 || k.wert == 14) {
                         spielbar.add(k);

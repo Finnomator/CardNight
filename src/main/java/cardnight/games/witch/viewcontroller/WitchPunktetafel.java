@@ -1,16 +1,13 @@
 package cardnight.games.witch.viewcontroller;
 
-import cardnight.games.Spiel;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.WitchSpieler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class WitchPunktetafel extends GridPane {

@@ -1,7 +1,6 @@
 package cardnight.games.ueno;
 
 import cardnight.games.Karte;
-import cardnight.games.ueno.viewcontroler.UenoSoundPlayer;
 
 public class UenoKarte extends Karte {
 

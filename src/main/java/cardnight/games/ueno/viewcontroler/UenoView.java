@@ -52,8 +52,8 @@ public class UenoView extends SpielView {
             Node uiHand = handLoader.load();
             gegnerHaendeContainer.getChildren().add(uiHand);
             UenoGegnerUiHand hand = handLoader.getController();
-            hand.uiErstellen(ueno.gibSpieler(i+1));
-            spielerHaende.put(ueno.gibSpieler(i+1), hand);
+            hand.uiErstellen(ueno.gibSpieler(i + 1));
+            spielerHaende.put(ueno.gibSpieler(i + 1), hand);
         }
 
         FXMLLoader handLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/hauptspieler-hand.fxml"));
@@ -272,7 +272,7 @@ public class UenoView extends SpielView {
         ArrayList<UenoSpieler> gewinner = ueno.gibGewinner();
 
         for (int i = 0; i < gewinner.size(); ++i)
-            Logger.log((i+1) + ".\t" + gewinner.get(i).name);
+            Logger.log((i + 1) + ".\t" + gewinner.get(i).name);
 
         if (gewinner.size() == 1)
             GameOver.setzeNachricht("Du hast gewonnen!");

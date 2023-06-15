@@ -10,10 +10,10 @@ import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.WitchFarbe;
 import cardnight.games.witch.viewcontroller.WitchKartenBilder;
 import cardnight.games.witch.viewcontroller.WitchView;
-import javafx.scene.control.Hyperlink;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -187,7 +187,7 @@ public class MainMenuView {
             case 1:
                 farbe = UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)].toString().toLowerCase();
                 zahl = rnd.nextInt(10);
-                return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png",  0, 0);
+                return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png", 0, 0);
             case 2:
 
                 if (rnd.nextInt(100) == 0) // What could this be? 👀

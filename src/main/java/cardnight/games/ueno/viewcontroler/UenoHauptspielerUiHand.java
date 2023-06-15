@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class UenoHauptspielerUiHand extends UenoUiHand {
 
     public HBox handkartenBox;
+
     @Override
     public void updateUi() {
         handkartenBox.getChildren().clear();

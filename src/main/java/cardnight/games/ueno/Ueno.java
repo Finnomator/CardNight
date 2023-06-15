@@ -10,7 +10,6 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Stack;
 
 public class Ueno extends Spiel {
@@ -60,11 +59,17 @@ public class Ueno extends Spiel {
             karteAblegen(karteNachziehen());
     }
 
-    public UenoSpieler gibHauptSpieler() {return spieler[0];}
+    public UenoSpieler gibHauptSpieler() {
+        return spieler[0];
+    }
+
     public UenoSpieler[] gibSpieler() {
         return spieler;
     }
-    public UenoSpieler gibSpieler(int idx) {return spieler[idx];}
+
+    public UenoSpieler gibSpieler(int idx) {
+        return spieler[idx];
+    }
 
     public UenoKarte gibZuletztAbgelegteKarte() {
         return ablagestapel.peek();
@@ -124,7 +129,7 @@ public class Ueno extends Spiel {
             if (spieler[i] == momentanAktiverSpieler)
                 aktiverSpieler = i;
 
-        if (aktiverSpieler == 0){
+        if (aktiverSpieler == 0) {
             if (invertierteRichtung)
                 aktiverSpieler = spieler.length - 1;
             else

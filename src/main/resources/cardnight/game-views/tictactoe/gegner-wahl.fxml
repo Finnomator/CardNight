@@ -17,7 +17,7 @@
       </StackPane.margin></Label>
 
     <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0">
-        <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenComputerKlick" prefWidth="165.0" stylesheets="@../../styles/button-style.css" text="Gegen den Computer">
+        <Button contentDisplay="TOP" maxWidth="Infinity" onAction="#gegenComputerKlick" prefWidth="165.0" stylesheets="@../../styles/button-style.css" text="Gegen den Computer">
             <graphic>
                 <ImageView fitHeight="100.0" preserveRatio="true">
                     <Image url="@images/Gegen_Computer.png" />
@@ -33,7 +33,7 @@
                 <Font name="Sitka Text" size="24.0" />
             </font></Label>
 
-        <Button contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gegenMenschKlick" prefWidth="165.0" stylesheets="@../../styles/button-style.css" text="Gegen einen Menschen">
+        <Button contentDisplay="TOP" maxWidth="Infinity" onAction="#gegenMenschKlick" prefWidth="165.0" stylesheets="@../../styles/button-style.css" text="Gegen einen Menschen">
             <graphic>
                 <ImageView fx:id="gegenMenschImgView" fitHeight="100.0" preserveRatio="true">
                     <Image url="@images/Gegen_Mensch.png" />

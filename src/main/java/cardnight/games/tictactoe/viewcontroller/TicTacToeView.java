@@ -112,12 +112,12 @@ public class TicTacToeView extends SpielView {
             String[] feld = ttt.gibFeld();
 
             for (int i = 0; i < 9; ++i) {
-                if (feld[i].equals("x"))
+                if ("x".equals(feld[i]))
                     feldBtns[i].setGraphic(new ImageView(XQuadratisch));
-                else if (feld[i].equals("o"))
+                else if ("o".equals(feld[i]))
                     feldBtns[i].setGraphic(new ImageView(OQuadratisch));
 
-                feldBtns[i].setMouseTransparent((spielGegenComputer && ttt.oSpieler.istAmZug()) || feld[i].equals("x") || feld[i].equals("o"));
+                feldBtns[i].setMouseTransparent((spielGegenComputer && ttt.oSpieler.istAmZug()) || "x".equals(feld[i]) || "o".equals(feld[i]));
             }
         });
     }

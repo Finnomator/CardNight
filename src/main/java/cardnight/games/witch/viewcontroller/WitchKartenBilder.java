@@ -7,13 +7,13 @@ import cardnight.games.witch.WitchFarbe;
 import cardnight.games.witch.WitchKarte;
 import javafx.scene.image.Image;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 
 public class WitchKartenBilder {
 
-    private static final HashMap<WitchFarbe, Image[]> farbigeKarten = new HashMap<>(52);
-    private static final HashMap<WitchFarbe, Image> hexenKarten = new HashMap<>(4);
-    private static final HashMap<WitchFarbe, Image> narrenKarten = new HashMap<>(4);
+    private static final EnumMap<WitchFarbe, Image[]> farbigeKarten = new EnumMap<>(WitchFarbe.class);
+    private static final EnumMap<WitchFarbe, Image> hexenKarten = new EnumMap<>(WitchFarbe.class);
+    private static final EnumMap<WitchFarbe, Image> narrenKarten = new EnumMap<>(WitchFarbe.class);
     public static final Image witchKartenRueckseite = ladeBild("Witch_Ruckseite.png", 0, Main.GEGNERKARTE_HOEHE);
     public static final Image punkteTafelBackground = ladeBild("Punktetafel_Background.png", Main.HANDKARTE_BREITE, 0);
     private static boolean bilderWurdenGeladen;

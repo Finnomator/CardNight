@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class WitchGegner extends WitchSpieler {
-    public WitchGegner(String n, Witch s) {
-        super(n, s);
-        handkarten = new ArrayList<>();
+    public WitchGegner(String name, Witch spiel) {
+        super(name, spiel);
     }
 
     @Override

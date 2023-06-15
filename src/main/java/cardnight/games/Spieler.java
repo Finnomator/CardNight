@@ -5,7 +5,7 @@ public abstract class Spieler {
     protected int punkte;
     protected final Spiel spiel;
 
-    public Spieler(String name, Spiel spiel) {
+    protected Spieler(String name, Spiel spiel) {
         this.name = name;
         this.spiel = spiel;
     }

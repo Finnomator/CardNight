@@ -8,12 +8,12 @@ import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 
-public class WitchHauptspielerUiHand {
-    public HBox root;
-    private WitchMensch spieler;
+public class WitchHauptspielerUiHand extends HBox {
+    private final WitchMensch spieler;
 
-    public void uiErstellen(WitchMensch spieler) {
+    public WitchHauptspielerUiHand(WitchMensch spieler) {
         this.spieler = spieler;
+        setMaxSize(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
         updateUi(true);
     }
 
@@ -21,7 +21,7 @@ public class WitchHauptspielerUiHand {
         ArrayList<WitchKarte> handKarten = spieler.gibHandkarten();
         ArrayList<WitchKarte> spielbareKarten = spieler.spielbareKarten();
 
-        root.getChildren().clear();
+        getChildren().clear();
 
         for (int i = 0, handKartenSize = handKarten.size(); i < handKartenSize; i++) { // Ha, try beating this ConcurrentModificationException!
             WitchKarte karte = handKarten.get(i);
@@ -29,12 +29,12 @@ public class WitchHauptspielerUiHand {
             Button kartenNode = WitchRessourcen.erstelleStandardHandKarte(karte);
             kartenNode.setDisable(disableKarten || !spielbareKarten.contains(karte));
 
-            root.getChildren().add(kartenNode);
+            getChildren().add(kartenNode);
         }
     }
 
     public void disableAllCards() {
-        for (Node child : root.getChildren())
+        for (Node child : getChildren())
             child.setDisable(true);
     }
 }

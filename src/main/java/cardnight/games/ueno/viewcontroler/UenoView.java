@@ -56,13 +56,10 @@ public class UenoView extends SpielView {
             spielerHaende.put(ueno.gibSpieler(i + 1), hand);
         }
 
-        FXMLLoader handLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/hauptspieler-hand.fxml"));
-        uiHauptHand = handLoader.load();
-        GridPane.setRowIndex(uiHauptHand, 2);
+        UenoHauptspielerUiHand hauptHand = new UenoHauptspielerUiHand(hauptSpieler);
+        uiHauptHand = hauptHand.root();
         GridPane.setHalignment(uiHauptHand, HPos.CENTER);
-        tableGrid.getChildren().add(uiHauptHand);
-        UenoHauptspielerUiHand hauptHand = handLoader.getController();
-        hauptHand.uiErstellen(hauptSpieler);
+        tableGrid.add(uiHauptHand, 0, 2);
         spielerHaende.put(hauptSpieler, hauptHand);
 
         root.addEventFilter(UenoKarteKlickEvent.ANY, this::handleUenoKartenKlick);

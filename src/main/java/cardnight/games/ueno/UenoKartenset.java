@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class UenoKartenset {
-    public static final UenoKarte[] UENO_KARTEN = new UenoKarte[108];
+    private static final UenoKarte[] UENO_KARTEN = new UenoKarte[108];
 
     private static void kartenErstellen() {
         int idx = 0;

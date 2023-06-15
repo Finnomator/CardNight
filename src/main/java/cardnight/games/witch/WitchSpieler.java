@@ -10,11 +10,11 @@ public abstract class WitchSpieler extends Spieler {
     protected final Witch spiel;
     protected int anzahlErhaltenerStiche;
     protected int stichSchaetzung;
-    protected ArrayList<WitchKarte> handkarten;
+    protected final ArrayList<WitchKarte> handkarten;
     protected final ArrayList<Integer> punkteProRunde;
     protected final ArrayList<Integer> stichSchaetzungenProRunde;
 
-    public WitchSpieler(String name, Witch spiel) {
+    protected WitchSpieler(String name, Witch spiel) {
         super(name, spiel);
         this.spiel = spiel;
         handkarten = new ArrayList<>();

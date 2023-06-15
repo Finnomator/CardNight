@@ -16,7 +16,6 @@ public class UenoGegnerUiHand extends UenoUiHand {
     public ProgressIndicator thinkingProgress;
     public ImageView stickmanImageView;
 
-    @Override
     public void uiErstellen(UenoSpieler spieler) {
         this.spieler = spieler;
         nameText.setText(spieler.name);

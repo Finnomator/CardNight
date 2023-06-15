@@ -6,9 +6,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class TTTUiXHand extends TTTUiHand {
-    public static final Image xHandkartenBild = new Image(Main.class.getResourceAsStream(
-            "/cardnight/game-views/tictactoe/images/X_Handkarte.png"),
-            Main.HANDKARTE_BREITE, 0, true, true);
 
     public TTTUiXHand(TicTacToeSpieler spieler) {
         super(spieler);
@@ -22,7 +19,7 @@ public class TTTUiXHand extends TTTUiHand {
         getChildren().clear();
 
         for (int i = 0; i < spieler.gibAnzahlHandKarten(); ++i) {
-            ImageView img = new ImageView(xHandkartenBild);
+            ImageView img = new ImageView(handkartenBild);
             img.setPreserveRatio(true);
             img.setFitWidth(Main.HANDKARTE_BREITE);
             getChildren().add(img);

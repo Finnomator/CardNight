@@ -3,18 +3,20 @@ package cardnight.games.ueno.viewcontroler;
 import cardnight.Main;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.UenoKarte;
+import cardnight.games.ueno.UenoKartenArt;
 import javafx.scene.image.Image;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 
 public class UenoKartenBilder {
-    private static HashMap<UenoFarbe, Image[]> zahlenKarten;
-    private static HashMap<UenoFarbe, Image> aussetzenKarten;
-    private static HashMap<UenoFarbe, Image> zweiZiehenKarten;
-    private static HashMap<UenoFarbe, Image> vierZiehenKarten;
-    private static HashMap<UenoFarbe, Image> farbwahlKarten;
-    private static HashMap<UenoFarbe, Image> richtungswechselKarten;
-    public static final Image uenoKartenRueckseite = UenoKartenBilder.ladeBild("UNO_Rückseite.png", 0, Main.GEGNERKARTE_HOEHE);
+    private static EnumMap<UenoFarbe, Image[]> zahlenKarten = new EnumMap<>(UenoFarbe.class);
+    private static EnumMap<UenoFarbe, Image> aussetzenKarten = new EnumMap<>(UenoFarbe.class);
+    private static EnumMap<UenoFarbe, Image> zweiZiehenKarten = new EnumMap<>(UenoFarbe.class);
+    private static EnumMap<UenoFarbe, Image> vierZiehenKarten = new EnumMap<>(UenoFarbe.class);
+    private static EnumMap<UenoFarbe, Image> farbwahlKarten = new EnumMap<>(UenoFarbe.class);
+    private static EnumMap<UenoFarbe, Image> richtungswechselKarten = new EnumMap<>(UenoFarbe.class);
+    private static EnumMap<UenoKartenArt, Image> schwarzeKarten = new EnumMap<>(UenoKartenArt.class);
+    public static final Image uenoKartenRueckseite = ladeBild("UNO_Rückseite.png", 0, Main.GEGNERKARTE_HOEHE);
     private static final String bilderPfad = "/cardnight/game-views/ueno/images/";
 
     private static boolean bilderWurdenSchonmalGeladen;
@@ -25,13 +27,6 @@ public class UenoKartenBilder {
             return;
 
         bilderWurdenSchonmalGeladen = true;
-
-        zahlenKarten = new HashMap<>();
-        aussetzenKarten = new HashMap<>();
-        zweiZiehenKarten = new HashMap<>();
-        vierZiehenKarten = new HashMap<>();
-        farbwahlKarten = new HashMap<>();
-        richtungswechselKarten = new HashMap<>();
 
         for (UenoFarbe farbe : UenoFarbe.values()) {
 
@@ -54,8 +49,8 @@ public class UenoKartenBilder {
             zweiZiehenKarten.put(farbe, ladeBild("zwei-ziehen/UNO_Karte_zwei_ziehen_" + farbeString + ".png"));
         }
 
-        farbwahlKarten.put(null, ladeBild("farbwahl/UNO_Farbwahl schwarz.png"));
-        vierZiehenKarten.put(null, ladeBild("vier-ziehen/UNO_Karte_vier_ziehen_schwarz.png"));
+        schwarzeKarten.put(UenoKartenArt.FARBWAHL, ladeBild("farbwahl/UNO_Farbwahl schwarz.png"));
+        schwarzeKarten.put(UenoKartenArt.PLUS_VIER, ladeBild("vier-ziehen/UNO_Karte_vier_ziehen_schwarz.png"));
     }
 
     private static Image ladeBild(String subPath) {
@@ -69,6 +64,10 @@ public class UenoKartenBilder {
     }
 
     public static Image karteZuBild(UenoKarte karte) {
+
+        if (karte.istSchwarz())
+            return schwarzeKarten.get(karte.art);
+
         switch (karte.art) {
             case ZAHL:
                 return zahlenKarten.get(karte.farbe)[karte.wert];

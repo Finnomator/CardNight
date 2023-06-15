@@ -33,7 +33,7 @@ public class UenoSpieler extends Spieler {
     }
 
     public boolean kannKarteAblegen() {
-        return ablegbareKarten().size() > 0;
+        return !ablegbareKarten().isEmpty();
     }
 
     public ArrayList<UenoKarte> gibHandkarten() {
@@ -46,6 +46,6 @@ public class UenoSpieler extends Spieler {
     }
 
     public boolean istFertig() {
-        return handkarten.size() == 0;
+        return handkarten.isEmpty();
     }
 }

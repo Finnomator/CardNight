@@ -1,5 +1,7 @@
 package cardnight.games;
 
+import cardnight.Tools;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -41,10 +43,8 @@ public class GegnerNamen {
         ArrayList<String> gegnerNamen = new ArrayList<>(Arrays.asList(namen));
         ArrayList<String> result = new ArrayList<>(anzahl);
 
-        Random rnd = new Random();
-
         for (int i = 0; i < anzahl; ++i) {
-            int wahl = rnd.nextInt(gegnerNamen.size());
+            int wahl = Tools.random.nextInt(gegnerNamen.size());
             result.add(gegnerNamen.get(wahl));
             gegnerNamen.remove(wahl);
         }

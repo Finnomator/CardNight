@@ -1,5 +1,7 @@
 package cardnight.games.witch;
 
+import cardnight.Tools;
+
 import java.util.ArrayList;
 
 public class WitchKartenset {
@@ -13,7 +15,7 @@ public class WitchKartenset {
     }
 
     public static WitchKarte gibZufaelligeKarte(boolean entferneAusStapel) {
-        WitchKarte karte = alleKarten.get((int) (Math.random() * alleKarten.size()));
+        WitchKarte karte = alleKarten.get(Tools.random.nextInt(alleKarten.size()));
 
         if (entferneAusStapel)
             alleKarten.remove(karte);

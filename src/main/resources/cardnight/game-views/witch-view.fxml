@@ -14,7 +14,7 @@
             <Insets top="50.0" />
          </GridPane.margin></HBox>
 
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #00091f; -fx-border-color: white; -fx-border-width: 5;" GridPane.rowIndex="1">
+        <AnchorPane maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: #00091f; -fx-border-color: white; -fx-border-width: 5;" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="-5.0" right="-5.0" />
          </GridPane.margin></AnchorPane>
@@ -47,7 +47,7 @@
     <Button mnemonicParsing="false" onAction="#pauseClick" stylesheets="@../styles/button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
 
     <StackPane fx:id="schaetzungsRoot" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="77.0" prefWidth="149.0" StackPane.alignment="BOTTOM_LEFT">
-        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#schaetzungOkKlick" stylesheets="@../styles/button-style.css" text="OK" StackPane.alignment="BOTTOM_CENTER" />
+        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="Infinity" onAction="#schaetzungOkKlick" stylesheets="@../styles/button-style.css" text="OK" StackPane.alignment="BOTTOM_CENTER" />
         <VBox alignment="TOP_CENTER" maxHeight="-Infinity" StackPane.alignment="TOP_CENTER">
             <Label stylesheets="@../fonts/algerian-condensed.css" text="Schätzung" textFill="WHITE">
              <font>

@@ -7,7 +7,7 @@ public class UenoKarte extends Karte {
     public UenoFarbe farbe;
     public final UenoKartenArt art;
     public final int wert;
-    private boolean effektWurdeAktiviert = false;
+    private boolean effektWurdeAktiviert;
 
     public UenoKarte(UenoFarbe farbe, UenoKartenArt art) {
         assert art != UenoKartenArt.ZAHL;

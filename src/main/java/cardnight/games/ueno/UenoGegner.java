@@ -1,7 +1,8 @@
 package cardnight.games.ueno;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.EnumMap;
+import java.util.Map;
 
 public class UenoGegner extends UenoSpieler {
 
@@ -23,15 +24,15 @@ public class UenoGegner extends UenoSpieler {
         if (ablegbare.size() == 1)
             return ablegbare.get(0);
 
-        if (ablegbare.size() == 0)
+        if (ablegbare.isEmpty())
             return null;
 
         UenoKarte letzteKarte = spiel.gibZuletztAbgelegteKarte();
         ArrayList<UenoKarte> zahlenKarten = filterNachArt(UenoKartenArt.ZAHL, ablegbare, false);
         ArrayList<UenoKarte> sonderkarten = filterNachArt(UenoKartenArt.ZAHL, ablegbare, true);
 
-        boolean kannZahlAblegen = zahlenKarten.size() > 0;
-        boolean kannSonderAblegen = sonderkarten.size() > 0;
+        boolean kannZahlAblegen = !zahlenKarten.isEmpty();
+        boolean kannSonderAblegen = !sonderkarten.isEmpty();
 
         boolean sollteZahlAblegen = kannZahlAblegen && (letzteKarte.art == UenoKartenArt.FARBWAHL || letzteKarte.art == UenoKartenArt.PLUS_VIER || letzteKarte.art == UenoKartenArt.PLUS_ZWEI);
         boolean sollteSonderAblegen = kannSonderAblegen && (ablegbare.size() - sonderkarten.size() <= 2 || (double) sonderkarten.size() / ablegbare.size() >= 0.25);
@@ -50,7 +51,7 @@ public class UenoGegner extends UenoSpieler {
     }
 
     private UenoFarbe meisteFarbeAufDerHand() {
-        HashMap<UenoFarbe, Integer> zaehlung = new HashMap<>(4);
+        EnumMap<UenoFarbe, Integer> zaehlung = new EnumMap<>(UenoFarbe.class);
 
         for (UenoFarbe farbe : UenoFarbe.values())
             zaehlung.put(farbe, 0);
@@ -63,10 +64,10 @@ public class UenoGegner extends UenoSpieler {
         int max = 0;
         UenoFarbe maxFarbe = UenoFarbe.BLAU;
 
-        for (UenoFarbe farbe : zaehlung.keySet()) {
-            if (zaehlung.get(farbe) > max) {
-                max = zaehlung.get(farbe);
-                maxFarbe = farbe;
+        for (Map.Entry<UenoFarbe, Integer> entry : zaehlung.entrySet()) {
+            if (entry.getValue() > max) {
+                max = entry.getValue();
+                maxFarbe = entry.getKey();
             }
         }
 

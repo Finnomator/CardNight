@@ -21,7 +21,7 @@ public class SoundMenu {
     public void musicSliderMouseClick() {
         Main.setMusicVolume(musicVolumeSlider.getValue() / 100.0);
 
-        if (new Random().nextInt(20) == 0) // 🤔
+        if (Tools.random.nextInt(20) == 0) // 🤔
             SoundPlayer.soundEinstellen();
     }
 }

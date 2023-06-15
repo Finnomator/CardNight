@@ -7,7 +7,7 @@ import cardnight.games.ueno.UenoFarbe;
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.EnumMap;
 
 public class UenoSoundPlayer {
     private static Clip fYouSound;
@@ -20,7 +20,7 @@ public class UenoSoundPlayer {
     private static Clip vierZiehenSound;
     private static Clip zweiZiehenSound;
     private static Clip rundeVorbeiSound;
-    private static HashMap<UenoFarbe, Clip> farbwahlSounds;
+    private static EnumMap<UenoFarbe, Clip> farbwahlSounds;
 
     private static boolean soundsWurdenGeladen;
 
@@ -43,7 +43,7 @@ public class UenoSoundPlayer {
         zweiZiehenSound = ladeClip("UNO_Draw_2.wav");
         rundeVorbeiSound = ladeClip("UNO_The_round_is_over.wav");
 
-        farbwahlSounds = new HashMap<>(4);
+        farbwahlSounds = new EnumMap<>(UenoFarbe.class);
         farbwahlSounds.put(UenoFarbe.ROT, ladeClip("UNO_rot.wav"));
         farbwahlSounds.put(UenoFarbe.GRUEN, ladeClip("UNO_grun.wav"));
         farbwahlSounds.put(UenoFarbe.BLAU, ladeClip("UNO_blau.wav"));

@@ -3,8 +3,8 @@ package cardnight.games.witch;
 import cardnight.Logger;
 
 public class WitchMensch extends WitchSpieler {
-    public WitchMensch(String n, Witch s) {
-        super(n, s);
+    public WitchMensch(String name, Witch spiel) {
+        super(name, spiel);
     }
 
     @Override

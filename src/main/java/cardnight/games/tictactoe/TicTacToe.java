@@ -103,7 +103,7 @@ public class TicTacToe extends Spiel {
         return TicTacToeGegner.zugMachen(feld);
     }
 
-    private void delay(long millis) {
+    private static void delay(long millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {

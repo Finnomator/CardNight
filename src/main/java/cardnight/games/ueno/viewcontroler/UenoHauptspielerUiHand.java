@@ -2,6 +2,7 @@ package cardnight.games.ueno.viewcontroler;
 
 import cardnight.games.ueno.UenoKarte;
 import cardnight.games.ueno.UenoKartenArt;
+import cardnight.games.ueno.UenoSpieler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
@@ -11,7 +12,18 @@ import java.util.ArrayList;
 
 public class UenoHauptspielerUiHand extends UenoUiHand {
 
-    public HBox handkartenBox;
+    private final HBox handkartenBox;
+
+    public UenoHauptspielerUiHand(UenoSpieler spieler) {
+        this.spieler = spieler;
+        handkartenBox = new HBox();
+        handkartenBox.setMaxSize(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
+        updateUi();
+    }
+
+    public HBox root() {
+        return handkartenBox;
+    }
 
     @Override
     public void updateUi() {
@@ -23,15 +35,11 @@ public class UenoHauptspielerUiHand extends UenoUiHand {
         for (int i = 0, gibHandkartenSize = gibHandkarten.size(); i < gibHandkartenSize; i++) { // ConcurrentModificationException gibt's auch hier
             UenoKarte karte = gibHandkarten.get(i);
 
-            FXMLLoader loader;
             Node uiKarte;
 
             if (karte.istSchwarz()) {
 
-                if (karte.art == UenoKartenArt.FARBWAHL)
-                    loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/farbwahl-karte.fxml"));
-                else
-                    loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/vier-ziehen-karte.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/" + (karte.art == UenoKartenArt.FARBWAHL ? "farbwahl" : "vier-ziehen") + "-karte.fxml"));
 
                 try {
                     uiKarte = loader.load();
@@ -41,8 +49,7 @@ public class UenoHauptspielerUiHand extends UenoUiHand {
 
                 UenoFarbwahlUiKarte farbwahlUiKarte = loader.getController();
                 farbwahlUiKarte.uiErstellen(karte, this);
-            } else
-                uiKarte = UenoRessourcen.erstelleStandardHandKarte(karte);
+            } else uiKarte = UenoRessourcen.erstelleStandardHandKarte(karte);
 
             uiKarte.setDisable(!ablegbareKarten.contains(karte) || !spieler.istAmZug());
 

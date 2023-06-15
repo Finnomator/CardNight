@@ -156,7 +156,7 @@ public class Ueno extends Spiel {
     }
 
     private UenoKarte karteNachziehen() {
-        if (nachziehstapel.size() == 0)
+        if (nachziehstapel.isEmpty())
             erstelleNeuenNachziehstapel();
         return nachziehstapel.pop();
     }

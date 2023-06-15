@@ -2,6 +2,7 @@ package cardnight.games.tictactoe.viewcontroller;
 
 import cardnight.Main;
 import cardnight.SoundPlayer;
+import cardnight.Tools;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
@@ -53,7 +54,7 @@ public class TTTSoundPlayer {
     }
 
     public static void randomFeldAusgesucht() {
-        SoundPlayer.playSound(feldAusgesuchtSounds[new Random().nextInt(3)]);
+        SoundPlayer.playSound(feldAusgesuchtSounds[Tools.random.nextInt(3)]);
     }
 
     public static void gewonnen() {
@@ -61,20 +62,20 @@ public class TTTSoundPlayer {
     }
 
     public static void verloren() {
-        if (new Random().nextInt(2) == 0)
+        if (Tools.random.nextInt(2) == 0)
             SoundPlayer.playSound(hatVerlorenSound);
         else
             SoundPlayer.playSound(wellPlayedSound);
     }
 
     public static void start() {
-        if (new Random().nextInt(2) == 0)
+        if (Tools.random.nextInt(2) == 0)
             SoundPlayer.playSound(startClassicSound);
         else
             SoundPlayer.playSound(startSupremacySound);
     }
 
     public static void randomUeberlegen() {
-        SoundPlayer.playSound(ueberlegenSounds[new Random().nextInt(3)]);
+        SoundPlayer.playSound(ueberlegenSounds[Tools.random.nextInt(3)]);
     }
 }

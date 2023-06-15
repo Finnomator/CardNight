@@ -123,7 +123,7 @@ public class WitchPunktetafel extends GridPane {
         }
     }
 
-    private int berechneZeilenAnzahl(WitchSpieler[] spieler) {
+    private static int berechneZeilenAnzahl(WitchSpieler[] spieler) {
         switch (spieler.length) {
             case 3:
                 return 20;

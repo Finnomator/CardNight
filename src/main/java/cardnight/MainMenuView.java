@@ -1,6 +1,7 @@
 package cardnight;
 
 import cardnight.games.Ressourcen;
+import cardnight.games.tictactoe.viewcontroller.TTTBilder;
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
 import cardnight.games.tictactoe.viewcontroller.TTTUiOHand;
 import cardnight.games.tictactoe.viewcontroller.TTTUiXHand;
@@ -171,7 +172,7 @@ public class MainMenuView {
 
     private static Image randomKartenBild() {
 
-        Random rnd = new Random();
+        Random rnd = Tools.random;
 
         int rndGame = rnd.nextInt(3);
 
@@ -181,9 +182,9 @@ public class MainMenuView {
         switch (rndGame) {
             case 0:
                 if (rnd.nextInt(2) == 0)
-                    return TTTUiXHand.xHandkartenBild;
+                    return TTTBilder.xHandkarte;
                 else
-                    return TTTUiOHand.oHandkartenBild;
+                    return TTTBilder.oHandkarte;
             case 1:
                 farbe = UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)].toString().toLowerCase();
                 zahl = rnd.nextInt(10);

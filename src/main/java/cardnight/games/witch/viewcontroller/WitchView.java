@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Pattern;
 
 public class WitchView extends SpielView {
 
@@ -72,21 +73,14 @@ public class WitchView extends SpielView {
             gegnerUiHaende.put(gegner, uiHand);
         }
 
-        FXMLLoader stichLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/stich-stapel.fxml"));
-        Node uiStich = stichLoader.load();
-        tischContentContainer.add(uiStich, 2, 0);
-        uiStichStapel = stichLoader.getController();
-        uiStichStapel.uiErstellen(witch);
+        uiStichStapel = new WitchUiStichStapel(witch);
+        tischContentContainer.add(uiStichStapel, 2, 0);
 
         numericOnly(schaetzungsEingabeFeld);
 
-        FXMLLoader handkartenLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/witch/hauptspieler-hand.fxml"));
-        Node uiHauptHand = handkartenLoader.load();
-        GridPane.setRowIndex(uiHauptHand, 2);
-        GridPane.setHalignment(uiHauptHand, HPos.CENTER);
-        tableGrid.getChildren().add(uiHauptHand);
-        hauptspielerUiHand = handkartenLoader.getController();
-        hauptspielerUiHand.uiErstellen(witch.gibHauptspieler());
+        hauptspielerUiHand = new WitchHauptspielerUiHand(witch.gibHauptspieler());
+        GridPane.setHalignment(hauptspielerUiHand, HPos.CENTER);
+        tableGrid.add(hauptspielerUiHand, 0, 2);
 
         punktetafel = new WitchPunktetafel(witch);
         StackPane.setAlignment(punktetafel, Pos.CENTER_RIGHT);
@@ -188,11 +182,11 @@ public class WitchView extends SpielView {
         hatStichSchaetzungBestaetigt.set(true);
     }
 
-    private void numericOnly(final TextField field) {
+    private void numericOnly(TextField field) {
         field.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*"))
+            if (!Pattern.matches("\\d*", newValue))
                 field.setText(newValue.replaceAll("\\D", ""));
-            schaetzungsOkButton.setDisable(field.getText().equals(""));
+            schaetzungsOkButton.setDisable("".equals(field.getText()));
         });
     }
 }

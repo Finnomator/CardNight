@@ -6,16 +6,15 @@ import javafx.geometry.Insets;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
-public class WitchUiStichStapel {
-    public StackPane root;
-    private Witch spiel;
+public class WitchUiStichStapel extends StackPane {
+    private final Witch spiel;
 
-    public void uiErstellen(Witch spiel) {
+    public WitchUiStichStapel(Witch spiel) {
         this.spiel = spiel;
     }
 
     public void updateUi() {
-        root.getChildren().clear();
+        getChildren().clear();
 
         WitchKarte[] gibStich = spiel.gibStich();
         for (int i = 0; i < gibStich.length; i++) {
@@ -30,7 +29,7 @@ public class WitchUiStichStapel {
 
             StackPane.setMargin(imgView, new Insets(0, -i * 50, 0, 0));
 
-            root.getChildren().add(imgView);
+            getChildren().add(imgView);
         }
     }
 }

@@ -22,7 +22,7 @@ public class Witch extends Spiel {
     private final ArrayList<WitchKarte> benutzt;
     private int spielerAmZug;
     private WitchKarte trumpfKarte;
-    private final int kartenAnzahlInEinemSpiel = 60;
+    private static final int kartenAnzahlInEinemSpiel = 60;
     private final WitchView observerView;
     private int rundenNummer;
     private final long gameDelayMillis;
@@ -38,7 +38,7 @@ public class Witch extends Spiel {
         for (int i = 1; i < anzahlSpieler; i++)
             spieler[i] = new WitchGegner(gegnerNamen.get(i - 1), this);
 
-        start = (int) (Math.random() * anzahl);
+        start = Tools.random.nextInt(anzahl);
         spielerAmZug = start;
         stich = new WitchKarte[anzahl];
         benutzt = new ArrayList<>();
@@ -233,10 +233,10 @@ public class Witch extends Spiel {
             int erzhaltendeStiche = s.gibAnzahlErzhaltenderStiche();
             int geschaetzteStiche = s.gibStichSchaetzung();
 
-            if (erzhaltendeStiche != geschaetzteStiche)
-                s.punkteHinzufuegen(-10 * Math.abs(erzhaltendeStiche - geschaetzteStiche));
-            else
+            if (erzhaltendeStiche == geschaetzteStiche)
                 s.punkteHinzufuegen(20 + 10 * erzhaltendeStiche);
+            else
+                s.punkteHinzufuegen(-10 * Math.abs(erzhaltendeStiche - geschaetzteStiche));
         }
     }
 
@@ -293,7 +293,7 @@ public class Witch extends Spiel {
         return anzahlBessererKarten;
     }
 
-    public int anzahlBessererKartenGleicherFarbe(WitchKarte referenzKarte, ArrayList<WitchKarte> neuBenutzt) {
+    public static int anzahlBessererKartenGleicherFarbe(WitchKarte referenzKarte, ArrayList<WitchKarte> neuBenutzt) {
         // Alle höheren Karten der gleichen Farbe sind besser
         int anzahlBessererKarten = 13 - referenzKarte.wert;
 
@@ -305,7 +305,7 @@ public class Witch extends Spiel {
         return anzahlBessererKarten;
     }
 
-    public int anzahlSchlechtererKartenGleicherFarbe(WitchKarte referenzKarte, ArrayList<WitchKarte> neuBenutzt) {
+    public static int anzahlSchlechtererKartenGleicherFarbe(WitchKarte referenzKarte, ArrayList<WitchKarte> neuBenutzt) {
         // Alle kleineren Karten der gleichen Farbe sind schlechter
         int anzahlSchlechtererKarten = referenzKarte.wert - 1;
 
@@ -317,7 +317,7 @@ public class Witch extends Spiel {
         return anzahlSchlechtererKarten;
     }
 
-    public int anzahlUebrigerZauberer(ArrayList<WitchKarte> neuBenutzt) {
+    public static int anzahlUebrigerZauberer(ArrayList<WitchKarte> neuBenutzt) {
         // Die 4 Zauberer
         int anzahlZauberer = 4;
 
@@ -330,7 +330,7 @@ public class Witch extends Spiel {
         return anzahlZauberer;
     }
 
-    public int anzahlUebrigerNarren(ArrayList<WitchKarte> neuBenutzt) {
+    public static int anzahlUebrigerNarren(ArrayList<WitchKarte> neuBenutzt) {
         // Die 4 Zauberer
         int anzahlNarren = 4;
 

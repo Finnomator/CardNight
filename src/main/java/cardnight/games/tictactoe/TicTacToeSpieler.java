@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class TicTacToeSpieler extends Spieler {
 
-    protected TicTacToe spiel;
+    protected final TicTacToe spiel;
     public final boolean istX;
     private final ArrayList<Integer> zuege;
 

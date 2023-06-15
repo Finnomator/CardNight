@@ -1,15 +1,20 @@
 package cardnight.games.tictactoe.viewcontroller;
 
 import cardnight.games.tictactoe.TicTacToeSpieler;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 
 public abstract class TTTUiHand extends HBox {
 
-    protected TicTacToeSpieler spieler;
+    protected final TicTacToeSpieler spieler;
+    public final Image handkartenBild;
 
-    public TTTUiHand(TicTacToeSpieler spieler) {
+    protected TTTUiHand(TicTacToeSpieler spieler) {
         this.spieler = spieler;
+        handkartenBild = spieler.istX? TTTBilder.xHandkarte : TTTBilder.oHandkarte;
+
         setMaxSize(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
+
         updateUi();
     }
 

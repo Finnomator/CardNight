@@ -9,7 +9,7 @@
    <Button stylesheets="@../../styles/transparent-image-button.css">
       <graphic>
          <ImageView fitWidth="113.6" preserveRatio="true">
-            <Image url="@images/farbwahl/UNO_Farbwahl%20schwarz.png" />
+            <Image url="@images/farbwahl/UNO_Farbwahl schwarz.png" />
          </ImageView>
       </graphic>
       <padding>

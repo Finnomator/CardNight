@@ -5,11 +5,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.SecureRandom;
-import java.util.Random;
 
 public class Tools {
 
-    public static final Random random = new SecureRandom();
+    public static final SecureRandom random = new SecureRandom();
 
     public static String readFile(Path resourcePath) {
         try {

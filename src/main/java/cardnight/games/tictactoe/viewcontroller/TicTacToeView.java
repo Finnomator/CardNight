@@ -33,8 +33,8 @@ public class TicTacToeView extends SpielView {
     private final AtomicInteger gesetztesFeld = new AtomicInteger();
     private Button[] feldBtns;
     private TTTGegnerUiHand gegnerUiHand;
-    private TTTUiXHand uiXHand;
-    private TTTUiOHand uiOHand;
+    private TTTUiHand uiXHand;
+    private TTTUiHand uiOHand;
     protected static boolean spielGegenComputer;
     private Image XQuadratisch;
     private Image OQuadratisch;
@@ -51,7 +51,7 @@ public class TicTacToeView extends SpielView {
         ttt = new TicTacToe(this, spielGegenComputer);
         Main.setzeAktuellesSpiel(ttt);
 
-        uiXHand = new TTTUiXHand(ttt.xSpieler);
+        uiXHand = new TTTUiHand(ttt.xSpieler);
         handContainer.getChildren().add(uiXHand);
 
         if (spielGegenComputer) {
@@ -63,7 +63,7 @@ public class TicTacToeView extends SpielView {
             GridPane.setMargin(gegnerHandNode, new Insets(50, 0, 0, 0));
             tableGrid.add(gegnerHandNode, 0, 0);
         } else {
-            uiOHand = new TTTUiOHand(ttt.oSpieler);
+            uiOHand = new TTTUiHand(ttt.oSpieler);
             handContainer.getChildren().add(uiOHand);
         }
 

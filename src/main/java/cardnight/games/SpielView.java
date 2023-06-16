@@ -7,5 +7,5 @@ public abstract class SpielView {
 
     public abstract void beendeSpiel();
 
-    public abstract void pauseClick() throws IOException;
+    public abstract void pauseClick();
 }

@@ -3,8 +3,6 @@ package cardnight;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 
-import java.util.Random;
-
 public class SoundMenu {
     public Button soundEnableButton;
     public Slider musicVolumeSlider;

@@ -1,14 +1,10 @@
 package cardnight.games.ueno.viewcontroler;
 
-import cardnight.Main;
 import cardnight.SoundPlayer;
 import cardnight.games.ueno.UenoFarbe;
 
 import javax.sound.sampled.*;
-import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.util.EnumMap;
-import java.util.Map;
 
 public class UenoSoundPlayer {
     private static final Clip fYouSound = ladeClip("UNO_F.wav");

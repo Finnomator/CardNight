@@ -4,7 +4,6 @@ import cardnight.Tools;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 public class GegnerNamen {
     private static final String[] namen = {

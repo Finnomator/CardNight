@@ -9,13 +9,13 @@ import javafx.scene.image.Image;
 import java.util.EnumMap;
 
 public class UenoKartenBilder {
-    private static EnumMap<UenoFarbe, Image[]> zahlenKarten = new EnumMap<>(UenoFarbe.class);
-    private static EnumMap<UenoFarbe, Image> aussetzenKarten = new EnumMap<>(UenoFarbe.class);
-    private static EnumMap<UenoFarbe, Image> zweiZiehenKarten = new EnumMap<>(UenoFarbe.class);
-    private static EnumMap<UenoFarbe, Image> vierZiehenKarten = new EnumMap<>(UenoFarbe.class);
-    private static EnumMap<UenoFarbe, Image> farbwahlKarten = new EnumMap<>(UenoFarbe.class);
-    private static EnumMap<UenoFarbe, Image> richtungswechselKarten = new EnumMap<>(UenoFarbe.class);
-    private static EnumMap<UenoKartenArt, Image> schwarzeKarten = new EnumMap<>(UenoKartenArt.class);
+    private static final EnumMap<UenoFarbe, Image[]> zahlenKarten = new EnumMap<>(UenoFarbe.class);
+    private static final EnumMap<UenoFarbe, Image> aussetzenKarten = new EnumMap<>(UenoFarbe.class);
+    private static final EnumMap<UenoFarbe, Image> zweiZiehenKarten = new EnumMap<>(UenoFarbe.class);
+    private static final EnumMap<UenoFarbe, Image> vierZiehenKarten = new EnumMap<>(UenoFarbe.class);
+    private static final EnumMap<UenoFarbe, Image> farbwahlKarten = new EnumMap<>(UenoFarbe.class);
+    private static final EnumMap<UenoFarbe, Image> richtungswechselKarten = new EnumMap<>(UenoFarbe.class);
+    private static final EnumMap<UenoKartenArt, Image> schwarzeKarten = new EnumMap<>(UenoKartenArt.class);
     public static final Image uenoKartenRueckseite = ladeBild("UNO_Rückseite.png", 0, Main.GEGNERKARTE_HOEHE);
     private static final String bilderPfad = "/cardnight/game-views/ueno/images/";
 

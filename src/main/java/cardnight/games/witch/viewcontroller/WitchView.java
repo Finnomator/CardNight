@@ -15,7 +15,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -163,21 +166,17 @@ public class WitchView extends SpielView {
 
         GameOver.setzeNachricht(nachricht);
 
-        try {
-            root.getChildren().add(GameOver.loadScene());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        root.getChildren().add(GameOver.loadScene());
     }
 
     @Override
-    public void pauseClick() throws IOException {
+    public void pauseClick() {
         SoundPlayer.klickSound();
         root.getChildren().add(PauseMenu.loadScene());
     }
 
-    public static Pane loadScene() throws IOException {
-        return new FXMLLoader(WitchView.class.getResource("/cardnight/game-views/witch-view.fxml")).load();
+    public static void showScene() throws IOException {
+        ScreenController.show(new FXMLLoader(WitchView.class.getResource("/cardnight/game-views/witch-view.fxml")).load());
     }
 
     public void schaetzungOkKlick() {

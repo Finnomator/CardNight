@@ -15,7 +15,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
@@ -186,22 +185,16 @@ public class TicTacToeView extends SpielView {
 
         delay(1000);
 
-        Platform.runLater(() -> {
-            try {
-                root.getChildren().add(GameOver.loadScene());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        Platform.runLater(() -> root.getChildren().add(GameOver.loadScene()));
     }
 
     @Override
-    public void pauseClick() throws IOException {
+    public void pauseClick() {
         SoundPlayer.klickSound();
         root.getChildren().add(PauseMenu.loadScene());
     }
 
-    public static Pane loadScene() throws IOException {
-        return new FXMLLoader(TicTacToeView.class.getResource("/cardnight/game-views/tictactoe-view.fxml")).load();
+    public static void showScene() throws IOException {
+        ScreenController.show(new FXMLLoader(TicTacToeView.class.getResource("/cardnight/game-views/tictactoe-view.fxml")).load());
     }
 }

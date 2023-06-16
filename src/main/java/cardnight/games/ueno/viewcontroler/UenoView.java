@@ -15,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
@@ -250,7 +249,7 @@ public class UenoView extends SpielView {
     // Generelle Ui Interaktion
 
     @Override
-    public void pauseClick() throws IOException {
+    public void pauseClick() {
         SoundPlayer.klickSound();
         root.getChildren().add(PauseMenu.loadScene());
     }
@@ -284,14 +283,10 @@ public class UenoView extends SpielView {
         else
             UenoSoundPlayer.rundeVorbei();
 
-        try {
-            root.getChildren().add(GameOver.loadScene());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        root.getChildren().add(GameOver.loadScene());
     }
 
-    public static Pane loadScene() throws IOException {
-        return new FXMLLoader(UenoView.class.getResource("/cardnight/game-views/ueno-view.fxml")).load();
+    public static void showScene() throws IOException {
+        ScreenController.show(new FXMLLoader(UenoView.class.getResource("/cardnight/game-views/ueno-view.fxml")).load());
     }
 }

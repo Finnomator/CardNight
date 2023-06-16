@@ -11,7 +11,7 @@ import java.io.IOException;
 public class WitchGegnerWahl {
     public void zuruckZumHauptmenuKlick() {
         SoundPlayer.klickSound();
-        ScreenController.activate("main-menu-view");
+        ScreenController.show(ScreenController.hautptemue);
     }
 
     public void zweiKlick() throws IOException {
@@ -36,10 +36,14 @@ public class WitchGegnerWahl {
 
     private void startKlick() throws IOException {
         SoundPlayer.klickSound();
-        ScreenController.activateNewPane(WitchView.loadScene());
+        WitchView.showScene();
     }
 
-    public static StackPane loadScene() throws IOException {
-        return new FXMLLoader(Main.class.getResource("/cardnight/game-views/witch/gegner-wahl.fxml")).load();
+    public static StackPane loadScene() {
+        try {
+            return new FXMLLoader(Main.class.getResource("/cardnight/game-views/witch/gegner-wahl.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

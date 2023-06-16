@@ -1,33 +1,23 @@
 package cardnight;
 
+import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
+import cardnight.games.witch.viewcontroller.WitchGegnerWahl;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
-import java.util.HashMap;
-
 public class ScreenController {
-    private static final HashMap<String, Pane> screenMap = new HashMap<>();
+
+    public static final Pane hautptemue = MainMenuView.loadScene();
+    public static final Pane tttGegnerWahl = TTTGegnerWahl.loadScene();
+    public static final Pane witchGegnerWahl = WitchGegnerWahl.loadScene();
+
     private static Scene main;
 
     public static void setScene(Scene scene) {
         main = scene;
     }
 
-    public static Pane getScreen(String name) {
-        return screenMap.get(name);
-    }
-
-    public static void addScreen(String name, Pane pane) {
-        screenMap.put(name, pane);
-    }
-
-    public static void activate(String name) {
-        if (!screenMap.containsKey(name))
-            throw new RuntimeException(name + " was not added to screenMap");
-        main.setRoot(screenMap.get(name));
-    }
-
-    public static void activateNewPane(Pane pane) {
+    public static void show(Pane pane) {
         main.setRoot(pane);
     }
 }

@@ -24,23 +24,27 @@ public class GameOver {
         nachricht = text;
     }
 
-    public static StackPane loadScene() throws IOException {
-        return new FXMLLoader(Main.class.getResource("/cardnight/game-over.fxml")).load();
+    public static StackPane loadScene() {
+        try {
+            return new FXMLLoader(Main.class.getResource("/cardnight/game-over.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void onZumHauptmenueClick() {
         SoundPlayer.klickSound();
-        ScreenController.activate("main-menu-view");
+        ScreenController.show(ScreenController.hautptemue);
     }
 
     public void onNochmalSpielenClick() throws IOException {
         SoundPlayer.klickSound();
 
         if (Main.gibAktuellGespieltesSpiel() instanceof TicTacToe)
-            ScreenController.activateNewPane(TicTacToeView.loadScene());
+            TicTacToeView.showScene();
         else if (Main.gibAktuellGespieltesSpiel() instanceof Ueno)
-            ScreenController.activateNewPane(UenoView.loadScene());
+            UenoView.showScene();
         else if (Main.gibAktuellGespieltesSpiel() instanceof Witch)
-            ScreenController.activateNewPane(WitchView.loadScene());
+            WitchView.showScene();
     }
 }

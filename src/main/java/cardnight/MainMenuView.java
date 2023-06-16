@@ -7,14 +7,15 @@ import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.viewcontroler.UenoKartenBilder;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.WitchFarbe;
-import cardnight.games.witch.viewcontroller.WitchGegnerWahl;
 import cardnight.games.witch.viewcontroller.WitchKartenBilder;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
@@ -57,14 +58,14 @@ public class MainMenuView {
         startRotatingCards();
     }
 
-    public void onTicTacToeClick() throws IOException {
+    public void onTicTacToeClick() {
         SoundPlayer.klickSound();
-        ScreenController.activateNewPane(TTTGegnerWahl.loadScene());
+        TTTGegnerWahl.showScene();
     }
 
-    public void onWitchClick() throws IOException {
+    public void onWitchClick() {
         SoundPlayer.klickSound();
-        ScreenController.activateNewPane(WitchGegnerWahl.loadScene());
+        ScreenController.show(ScreenController.witchGegnerWahl);
     }
 
     public void onBeendenClick() {
@@ -74,7 +75,7 @@ public class MainMenuView {
 
     public void onUenoClick() throws IOException {
         SoundPlayer.klickSound();
-        ScreenController.activateNewPane(UenoView.loadScene());
+        UenoView.showScene();
     }
 
     public static void openLinkInBrowser(String link) {
@@ -212,5 +213,13 @@ public class MainMenuView {
             DebugWindow.oeffnen();
         else
             DebugWindow.schliessen();
+    }
+
+    public static Pane loadScene() {
+        try {
+            return new FXMLLoader(Main.class.getResource("main-menu-view.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

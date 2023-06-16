@@ -7,9 +7,7 @@ import cardnight.games.ueno.Ueno;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.viewcontroller.WitchView;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -34,21 +32,25 @@ public class PauseMenu {
 
     public void onZumHauptmenueClick() {
         SoundPlayer.klickSound();
-        ScreenController.activate("main-menu-view");
-    }
-
-    public static Node loadScene() throws IOException {
-        return new FXMLLoader(Main.class.getResource("/cardnight/pause-menu.fxml")).load();
+        ScreenController.show(ScreenController.hautptemue);
     }
 
     public void onErneutSpielenClick() throws IOException {
         SoundPlayer.klickSound();
 
         if (Main.gibAktuellGespieltesSpiel() instanceof TicTacToe)
-            ScreenController.activateNewPane(TicTacToeView.loadScene());
+            TicTacToeView.showScene();
         else if (Main.gibAktuellGespieltesSpiel() instanceof Ueno)
-            ScreenController.activateNewPane(UenoView.loadScene());
+            UenoView.showScene();
         else if (Main.gibAktuellGespieltesSpiel() instanceof Witch)
-            ScreenController.activateNewPane(WitchView.loadScene());
+            WitchView.showScene();
+    }
+
+    public static Pane loadScene() {
+        try {
+            return new FXMLLoader(Main.class.getResource("pause-menu.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

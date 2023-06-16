@@ -7,7 +7,7 @@ import cardnight.Tools;
 import cardnight.games.Ressourcen;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -16,28 +16,36 @@ public class TTTGegnerWahl {
     public ImageView gegenMenschImgView;
 
     public void initialize() {
-        if (Tools.random.nextInt(100) == 0) //🥚
+        if (Tools.random.nextInt(50) == 0) //🥚
             gegenMenschImgView.setImage(Ressourcen.einWuerdigerGegner);
     }
 
     public void zuruckZumHauptmenuKlick() {
         SoundPlayer.klickSound();
-        ScreenController.activate("main-menu-view");
+        ScreenController.show(ScreenController.hautptemue);
     }
 
     public void gegenComputerKlick() throws IOException {
         SoundPlayer.klickSound();
         TicTacToeView.spielGegenComputer = true;
-        ScreenController.activateNewPane(TicTacToeView.loadScene());
+        TicTacToeView.showScene();
     }
 
     public void gegenMenschKlick() throws IOException {
         SoundPlayer.klickSound();
         TicTacToeView.spielGegenComputer = false;
-        ScreenController.activateNewPane(TicTacToeView.loadScene());
+        TicTacToeView.showScene();
     }
 
-    public static StackPane loadScene() throws IOException {
-        return new FXMLLoader(Main.class.getResource("/cardnight/game-views/tictactoe/gegner-wahl.fxml")).load();
+    public static Pane loadScene() {
+        try {
+            return new FXMLLoader(Main.class.getResource("/cardnight/game-views/tictactoe/gegner-wahl.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void showScene() {
+        ScreenController.show(ScreenController.tttGegnerWahl);
     }
 }

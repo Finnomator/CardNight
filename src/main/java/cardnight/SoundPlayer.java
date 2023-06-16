@@ -6,18 +6,13 @@ import java.io.IOException;
 
 public class SoundPlayer {
 
-    private static Clip klickSoundEffekt;
-    private static Clip soundEinstellenSound;
+    private static final Clip klickSoundEffekt = ladeSound("sounds/Button_Sound.wav");
+    private static final Clip soundEinstellenSound = ladeSound("sounds/Soundeinstellen_Sound.wav");
 
-    public static void ladeSounds() {
-        klickSoundEffekt = ladeSound("Button_Sound.wav");
-        soundEinstellenSound = ladeSound("Soundeinstellen_Sound.wav");
-    }
-
-    private static Clip ladeSound(String pfad) {
+    public static Clip ladeSound(String pfad) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(
-                    Main.class.getResourceAsStream("/cardnight/sounds/" + pfad)));
+                    Main.class.getResourceAsStream("/cardnight/" + pfad)));
             Clip clip = (Clip) AudioSystem.getLine(new DataLine.Info(Clip.class, audioInputStream.getFormat()));
             clip.open(audioInputStream);
             return clip;

@@ -49,8 +49,6 @@ public class TicTacToeView extends SpielView {
         XQuadratisch = new Image(getClass().getResourceAsStream("/cardnight/game-views/tictactoe/images/X_quadratisch.png"),
                 88, 0, true, true);
 
-        TTTSoundPlayer.ladeSounds();
-
         ttt = new TicTacToe(this, spielGegenComputer);
         Main.setzeAktuellesSpiel(ttt);
 

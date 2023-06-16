@@ -7,54 +7,23 @@ import cardnight.Tools;
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.util.Random;
 
 public class TTTSoundPlayer {
 
-    private static Clip[] ueberlegenSounds;
-    private static Clip[] feldAusgesuchtSounds;
-    private static Clip hatGewonnenSound;
-    private static Clip hatVerlorenSound;
-    private static Clip wellPlayedSound;
-    private static Clip startClassicSound;
-    private static Clip startSupremacySound;
-    private static boolean soundsWurdenGeladen;
-
-    public static void ladeSounds() {
-
-        if (soundsWurdenGeladen)
-            return;
-
-        soundsWurdenGeladen = true;
-
-        hatGewonnenSound = ladeClip("TicTacToe_Gewinner_Sound.wav");
-        hatVerlorenSound = ladeClip("TicTacToe_Verlieren.wav");
-        wellPlayedSound = ladeClip("TicTacToe_Well_played.wav");
-        startClassicSound = ladeClip("TicTacToe_Classic.wav");
-        startSupremacySound = ladeClip("TicTacToe_Supremacy.wav");
-
-        ueberlegenSounds = new Clip[3];
-        feldAusgesuchtSounds = new Clip[3];
-        for (int i = 0; i < 3; ++i) {
-            ueberlegenSounds[i] = ladeClip("TicTacToe_Uberlegen_" + (i + 1) + ".wav");
-            feldAusgesuchtSounds[i] = ladeClip("TicTacToe_Ausgesucht_" + (i + 1) + ".wav");
-        }
-    }
+    private static final Clip[] ueberlegenSounds = {ladeClip("TicTacToe_Uberlegen_1.wav"), ladeClip("TicTacToe_Uberlegen_2.wav"), ladeClip("TicTacToe_Uberlegen_3.wav")};
+    private static final Clip[] feldAusgesuchtSounds = {ladeClip("TicTacToe_Ausgesucht_1.wav"), ladeClip("TicTacToe_Ausgesucht_2.wav"), ladeClip("TicTacToe_Ausgesucht_3.wav")};
+    private static final Clip hatGewonnenSound = ladeClip("TicTacToe_Gewinner_Sound.wav");
+    private static final Clip hatVerlorenSound = ladeClip("TicTacToe_Verlieren.wav");
+    private static final Clip wellPlayedSound = ladeClip("TicTacToe_Well_played.wav");
+    private static final Clip startClassicSound = ladeClip("TicTacToe_Classic.wav");
+    private static final Clip startSupremacySound = ladeClip("TicTacToe_Supremacy.wav");
 
     private static Clip ladeClip(String pfad) {
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(
-                    Main.class.getResourceAsStream("/cardnight/game-views/tictactoe/sounds/" + pfad)));
-            Clip clip = (Clip) AudioSystem.getLine(new DataLine.Info(Clip.class, audioInputStream.getFormat()));
-            clip.open(audioInputStream);
-            return clip;
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            throw new RuntimeException(e);
-        }
+        return SoundPlayer.ladeSound("game-views/tictactoe/sounds/" + pfad);
     }
 
     public static void randomFeldAusgesucht() {
-        SoundPlayer.playSound(feldAusgesuchtSounds[Tools.random.nextInt(3)]);
+        SoundPlayer.playSound(feldAusgesuchtSounds[Tools.random.nextInt(feldAusgesuchtSounds.length)]);
     }
 
     public static void gewonnen() {
@@ -76,6 +45,6 @@ public class TTTSoundPlayer {
     }
 
     public static void randomUeberlegen() {
-        SoundPlayer.playSound(ueberlegenSounds[Tools.random.nextInt(3)]);
+        SoundPlayer.playSound(ueberlegenSounds[Tools.random.nextInt(ueberlegenSounds.length)]);
     }
 }

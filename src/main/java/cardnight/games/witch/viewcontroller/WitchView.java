@@ -151,6 +151,11 @@ public class WitchView extends SpielView {
 
         ArrayList<WitchSpieler> sortierteSpieler = witch.platzierung();
 
+        if (sortierteSpieler.get(0) == witch.gibHauptspieler())
+            WitchSounds.youWin();
+        else
+            WitchSounds.rundeVorbei();
+
         for (int i = 0; i < sortierteSpieler.size(); i++) {
             WitchSpieler s = sortierteSpieler.get(i);
             nachricht += "\t" + (i + 1) + ". " + s.name + " (" + s.gibPunkte() + " Punkte)\n";

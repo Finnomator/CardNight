@@ -42,7 +42,6 @@ public class UenoView extends SpielView {
         ueno = new Ueno(gegnerAnzahl + 1, 7);
         Main.setzeAktuellesSpiel(ueno);
         UenoKartenBilder.ladeBilder();
-        UenoSoundPlayer.ladeSounds();
 
         hauptSpieler = ueno.gibHauptSpieler();
         spielerHaende = new HashMap<>(gegnerAnzahl + 1);

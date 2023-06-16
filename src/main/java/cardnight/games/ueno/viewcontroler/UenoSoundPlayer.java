@@ -8,58 +8,32 @@ import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.util.EnumMap;
+import java.util.Map;
 
 public class UenoSoundPlayer {
-    private static Clip fYouSound;
-    private static Clip reverseSound;
-    private static Clip skipSound;
-    private static Clip unoSound;
-    private static Clip unoUnoSound;
-    private static Clip duHastGewonnenSound;
-    private static Clip rundenStartSound;
-    private static Clip vierZiehenSound;
-    private static Clip zweiZiehenSound;
-    private static Clip rundeVorbeiSound;
-    private static EnumMap<UenoFarbe, Clip> farbwahlSounds;
+    private static final Clip fYouSound = ladeClip("UNO_F.wav");
+    private static final Clip reverseSound = ladeClip("UNO_Reverse.wav");
+    private static final Clip skipSound = ladeClip("UNO_Skip.wav");
+    private static final Clip unoSound = ladeClip("UNO_Sound.wav");
+    private static final Clip unoUnoSound = ladeClip("UNO_UNO_Sound.wav");
+    private static final Clip duHastGewonnenSound = ladeClip("UNO_You_win.wav");
+    private static final Clip rundenStartSound = ladeClip("UNO_Start_Ansager.wav");
+    private static final Clip vierZiehenSound = ladeClip("UNO_Draw_4.wav");
+    private static final Clip zweiZiehenSound = ladeClip("UNO_Draw_2.wav");
+    private static final Clip rundeVorbeiSound = ladeClip("UNO_The_round_is_over.wav");
+    private static final EnumMap<UenoFarbe, Clip> farbwahlSounds = getFarbwahlSounds();
 
-    private static boolean soundsWurdenGeladen;
-
-
-    public static void ladeSounds() {
-
-        if (soundsWurdenGeladen)
-            return;
-
-        soundsWurdenGeladen = true;
-
-        fYouSound = ladeClip("UNO_F.wav");
-        reverseSound = ladeClip("UNO_Reverse.wav");
-        skipSound = ladeClip("UNO_Skip.wav");
-        unoSound = ladeClip("UNO_Sound.wav");
-        unoUnoSound = ladeClip("UNO_UNO_Sound.wav");
-        duHastGewonnenSound = ladeClip("UNO_You_win.wav");
-        rundenStartSound = ladeClip("UNO_Start_Ansager.wav");
-        vierZiehenSound = ladeClip("UNO_Draw_4.wav");
-        zweiZiehenSound = ladeClip("UNO_Draw_2.wav");
-        rundeVorbeiSound = ladeClip("UNO_The_round_is_over.wav");
-
-        farbwahlSounds = new EnumMap<>(UenoFarbe.class);
-        farbwahlSounds.put(UenoFarbe.ROT, ladeClip("UNO_rot.wav"));
-        farbwahlSounds.put(UenoFarbe.GRUEN, ladeClip("UNO_grun.wav"));
-        farbwahlSounds.put(UenoFarbe.BLAU, ladeClip("UNO_blau.wav"));
-        farbwahlSounds.put(UenoFarbe.GELB, ladeClip("UNO_gelb.wav"));
+    private static EnumMap<UenoFarbe, Clip> getFarbwahlSounds() {
+        EnumMap<UenoFarbe, Clip> res = new EnumMap<>(UenoFarbe.class);
+        res.put(UenoFarbe.ROT, ladeClip("UNO_rot.wav"));
+        res.put(UenoFarbe.GRUEN, ladeClip("UNO_grun.wav"));
+        res.put(UenoFarbe.BLAU, ladeClip("UNO_blau.wav"));
+        res.put(UenoFarbe.GELB, ladeClip("UNO_gelb.wav"));
+        return res;
     }
 
     private static Clip ladeClip(String pfad) {
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(
-                    Main.class.getResourceAsStream("/cardnight/game-views/ueno/sounds/" + pfad)));
-            Clip clip = (Clip) AudioSystem.getLine(new DataLine.Info(Clip.class, audioInputStream.getFormat()));
-            clip.open(audioInputStream);
-            return clip;
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            throw new RuntimeException(e);
-        }
+        return SoundPlayer.ladeSound("game-views/ueno/sounds/" + pfad);
     }
 
     public static void fYou() {

@@ -3,14 +3,12 @@ package cardnight;
 import cardnight.games.Ressourcen;
 import cardnight.games.tictactoe.viewcontroller.TTTBilder;
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
-import cardnight.games.tictactoe.viewcontroller.TTTUiOHand;
-import cardnight.games.tictactoe.viewcontroller.TTTUiXHand;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.viewcontroler.UenoKartenBilder;
 import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.WitchFarbe;
+import cardnight.games.witch.viewcontroller.WitchGegnerWahl;
 import cardnight.games.witch.viewcontroller.WitchKartenBilder;
-import cardnight.games.witch.viewcontroller.WitchView;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -66,7 +64,7 @@ public class MainMenuView {
 
     public void onWitchClick() throws IOException {
         SoundPlayer.klickSound();
-        ScreenController.activateNewPane(WitchView.loadScene());
+        ScreenController.activateNewPane(WitchGegnerWahl.loadScene());
     }
 
     public void onBeendenClick() {

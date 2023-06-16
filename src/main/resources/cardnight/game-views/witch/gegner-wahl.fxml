@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefHeight="400.0" prefWidth="600.0" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchGegnerWahl">
+    <Label stylesheets="@../../fonts/algerian-condensed.css" text="Gegen wie viele Spieler möchtest du spielen?" textFill="WHITE" StackPane.alignment="TOP_CENTER">
+      <font>
+         <Font name="Segoe UI" size="24.0" />
+      </font>
+      <StackPane.margin>
+         <Insets top="15.0" />
+      </StackPane.margin></Label>
+
+    <VBox spacing="3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
+        <Label stylesheets="@../../fonts/algerian-condensed.css" text="Anzahl Mitspieler" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font></Label>
+        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="3">
+            <Button onAction="#zweiKlick" stylesheets="@../../styles/button-style.css" text="2" textFill="WHITE">
+             <font>
+                <Font size="14.0" />
+             </font></Button>
+            <Button onAction="#dreiKlick" stylesheets="@../../styles/button-style.css" text="3" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font></Button>
+            <Button onAction="#vierKlick" stylesheets="@../../styles/button-style.css" text="4" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font></Button>
+            <Button onAction="#fuenfKlick" stylesheets="@../../styles/button-style.css" text="5" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font></Button>
+        </HBox>
+    </VBox>
+
+    <Button onAction="#zuruckZumHauptmenuKlick" stylesheets="@../../styles/button-style.css" text="Zurück zum Hauptmenü" StackPane.alignment="BOTTOM_CENTER" />
+
+</StackPane>

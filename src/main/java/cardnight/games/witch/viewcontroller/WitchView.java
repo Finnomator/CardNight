@@ -44,6 +44,7 @@ public class WitchView extends SpielView {
     private final AtomicReference<WitchKarte> geklickteKarte = new AtomicReference<>();
     private HashMap<WitchGegner, WitchGegnerUiHand> gegnerUiHaende;
     private WitchUiStichStapel uiStichStapel;
+    public static int anzahlGegner = 5;
 
     public void initialize() throws IOException {
         //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
@@ -52,7 +53,7 @@ public class WitchView extends SpielView {
 
         WitchKartenBilder.bilderLaden();
 
-        witch = new Witch(6, 1000, this);
+        witch = new Witch(anzahlGegner + 1, 1000, this);
         Main.setzeAktuellesSpiel(witch);
 
         gegnerUiHaende = new HashMap<>();

@@ -173,32 +173,28 @@ public class MainMenuView {
 
         Random rnd = Tools.random;
 
-        int rndGame = rnd.nextInt(3);
+        if (rnd.nextInt(5) == 0) {
+            if (rnd.nextBoolean())
+                return TTTBilder.xHandkarte;
+            else
+                return TTTBilder.oHandkarte;
+        }
 
         String farbe;
         int zahl;
 
-        switch (rndGame) {
-            case 0:
-                if (rnd.nextInt(2) == 0)
-                    return TTTBilder.xHandkarte;
-                else
-                    return TTTBilder.oHandkarte;
-            case 1:
-                farbe = UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)].toString().toLowerCase();
-                zahl = rnd.nextInt(10);
-                return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png", 0, 0);
-            case 2:
+        if (rnd.nextBoolean()) {
+            farbe = UenoFarbe.values()[rnd.nextInt(UenoFarbe.values().length)].toString().toLowerCase();
+            zahl = rnd.nextInt(10);
+            return UenoKartenBilder.ladeBild("zahlen/" + farbe + "/UNO_" + zahl + "_" + farbe + ".png", 0, 0);
+        } else {
+            if (rnd.nextInt(100) == 0) // What could this be? 👀
+                return Ressourcen.dieDiebin;
 
-                if (rnd.nextInt(100) == 0) // What could this be? 👀
-                    return Ressourcen.dieDiebin;
-
-                farbe = WitchFarbe.values()[rnd.nextInt(WitchFarbe.values().length)].toString().toLowerCase();
-                zahl = rnd.nextInt(13) + 1;
-                return WitchKartenBilder.ladeBild(farbe + "/Witch_" + farbe + "_" + zahl + ".png", 0, 0);
+            farbe = WitchFarbe.values()[rnd.nextInt(WitchFarbe.values().length)].toString().toLowerCase();
+            zahl = rnd.nextInt(13) + 1;
+            return WitchKartenBilder.ladeBild(farbe + "/Witch_" + farbe + "_" + zahl + ".png", 0, 0);
         }
-
-        throw new RuntimeException();
     }
 
     private void zeigeSpinnBox(boolean sichtbar) {

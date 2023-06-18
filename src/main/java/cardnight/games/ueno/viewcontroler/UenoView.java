@@ -33,19 +33,20 @@ public class UenoView extends SpielView {
     private Node uiHauptHand;
     private UenoSpieler hauptSpieler;
     private boolean spielIstBeendet;
+    public static int anzahlGegner;
+    public static int kartenAnzahl;
+
 
     public void initialize() throws IOException {
 
-        int gegnerAnzahl = 3;
-
-        ueno = new Ueno(gegnerAnzahl + 1, 7);
+        ueno = new Ueno(anzahlGegner + 1, kartenAnzahl);
         Main.setzeAktuellesSpiel(ueno);
         UenoKartenBilder.ladeBilder();
 
         hauptSpieler = ueno.gibHauptSpieler();
-        spielerHaende = new HashMap<>(gegnerAnzahl + 1);
+        spielerHaende = new HashMap<>(anzahlGegner + 1);
 
-        for (int i = 0; i < gegnerAnzahl; ++i) {
+        for (int i = 0; i < anzahlGegner; ++i) {
             FXMLLoader handLoader = new FXMLLoader(getClass().getResource("/cardnight/game-views/ueno/gegner-hand.fxml"));
             Node uiHand = handLoader.load();
             gegnerHaendeContainer.getChildren().add(uiHand);
@@ -269,19 +270,16 @@ public class UenoView extends SpielView {
         for (int i = 0; i < gewinner.size(); ++i)
             Logger.log((i + 1) + ".\t" + gewinner.get(i).name);
 
-        if (gewinner.size() == 1)
+        if (gewinner.get(0) == hauptSpieler) {
+            UenoSoundPlayer.duHastGewonnen();
             GameOver.setzeNachricht("Du hast gewonnen!");
-        else {
+        } else {
+            UenoSoundPlayer.rundeVorbei();
             String nachricht = "Die Gewinner:";
             for (int i = 0; i < gewinner.size(); ++i)
                 nachricht += "\n" + (i + 1) + ".\t" + gewinner.get(i).name;
             GameOver.setzeNachricht(nachricht);
         }
-
-        if (gewinner.get(0) == hauptSpieler)
-            UenoSoundPlayer.duHastGewonnen();
-        else
-            UenoSoundPlayer.rundeVorbei();
 
         root.getChildren().add(GameOver.loadScene());
     }

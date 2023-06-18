@@ -5,7 +5,6 @@ import cardnight.games.tictactoe.viewcontroller.TTTBilder;
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.viewcontroler.UenoKartenBilder;
-import cardnight.games.ueno.viewcontroler.UenoView;
 import cardnight.games.witch.WitchFarbe;
 import cardnight.games.witch.viewcontroller.WitchKartenBilder;
 import javafx.animation.Animation;
@@ -73,9 +72,9 @@ public class MainMenuView {
         System.exit(0);
     }
 
-    public void onUenoClick() throws IOException {
+    public void onUenoClick() {
         SoundPlayer.klickSound();
-        UenoView.showScene();
+        ScreenController.show(ScreenController.uenoGegnerWahl);
     }
 
     public static void openLinkInBrowser(String link) {

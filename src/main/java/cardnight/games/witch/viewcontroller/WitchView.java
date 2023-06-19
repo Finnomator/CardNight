@@ -50,10 +50,6 @@ public class WitchView extends SpielView {
     public static int anzahlGegner = 5;
 
     public void initialize() throws IOException {
-        //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
-        //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
-        // Hallo, Finn hier. NÖ! (-> irgendwann?)
-
         WitchKartenBilder.bilderLaden();
 
         witch = new Witch(anzahlGegner + 1, 1000, this);

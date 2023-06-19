@@ -5,32 +5,34 @@ Spielziel:
 Spielablauf:
     Die Rundenanzahl sagt aus, wie viele Karten jeder Spieler diese Runde hat. Somit spielt beispielsweise in der ersten
     Runde jeder Spieler mit genau einer Karte. Anschließend wird eine Karte aufgedeckt, welche den sogenannten Trumpf
-    dieser Runde darstellt. Jede Runde beginnt der nächste Spieler im Uhrzeigersinn, was mit dem Ladesymbol angezeigt
-    wird. Am Rundenanfang wird die Schätzung in das Textfeld eingetragen. Danach legt jeder Spieler, beginnend bei dem
-    Startspieler dieser Runde, im Uhrzeigersinn eine Karte auf den Ablagestapel. Nachdem jeder einmal am Zug war, wird
-    dieser sogenannte Stich an den Spieler verteilt, welche die beste Karte abgelegt hat. Dieser Spieler beginnt dann
-    mit der Ablegen der nächsten Karte. Dies läuft so lange, bis alle Spieler ihre Karten abgelegt haben. Dann werden
-    die Punkte dieser Runde ausgewertet.
+    dieser Runde darstellt. Dieser ist die horizontal liegende Karte links auf dem Tisch. Jede Runde beginnt der nächste
+    Spieler im Uhrzeigersinn, was mit dem Ladesymbol angezeigt wird. Am Rundenanfang wird die Schätzung in das Textfeld
+    eingetragen. Danach legt jeder Spieler, beginnend bei dem Startspieler dieser Runde, im Uhrzeigersinn eine Karte auf
+    den Ablagestapel. Nachdem jeder einmal am Zug war, wird dieser sogenannte Stich an den Spieler verteilt, welche die
+    beste Karte abgelegt hat. Dieser Spieler beginnt dann mit der Ablegen der nächsten Karte. Dies läuft so lange, bis
+    alle Spieler ihre Karten abgelegt haben. Dann werden die Punkte dieser Runde ausgewertet.
 
 Ablageregeln:
-    Weiße Karten, also Narren und Hexen, dürfen immer gelegt werden. Für die restlichen Karten besteht Farbzwang. Das
-    bedeutet, dass immer die unterste farbige Karte auf dem Ablagestapel festlegt, welche Farbe gelegt werden darf. Wenn
-    keine farbige Karte auf dem Ablagestapel liegt, darf eine beliebige Karte gelegt werden. Dies ist auch der Fall,
-    wenn man keine Karte dieser Farbe besitzt, wobei Narren und Hexen als weiß zählen.
+    Narren und Hexen, dürfen immer gelegt werden. Für die restlichen Karten besteht Farbzwang. Das bedeutet, dass immer
+    die unterste farbige Karte auf dem Ablagestapel festlegt, welche Farbe gelegt werden darf. Wenn keine farbige Karte
+    auf dem Ablagestapel liegt, darf eine beliebige Karte gelegt werden. Dies ist auch der Fall, wenn man keine Karte
+    dieser Farbe besitzt, wobei Narren und Hexen bei dem Farbzwang nicht miteinbezogen werden.
 
 Stichbewertung:
-    Die Farbe der Trumpfkarte ist für diese Runde die beste Farbe. Falls die Trumpfkarte weiß ist, also ein Narr oder
-    eine Hexe ist, gibt es keine universal beste Farbe für diese Runde. Die zweitbeste Farbe ist bei jedem Stich
-    unterschiedlich. Hierbei handelt es sich immer um die Farbe, welche auch der Farbzwang war, also die Farbe der
-    untersten farbigen Karte. Falls der Trumpf weiß ist, ist diese Farbe die beste Farbe, nicht die Zweitbeste.
-    Innerhalb einer Farbe bestimmt die Höhe der Karte, welche Karte besser ist. Hexen sind besser als alle anderen
-    Karten, wobei bei mehreren Hexen die erste Hexe gewinnt. Narren sind schlechter als alle anderen Karten, wobei der
-    erste Narr gewinnt, wenn in einem Stich nur Narren sind.
+    Die Farbe der Trumpfkarte ist für diese Runde die beste Farbe. Falls die Trumpfkarte ein Narr oder eine Hexe ist,
+    gibt es keine universell beste Farbe für diese Runde. Die zweitbeste Farbe ist bei jedem Stich unterschiedlich.
+    Hierbei handelt es sich immer um die Farbe, welche auch der Farbzwang war, also die Farbe der untersten farbigen
+    Karte. Falls der Trumpf ein Narr oder eine Hexe ist, ist diese Farbe die beste Farbe, nicht die Zweitbeste.
+    Innerhalb einer Farbe bestimmt der Kartenwert, welche Karte besser ist. Hexen sind besser als alle anderen Karten,
+    wobei bei mehreren abgelegten Hexen die erste Hexe gewinnt. Narren sind schlechter als alle anderen Karten, wobei
+    der erste Narr gewinnt, wenn in einem Stich nur Narren sind.
 
 Punktevergabe:
     Wenn man richtig geschätzt hat, bekommt man 20 Punkte und zusätzlich pro Stich 10 Punkte. Wenn man falsch geschätzt
     hat, bekommt man pro Stich, welchen man daneben liegt, -10 Punkte und erhält sonst keine weiteren Punkte. Wenn man
     beispielsweise 4 Stiche geschätzt hat, aber 6 Stiche erhalten hat, bekommt man -20 Punkte.
+    Die Punkte werden rechts in der Tabelle angezeigt, während die Gesamtpunktzahl in der untersten Zeile steht.
+    Im kleinen Feld rechts neben den Punkten steht immer die Schätzung.
 
 Beispiel:
     Der Trumpf der Runde ist eine rote 4. Der Startspieler legt eine blaue 12. Anschließend legt der nächste Spieler

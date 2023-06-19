@@ -13,7 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -25,12 +25,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.regex.Pattern;
 
 public class WitchView extends SpielView {
 
     public StackPane root;
-    public TextField schaetzungsEingabeFeld;
     public VBox schaetzungsRoot;
     public Button schaetzungsOkButton;
     public HBox gegnerUiHaendeContainer;
@@ -39,6 +37,7 @@ public class WitchView extends SpielView {
     public GridPane tableGrid;
     public ImageView trumpfImageView;
     public GridPane tischContentContainer;
+    public Slider schaetzungsSlider;
     private Witch witch;
     private WitchHauptspielerUiHand hauptspielerUiHand;
     private WitchPunktetafel punktetafel;
@@ -50,9 +49,6 @@ public class WitchView extends SpielView {
     public static int anzahlGegner = 5;
 
     public void initialize() throws IOException {
-        //TODO: Falls der Zuständige (Finn) richtig viel Bock hat:
-        //TODO: In der allerersten Runde (jeder hat nur 1 Karte) sieht man nur die Karte JEDES Gegners, NICHT seine eigene Karte
-        // Hallo, Finn hier. NÖ! (-> irgendwann?)
 
         WitchKartenBilder.bilderLaden();
 
@@ -77,8 +73,6 @@ public class WitchView extends SpielView {
         uiStichStapel = new WitchUiStichStapel(witch);
         tischContentContainer.add(uiStichStapel, 2, 0);
 
-        numericOnly(schaetzungsEingabeFeld);
-
         hauptspielerUiHand = new WitchHauptspielerUiHand(witch.gibHauptspieler());
         GridPane.setHalignment(hauptspielerUiHand, HPos.CENTER);
         tableGrid.add(hauptspielerUiHand, 0, 2);
@@ -88,6 +82,9 @@ public class WitchView extends SpielView {
         root.getChildren().add(punktetafel);
 
         root.addEventFilter(WitchKartenKlickEvent.ANY, this::handleWitchKartenClick);
+
+        schaetzungsSlider.valueProperty().addListener((obs, oldval, newVal) ->
+                schaetzungsSlider.setValue(Math.round(newVal.doubleValue())));
 
         witch.game();
     }
@@ -102,6 +99,7 @@ public class WitchView extends SpielView {
         Logger.log("\t\tWarte auf Schätzung vom Spieler...");
 
         Platform.runLater(() -> {
+            schaetzungsSlider.setMax(witch.gibRundenNummer() + 1);
             hauptspielerUiHand.disableAllCards();
             schaetzungsRoot.setDisable(false);
         });
@@ -113,11 +111,7 @@ public class WitchView extends SpielView {
 
         Platform.runLater(() -> schaetzungsRoot.setDisable(true));
 
-        try {
-            return Integer.parseInt(schaetzungsEingabeFeld.getText());
-        } catch (NumberFormatException ex) {
-            return warteAufSchaetzung();
-        }
+        return (int) schaetzungsSlider.getValue();
     }
 
     public WitchKarte warteAufKartenauswahl() {
@@ -182,14 +176,6 @@ public class WitchView extends SpielView {
     public void schaetzungOkKlick() {
         SoundPlayer.klickSound();
         hatStichSchaetzungBestaetigt.set(true);
-    }
-
-    private void numericOnly(TextField field) {
-        field.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!Pattern.matches("\\d*", newValue))
-                field.setText(newValue.replaceAll("\\D", ""));
-            schaetzungsOkButton.setDisable("".equals(field.getText()));
-        });
     }
 }
 

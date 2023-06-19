@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainMenuView {
 
@@ -53,8 +54,9 @@ public class MainMenuView {
 
         setzeBoxFace();
 
-        setzeHintergrund(null);
+        MusicPlayer.spielePlaylist();
         startRotatingCards();
+        setzeHintergrund(null);
     }
 
     public void onTicTacToeClick() {

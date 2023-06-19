@@ -1,25 +1,59 @@
 package cardnight;
 
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
 public class SoundMenu {
-    public Button soundEnableButton;
     public Slider musicVolumeSlider;
+    public Slider soundVolumeSlider;
+    public Label soundLabel;
+    public Label musicLabel;
+
+    private boolean valueChanged;
 
     public void initialize() {
-        musicVolumeSlider.setValue(Main.getMusicVolume() * 100.0);
+
+        musicVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+
+            double volume = newVal.doubleValue();
+
+            if (volume <= 0)
+                musicLabel.setText("\uD834\uDD94");
+            else if (volume < 1 / 3.0)
+                musicLabel.setText("♪");
+            else if (volume < 2 / 3.0)
+                musicLabel.setText("🎵");
+            else
+                musicLabel.setText("🎶");
+
+            Main.setMusicVolume(volume);
+        });
+
+        soundVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            valueChanged = true;
+
+            double volume = newVal.doubleValue();
+
+            if (volume <= 0)
+                soundLabel.setText("🔇");
+            else if (volume < 1 / 3.0)
+                soundLabel.setText("🔈");
+            else if (volume < 2 / 3.0)
+                soundLabel.setText("🔉");
+            else
+                soundLabel.setText("🔊");
+        });
+
+        musicVolumeSlider.setValue(Main.getMusicVolume());
+        soundVolumeSlider.setValue(SoundPlayer.soundVolume);
     }
 
-    public void soundEnableKlick() {
-        Main.enableSound = !Main.enableSound;
-        soundEnableButton.setText(Main.enableSound ? "\uD83D\uDD0A" : "\uD83D\uDD07");
-    }
+    public void soundSliderMouseRelease() {
+        if (!valueChanged)
+            return;
 
-    public void musicSliderMouseClick() {
-        Main.setMusicVolume(musicVolumeSlider.getValue() / 100.0);
-
-        if (Tools.random.nextInt(20) == 0) // 🤔
-            SoundPlayer.soundEinstellen();
+        SoundPlayer.soundVolume = soundVolumeSlider.getValue();
+        SoundPlayer.soundEinstellen();
+        valueChanged = false;
     }
 }

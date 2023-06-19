@@ -52,14 +52,14 @@ public class Main {
 
     public static void setMusicVolume(double musicVolume) {
         Main.musicVolume = musicVolume;
-        throw new UnsupportedOperationException();
+        // throw new UnsupportedOperationException();
         /*
         TODO: Das wird benutzt, sobald wir Hintergrundmusik haben
         float range = volumeControl.getMaximum() - volumeControl.getMinimum();
         float gain = (float) (range * soundVolume + volumeControl.getMinimum());
         volumeControl.setValue(gain);
 
-        Logger.log("Sound: " + soundVolume);
+        Logger.log("Music volume now at " + (int) (musicVolume * 100) + "%");
          */
     }
 }

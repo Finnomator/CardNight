@@ -9,6 +9,8 @@ public class SoundPlayer {
     private static final Clip klickSoundEffekt = ladeSound("sounds/Button_Sound.wav");
     private static final Clip soundEinstellenSound = ladeSound("sounds/Soundeinstellen_Sound.wav");
 
+    public static double soundVolume = 0.5;
+
     public static Clip ladeSound(String pfad) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(
@@ -30,8 +32,11 @@ public class SoundPlayer {
     }
 
     public static void playSound(Clip sound) {
-        if (!Main.enableSound)
+        if (!Main.enableSound || soundVolume <= 0)
             return;
+
+        FloatControl gainControl = (FloatControl) sound.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue((float) (Math.log10(soundVolume) * 20.0));
 
         sound.setFramePosition(0);
         sound.start();

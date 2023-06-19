@@ -3,7 +3,7 @@ package cardnight.games.tictactoe.viewcontroller;
 import cardnight.SoundPlayer;
 import cardnight.Tools;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.Clip;
 
 public class TTTSoundPlayer {
 

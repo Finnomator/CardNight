@@ -1,86 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchView">
+<StackPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="colored-pane"
+           xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="cardnight.games.witch.viewcontroller.WitchView">
 
     <GridPane fx:id="tableGrid">
-        <HBox fx:id="gegnerUiHaendeContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10" GridPane.halignment="CENTER">
-         <GridPane.margin>
-            <Insets top="50.0" />
-         </GridPane.margin></HBox>
+        <HBox fx:id="gegnerUiHaendeContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10"
+              GridPane.halignment="CENTER">
+            <GridPane.margin>
+                <Insets top="50.0"/>
+            </GridPane.margin>
+        </HBox>
 
-        <AnchorPane maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: #00091f; -fx-border-color: white; -fx-border-width: 5;" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="-5.0" right="-5.0" />
-         </GridPane.margin></AnchorPane>
+        <AnchorPane maxHeight="Infinity" maxWidth="Infinity"
+                    style="-fx-background-color: #00091f; -fx-border-color: white; -fx-border-width: 5;"
+                    GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets left="-5.0" right="-5.0"/>
+            </GridPane.margin>
+        </AnchorPane>
 
-        <GridPane fx:id="tischContentContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" rotate="-60.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-            <ImageView fx:id="trumpfImageView" fitWidth="150" preserveRatio="true" rotate="270.0" />
+        <GridPane fx:id="tischContentContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                  rotate="-60.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <ImageView fx:id="trumpfImageView" fitWidth="150" preserveRatio="true" rotate="270.0"/>
 
             <columnConstraints>
-                <ColumnConstraints />
-                <ColumnConstraints prefWidth="100" />
-                <ColumnConstraints prefWidth="164.4" />
+                <ColumnConstraints/>
+                <ColumnConstraints prefWidth="100"/>
+                <ColumnConstraints prefWidth="164.4"/>
             </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-         </rowConstraints>
-         <rotationAxis>
-            <Point3D x="1.0" />
-         </rotationAxis>
+            <rowConstraints>
+                <RowConstraints/>
+            </rowConstraints>
+            <rotationAxis>
+                <Point3D x="1.0"/>
+            </rotationAxis>
         </GridPane>
 
         <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints hgrow="ALWAYS"/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints vgrow="ALWAYS" />
-            <RowConstraints prefHeight="164.4" />
+            <RowConstraints/>
+            <RowConstraints vgrow="ALWAYS"/>
+            <RowConstraints prefHeight="164.4"/>
         </rowConstraints>
     </GridPane>
-    <Button mnemonicParsing="false" onAction="#pauseClick" stylesheets="@../styles/button-style.css" text="⏸" StackPane.alignment="TOP_RIGHT" />
+    <Button mnemonicParsing="false" onAction="#pauseClick" stylesheets="@../styles/button-style.css" text="⏸"
+            StackPane.alignment="TOP_RIGHT"/>
 
-    <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="77.0" prefWidth="149.0" StackPane.alignment="BOTTOM_LEFT">
+    <VBox fx:id="schaetzungsRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="77.0"
+          prefWidth="149.0" StackPane.alignment="BOTTOM_LEFT">
         <Label stylesheets="@../fonts/algerian-condensed.css" text="Schätzung" textFill="WHITE">
-             <font>
-                <Font size="18.0" />
-             </font></Label>
-        <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Anzahl Stiche" />
-        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="Infinity" onAction="#schaetzungOkKlick" stylesheets="@../styles/button-style.css" text="OK" />
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="schaetzungsEingabeFeld" alignment="CENTER" promptText="Anzahl Stiche"/>
+        <Button fx:id="schaetzungsOkButton" disable="true" maxWidth="Infinity" onAction="#schaetzungOkKlick"
+                stylesheets="@../styles/button-style.css" text="OK"/>
     </VBox>
 
     <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30" prefWidth="150" StackPane.alignment="BOTTOM_RIGHT">
         <Label stylesheets="@../fonts/algerian-condensed.css" text="Erhaltene Stiche: " textFill="WHITE">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Label>
         <Label fx:id="erhalteneSticheText" stylesheets="@../fonts/algerian-condensed.css" text="0" textFill="WHITE">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Label>
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
+        <opaqueInsets>
+            <Insets/>
+        </opaqueInsets>
     </HBox>
 
 
     <HBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_CENTER">
         <Label stylesheets="@../fonts/algerian-condensed.css" text="Runde " textFill="WHITE">
-         <font>
-            <Font size="28.0" />
-         </font></Label>
+            <font>
+                <Font size="28.0"/>
+            </font>
+        </Label>
         <Label fx:id="rundenNummerText" stylesheets="@../fonts/algerian-condensed.css" text="1" textFill="WHITE">
             <font>
-            <Font size="28.0" />
-        </font></Label>
+                <Font size="28.0"/>
+            </font>
+        </Label>
     </HBox>
 
 </StackPane>

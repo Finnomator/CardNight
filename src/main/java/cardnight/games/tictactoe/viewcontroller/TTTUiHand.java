@@ -13,7 +13,7 @@ public class TTTUiHand extends HBox {
 
     protected TTTUiHand(TicTacToeSpieler spieler) {
         this.spieler = spieler;
-        handkartenBild = spieler.istX? TTTBilder.xHandkarte : TTTBilder.oHandkarte;
+        handkartenBild = spieler.istX ? TTTBilder.xHandkarte : TTTBilder.oHandkarte;
 
         setMaxSize(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
 

@@ -1,47 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.witch.viewcontroller.WitchGegnerUiHand">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER"
+      xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cardnight.games.witch.viewcontroller.WitchGegnerUiHand">
     <VBox alignment="CENTER">
         <Label fx:id="nameText" stylesheets="@../../fonts/algerian-condensed.css" text="NAME" textFill="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Label>
         <HBox maxHeight="-Infinity" maxWidth="-Infinity">
             <Label stylesheets="@../../fonts/algerian-condensed.css" text="Schätzung: " textFill="WHITE">
-            <font>
-               <Font size="15.0" />
-            </font></Label>
-            <Label fx:id="geschaetzteSticheText" stylesheets="@../../fonts/algerian-condensed.css" text="0" textFill="WHITE">
-            <font>
-               <Font size="15.0" />
-            </font></Label>
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <Label fx:id="geschaetzteSticheText" stylesheets="@../../fonts/algerian-condensed.css" text="0"
+                   textFill="WHITE">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
         </HBox>
 
         <HBox maxHeight="-Infinity" maxWidth="-Infinity">
             <Label stylesheets="@../../fonts/algerian-condensed.css" text="Erhaltene Stiche: " textFill="WHITE">
-            <font>
-               <Font size="15.0" />
-            </font></Label>
-            <Label fx:id="erhalteneSticheText" stylesheets="@../../fonts/algerian-condensed.css" text="0" textFill="WHITE">
-            <font>
-               <Font size="15.0" />
-            </font></Label>
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <Label fx:id="erhalteneSticheText" stylesheets="@../../fonts/algerian-condensed.css" text="0"
+                   textFill="WHITE">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
         </HBox>
     </VBox>
     <StackPane>
-        <ProgressIndicator fx:id="thinkingProgress" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="73.0" prefWidth="68.0" stylesheets="@../hide-percentage.css" StackPane.alignment="TOP_CENTER">
+        <ProgressIndicator fx:id="thinkingProgress" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="73.0"
+                           prefWidth="68.0" stylesheets="@../hide-percentage.css" StackPane.alignment="TOP_CENTER">
             <StackPane.margin>
-                <Insets top="3.0" />
-            </StackPane.margin></ProgressIndicator>
+                <Insets top="3.0"/>
+            </StackPane.margin>
+        </ProgressIndicator>
         <ImageView fitWidth="200.0" preserveRatio="true">
-            <Image url="@../images/stickman.png" />
+            <Image url="@../images/stickman.png"/>
         </ImageView>
-        <HBox fx:id="kartenBox" maxHeight="-Infinity" maxWidth="-Infinity" spacing="-15.0" />
+        <HBox fx:id="kartenBox" maxHeight="-Infinity" maxWidth="-Infinity" spacing="-15.0"/>
     </StackPane>
 </VBox>

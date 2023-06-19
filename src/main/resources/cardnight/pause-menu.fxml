@@ -1,53 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+<GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0,0,0,0.7);"
+          xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="cardnight.PauseMenu">
 
-<GridPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0,0,0,0.7);" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.PauseMenu">
-
-    <VBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="3" prefHeight="115.0" prefWidth="196.0" GridPane.valignment="TOP">
-        <Button maxWidth="Infinity" onAction="#onFortsetzenClick" stylesheets="@styles/button-style.css" text="Fortsetzen" />
-        <StackPane maxHeight="-Infinity" style="-fx-border-color: linear-gradient(to top left, #001F33, #0A1166); -fx-border-width: 3; -fx-border-radius: 5;">
-            <fx:include source="sound-menu.fxml" />
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="3" prefHeight="115.0" prefWidth="196.0"
+          GridPane.valignment="TOP">
+        <Button maxWidth="Infinity" onAction="#onFortsetzenClick" stylesheets="@styles/button-style.css"
+                text="Fortsetzen"/>
+        <StackPane maxHeight="-Infinity"
+                   style="-fx-border-color: linear-gradient(to top left, #001F33, #0A1166); -fx-border-width: 3; -fx-border-radius: 5;">
+            <fx:include source="sound-menu.fxml"/>
         </StackPane>
-        <Button maxWidth="Infinity" onAction="#onErneutSpielenClick" stylesheets="@styles/button-style.css" text="Neues Spiel" />
-        <Button maxWidth="Infinity" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css" text="Zurück zum Hauptmenü" />
+        <Button maxWidth="Infinity" onAction="#onErneutSpielenClick" stylesheets="@styles/button-style.css"
+                text="Neues Spiel"/>
+        <Button maxWidth="Infinity" onAction="#onZumHauptmenueClick" stylesheets="@styles/button-style.css"
+                text="Zurück zum Hauptmenü"/>
         <GridPane.margin>
-         <Insets left="15.0" top="15.0" />
-      </GridPane.margin>
+            <Insets left="15.0" top="15.0"/>
+        </GridPane.margin>
     </VBox>
 
-    <ScrollPane fitToWidth="true" stylesheets="@styles/transparent-scroll-pane.css" vbarPolicy="ALWAYS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" VBox.vgrow="ALWAYS">
+    <ScrollPane fitToWidth="true" stylesheets="@styles/transparent-scroll-pane.css" vbarPolicy="ALWAYS"
+                GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" VBox.vgrow="ALWAYS">
         <VBox alignment="TOP_CENTER">
             <Label text="So wird gespielt" textFill="WHITE">
                 <font>
-                    <Font name="Segoe UI" size="24.0" />
+                    <Font name="Segoe UI" size="24.0"/>
                 </font>
-            <VBox.margin>
-               <Insets top="15.0" />
-            </VBox.margin>
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
             </Label>
             <Label fx:id="anleitungText" textFill="WHITE" wrapText="true">
                 <font>
-                    <Font name="Segoe UI" size="14.0" />
+                    <Font name="Segoe UI" size="14.0"/>
                 </font>
                 <VBox.margin>
-                    <Insets top="10.0" />
+                    <Insets top="10.0"/>
                 </VBox.margin>
             </Label>
             <padding>
-                <Insets bottom="20.0" />
+                <Insets bottom="20.0"/>
             </padding>
         </VBox>
     </ScrollPane>
 
     <columnConstraints>
-        <ColumnConstraints />
-        <ColumnConstraints hgrow="ALWAYS" />
+        <ColumnConstraints/>
+        <ColumnConstraints hgrow="ALWAYS"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints vgrow="ALWAYS"/>
     </rowConstraints>
 </GridPane>

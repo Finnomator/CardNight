@@ -3,7 +3,7 @@ package cardnight.games.ueno.viewcontroler;
 import cardnight.SoundPlayer;
 import cardnight.games.ueno.UenoFarbe;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.Clip;
 import java.util.EnumMap;
 
 public class UenoSoundPlayer {

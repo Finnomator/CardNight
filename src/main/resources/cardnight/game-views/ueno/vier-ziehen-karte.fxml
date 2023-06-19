@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<StackPane maxHeight="Infinity" maxWidth="Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoFarbwahlUiKarte">
+<StackPane maxHeight="Infinity" maxWidth="Infinity" xmlns="http://javafx.com/javafx/11.0.14-internal"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardnight.games.ueno.viewcontroler.UenoFarbwahlUiKarte">
 
     <Button stylesheets="@../../styles/transparent-image-button.css">
         <graphic>
             <ImageView fitWidth="113.6" preserveRatio="true">
-                <Image url="@images/vier-ziehen/UNO_Karte_vier_ziehen_schwarz.png" />
+                <Image url="@images/vier-ziehen/UNO_Karte_vier_ziehen_schwarz.png"/>
             </ImageView>
         </graphic>
         <padding>
-            <Insets top="0.001" />
+            <Insets top="0.001"/>
         </padding>
     </Button>
 
     <GridPane alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints prefWidth="23.0" />
-            <ColumnConstraints prefWidth="23.0" />
+            <ColumnConstraints prefWidth="23.0"/>
+            <ColumnConstraints prefWidth="23.0"/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints prefHeight="34.0" />
-            <RowConstraints prefHeight="34.0" />
+            <RowConstraints prefHeight="34.0"/>
+            <RowConstraints prefHeight="34.0"/>
         </rowConstraints>
-        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#redAction" stylesheets="@../../styles/transparent-button-with-hover-effect.css" />
-        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#yellowAction" stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="1" />
-        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#greenAction" stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.rowIndex="1" />
-        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#blueAction" stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#redAction"
+                stylesheets="@../../styles/transparent-button-with-hover-effect.css"/>
+        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#yellowAction"
+                stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="1"/>
+        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#greenAction"
+                stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.rowIndex="1"/>
+        <Button maxHeight="Infinity" maxWidth="Infinity" onAction="#blueAction"
+                stylesheets="@../../styles/transparent-button-with-hover-effect.css" GridPane.columnIndex="1"
+                GridPane.rowIndex="1"/>
     </GridPane>
 </StackPane>

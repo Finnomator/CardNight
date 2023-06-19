@@ -1,7 +1,7 @@
 .progress-indicator .percentage {
-    -fx-fill:null;
+    -fx-fill: null;
 }
 
-.progress-indicator  {
+.progress-indicator {
     -fx-padding: 0 0 -16 0;
 }

@@ -26,7 +26,7 @@ public class SoundMenu {
             else
                 musicLabel.setText("🎶");
 
-            Main.setMusicVolume(volume);
+            MusicPlayer.setMusicVolume(volume);
         });
 
         soundVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
@@ -44,7 +44,7 @@ public class SoundMenu {
                 soundLabel.setText("🔊");
         });
 
-        musicVolumeSlider.setValue(Main.getMusicVolume());
+        musicVolumeSlider.setValue(MusicPlayer.getMusicVolume());
         soundVolumeSlider.setValue(SoundPlayer.soundVolume);
     }
 

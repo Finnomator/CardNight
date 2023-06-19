@@ -32,7 +32,7 @@ public class SoundPlayer {
     }
 
     public static void playSound(Clip sound) {
-        if (!Main.enableSound || soundVolume <= 0)
+        if (soundVolume <= 0)
             return;
 
         FloatControl gainControl = (FloatControl) sound.getControl(FloatControl.Type.MASTER_GAIN);

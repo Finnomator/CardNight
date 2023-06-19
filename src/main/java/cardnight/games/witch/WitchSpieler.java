@@ -4,7 +4,6 @@ import cardnight.Logger;
 import cardnight.games.Spieler;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public abstract class WitchSpieler extends Spieler {
 
@@ -128,6 +127,5 @@ public abstract class WitchSpieler extends Spieler {
 
     public void kartenSortieren() {
         handkarten.sort((o1, o2) -> o1.vergleichsWert(spiel.gibTrumpfKarte()) - (o2.vergleichsWert(spiel.gibTrumpfKarte())));
-        Collections.reverse(handkarten);
     }
 }

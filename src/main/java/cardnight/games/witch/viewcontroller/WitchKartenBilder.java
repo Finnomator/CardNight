@@ -57,7 +57,7 @@ public class WitchKartenBilder {
         if (karte.istNarr())
             return narrenKarten.get(karte.farbe);
 
-        if (karte.wert == 1 && karte.farbe == WitchFarbe.GELB && Tools.random.nextInt(10) == 0) // What could this mean? ㄟ( ▔, ▔ )ㄏ
+        if (karte.wert == 1 && karte.farbe == WitchFarbe.GELB && Tools.random.nextInt(100) == 0) // What could this mean? ㄟ( ▔, ▔ )ㄏ
             return Ressourcen.dieDiebin;
 
         return farbigeKarten.get(karte.farbe)[karte.wert - 1];

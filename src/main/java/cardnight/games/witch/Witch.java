@@ -146,8 +146,6 @@ public class Witch extends Spiel {
     }
 
     public void update() {
-        // TODO: Wenn alle 60 Karten verteilt werden, darf nur die Farbe als Trumpf angezeigt werden
-
         // Logger.log("***Ui Update***");
         Platform.runLater(observerView::updateUi);
     }

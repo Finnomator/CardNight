@@ -172,6 +172,7 @@ public class Witch extends Spiel {
             for (int i = 0; i < anzKarten; i++)
                 s.handkarteHinzufuegen(WitchKartenset.gibZufaelligeKarte(true));
 
+        spieler[0].kartenSortieren();
         update();
     }
 

@@ -1,58 +1,41 @@
-Karten:
-    Es gibt vier Farben mit jeweils den Zahlen 1 bis 13 darauf. 1 ist die schwächste, 13 die stärkste dieser
-    Karten. Zudem gibt es noch 4 Witcher und 4 Narren. Witcher sind die stärksten Karten im Spiel,
-    Narren die schwächsten.
+Spielziel:
+    Ziel des Spiels ist durch korrektes Einschätzen seiner Karten möglichst viele Punkte zu erreichen. Der Spieler,
+    welcher am Spielende die meisten Punkte hat, gewinnt.
 
-Aufbau des Spiels:
-    Grundlegend wird jede Runde eine Karte mehr an jeden Spieler ausgeteilt. Bedeutet, dass in der
-    ersten Runde jeder 1 Karte, in der zweiten Runde jeder 2 Karten usw. hat. Nachdem die Karten
-    ausgeteilt wurden, wird eine Karte frei aufgedeckt. Die Farbe der Karte ist für die Runde Trumpf.
-    Daraufhin muss jeder Spieler sagen, wie viele Stiche er macht. Danach beginnen die Auslegerunden.
-    Die erste Auslegerunde jeder Runde eröffnet man immer selbst. Danach eröffnet immer der Spieler
-    die Auslegerunde, welcher den letzten Stich gemacht hat.
+Spielablauf:
+    Die Rundenanzahl sagt aus, wie viele Karten jeder Spieler diese Runde hat. Somit spielt beispielsweise in der ersten
+    Runde jeder Spieler mit genau einer Karte. Anschließend wird eine Karte aufgedeckt, welche den sogenannten Trumpf
+    dieser Runde darstellt. Jede Runde beginnt der nächste Spieler im Uhrzeigersinn, was mit dem Ladesymbol angezeigt
+    wird. Am Rundenanfang wird die Schätzung in das Textfeld eingetragen. Danach legt jeder Spieler, beginnend bei dem
+    Startspieler dieser Runde, im Uhrzeigersinn eine Karte auf den Ablagestapel. Nachdem jeder einmal am Zug war, wird
+    dieser sogenannte Stich an den Spieler verteilt, welche die beste Karte abgelegt hat. Dieser Spieler beginnt dann
+    mit der Ablegen der nächsten Karte. Dies läuft so lange, bis alle Spieler ihre Karten abgelegt haben. Dann werden
+    die Punkte dieser Runde ausgewertet.
 
-    Was ist eine Auslegerunde?
-        In einer Auslegerunde legt jeder Spieler nacheinander eine Karte aus. Die stärkste Karte gewinnt. Der
-        Spieler, welche diese Karte ausgespielt hat, bekommt dann einen Stich.
+Ablageregeln:
+    Weiße Karten, also Narren und Hexen, dürfen immer gelegt werden. Für die restlichen Karten besteht Farbzwang. Das
+    bedeutet, dass immer die unterste farbige Karte auf dem Ablagestapel festlegt, welche Farbe gelegt werden darf. Wenn
+    keine farbige Karte auf dem Ablagestapel liegt, darf eine beliebige Karte gelegt werden. Dies ist auch der Fall,
+    wenn man keine Karte dieser Farbe besitzt, wobei Narren und Hexen als weiß zählen.
 
-    Was ist ein Stich?
-        Ein Stich macht man, indem man in einer Auslegrunde die stärkste Karte spielt. In Runde 1 kann man
-        demnach maximal 1 Stich machen, in Runde 5 fünf Stiche, usw.
+Stichbewertung:
+    Die Farbe der Trumpfkarte ist für diese Runde die beste Farbe. Falls die Trumpfkarte weiß ist, also ein Narr oder
+    eine Hexe ist, gibt es keine universal beste Farbe für diese Runde. Die zweitbeste Farbe ist bei jedem Stich
+    unterschiedlich. Hierbei handelt es sich immer um die Farbe, welche auch der Farbzwang war, also die Farbe der
+    untersten farbigen Karte. Falls der Trumpf weiß ist, ist diese Farbe die beste Farbe, nicht die Zweitbeste.
+    Innerhalb einer Farbe bestimmt die Höhe der Karte, welche Karte besser ist. Hexen sind besser als alle anderen
+    Karten, wobei bei mehreren Hexen die erste Hexe gewinnt. Narren sind schlechter als alle anderen Karten, wobei der
+    erste Narr gewinnt, wenn in einem Stich nur Narren sind.
 
-    Was ist der Trumpf?
-        Die Farbe der Karte, welche offen auf dem Tisch liegt, ist Trumpf. Eine Karte dieser Farbe ist stärker als
-        jede Karte einer anderen Farbe, ausgeschlossen der Witcher, welche immer die stärksten Karten sind
-        und der Narren, welche unabhängig von Farbe immer die schwächste Karte ist.
+Punktevergabe:
+    Wenn man richtig geschätzt hat, bekommt man 20 Punkte und zusätzlich pro Stich 10 Punkte. Wenn man falsch geschätzt
+    hat, bekommt man pro Stich, welchen man daneben liegt, -10 Punkte und erhält sonst keine weiteren Punkte. Wenn man
+    beispielsweise 4 Stiche geschätzt hat, aber 6 Stiche erhalten hat, bekommt man -20 Punkte.
 
-Einen Zug machen:
-    Wenn man selbst als erster auslegen darf, hat man freie Wahl welche Karte man ausspielt. Wenn ein
-    anderer Spieler beginnt, muss man die Farbe, welcher dieser auslegt, zugeben. Wenn man die Farbe
-    nicht zugeben kann, hat man wieder freie Wahl. Nur Witcher und Narren können unabhängig davon,
-    ob man zugeben kann, ausgespielt werden.
-
-Ziel des Spiels:
-    Das Ziel des Spiels ist es in jeder Runde exakt so viele Stiche machen, wie zuvor angesagt, um am
-    Ende die meisten Punkte zu erzielen.
-
-Punkteverteilung:
-    Wenn man die richtige Anzahl an Stichen angesagt hat, bekommt man 20 Punkte und pro Stich
-    jeweils noch 10. Wenn man einen Stich richtig ansagt, bekommt man 30, bei 2 Stichen 40, bei 5
-    Stichen 70 Punkte usw. Wenn man falsch liegt, bekommt man pro falschen Stich jeweils -10 Punkte.
-    Bedeutet wenn man 5 Stiche ansagt aber nur 4 macht -10, wenn man 2 macht -30. Es ist dabei egal,
-    ob man zu viel oder zu wenig Stiche gemacht hat. Auch wenn man 5 Stiche ansagt und 7 macht,
-    erhält man -20 Punkte. Die Punkte jeder Runde werden am Ende aufaddiert und ergeben dann die
-    Endpunktzahl.
-
-Beispiel 1:
-    Trumpf ist rot. S1 legt eine grüne 5. S2 legt eine grüne 8. S3 legt eine rote 1. S4 legt eine grüne 13.
-    In diesem Szenario geht der Stich an S3, da der Spieler keine grüne Karte ausspielen konnte und sich
-    daraufhin für die rote 1 entschieden hat und rot Trumpf ist.
-
-Beispiel 2:
-    Trumpf ist rot. S1 legt eine grüne 5. S2 legt eine grüne 8. S3 legt eine rote 1. S4 legt einen Witcher.
-    In diesem Szenario geht der Stich an S4, da der Witcher jegliche andere Karte schlägt. Es ist unwichtig,
-    ob S4 die Farbe hätte zugeben können.
-
-Sonderfälle:
-    1. Werden mehrere Witcher in einer Auslegerunde gelegt, gewinnt der Erstgelegte.
-    2. Werden in einer Auslegerunde nur Narren gelegt, gewinnt der Erstgelegte.
+Beispiel:
+    Der Trumpf der Runde ist eine rote 4. Der Startspieler legt eine blaue 12. Anschließend legt der nächste Spieler
+    eine blaue 2. Der dritte Spieler hat keine blauen Karten und darf deshalb eine beliebige Karte legen. Er entscheidet
+    sich für die rote 1. Hier gewinnt der dritte Spieler den Stich, weil er als einziges die beste Farbe, die
+    Trumpffarbe, gelegt hat. Hätte er statt der roten 1 eine gelbe 13 gelegt, würde der erste Spieler den Stich
+    gewinnen, weil blau für diesen Stich die zweitbeste Farbe ist. Es gewinnt nicht der zweiten Spieler, weil der Wert
+    der Karte des ersten Spielers höher ist.

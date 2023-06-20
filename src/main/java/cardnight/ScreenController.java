@@ -8,7 +8,6 @@ import javafx.scene.layout.Pane;
 
 public class ScreenController {
 
-    public static final Pane hautptemue = MainMenuView.loadScene();
     public static final Pane tttGegnerWahl = TTTGegnerWahl.loadScene();
     public static final Pane uenoGegnerWahl = UenoGegnerWahl.loadScene();
     public static final Pane witchGegnerWahl = WitchGegnerWahl.loadScene();

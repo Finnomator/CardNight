@@ -32,7 +32,7 @@ public class PauseMenu {
 
     public void onZumHauptmenueClick() {
         SoundPlayer.klickSound();
-        ScreenController.show(ScreenController.hautptemue);
+        MainMenuView.showScene();
     }
 
     public void onErneutSpielenClick() throws IOException {

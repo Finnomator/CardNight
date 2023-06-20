@@ -20,7 +20,10 @@ public class MainController extends Application {
 
         Main.mainStage = stage;
 
-        Scene mainScene = new Scene(ScreenController.hautptemue);
+        MainMenuBilder.ladeBilder();
+        MusicPlayer.spielePlaylist();
+
+        Scene mainScene = new Scene(MainMenuView.loadScene());
         PerspectiveCamera cam = new PerspectiveCamera();
         mainScene.setCamera(cam);
         mainScene.getStylesheets().add(getClass().getResource("/cardnight/styles/background-gradient.css").toExternalForm());

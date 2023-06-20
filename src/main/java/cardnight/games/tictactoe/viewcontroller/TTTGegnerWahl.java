@@ -1,9 +1,6 @@
 package cardnight.games.tictactoe.viewcontroller;
 
-import cardnight.Main;
-import cardnight.ScreenController;
-import cardnight.SoundPlayer;
-import cardnight.Tools;
+import cardnight.*;
 import cardnight.games.Ressourcen;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
@@ -22,7 +19,7 @@ public class TTTGegnerWahl {
 
     public void zuruckZumHauptmenuKlick() {
         SoundPlayer.klickSound();
-        ScreenController.show(ScreenController.hautptemue);
+        MainMenuView.showScene();
     }
 
     public void gegenComputerKlick() throws IOException {

@@ -41,7 +41,7 @@ public class MainMenuView {
 
     public void initialize() {
         debugLink.setVisited(Main.debugMode);
-        MainMenuBilder.ladeBilder();
+
         hintergrundImageView.fitWidthProperty().bind(root.widthProperty().subtract(500));
         spinnBox.heightProperty().bind(root.heightProperty().divide(2));
         spinnBox.widthProperty().bind(spinnBox.heightProperty().multiply(0.69));
@@ -53,7 +53,6 @@ public class MainMenuView {
 
         setzeBoxFace();
 
-        MusicPlayer.spielePlaylist();
         startRotatingCards();
         setzeHintergrund(null);
     }
@@ -209,6 +208,10 @@ public class MainMenuView {
             DebugWindow.oeffnen();
         else
             DebugWindow.schliessen();
+    }
+
+    public static void showScene() {
+        ScreenController.show(loadScene());
     }
 
     public static Pane loadScene() {

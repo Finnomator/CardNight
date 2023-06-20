@@ -34,7 +34,7 @@ public class GameOver {
 
     public void onZumHauptmenueClick() {
         SoundPlayer.klickSound();
-        ScreenController.show(ScreenController.hautptemue);
+        MainMenuView.showScene();
     }
 
     public void onNochmalSpielenClick() throws IOException {

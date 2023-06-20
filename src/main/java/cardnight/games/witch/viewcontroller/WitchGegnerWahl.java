@@ -1,6 +1,7 @@
 package cardnight.games.witch.viewcontroller;
 
 import cardnight.Main;
+import cardnight.MainMenuView;
 import cardnight.ScreenController;
 import cardnight.SoundPlayer;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,7 @@ import java.io.IOException;
 public class WitchGegnerWahl {
     public void zuruckZumHauptmenuKlick() {
         SoundPlayer.klickSound();
-        ScreenController.show(ScreenController.hautptemue);
+        MainMenuView.showScene();
     }
 
     public void zweiKlick() throws IOException {

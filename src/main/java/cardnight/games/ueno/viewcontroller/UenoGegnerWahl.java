@@ -1,6 +1,7 @@
 package cardnight.games.ueno.viewcontroller;
 
 import cardnight.Main;
+import cardnight.MainMenuView;
 import cardnight.ScreenController;
 import cardnight.SoundPlayer;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +35,7 @@ public class UenoGegnerWahl {
 
     public void zuruckZumHauptmenuKlick() {
         SoundPlayer.klickSound();
-        ScreenController.show(ScreenController.hautptemue);
+        MainMenuView.showScene();
     }
 
     private void startKlick() throws IOException {

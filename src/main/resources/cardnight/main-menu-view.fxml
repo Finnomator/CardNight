@@ -6,8 +6,8 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Box?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" minHeight="800" minWidth="1422"
-           styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal"
+<StackPane fx:id="root" minHeight="800" minWidth="1422" styleClass="colored-pane"
+           xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="cardnight.MainMenuView">
 
     <ImageView fx:id="hintergrundImageView" preserveRatio="true"/>
@@ -80,17 +80,24 @@
 
     <fx:include source="sound-menu.fxml" StackPane.alignment="TOP_RIGHT"/>
 
-    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_RIGHT">
-        <Label text="Developed by" textFill="white"/>
-        <Hyperlink onAction="#finnClick" text="Finn"/>
-        <Hyperlink onAction="#chrisClick" text="Chris"/>
-        <Hyperlink onAction="#marcClick" text="Marc"/>
-        <Hyperlink onAction="#davidClick" text="David"/>
-    </VBox>
+    <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_RIGHT">
+        <Label rotate="-90.0" text="Entwickelt von" textFill="white">
+            <HBox.margin>
+                <Insets left="-30.0" right="-25.0"/>
+            </HBox.margin>
+        </Label>
+        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
+            <Hyperlink onAction="#finnClick" text="Finn"/>
+            <Hyperlink onAction="#chrisClick" text="Chris"/>
+            <Hyperlink onAction="#marcClick" text="Marc"/>
+            <Hyperlink onAction="#davidClick" text="David"/>
+        </VBox>
+    </HBox>
 
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
-        <Hyperlink fx:id="debugLink" onAction="#debugClick" text="Debug"/>
+        <Hyperlink fx:id="debugLink" onAction="#debugClick" text="Debug" visible="false"/>
         <Hyperlink onAction="#githubRepoLinkClick" text="GitHub Repo"/>
-        <Hyperlink onAction="#reportBugLinkClick" text="Report Bug"/>
+        <Hyperlink onAction="#usedMusikKlick" text="Verwendete Musik"/>
+        <Hyperlink onAction="#reportBugLinkClick" text="Melde einen Fehler"/>
     </VBox>
 </StackPane>

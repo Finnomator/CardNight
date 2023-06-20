@@ -234,4 +234,8 @@ public class MainMenuView {
     public void davidClick() {
         openLinkInBrowser("https://github.com/Dav1dW1");
     }
+
+    public void usedMusikKlick() {
+        openLinkInBrowser("https://www.youtube.com/watch?v=5aQhFul3FNk");
+    }
 }

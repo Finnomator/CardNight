@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <StackPane fx:id="root" minHeight="720" minWidth="1280" styleClass="colored-pane"
            xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="cardnight.games.ueno.viewcontroler.UenoView">
+           fx:controller="cardnight.games.ueno.viewcontroller.UenoView">
 
     <GridPane fx:id="tableGrid">
 

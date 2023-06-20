@@ -1,7 +1,7 @@
 package cardnight;
 
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
-import cardnight.games.ueno.viewcontroler.UenoGegnerWahl;
+import cardnight.games.ueno.viewcontroller.UenoGegnerWahl;
 import cardnight.games.witch.viewcontroller.WitchGegnerWahl;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.Alignment="TOP_CENTER"
       xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cardnight.games.ueno.viewcontroler.UenoGegnerUiHand">
+      fx:controller="cardnight.games.ueno.viewcontroller.UenoGegnerUiHand">
     <Text fx:id="nameText" fill="WHITE" text="NAME">
         <font>
             <Font name="Segoe UI" size="14.0"/>

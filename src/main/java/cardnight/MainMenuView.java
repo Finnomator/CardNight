@@ -4,7 +4,7 @@ import cardnight.games.Ressourcen;
 import cardnight.games.tictactoe.viewcontroller.TTTBilder;
 import cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl;
 import cardnight.games.ueno.UenoFarbe;
-import cardnight.games.ueno.viewcontroler.UenoKartenBilder;
+import cardnight.games.ueno.viewcontroller.UenoKartenBilder;
 import cardnight.games.witch.WitchFarbe;
 import cardnight.games.witch.viewcontroller.WitchKartenBilder;
 import javafx.animation.Animation;

@@ -1,4 +1,4 @@
-package cardnight.games.ueno.viewcontroler;
+package cardnight.games.ueno.viewcontroller;
 
 import cardnight.games.ueno.UenoFarbe;
 import cardnight.games.ueno.UenoKarte;

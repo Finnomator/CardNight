@@ -1,4 +1,4 @@
-package cardnight.games.ueno.viewcontroler;
+package cardnight.games.ueno.viewcontroller;
 
 public class UenoAnleitung {
     public static final String anleitung = "Karten:\n" +

@@ -1,4 +1,4 @@
-package cardnight.games.ueno.viewcontroler;
+package cardnight.games.ueno.viewcontroller;
 
 import cardnight.*;
 import cardnight.games.SpielView;

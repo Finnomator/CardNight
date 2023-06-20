@@ -4,7 +4,7 @@ import cardnight.Logger;
 import cardnight.games.GegnerNamen;
 import cardnight.games.Spiel;
 import cardnight.games.Spieler;
-import cardnight.games.ueno.viewcontroler.UenoAnleitung;
+import cardnight.games.ueno.viewcontroller.UenoAnleitung;
 
 import java.util.ArrayList;
 import java.util.Arrays;

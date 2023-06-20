@@ -4,7 +4,7 @@ import cardnight.games.Spiel;
 import cardnight.games.tictactoe.TicTacToe;
 import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
 import cardnight.games.ueno.Ueno;
-import cardnight.games.ueno.viewcontroler.UenoView;
+import cardnight.games.ueno.viewcontroller.UenoView;
 import cardnight.games.witch.Witch;
 import cardnight.games.witch.viewcontroller.WitchView;
 import javafx.fxml.FXMLLoader;

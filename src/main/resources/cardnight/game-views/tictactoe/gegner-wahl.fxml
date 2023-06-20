@@ -5,7 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 <StackPane prefHeight="400.0" prefWidth="600.0" styleClass="colored-pane"
            xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="cardnight.games.tictactoe.viewcontroller.TTTGegnerWahl">
@@ -52,10 +52,6 @@
     </HBox>
 
     <Button onAction="#zuruckZumHauptmenuKlick" stylesheets="@../../styles/button-style.css" text="Zurück zum Hauptmenü"
-            StackPane.alignment="BOTTOM_CENTER">
-        <font>
-            <Font name="Sitka Text"/>
-        </font>
-    </Button>
+            StackPane.alignment="BOTTOM_CENTER"/>
 
 </StackPane>

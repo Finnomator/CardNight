@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
@@ -95,6 +94,9 @@
                 <Font size="28.0"/>
             </font>
         </Label>
+        <StackPane.margin>
+            <Insets top="15.0"/>
+        </StackPane.margin>
     </HBox>
 
 </StackPane>

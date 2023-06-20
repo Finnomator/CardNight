@@ -157,7 +157,7 @@ public class WitchView extends SpielView {
 
         for (int i = 0; i < sortierteSpieler.size(); i++) {
             WitchSpieler s = sortierteSpieler.get(i);
-            nachricht += "\t" + (i + 1) + ". " + s.name + " (" + s.gibPunkte() + " Punkte)\n";
+            nachricht += "\n" + (i + 1) + ". \t" + s.name + " (" + s.gibPunkte() + " Punkte)";
         }
 
         GameOver.setzeNachricht(nachricht);

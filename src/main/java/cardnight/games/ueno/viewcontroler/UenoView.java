@@ -65,8 +65,11 @@ public class UenoView extends SpielView {
 
         updateUi();
 
+        if (SoundPlayer.soundVolume <= 0)
+            return;
+
         disableGame(true);
-        UenoSoundPlayer.start(false);
+        UenoSoundPlayer.start();
 
         new Thread(() -> {
             Witch.delay(3000);

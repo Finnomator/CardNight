@@ -84,7 +84,7 @@ public class TicTacToeView extends SpielView {
             ++i;
         }
 
-        if (spielGegenComputer) {
+        if (spielGegenComputer && SoundPlayer.soundVolume > 0) {
             disableGame(true);
             TTTSoundPlayer.start();
 

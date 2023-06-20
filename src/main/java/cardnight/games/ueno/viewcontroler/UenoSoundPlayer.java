@@ -56,11 +56,8 @@ public class UenoSoundPlayer {
         SoundPlayer.playSound(duHastGewonnenSound);
     }
 
-    public static void start(boolean async) {
-        if (async)
-            SoundPlayer.playSound(rundenStartSound);
-        else
-            SoundPlayer.playSound(rundenStartSound);
+    public static void start() {
+        SoundPlayer.playSound(rundenStartSound);
     }
 
     public static void vierZiehen() {

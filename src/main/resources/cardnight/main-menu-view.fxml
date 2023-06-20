@@ -6,9 +6,8 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Box?>
-<?import javafx.scene.text.Text?>
-<StackPane fx:id="root" minHeight="800" minWidth="1422" styleClass="colored-pane"
-           xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" minHeight="800" minWidth="1422"
+           styleClass="colored-pane" xmlns="http://javafx.com/javafx/11.0.14-internal"
            fx:controller="cardnight.MainMenuView">
 
     <ImageView fx:id="hintergrundImageView" preserveRatio="true"/>
@@ -81,7 +80,14 @@
 
     <fx:include source="sound-menu.fxml" StackPane.alignment="TOP_RIGHT"/>
 
-    <Text fill="WHITE" text="Developed by: Finn, Christian, Marc, David" StackPane.alignment="BOTTOM_RIGHT"/>
+    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_RIGHT">
+        <Label text="Developed by" textFill="white"/>
+        <Hyperlink onAction="#finnClick" text="Finn"/>
+        <Hyperlink onAction="#chrisClick" text="Chris"/>
+        <Hyperlink onAction="#marcClick" text="Marc"/>
+        <Hyperlink onAction="#davidClick" text="David"/>
+    </VBox>
+
     <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="BOTTOM_LEFT">
         <Hyperlink fx:id="debugLink" onAction="#debugClick" text="Debug"/>
         <Hyperlink onAction="#githubRepoLinkClick" text="GitHub Repo"/>

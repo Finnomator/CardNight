@@ -4,11 +4,10 @@ import cardnight.Logger;
 import cardnight.Tools;
 import cardnight.games.GegnerNamen;
 import cardnight.games.Spiel;
+import cardnight.games.witch.viewcontroller.WitchAnleitung;
 import cardnight.games.witch.viewcontroller.WitchView;
 import javafx.application.Platform;
 
-import java.net.URISyntaxException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -416,11 +415,7 @@ public class Witch extends Spiel {
 
     @Override
     public String gibAnleitung() {
-        try {
-            return Tools.readFile(Paths.get(getClass().getResource("/cardnight/anleitungen/WitchAnleitung").toURI()));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        return WitchAnleitung.anleitung;
     }
 
     public ArrayList<WitchSpieler> platzierung() {

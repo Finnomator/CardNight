@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainMenuView {
 
@@ -218,5 +217,21 @@ public class MainMenuView {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void finnClick() {
+        openLinkInBrowser("https://github.com/Finnomator");
+    }
+
+    public void chrisClick() {
+        openLinkInBrowser("https://github.com/TheCoderChris");
+    }
+
+    public void marcClick() {
+        openLinkInBrowser("https://github.com/ZweiWueste");
+    }
+
+    public void davidClick() {
+        openLinkInBrowser("https://github.com/Dav1dW1");
     }
 }

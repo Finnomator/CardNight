@@ -20,7 +20,6 @@ public class DebugWindow {
         istOffen = true;
 
         VBox root = new VBox();
-        root.setMaxSize(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
         root.setAlignment(Pos.TOP_CENTER);
 
         root.getChildren().add(new Label("Log"));

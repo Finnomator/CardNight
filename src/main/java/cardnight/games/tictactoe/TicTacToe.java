@@ -1,13 +1,11 @@
 package cardnight.games.tictactoe;
 
 import cardnight.Logger;
-import cardnight.Tools;
 import cardnight.games.Spiel;
+import cardnight.games.tictactoe.viewcontroller.TTTAnleitung;
 import cardnight.games.tictactoe.viewcontroller.TTTSoundPlayer;
 import cardnight.games.tictactoe.viewcontroller.TicTacToeView;
 
-import java.net.URISyntaxException;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 
@@ -168,11 +166,6 @@ public class TicTacToe extends Spiel {
 
     @Override
     public String gibAnleitung() {
-        try {
-            return Tools.readFile(Paths.get(getClass().getResource("/cardnight/anleitungen/TicTacToeGegen" +
-                    (spieltGegenComputer? "Computer" : "Mensch") + "Anleitung").toURI()));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        return spieltGegenComputer? TTTAnleitung.gegenComputer : TTTAnleitung.gegenMensch;
     }
 }
